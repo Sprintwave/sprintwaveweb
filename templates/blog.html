@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Sprintwave Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #e6f0ef;
+      color: #1a1a1a;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+
+    .navbar {
+      background-color: #ffffff !important;
+    }
+
+    .navbar-brand {
+      color: #007f73 !important;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .accent {
+      color: #007f73;
+    }
+
+    .blog-hero {
+      padding: 100px 0 60px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      background-color: #e6f0ef;
+    }
+
+    .blog-hero h1,
+    .blog-hero p {
+      color: #1a1a1a;
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      background: #ffffff !important;
+      padding: 20px 0;
+      color: #777;
+    }
+
+    .btn-outline-primary {
+      border-radius: 999px;
+      border-color: #0d6efd;
+      color: #0d6efd;
+    }
+
+    .btn-outline-primary:hover {
+      background-color: #0d6efd;
+      color: #fff;
+    }
+  </style>
+
+  <!-- VANTA.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+</head>
+<body>
+
+<!-- ✅ Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+      <span class="fw-semibold fs-4" style="color: #1a1a1a;"></span>
+    </a>
+    <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item"><a class="nav-link text-dark" href="{{ url_for('home') }}#about">About</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="{{ url_for('home') }}#technologies">Technologies</a></li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold d-flex align-items-center" href="{{ url_for('home') }}#applications" style="color: #ff5722;">
+            <span style="font-size:1.2em; margin-right: 0.3em;">🔥</span> DevApps
+          </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link fw-bold d-flex align-items-center" href="{{ url_for('blog') }}" style="color: #007f73;">
+            <span style="font-size:1.2em; margin-right: 0.3em;">
+            <i class="bi bi-lightbulb"></i>
+            </span> Blog
+        </a>
+        </li>
+        <li class="nav-item"><a class="nav-link text-dark" href="{{ url_for('home') }}#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ✅ Hero with Animated Background -->
+<section class="blog-hero" id="vanta-bg">
+  <div class="container position-relative">
+<h1 class="fw-bold text-dark">
+  <i class="bi bi-lightbulb me-2"></i> Sprintwave Blog
+</h1>
+
+    <p class="lead text-muted">Insights, updates, and technical deep-dives from the Sprintwave team.</p>
+  </div>
+</section>
+
+<!-- ✅ Blog Content -->
+<main class="container py-4">
+  <div class="blog-card">
+    <h3 class="accent mb-2">Welcome to the Sprintwave Blog</h3>
+    <p class="text-muted mb-1"><small>Posted July 2025 • by Sprintwave Team</small></p>
+    <p>
+      This is where we’ll share news, technical guides, and stories from our work in network automation, wireless, and security. Stay tuned for regular updates!
+    </p>
+  </div>
+
+  <!-- Example blog post card for blog.html -->
+  <div class="blog-card">
+    <h3 class="accent mb-2">
+      <span style="font-size:1.5em; vertical-align:middle;">🔍</span>
+      Why Your 100G Single Mode Optic Isn’t Working in Port 1/1/49 on the Aruba 8360 Switch
+    </h3>
+    <p class="text-muted mb-1"><small>Posted July 2025 • by Sprintwave Team</small></p>
+    <p>
+      If you're deploying 100G optics on the Aruba 8360 (JL720C) switch, here's a critical detail that might save you hours of troubleshooting.
+    </p>
+    <p>
+      Recently, I encountered an issue where a 100G FR1 single mode transceiver failed to initialize in port <strong>1/1/49</strong>. After reviewing the hardware guide, I discovered that in <strong>power-to-port airflow</strong> configurations, Aruba only supports ER4L and FR1 transceivers in ports <strong>1/1/50</strong> and <strong>1/1/52</strong>—and only if the ambient temperature is <strong>35°C or lower</strong>.
+    </p>
+    <p>
+      This limitation is due to thermal design constraints, not a faulty optic or misconfiguration.
+    </p>
+    <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;text-align:left;">
+      <strong>Key Takeaway</strong><br>
+      If your 100G single mode optic isn’t working in port 49 on an Aruba 8360 switch, check:
+      <ul>
+        <li>Airflow direction (<strong>power-to-port</strong> vs. port-to-power)</li>
+        <li>Transceiver type (<strong>FR1</strong> or <strong>ER4L</strong>)</li>
+        <li>Ambient temperature (must be ≤ 35°C)</li>
+        <li>Supported ports (use <strong>ports 50 or 52</strong> for these optics)</li>
+      </ul>
+    </div>
+    <p>
+      As 100G optics become more common in modern data center networks, it’s crucial to align your thermal and airflow planning with hardware design limits.
+    </p>
+    <p>
+      <strong>Pro tip:</strong> Always consult the Aruba Transceiver Guide or Hardware Installation Guide when deploying high-speed optics.
+    </p>
+    <div class="mt-2" style="color:#007f73;font-size:1.1em;">
+      #Aruba8360 #100G #SingleMode #FR1 #DataCenterNetworking #ArubaSwitching #Port1/1/49 #NetworkEngineering
+    </div>
+  </div>
+  <div class="blog-card">
+  <h3 class="accent mb-2">
+    <i class="bi bi-terminal me-1"></i> How to Authenticate and Query Aruba ClearPass API for Static Host Lists
+  </h3>
+  <p class="text-muted mb-1"><small>Posted July 2025 • by Sprintwave Team</small></p>
+  <p>
+    Working with the Aruba ClearPass REST API can be powerful, but there are a few unintuitive steps to get started. Here’s how to authenticate and pull static host list data using Postman.
+  </p>
+
+  <h5 class="mt-3">Step-by-Step Guide</h5>
+  <ol>
+    <li>Login to the ClearPass Policy Manager GUI.</li>
+    <li>In the top right, click <strong>Guest</strong> to switch to the guest interface.</li>
+    <li>Navigate to <strong>Administration → API Services → API Clients</strong>.</li>
+    <li>Create a new API Client with appropriate scopes and token lifetime.</li>
+    <li>Click the client and choose <strong>Generate Access Token</strong>. Copy the token.</li>
+    <li>Open Postman and set the request URL to: <code>https://&lt;your-clearpass-url&gt;/api/static-host-list</code>.</li>
+    <li>In Postman, use the <strong>Bearer Token</strong> authentication type and paste the copied token.</li>
+    <li>Send the request to receive a list of static host entries in JSON format.</li>
+  </ol>
+
+  <h5 class="mt-3">Sample JSON Response</h5>
+  <pre style="background:#f8f9fa; padding:1em; border-left:4px solid #007f73; border-radius:8px; font-size:0.9em; overflow-x:auto;">
+{
+  "_embedded": {
+    "items": [
+      {
+        "id": 3001,
+        "name": "Test-Test",
+        "host_entries": [
+          {
+            "host_address": "00-00-AA-22-33-44",
+            "host_address_desc": "Test-44"
+          }
+        ]
+      },
+      {
+        "id": 3002,
+        "name": "sprintwave VLAN 20",
+        "host_entries": [
+          {
+            "host_address": "66-55-44-33-22-11",
+            "host_address_desc": "Device1234"
+          }
+        ]
+      }
+    ]
+  }
+}
+  </pre>
+
+  <p class="mt-3">
+    This API call is especially useful for inventorying or validating MAC address-based static host groups within your ClearPass environment.
+  </p>
+  <p>
+    <strong>Pro tip:</strong> You can also browse all available API endpoints using the ClearPass API Explorer at: <code>https://&lt;your-clearpass-url&gt;/api-docs</code>.
+  </p>
+
+  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
+    #ClearPass #ArubaNetworks #NetworkAutomation #API #Postman #StaticHostList #NetworkSecurity
+  </div>
+</div>
+
+<div class="blog-card">
+  <h3 class="accent mb-2">
+    <i class="bi bi-diagram-3 me-1"></i> Cisco ISE vs. Aruba ClearPass: Network Access Control Architecture Compared
+  </h3>
+  <p class="text-muted mb-1"><small>Posted July 2025 • by Sprintwave Team</small></p>
+  <p>
+    Cisco ISE (Identity Services Engine) and Aruba ClearPass (ClearPass Policy Manager or CPPM) are two of the most widely adopted solutions for <strong>network access control (NAC)</strong>. Both platforms offer centralized policy enforcement, secure access, and compliance controls—but differ slightly in how they’re architected and deployed.
+  </p>
+
+  <h5 class="mt-3">Deployment Options</h5>
+  <p>
+    Both Cisco ISE and Aruba ClearPass support flexible deployment models, including <strong>virtual appliances</strong>, <strong>physical hardware</strong>, and <strong>cloud-based instances</strong>. Regardless of the deployment type, each server is called a <strong>node</strong>. This allows organizations to scale and deploy based on their infrastructure strategy.
+  </p>
+
+  <h5 class="mt-3">Cluster Architecture</h5>
+  <p>
+    A typical NAC deployment involves multiple nodes forming a <strong>cluster</strong>. These clusters can range from small (2 nodes) to large-scale (up to 50+ nodes), depending on network size.
+  </p>
+  <ul>
+    <li><strong>Cisco ISE:</strong> The central configuration node is called the <em>Policy Administration Node (PAN)</em>. A secondary PAN can be added for redundancy.</li>
+    <li><strong>Aruba ClearPass:</strong> The main configuration node is the <em>Publisher</em>, with an optional <em>Standby Publisher</em> for failover support.</li>
+  </ul>
+
+  <h5 class="mt-3">RADIUS Request Handling</h5>
+  <p>
+    Both platforms are RADIUS-based and capable of handling authentication and authorization efficiently—but with different terminologies:
+  </p>
+  <ul>
+    <li><strong>Cisco ISE:</strong> Nodes that handle RADIUS traffic are called <em>Policy Services Nodes (PSNs)</em>.</li>
+    <li><strong>Aruba ClearPass:</strong> These are referred to as <em>Subscribers</em>. A ClearPass node can act as both a Subscriber and a Publisher, depending on role assignment.</li>
+  </ul>
+
+  <h5 class="mt-3">Conclusion</h5>
+  <p>
+    While both Cisco ISE and Aruba ClearPass offer enterprise-grade NAC features, the differences in architecture and terminology are worth noting. Both systems are scalable, secure, and proven in real-world deployments. The choice between them often comes down to <strong>vendor alignment</strong>, <strong>feature needs</strong>, and <strong>environment compatibility</strong>.
+  </p>
+
+  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
+    #CiscoISE #ArubaClearPass #NAC #NetworkSecurity #ZeroTrust #RADIUS #NetworkArchitecture
+  </div>
+</div>
+<div class="blog-card">
+  <h3 class="accent mb-2">
+    <i class="bi bi-usb-plug me-1"></i> EnOcean Dongle Issues with Cisco Catalyst 9800 and APs
+  </h3>
+  <p class="text-muted mb-1"><small>Posted June 2024 • by Joey Scott</small></p>
+  <p>
+    If you're working with **EnOcean USB dongles** and **Cisco Catalyst 9800 wireless controllers**, here’s something important we discovered during deployment—especially for Catalyst 9166 APs running version 17.9.5.
+  </p>
+
+  <h5 class="mt-3">What Is EnOcean?</h5>
+  <p>
+    EnOcean produces wireless IoT dongles that plug directly into access points and communicate with smart devices (e.g., power clamps) using the 868 MHz band (in the UK). This frequency is **non-interfering with Wi-Fi**, making EnOcean a good fit for enterprise IoT environments.
+  </p>
+
+  <h5 class="mt-3">How It Works with Cisco APs</h5>
+  <p>
+    A lightweight Docker container runs on the AP to interface with the EnOcean dongle, forwarding data to a cloud or on-prem EnOcean connector. This container can be deployed manually or via **Cisco DNA Center (DNAC)**.
+  </p>
+
+  <h5 class="mt-3">The Problem with Version 17.9.5</h5>
+  <p>
+    On version <strong>17.9.5</strong> (gold standard at time of writing), EnOcean dongles are **not detected properly** on Catalyst 9166 APs. Attempts to deploy the Docker container using DNAC result in:
+    <code class="d-block my-2">ERR_AH_-1043 – Requested USB device not found on the AP</code>
+    The same error appears when attempting CLI-based deployment.
+  </p>
+
+  <h5 class="mt-3">Initial Troubleshooting</h5>
+  <p>
+    Initially, the issue appeared to be unsupported USB device type (PID/VID/VER <code>403/6015/1000</code>)—not visible via <code>show usb list</code>. With assistance from EnOcean, we enabled the USB module manually:
+  </p>
+  <pre style="background:#f8f9fa; padding:1em; border-left:4px solid #007f73; border-radius:8px; font-size:0.9em;">
+test usb load module ftdi-sio vendor-id 403 product-id 6015 version 1000
+test usb disable
+test usb enable
+  </pre>
+  <p>
+    After this, the dongle appeared in the USB list, but deploying the application still failed with the same error.
+  </p>
+
+  <h5 class="mt-3">The Fix</h5>
+  <p>
+    Upgrading the controller and AP firmware to <strong>version 17.12.4</strong> resolved the issue. After the upgrade, the application installed successfully and the dongle functioned as expected.
+  </p>
+
+  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
+    #Cisco9800 #Catalyst9166 #EnOcean #DNAC #IoT #USB #Docker #CiscoWLC #WirelessTroubleshooting
+  </div>
+</div>
+
+<!-- Additional blog-card blocks go here -->
+</main>
+
+<!-- ✅ Footer -->
+<footer class="text-center text-muted">
+  <div class="container">
+    <p class="mb-1 small">© 2025 Sprintwave. All rights reserved.</p>
+    <p class="mb-1 small">Company Number: 15831681</p>
+    <a 
+      href="https://www.linkedin.com/company/sprintwave" 
+      target="_blank" 
+      rel="noopener" 
+      class="btn btn-outline-primary btn-sm"
+      aria-label="Sprintwave LinkedIn"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+        <path d="M0 1.146C0 .513.324 0 .725 0h14.55c.401 0 .725.513.725 1.146v13.708c0 .633-.324 1.146-.725 1.146H.725A.723.723 0 0 1 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.212h2.4V9.359c0-.215.016-.43.08-.586.175-.43.573-.877 1.242-.877.876 0 1.226.662 1.226 1.634v4.864h2.4V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.6 5.6 0 0 1 .016-.025V6.169h-2.4c.03.7 0 7.225 0 7.225z"/>
+      </svg>
+      <span class="visually-hidden">LinkedIn</span>
+    </a>
+  </div>
+</footer>
+
+<!-- ✅ Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  VANTA.WAVES({
+    el: "#vanta-bg",
+    mouseControls: true,
+    touchControls: true,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.0,
+    scaleMobile: 1.0,
+    shininess: 50,
+    waveHeight: 15,
+    waveSpeed: 0.5,
+    color: 0x007f73,
+    backgroundColor: 0xe6f0ef
+  });
+</script>
+</body>
+</html>
