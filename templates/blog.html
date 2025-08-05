@@ -197,64 +197,169 @@
   </h3>
   <p class="text-muted mb-1"><small>Posted August 2025 • by Sprintwave Team</small></p>
   <p>
-    When running automation at scale, particularly against dozens of switches, the last thing you want is for your AD account to get locked out mid-playbook. It happens—especially when multiple parallel SSH sessions hit devices that reject or delay authentication.
+    When you're automating configuration backups or deployments across Aruba switches using Ansible, there's a real risk of getting your AD account locked out—especially if multiple SSH sessions fail or time out simultaneously. We hit this exact issue when a few unreachable devices caused a cascade of authentication failures.
   </p>
+
   <p>
-    We ran into this when executing config backup playbooks across 40+ Aruba switches. A few failed authentications due to mismatched key exchange or enable password prompts triggered a lockout from the domain controller.
+    The most common cause? Parallel sessions trying to authenticate at once, often against AOS devices that require an <code>enable</code> password or have strict SSH key exchange settings.
   </p>
+
   <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;text-align:left;">
-    <strong>Our Fix</strong><br>
+    <strong>Key Fixes</strong>
     <ul>
-      <li>Limited concurrency using <code>-f 2</code> (maximum 2 forks)</li>
-      <li>Set per-host <code>timeout</code> to a conservative value (e.g., 20–30s)</li>
-      <li>Used <code>ignore_errors: yes</code> to prevent entire playbook failures on one bad host</li>
-      <li>Grouped known AOS-CX or CoS switches into their own inventories with tailored auth settings</li>
+      <li>Limit concurrency using forks: <code>-f 2</code></li>
+      <li>Set connection timeouts and retries conservatively</li>
+      <li>Use <code>ignore_errors: yes</code> on fail-prone tasks</li>
+      <li>Split AOS switches into separate inventory groups for fine-tuned control</li>
     </ul>
   </div>
+
+  <p><strong>Example 1: Run your playbook with 2 concurrent forks</strong></p>
+  <pre><code>ansible-playbook backup.yml -i inventory.yaml -f 2</code></pre>
+
+  <p><strong>Example 2: Inventory group for AOS switches</strong></p>
+  <pre><code>all:
+  children:
+    aruba_aos:
+      hosts:
+        switch01:
+        switch02:
+        switch03:
+      vars:
+        ansible_network_os: arubanetworks.aos_switch.aos
+        ansible_connection: network_cli
+        ansible_user: "{{ vault_username }}"
+        ansible_password: "{{ vault_password }}"
+        ansible_become: true
+        ansible_become_method: enable
+        ansible_become_password: "{{ vault_enable_password }}"
+        ansible_ssh_common_args: '-o KexAlgorithms=+diffie-hellman-group14-sha1'</code></pre>
+
+  <p><strong>Example 3: Graceful error handling in the playbook</strong></p>
+  <pre><code>- name: Backup running config
+  hosts: aruba_aos
+  gather_facts: no
+
+  tasks:
+    - name: Get running config
+      arubanetworks.aos_switch.aos_command:
+        commands: show running-config
+      register: output
+      ignore_errors: yes
+
+    - name: Save config to file
+      copy:
+        content: "{{ "{{" }} output.stdout[0] {{ "}}" }}"
+        dest: "backups/{{ inventory_hostname }}.txt"
+      when: output.stdout is defined</code></pre>
+
   <p>
-    These tweaks ensured that only two devices were hit at a time, and a failed login wouldn't cascade into a larger problem. Aruba CoS devices were particularly sensitive—many required enable-level credentials that needed separate handling or fallback logic.
+    With these steps in place, our backups completed without triggering any AD lockouts, even when some switches timed out or had outdated SSH settings. We could re-run the playbook safely without re-auth failures.
   </p>
+
   <p>
-    <strong>Pro tip:</strong> For hybrid networks, split your playbooks by platform (AOS vs. CoS) and tailor your Ansible connection settings per group.
+    <strong>Pro tip:</strong> Aruba AOS devices often require an <code>enable</code> password even for read-only commands. Make sure it's set correctly in your inventory or vault.
   </p>
+
   <div class="mt-2" style="color:#007f73;font-size:1.1em;">
-    #AnsibleTips #ArubaAutomation #ADLockout #ConcurrentSessions #NetworkSecurity #InfrastructureAsCode
+    #Ansible #ArubaAOS #NetworkAutomation #ADLockout #SecureAutomation #AOSBackups #InfrastructureAsCode
   </div>
 </div>
 
-<!-- Blog post: Backing Up Aruba Switch Configs with Ansible -->
+
+<!-- Blog post: Backing Up Aruba CX & AOS Switches with Ansible -->
 <div class="blog-card" id="aruba-ansible-backup">
   <h3 class="accent mb-2">
     <span style="font-size:1.5em; vertical-align:middle;">💾</span>
-    Backing Up Aruba Switch Configs with Ansible – The Right Way
+    Backing Up Aruba CX and AOS Switch Configurations with Ansible
   </h3>
   <p class="text-muted mb-1"><small>Posted August 2025 • by Sprintwave Team</small></p>
   <p>
-    Running regular config backups across your Aruba switches shouldn’t be a manual task. Here’s how we automated the entire backup process using Ansible—saving time, avoiding manual login fatigue, and giving us consistent, timestamped archives.
+    Managing backups across mixed Aruba environments? Whether you're running the modern Aruba CX (AOS-CX) or older AOS switches, Ansible provides a flexible way to automate configuration snapshots—without logging into each device manually.
   </p>
-  <p>
-    We built a lightweight playbook that logs into each switch, runs the relevant CLI command to fetch the running configuration, and saves the output to a uniquely named text file.
-  </p>
+
   <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;text-align:left;">
-    <strong>What It Does</strong><br>
-    <ul>
-      <li>Connects to Aruba switches over SSH using Ansible’s raw module</li>
-      <li>Runs <code>show running-config</code> (or <code>show config</code> depending on model)</li>
-      <li>Saves output to a timestamped text file per device</li>
-      <li>Logs all output to a structured folder for later auditing</li>
-    </ul>
+    <strong>Goal</strong><br>
+    Connect to both Aruba CX and legacy AOS switches via SSH and back up their current configurations to structured text files.
   </div>
+
+  <h4 class="mt-3">📁 Step 1: Use a Structured Inventory</h4>
+  <p>Create an <code>inventory.ini</code> with groupings for each platform:</p>
+  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>[aruba_cx]
+cx-switch-1
+cx-switch-2
+
+[aruba_aos]
+aos-switch-1
+aos-switch-2
+
+[aruba_cx:vars]
+ansible_connection=network_cli
+ansible_network_os=arubanetworks.aoscx.aoscx
+ansible_user={{ "{{" }} vault_username {{ "}}" }}
+ansible_password={{ "{{" }} vault_password {{ "}}" }}
+
+[aruba_aos:vars]
+ansible_connection=network_cli
+ansible_network_os=arubanetworks.aos_switch.aos
+ansible_user={{ "{{" }} vault_username {{ "}}" }}
+ansible_password={{ "{{" }} vault_password {{ "}}" }}
+ansible_become=yes
+ansible_become_method=enable
+ansible_become_password={{ vault_enable_password }}
+ansible_ssh_common_args='-o KexAlgorithms=+diffie-hellman-group14-sha1'</code></pre>
+
+  <h4 class="mt-3">📝 Step 2: Backup Playbook</h4>
+  <p>This playbook handles both switch types using conditional logic and the appropriate command module:</p>
+  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>- name: Backup running configs from Aruba switches
+  hosts: aruba_cx:aruba_aos
+  gather_facts: no
+
+  tasks:
+    - name: Get config from Aruba CX
+      when: "'aoscx' in ansible_network_os"
+      arubanetworks.aoscx.aoscx_command:
+        commands: show running-config
+      register: cx_output
+
+    - name: Get config from Aruba AOS
+      when: "'aos' in ansible_network_os"
+      arubanetworks.aos_switch.aos_command:
+        commands: show running-config
+      register: aos_output
+
+    - name: Save config to file (CX)
+      when: cx_output is defined
+      copy:
+        content: "{{ "{{" }} cx_output.stdout[0] {{ "}}" }}"
+        dest: "./backups/{{ "{{" }} inventory_hostname {{ "}}" }}.txt"
+
+    - name: Save config to file (AOS)
+      when: aos_output is defined
+      copy:
+        content: "{{ "{{" }} aos_output.stdout[0] {{ "}}" }}"
+        dest: "./backups/{{ "{{" }} inventory_hostname {{ "}}" }}.txt"</code></pre>
+
+  <h4 class="mt-3">▶️ Step 3: Run the Backup</h4>
+  <p>Run the playbook while limiting concurrency to avoid AD lockouts:</p>
+  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>ansible-playbook backup.yml -i inventory.ini -f 2</code></pre>
+
+  <h4 class="mt-3">🔐 Step 4: Secure Credentials with Vault</h4>
   <p>
-    To keep it flexible, we grouped devices in inventory files based on location and type. The script includes error handling for unreachable devices, and skips gracefully over failures.
+    Store your login details safely with <code>ansible-vault</code>. Create <code>vault.yml</code>:
   </p>
-  <p>
-    <strong>Pro tip:</strong> Some Aruba switches (like AOS-CX) require special handling or enable-level passwords. Plan your authentication logic accordingly, especially when mixing switch families.
-  </p>
-  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
-    #ArubaSwitches #Ansible #NetworkAutomation #ConfigBackups #AOSCX #AOS #NetworkOps
+  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>vault_username: netadmin
+vault_password: SuperSecurePassword
+vault_enable_password: EnablePasswordIfNeeded</code></pre>
+
+  <p>Then reference it in the playbook via:</p>
+  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>vars_files:
+  - group_vars/aruba_aos/vault.yml</code></pre>
+
+  <div class="mt-3" style="color:#007f73;font-size:1.1em;">
+    #ArubaCX #ArubaAOS #AnsibleAutomation #ConfigBackups #AOSCX #ArubaSwitching #InfraOps #NetworkAutomation
   </div>
 </div>
-
 
 
   <!-- Blog post: 100G Optic Not Working in Port 1/1/49 -->
