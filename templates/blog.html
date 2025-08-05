@@ -226,7 +226,6 @@
         switch02:
         switch03:
       vars:
-        ansible_network_os: arubanetworks.aos_switch.aos
         ansible_connection: network_cli
         ansible_user: "{{ vault_username }}"
         ansible_password: "{{ vault_password }}"
@@ -242,8 +241,7 @@
 
   tasks:
     - name: Get running config
-      arubanetworks.aos_switch.aos_command:
-        commands: show running-config
+      raw: show running-config  
       register: output
       ignore_errors: yes
 
@@ -301,7 +299,6 @@ ansible_password={{ "{{" }} vault_password {{ "}}" }}
 
 [aruba_aos:vars]
 ansible_connection=network_cli
-ansible_network_os=arubanetworks.aos_switch.aos
 ansible_user={{ "{{" }} vault_username {{ "}}" }}
 ansible_password={{ "{{" }} vault_password {{ "}}" }}
 ansible_become=yes
@@ -322,11 +319,11 @@ ansible_ssh_common_args='-o KexAlgorithms=+diffie-hellman-group14-sha1'</code></
         commands: show running-config
       register: cx_output
 
-    - name: Get config from Aruba AOS
-      when: "'aos' in ansible_network_os"
-      arubanetworks.aos_switch.aos_command:
-        commands: show running-config
+    - name: Get config from Aruba AOS (fallback using raw module)
+      when: "'aruba_aos' in group_names"
+      raw: show running-config
       register: aos_output
+      ignore_errors: yes
 
     - name: Save config to file (CX)
       when: cx_output is defined
