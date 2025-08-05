@@ -168,6 +168,12 @@
       <span style="font-size:1.3em;vertical-align:middle;">📚</span> Blog Posts Menu
     </h5>
     <div class="d-flex flex-wrap justify-content-center gap-2">
+      <a class="btn blog-menu-btn" href="#ansible-ad-lockout">
+        🔐Preventing AD Lockouts When Automating Aruba Devices with Ansible
+      </a>
+      <a class="btn blog-menu-btn" href="#aruba-ansible-backup">
+        💾 Backing Up Aruba Switches with Ansible 
+      </a>
       <a class="btn blog-menu-btn" href="#why-100g-aruba-8360">
         🔍 100G Optic Not Working in Port 1/1/49
       </a>
@@ -183,6 +189,73 @@
     </div>
   </div>
 </div>
+<!-- Blog post: Preventing AD Lockouts When Automating Aruba Devices -->
+<div class="blog-card" id="ansible-ad-lockout">
+  <h3 class="accent mb-2">
+    <span style="font-size:1.5em; vertical-align:middle;">🔐</span>
+    Preventing AD Lockouts When Automating Aruba Devices with Ansible
+  </h3>
+  <p class="text-muted mb-1"><small>Posted August 2025 • by Sprintwave Team</small></p>
+  <p>
+    When running automation at scale, particularly against dozens of switches, the last thing you want is for your AD account to get locked out mid-playbook. It happens—especially when multiple parallel SSH sessions hit devices that reject or delay authentication.
+  </p>
+  <p>
+    We ran into this when executing config backup playbooks across 40+ Aruba switches. A few failed authentications due to mismatched key exchange or enable password prompts triggered a lockout from the domain controller.
+  </p>
+  <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;text-align:left;">
+    <strong>Our Fix</strong><br>
+    <ul>
+      <li>Limited concurrency using <code>-f 2</code> (maximum 2 forks)</li>
+      <li>Set per-host <code>timeout</code> to a conservative value (e.g., 20–30s)</li>
+      <li>Used <code>ignore_errors: yes</code> to prevent entire playbook failures on one bad host</li>
+      <li>Grouped known AOS-CX or CoS switches into their own inventories with tailored auth settings</li>
+    </ul>
+  </div>
+  <p>
+    These tweaks ensured that only two devices were hit at a time, and a failed login wouldn't cascade into a larger problem. Aruba CoS devices were particularly sensitive—many required enable-level credentials that needed separate handling or fallback logic.
+  </p>
+  <p>
+    <strong>Pro tip:</strong> For hybrid networks, split your playbooks by platform (AOS vs. CoS) and tailor your Ansible connection settings per group.
+  </p>
+  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
+    #AnsibleTips #ArubaAutomation #ADLockout #ConcurrentSessions #NetworkSecurity #InfrastructureAsCode
+  </div>
+</div>
+
+<!-- Blog post: Backing Up Aruba Switch Configs with Ansible -->
+<div class="blog-card" id="aruba-ansible-backup">
+  <h3 class="accent mb-2">
+    <span style="font-size:1.5em; vertical-align:middle;">💾</span>
+    Backing Up Aruba Switch Configs with Ansible – The Right Way
+  </h3>
+  <p class="text-muted mb-1"><small>Posted August 2025 • by Sprintwave Team</small></p>
+  <p>
+    Running regular config backups across your Aruba switches shouldn’t be a manual task. Here’s how we automated the entire backup process using Ansible—saving time, avoiding manual login fatigue, and giving us consistent, timestamped archives.
+  </p>
+  <p>
+    We built a lightweight playbook that logs into each switch, runs the relevant CLI command to fetch the running configuration, and saves the output to a uniquely named text file.
+  </p>
+  <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;text-align:left;">
+    <strong>What It Does</strong><br>
+    <ul>
+      <li>Connects to Aruba switches over SSH using Ansible’s raw module</li>
+      <li>Runs <code>show running-config</code> (or <code>show config</code> depending on model)</li>
+      <li>Saves output to a timestamped text file per device</li>
+      <li>Logs all output to a structured folder for later auditing</li>
+    </ul>
+  </div>
+  <p>
+    To keep it flexible, we grouped devices in inventory files based on location and type. The script includes error handling for unreachable devices, and skips gracefully over failures.
+  </p>
+  <p>
+    <strong>Pro tip:</strong> Some Aruba switches (like AOS-CX) require special handling or enable-level passwords. Plan your authentication logic accordingly, especially when mixing switch families.
+  </p>
+  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
+    #ArubaSwitches #Ansible #NetworkAutomation #ConfigBackups #AOSCX #AOS #NetworkOps
+  </div>
+</div>
+
+
 
   <!-- Blog post: 100G Optic Not Working in Port 1/1/49 -->
   <div class="blog-card" id="why-100g-aruba-8360">
