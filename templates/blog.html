@@ -103,6 +103,51 @@
       transform: translateY(-2px) scale(1.04);
       text-decoration: none;
     }
+
+    /* Contact Section Styles */
+    #contact {
+      padding: 60px 0;
+      background: #ffffff;
+    }
+
+    #contact h2 {
+      color: #1a1a1a;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    #contact p {
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .btn-accent {
+      background-color: #007f73;
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.6rem 1.2rem;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-accent:hover {
+      background-color: #005f57;
+      transform: translateY(-2px);
+    }
+
+    .btn-starlink {
+      background-color: #ff5722;
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.6rem 1.2rem;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-starlink:hover {
+      background-color: #e64a19;
+      transform: translateY(-2px);
+    }
   </style>
 
   <!-- VANTA.JS -->
@@ -562,8 +607,21 @@ test usb enable
   </div>
 </div>
 
-<!-- Additional blog-card blocks go here -->
-</main>
+<!-- Contact Section -->
+<section id="contact" style="background: #ffffff;">
+  <div class="container text-center">
+    <h2 class="mb-4">Need Help With Your Network?</h2>
+    <p class="text-muted mb-3">Get expert advice on network consulting or rural internet solutions.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk">
+        <i class="bi bi-envelope me-2"></i>Email Us
+      </a>
+      <a class="btn btn-starlink" href="tel:+441553824408">
+        <i class="bi bi-telephone me-2"></i>Call Now - 01553 824408
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- ✅ Footer -->
 <footer class="text-center text-muted">
