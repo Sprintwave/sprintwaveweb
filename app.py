@@ -20,6 +20,10 @@ def starlink():
 def event_wifi():
     return render_template('eventwifi.html')
 
+@app.route('/backup-internet')
+def backup_internet():
+    return render_template('backup.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Generate sitemap XML for Google Search Console"""
@@ -43,6 +47,12 @@ def sitemap():
     </url>
     <url>
         <loc>https://www.sprintwave.co.uk/event-wifi</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/backup-internet</loc>
         <lastmod>{current_date}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
