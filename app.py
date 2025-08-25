@@ -16,6 +16,10 @@ def blog():
 def starlink():
     return render_template('starlink.html')
 
+@app.route('/event-wifi')
+def event_wifi():
+    return render_template('eventwifi.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Generate sitemap XML for Google Search Console"""
@@ -33,6 +37,12 @@ def sitemap():
     </url>
     <url>
         <loc>https://www.sprintwave.co.uk/starlink</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/event-wifi</loc>
         <lastmod>{current_date}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
