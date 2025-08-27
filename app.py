@@ -24,6 +24,10 @@ def event_wifi():
 def backup_internet():
     return render_template('backup.html')
 
+@app.route('/web-design')
+def web_design():
+    return render_template('webdesign.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Generate sitemap XML for Google Search Console"""
@@ -58,6 +62,12 @@ def sitemap():
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.sprintwave.co.uk/web-design</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>https://www.sprintwave.co.uk/blog</loc>
         <lastmod>{current_date}</lastmod>
         <changefreq>weekly</changefreq>
@@ -78,5 +88,5 @@ Sitemap: https://www.sprintwave.co.uk/sitemap.xml
     return Response(robots_txt, mimetype='text/plain')
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5002))
     app.run(debug=False, host='0.0.0.0', port=port)

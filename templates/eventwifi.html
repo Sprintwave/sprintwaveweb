@@ -254,25 +254,47 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav align-items-center">
-          <li class="nav-item"><a class="nav-link text-dark" href="{{ url_for('home') }}#about">Network Consulting</a></li>
+          <!-- Core Services -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+              <i class="bi bi-gear me-1"></i> Services
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ url_for('home') }}#about">
+                <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+              </a></li>
+              <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+                <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+              </a></li>
+              <li><a class="dropdown-item" href="#packages">
+                <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+              </a></li>
+              <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+                <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+              </a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+                <i class="bi bi-code-slash me-2"></i>Web Design
+              </a></li>
+              <li><a class="dropdown-item" href="{{ url_for('home') }}#applications">
+                <i class="bi bi-lightning me-2"></i>Custom Apps
+              </a></li>
+            </ul>
+          </li>
+
+          <!-- Resources -->
           <li class="nav-item">
-            <a class="nav-link fw-bold d-flex align-items-center" href="{{ url_for('starlink') }}" style="color: #1e3a8a;">
-              <span style="font-size:1.2em; margin-right: 0.3em;">🛰️</span> Starlink Services
+            <a class="nav-link fw-bold d-flex align-items-center" href="{{ url_for('blog') }}" style="color: #1e3a8a;">
+              <i class="bi bi-book me-1"></i> Resources
             </a>
           </li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#packages">Packages</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#coverage">Coverage</a></li>
+
+          <!-- Contact -->
           <li class="nav-item">
-            <a class="nav-link fw-bold d-flex align-items-center" href="{{ url_for('backup_internet') }}" style="color: #dc2626;">
-              <span style="font-size:1.2em; margin-right: 0.3em;">🚨</span> Backup Internet
+            <a class="btn btn-accent ms-2" href="#contact">
+              <i class="bi bi-telephone me-1"></i> Contact
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link fw-bold d-flex align-items-center" href="{{ url_for('blog') }}" style="color: #007f73;">
-              <span style="font-size:1.2em; margin-right: 0.3em;">📡</span> Tech Blog
-            </a>
-          </li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>

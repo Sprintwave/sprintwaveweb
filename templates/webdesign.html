@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<!-- SEO POWERHOUSE META TAGS -->
+<title>Web Design Norfolk | Custom Website Development | Sprintwave</title>
+<meta name="description" content="Professional web design and development services in Norfolk. Custom websites, ecommerce solutions, and web applications. Expert web developers serving Norwich, King's Lynn, and across Norfolk.">
+<meta name="keywords" content="Web Design Norfolk, Website Development Norfolk, Custom Websites Norwich, Web Developer King's Lynn, Ecommerce Norfolk, Web Applications East Anglia, Responsive Web Design, Professional Websites Norfolk">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<!-- LOCAL SEO -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Norfolk, UK">
+<meta name="geo.position" content="52.6309;1.2974">
+<meta name="ICBM" content="52.6309, 1.2974">
+
+<!-- SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="Web Design Norfolk | Custom Website Development | Sprintwave">
+<meta property="og:description" content="Professional web design and development services in Norfolk. Custom websites, ecommerce solutions, and web applications for businesses across East Anglia.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/web-design">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/web-design-norfolk.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Professional web design services in Norfolk">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Web Design Norfolk | Custom Website Development">
+<meta name="twitter:description" content="Professional web design and development services in Norfolk. Custom websites and web applications for businesses across East Anglia.">
+<meta name="twitter:image" content="https://www.sprintwave.co.uk/static/web-design-norfolk.jpg">
+<meta name="twitter:image:alt" content="Professional web design services in Norfolk">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://www.sprintwave.co.uk/web-design">
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+<link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+<meta name="theme-color" content="#007f73">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B6EW4HRX7Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-B6EW4HRX7Q');
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Sprintwave - Web Design Norfolk",
+  "description": "Professional web design and development services in Norfolk. Custom websites, ecommerce solutions, and web applications for businesses across East Anglia.",
+  "url": "https://www.sprintwave.co.uk/web-design",
+  "logo": "https://www.sprintwave.co.uk/static/logo.png",
+  "image": "https://www.sprintwave.co.uk/static/web-design-norfolk.jpg",
+  "telephone": "+441553824408",
+  "email": "info@sprintwave.co.uk",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Norfolk",
+    "addressRegion": "East Anglia",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "52.6309",
+    "longitude": "1.2974"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Norwich"
+    },
+    {
+      "@type": "City", 
+      "name": "King's Lynn"
+    },
+    {
+      "@type": "City",
+      "name": "Great Yarmouth"
+    },
+    {
+      "@type": "State",
+      "name": "Norfolk"
+    },
+    {
+      "@type": "State",
+      "name": "East Anglia"
+    }
+  ],
+  "serviceType": [
+    "Web Design",
+    "Website Development", 
+    "Custom Web Applications",
+    "Ecommerce Development",
+    "Responsive Web Design"
+  ],
+  "priceRange": "££",
+  "openingHours": "Mo-Fr 09:00-17:00",
+  "sameAs": [
+    "https://www.linkedin.com/company/sprintwave"
+  ]
+}
+</script>
+
+<style>
+    body {
+      background-color: #e6f0ef;
+      color: #1a1a1a;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    .navbar {
+      background-color: #ffffff !important;
+    }
+    .navbar-brand {
+      color: #007f73 !important;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    section {
+      padding: 80px 0;
+    }
+    .accent {
+      color: #007f73;
+    }
+    .btn-accent {
+      background-color: #007f73;
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    .btn-accent:hover {
+      background-color: #005f57;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .btn-web {
+      background: linear-gradient(45deg, #6366f1, #8b5cf6);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.7rem 2rem;
+      font-weight: 700;
+      border: none;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      transition: all 0.3s ease;
+    }
+    .btn-web:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+      color: #fff;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+    .portfolio-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-5px);
+    }
+    .portfolio-embed {
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px 15px 0 0;
+    }
+    .portfolio-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      transform: scale(0.75);
+      transform-origin: 0 0;
+      width: 133.33%;
+      height: 133.33%;
+      pointer-events: none;
+    }
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .portfolio-card:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    .portfolio-content {
+      padding: 1.5rem;
+    }
+    .hero-badge {
+      background: linear-gradient(45deg, #6366f1, #8b5cf6);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .tech-badge {
+      background: #f1f5f9;
+      color: #475569;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin: 0.25rem;
+      display: inline-block;
+    }
+    footer {
+      background: #ffffff !important;
+      padding: 40px 0;
+    }
+    .feature-icon {
+      background: linear-gradient(45deg, #6366f1, #8b5cf6);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+    }
+    
+    /* Dropdown Styles */
+    .dropdown-menu {
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .dropdown-item {
+      padding: 0.7rem 1rem;
+      font-weight: 500;
+    }
+    
+    .dropdown-item:hover {
+      background-color: #f8fafc;
+      color: #007f73;
+    }
+    
+    @media (max-width: 991px) {
+      .dropdown-menu {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+      }
+      
+      .dropdown-item {
+        color: #1a1a1a;
+        padding: 0.5rem 1rem;
+      }
+      
+      .dropdown-item:hover {
+        background: rgba(0, 127, 115, 0.1);
+        color: #007f73;
+      }
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+</head>
+<body>
+
+<!-- Header/Navbar -->
+<header>
+  <nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+        <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+        <span class="fw-semibold fs-4" style="color: #1a1a1a;"></span>
+      </a>
+      <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <!-- Core Services -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+              <i class="bi bi-gear me-1"></i> Services
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ url_for('home') }}#about">
+                <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+              </a></li>
+              <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+                <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+              </a></li>
+              <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+                <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+              </a></li>
+              <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+                <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+              </a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#portfolio">
+                <i class="bi bi-code-slash me-2"></i>Web Design
+              </a></li>
+              <li><a class="dropdown-item" href="#custom-apps">
+                <i class="bi bi-lightning me-2"></i>Custom Apps
+              </a></li>
+            </ul>
+          </li>
+
+          <!-- Resources -->
+          <li class="nav-item">
+            <a class="nav-link fw-bold d-flex align-items-center" href="{{ url_for('blog') }}" style="color: #1e3a8a;">
+              <i class="bi bi-book me-1"></i> Resources
+            </a>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="btn btn-accent ms-2" href="#contact">
+              <i class="bi bi-telephone me-1"></i> Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="text-center" id="vanta-bg">
+  <div class="container">
+    <div class="hero-badge">
+      💻 Professional Web Design
+    </div>
+    <h1 class="display-4 fw-bold">Web Design & Development in Norfolk</h1>
+    <p class="lead text-muted">Custom websites, ecommerce solutions, and web applications. Professional web development services across Norwich, King's Lynn, and Norfolk.</p>
+    <a class="btn btn-web mt-3 me-3" href="#contact">
+      <i class="bi bi-chat-dots me-2"></i>Start Your Project
+    </a>
+    <a class="btn btn-accent mt-3" href="#portfolio">
+      <i class="bi bi-eye me-2"></i>View Portfolio
+    </a>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+  <div class="container text-center">
+    <h2 class="mb-4">Web Development <span class="accent">Services</span></h2>
+    <div class="row g-4">
+      <div class="col-md-4 mb-4">
+        <div class="service-card">
+          <div class="feature-icon">
+            <i class="bi bi-laptop"></i>
+          </div>
+          <h5 class="accent">Custom Websites</h5>
+          <p class="text-muted">
+            Bespoke website design and development tailored to your business needs. Responsive, fast, and SEO-optimized.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="service-card">
+          <div class="feature-icon">
+            <i class="bi bi-cart"></i>
+          </div>
+          <h5 class="accent">Ecommerce Solutions</h5>
+          <p class="text-muted">
+            Complete online store development with payment integration, inventory management, and order processing.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="service-card">
+          <div class="feature-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <h5 class="accent">Web Applications</h5>
+          <p class="text-muted">
+            Custom web applications and business tools. Database integration, user management, and advanced functionality.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" style="background: #f8fafc;">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="mb-4">Recent Web Design Projects</h2>
+      <p class="text-muted">Professional websites we've created for businesses across Norfolk and beyond</p>
+    </div>
+    
+    <div class="row g-4">
+      <!-- Saro Electrical -->
+      <div class="col-lg-4 mb-4">
+        <div class="portfolio-card">
+          <div class="portfolio-embed">
+            <iframe 
+              src="https://saroelectrical.co.uk" 
+              title="Saro Electrical Website Preview"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+            ></iframe>
+            <div class="portfolio-overlay">
+              <a href="https://saroelectrical.co.uk" target="_blank" rel="noopener" class="btn btn-web">
+                <i class="bi bi-eye me-1"></i>View Full Site
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h5 class="accent mb-2">Saro Electrical</h5>
+            <p class="text-muted mb-3">Professional electrical services website with service showcase, contact forms, and local SEO optimization.</p>
+            <div class="mb-3">
+              <span class="tech-badge">WordPress</span>
+              <span class="tech-badge">Local SEO</span>
+              <span class="tech-badge">Mobile-First</span>
+            </div>
+            <a href="https://saroelectrical.co.uk" target="_blank" rel="noopener" class="btn btn-accent btn-sm">
+              <i class="bi bi-eye me-1"></i>Visit Site
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Northwootton Dog Groomer -->
+      <div class="col-lg-4 mb-4">
+        <div class="portfolio-card">
+          <div class="portfolio-embed">
+            <iframe 
+              src="https://northwoottondoggroomer.co.uk" 
+              title="Northwootton Dog Groomer Website Preview"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+            ></iframe>
+            <div class="portfolio-overlay">
+              <a href="https://northwoottondoggroomer.co.uk" target="_blank" rel="noopener" class="btn btn-web">
+                <i class="bi bi-eye me-1"></i>View Full Site
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h5 class="accent mb-2">Northwootton Dog Groomer</h5>
+            <p class="text-muted mb-3">Local pet grooming business website with booking system, gallery, and customer testimonials.</p>
+            <div class="mb-3">
+              <span class="tech-badge">Custom Design</span>
+              <span class="tech-badge">Booking System</span>
+              <span class="tech-badge">Gallery</span>
+            </div>
+            <a href="https://northwoottondoggroomer.co.uk" target="_blank" rel="noopener" class="btn btn-accent btn-sm">
+              <i class="bi bi-eye me-1"></i>Visit Site
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Michael Dixon Betting Tips -->
+      <div class="col-lg-4 mb-4">
+        <div class="portfolio-card">
+          <div class="portfolio-embed">
+            <iframe 
+              src="https://michaeldixonbettingtips.com" 
+              title="Michael Dixon Betting Tips Website Preview"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+            ></iframe>
+            <div class="portfolio-overlay">
+              <a href="https://michaeldixonbettingtips.com" target="_blank" rel="noopener" class="btn btn-web">
+                <i class="bi bi-eye me-1"></i>View Full Site
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h5 class="accent mb-2">Michael Dixon Betting Tips</h5>
+            <p class="text-muted mb-3">Sports betting tips platform with user accounts, subscription management, and tip tracking system.</p>
+            <div class="mb-3">
+              <span class="tech-badge">Flask</span>
+              <span class="tech-badge">User Auth</span>
+              <span class="tech-badge">Subscriptions</span>
+            </div>
+            <a href="https://michaeldixonbettingtips.com" target="_blank" rel="noopener" class="btn btn-accent btn-sm">
+              <i class="bi bi-eye me-1"></i>Visit Site
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Custom Apps Section -->
+<section id="custom-apps">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="mb-4">Custom Web <span class="accent">Applications</span></h2>
+      <p class="text-muted">Bespoke web applications and business tools tailored to your specific requirements</p>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-6 mb-4">
+        <div class="service-card">
+          <div class="feature-icon">
+            <i class="bi bi-database"></i>
+          </div>
+          <h5 class="accent">Database Applications</h5>
+          <p class="text-muted mb-3">
+            Custom database-driven applications for inventory management, customer relationship management, and business automation.
+          </p>
+          <div class="mb-3">
+            <span class="tech-badge">Python/Flask</span>
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">REST APIs</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="service-card">
+          <div class="feature-icon">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+          <h5 class="accent">Business Tools</h5>
+          <p class="text-muted mb-3">
+            Custom business applications including project management, reporting dashboards, and workflow automation systems.
+          </p>
+          <div class="mb-3">
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Analytics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service Area Section -->
+<section id="coverage">
+  <div class="container text-center">
+    <h2 class="mb-4">
+      <i class="bi bi-geo-alt-fill accent me-2"></i>
+      Web Design Services Across Norfolk
+    </h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="service-card">
+          <h4 class="accent mb-3">Professional Web Development in East Anglia</h4>
+          <div class="row text-start">
+            <div class="col-md-6">
+              <strong>Norfolk Coverage:</strong>
+              <ul class="mt-2">
+                <li>Norwich & surrounding areas</li>
+                <li>King's Lynn & West Norfolk</li>
+                <li>Great Yarmouth & coastal areas</li>
+                <li>Thetford & Breckland</li>
+                <li>Cromer & North Norfolk</li>
+                <li>Dereham & central Norfolk</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <strong>Extended Coverage:</strong>
+              <ul class="mt-2">
+                <li>Suffolk & Essex</li>
+                <li>Cambridgeshire</li>
+                <li>Lincolnshire</li>
+                <li>London & South East</li>
+                <li>Remote clients nationwide</li>
+                <li>International projects</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-4">
+            <strong>🎯 Industries We Serve:</strong> Professional Services • Retail & Ecommerce • Healthcare • Education • Hospitality • Construction • Agriculture • Technology
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact/CTA Section -->
+<section id="contact">
+  <div class="container text-center">
+    <h2 class="mb-4">Ready to Start Your Web Project?</h2>
+    <p class="text-muted mb-4">Let's discuss your website requirements and create something amazing together. Professional web design services across Norfolk and beyond.</p>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="service-card">
+          <h4 class="accent mb-3">Get Your Free Web Design Consultation</h4>
+          <p class="mb-4">✅ Free project consultation & quote<br>✅ Custom design & development<br>✅ SEO optimization included<br>✅ Ongoing support & maintenance</p>
+          
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a class="btn btn-web" href="tel:+441553824408">
+              <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+            </a>
+            <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk?subject=Web Design Enquiry">
+              <i class="bi bi-envelope me-2"></i>Email for Quote
+            </a>
+          </div>
+          
+          <div class="mt-4 text-muted">
+            <small>
+              <i class="bi bi-clock me-1"></i>
+              Typical project timeline: 2-6 weeks • Free revisions included • No hidden costs
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center text-muted">
+  <div class="container">
+    <h5 class="accent mb-3">Sprintwave Web Design Norfolk</h5>
+    <p class="mb-2">Professional web design and development services across Norfolk and East Anglia</p>
+    <p class="mb-3">
+      <i class="bi bi-telephone me-2"></i>01553 824408 | 
+      <i class="bi bi-envelope me-2"></i>info@sprintwave.co.uk
+    </p>
+    <div class="mb-3">
+      <a class="btn btn-accent me-2 mb-2" href="{{ url_for('home') }}">Network Consulting</a>
+      <a class="btn btn-accent me-2 mb-2" href="{{ url_for('starlink') }}">Starlink Installation</a>
+      <a class="btn btn-accent me-2 mb-2" href="{{ url_for('event_wifi') }}">Event WiFi</a>
+      <a class="btn btn-accent me-2 mb-2" href="{{ url_for('backup_internet') }}">Backup Internet</a>
+      <a class="btn btn-accent mb-2" href="{{ url_for('blog') }}">Tech Blog</a>
+    </div>
+    <p class="mb-1 small">© 2025 Sprintwave. All rights reserved.</p>
+    <p class="mb-1 small">Company Number: 15831681 | Web Design & Network Specialists</p>
+    <a 
+      href="https://www.linkedin.com/company/sprintwave" 
+      target="_blank" 
+      rel="noopener" 
+      class="btn btn-outline-primary btn-sm"
+      style="border-radius: 999px; margin-top: 8px;"
+      aria-label="Sprintwave LinkedIn"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+        <path d="M0 1.146C0 .513.324 0 .725 0h14.55c.401 0 .725.513.725 1.146v13.708c0 .633-.324 1.146-.725 1.146H.725A.723.723 0 0 1 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.212h2.4V9.359c0-.215.016-.43.08-.586.175-.43.573-.877 1.242-.877.876 0 1.226.662 1.226 1.634v4.864h2.4V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.6 5.6 0 0 1 .016-.025V6.169h-2.4c.03.7 0 7.225 0 7.225z"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  VANTA.WAVES({
+    shininess: 50,
+    waveHeight: 15,
+    waveSpeed: 0.5,
+    color: 0x6366f1,
+    el: "#vanta-bg",
+    mouseControls: true,
+    touchControls: true,
+    minHeight: 400.00,
+    minWidth: 200.00,
+    scale: 1.0,
+    scaleMobile: 1.0,
+    backgroundColor: 0xe6f0ef,
+    spacing: 15.0
+  });
+</script>
+</body>
+</html>
