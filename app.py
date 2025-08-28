@@ -76,16 +76,58 @@ def sitemap():
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.sprintwave.co.uk/wireless-surveys</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/network-consulting</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>https://www.sprintwave.co.uk/blog</loc>
         <lastmod>{current_date}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.sprintwave.co.uk/wireless-surveys</loc>
+        <loc>https://www.sprintwave.co.uk/blog/ansible-ad-lockout</loc>
         <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/blog/aruba-ansible-backup</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/blog/100g-aruba-8360</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/blog/clearpass-api</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/blog/ise-vs-clearpass</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/blog/enocean-catalyst</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 </urlset>"""
     
