@@ -286,7 +286,7 @@
           </li>
 
           <!-- Blog -->
-          <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
             <i class="bi bi-book me-1"></i> Blog
           </a>
@@ -295,6 +295,9 @@
               <i class="bi bi-house me-2"></i>Blog Home
             </a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
+              🛰️ How Starlink Works: Technical Deep-Dive
+            </a></li>
             <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
               🔐 Preventing AD Lockouts with Ansible
             </a></li>

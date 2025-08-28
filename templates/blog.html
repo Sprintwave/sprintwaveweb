@@ -246,6 +246,40 @@
           </ul>
         </li>
 
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
+              🛰️ How Starlink Works: Technical Deep-Dive
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
         <!-- Contact -->
         <li class="nav-item">
           <a class="btn btn-accent ms-2" href="{{ url_for('home') }}#contact">

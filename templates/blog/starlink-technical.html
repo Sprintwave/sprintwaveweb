@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How Starlink Works: Technical Deep-Dive | Sprintwave Blog</title>
+<meta name="description" content="Technical analysis of Starlink's LEO satellite architecture, frequency bands, and inter-satellite optical links.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  body {
+    background-color: #e6f0ef;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+  .navbar {
+    background-color: #ffffff !important;
+  }
+  .accent {
+    color: #007f73;
+  }
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .blog-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin: 2rem 0;
+  }
+  pre {
+    background: #f8f9fa;
+    padding: 1em;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  code {
+    background: #f1f5f9;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .info-card {
+    background: #f8fafc;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .frequency-card {
+    background: #f0f9ff;
+    border-left: 4px solid #0ea5e9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  .svg-container {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 15px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
+              🛰️ How Starlink Works: Technical Deep-Dive
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="btn btn-accent ms-2" href="{{ url_for('home') }}#contact">
+            <i class="bi bi-telephone me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 fw-bold">
+          <span style="font-size:1.5em; margin-right: 0.5em;">🛰️</span>
+          How Starlink Works: Technical Deep-Dive
+        </h1>
+        <p class="lead text-muted">Understanding LEO satellite architecture, frequency bands, and inter-satellite optical links</p>
+        <p class="text-muted"><small>Posted August 2025 • by Sprintwave Team</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="blog-content">
+          <p>
+            Unlike traditional geostationary satellites that orbit at ~35,786 km, Starlink satellites operate in Low Earth Orbit (LEO) at approximately 540–560 km. This reduced distance significantly lowers propagation delay, enabling latency comparable to ground-based networks.
+          </p>
+
+          <!-- Add your animated SVG here -->
+          <div class="svg-container">
+            <p class="text-white mb-3"><strong>Starlink Constellation Architecture</strong></p>
+            <!-- Your animated SVG goes here -->
+            <div id="starlink-animation" style="background: rgba(255,255,255,0.1); border-radius: 10px; padding: 20px;">
+              <img src="{{ url_for('static', filename='starlink.svg') }}" alt="Starlink Constellation Architecture" style="width: 100%; height: auto; max-width: 800px;">
+            </div>
+          </div>
+
+          <h4>How the System Works</h4>
+
+          <h5>User Terminal ("Dishy")</h5>
+          <p>Each subscriber is equipped with a phased-array antenna that tracks satellites overhead.</p>
+          
+          <div class="frequency-card">
+            <strong>User Terminal Frequencies:</strong>
+            <ul class="mb-0">
+              <li><strong>Uplink (user → satellite):</strong> Ku-band (14.0–14.5 GHz)</li>
+              <li><strong>Downlink (satellite → user):</strong> Ku-band (10.7–12.7 GHz)</li>
+            </ul>
+          </div>
+
+          <h5>Starlink Satellites</h5>
+          <p>
+            The satellites function as dynamic relay nodes. They can transmit data directly to Earth or route it across the constellation using optical inter-satellite links (OISLs). These near-infrared laser links (~1550 nm) allow traffic to bypass ground infrastructure entirely, enabling transoceanic and polar coverage.
+          </p>
+
+          <div class="info-card">
+            <h6 class="accent mb-3">Optical Inter-Satellite Links (OISLs)</h6>
+            <ul class="mb-0">
+              <li><strong>Technology:</strong> Near-infrared laser communications</li>
+              <li><strong>Wavelength:</strong> ~1550 nm</li>
+              <li><strong>Purpose:</strong> Enable satellite-to-satellite data routing</li>
+              <li><strong>Benefit:</strong> Bypass ground infrastructure for global coverage</li>
+            </ul>
+          </div>
+
+          <h5>Ground Gateways</h5>
+          <p>When ground connectivity is required, satellites link to high-capacity gateway stations tied into the internet backbone.</p>
+
+          <div class="frequency-card">
+            <strong>Gateway Frequencies:</strong>
+            <ul class="mb-0">
+              <li><strong>Uplink (gateway → satellite):</strong> Ka-band (27.5–30.0 GHz)</li>
+              <li><strong>Downlink (satellite → gateway):</strong> Ka-band (17.8–18.6 GHz, 18.8–19.3 GHz)</li>
+            </ul>
+          </div>
+
+          <h5>Router & Wi-Fi</h5>
+          <p>
+            At the user's premises, the terminal connects to a Starlink router which distributes connectivity locally using standard Wi-Fi bands (2.4 GHz, 5 GHz, and 6 GHz on newer hardware).
+          </p>
+
+          <h4>Technical Specifications Summary</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="info-card">
+                <h6 class="accent">Orbital Characteristics</h6>
+                <ul>
+                  <li><strong>Altitude:</strong> 540–560 km (LEO)</li>
+                  <li><strong>vs GEO:</strong> ~35,786 km</li>
+                  <li><strong>Benefit:</strong> Reduced latency</li>
+                  <li><strong>Coverage:</strong> Global including polar regions</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-card">
+                <h6 class="accent">Frequency Allocation</h6>
+                <ul>
+                  <li><strong>User Links:</strong> Ku-band</li>
+                  <li><strong>Gateway Links:</strong> Ka-band</li>
+                  <li><strong>Inter-Satellite:</strong> Optical (~1550nm)</li>
+                  <li><strong>Local WiFi:</strong> 2.4/5/6 GHz</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <h4>Why It Matters</h4>
+          <p>
+            Starlink integrates LEO satellite architecture, Ku/Ka-band spectrum, and optical crosslinks into a cohesive network capable of delivering service to virtually any location on Earth. For enterprises, governments, and remote communities alike, it provides:
+          </p>
+
+          <div class="info-card">
+            <strong>Key Advantages:</strong>
+            <ul class="mb-0">
+              <li><strong>Reduced latency</strong> compared to GEO satellite systems</li>
+              <li><strong>Global reach</strong>, including underserved and hard-to-reach regions</li>
+              <li><strong>Resiliency</strong>, with multi-path routing via inter-satellite links</li>
+              <li><strong>Scalability</strong> through constellation expansion</li>
+            </ul>
+          </div>
+
+          <p>
+            This combination makes Starlink not simply an alternative, but a transformative addition to the global connectivity landscape.
+          </p>
+
+          <div class="mt-4 p-3" style="background: #f8fafc; border-radius: 10px;">
+            <strong>Tags:</strong> 
+            <span class="badge bg-secondary me-1">Starlink</span>
+            <span class="badge bg-secondary me-1">LEO</span>
+            <span class="badge bg-secondary me-1">Satellite</span>
+            <span class="badge bg-secondary me-1">KuBand</span>
+            <span class="badge bg-secondary me-1">KaBand</span>
+            <span class="badge bg-secondary me-1">OpticalLinks</span>
+            <span class="badge bg-secondary me-1">SpaceX</span>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="{{ url_for('blog') }}" class="btn btn-accent">
+              <i class="bi bi-arrow-left me-2"></i>Back to Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5" style="background: #ffffff;">
+  <div class="container text-center">
+    <h3 class="mb-4">Need Starlink Installation?</h3>
+    <p class="text-muted mb-4">Get expert Starlink deployment and network integration services.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="btn btn-accent" href="{{ url_for('starlink') }}">
+        <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Services
+      </a>
+      <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk">
+        <i class="bi bi-envelope me-2"></i>Email Us
+      </a>
+      <a class="btn btn-accent" href="tel:+441553824408">
+        <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

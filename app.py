@@ -129,6 +129,12 @@ def sitemap():
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/blog/starlink-technical</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>"""
     
     return Response(sitemap_xml, mimetype='application/xml')
@@ -166,6 +172,10 @@ def ise_vs_clearpass():
 @app.route('/blog/enocean-catalyst')
 def enocean_catalyst():
     return render_template('blog/enocean-catalyst.html')
+
+@app.route('/blog/starlink-technical')
+def starlink_technical():
+    return render_template('blog/starlink-technical.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
