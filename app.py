@@ -28,6 +28,14 @@ def backup_internet():
 def web_design():
     return render_template('webdesign.html')
 
+@app.route('/wireless-surveys')
+def wireless_surveys():
+    return render_template('wifisurveys.html')
+
+@app.route('/network-consulting')
+def network_consulting():
+    return render_template('networkconsulting.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Generate sitemap XML for Google Search Console"""
@@ -73,6 +81,12 @@ def sitemap():
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/wireless-surveys</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
 </urlset>"""
     
     return Response(sitemap_xml, mimetype='application/xml')
@@ -86,6 +100,30 @@ Allow: /
 Sitemap: https://www.sprintwave.co.uk/sitemap.xml
 """
     return Response(robots_txt, mimetype='text/plain')
+
+@app.route('/blog/ansible-ad-lockout')
+def ansible_ad_lockout():
+    return render_template('blog/ansible-ad-lockout.html')
+
+@app.route('/blog/aruba-ansible-backup')
+def aruba_ansible_backup():
+    return render_template('blog/aruba-ansible-backup.html')
+
+@app.route('/blog/100g-aruba-8360')
+def aruba_100g():
+    return render_template('blog/100g-aruba-8360.html')
+
+@app.route('/blog/clearpass-api')
+def clearpass_api():
+    return render_template('blog/clearpass-api.html')
+
+@app.route('/blog/ise-vs-clearpass')
+def ise_vs_clearpass():
+    return render_template('blog/ise-vs-clearpass.html')
+
+@app.route('/blog/enocean-catalyst')
+def enocean_catalyst():
+    return render_template('blog/enocean-catalyst.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

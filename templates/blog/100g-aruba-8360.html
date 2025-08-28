@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>100G Optic Issues on Aruba 8360 | Sprintwave Blog</title>
+<meta name="description" content="Why your 100G single mode optic isn't working in port 1/1/49 and how to fix thermal design constraints on Aruba 8360 switches.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  body {
+    background-color: #e6f0ef;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+  .navbar {
+    background-color: #ffffff !important;
+  }
+  .accent {
+    color: #007f73;
+  }
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .blog-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin: 2rem 0;
+  }
+  pre {
+    background: #f8f9fa;
+    padding: 1em;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  code {
+    background: #f1f5f9;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar (same as previous) -->
+<nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="btn btn-accent ms-2" href="{{ url_for('home') }}#contact">
+            <i class="bi bi-telephone me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 fw-bold">
+          <span style="font-size:1.5em; vertical-align:middle;">🔍</span>
+          100G Optic Issues on Aruba 8360
+        </h1>
+        <p class="lead text-muted">Solving thermal design constraints and port compatibility</p>
+        <p class="text-muted"><small>Posted July 2025 • by Sprintwave Team</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="blog-content">
+          <p>
+            Recently hit a frustrating issue with an Aruba 8360-48XT4C where our 100G single-mode LR4 optic wouldn't come up in port 1/1/49. The optic was fine—tested it in other switches—but this particular port combination had thermal constraints we hadn't accounted for.
+          </p>
+
+          <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;">
+            <strong>Key Issue</strong><br>
+            Aruba 8360 switches have thermal design limitations when certain high-power 100G optics are used in specific port combinations, particularly the first 100G port (1/1/49) under certain environmental conditions.
+          </div>
+
+          <h4>The Problem</h4>
+          <p>
+            Port 1/1/49 kept showing <code>down</code> with our 100GBASE-LR4 transceiver, despite the optic working perfectly in other switches. Initial debugging suggested a hardware failure, but the real issue was thermal management.
+          </p>
+
+          <pre><code># Port status showed this consistently:
+8360-core# show interface 1/1/49
+Interface 1/1/49 is down (Administratively up)
+ Hardware: Ethernet, MAC Address: aa:bb:cc:dd:ee:ff
+ Type: 100GBASE-LR4
+ Link-state: Down
+ Last link-state change: 2025-07-15 14:23:01.125 UTC
+ Transceiver: detected, 100G LR4 SFP+</code></pre>
+
+          <h4>Root Cause Analysis</h4>
+          <p>The 8360 series has specific thermal design considerations:</p>
+          <ul>
+            <li><strong>Port layout</strong>: The first 100G ports (1/1/49-52) are closest to the main heat sources</li>
+            <li><strong>Airflow direction</strong>: Side-to-side airflow can create hot spots</li>
+            <li><strong>Optic power consumption</strong>: LR4 optics consume more power than SR4</li>
+            <li><strong>Ambient temperature</strong>: Our server room was running at 24°C</li>
+          </ul>
+
+          <h4>The Solution</h4>
+          <p>Three approaches worked for us:</p>
+
+          <div class="p-3 mb-3" style="background:#d1ecf1;border-left:4px solid #17a2b8;border-radius:8px;">
+            <strong>Immediate Fix</strong><br>
+            Moved the 100G link to port 1/1/52 (furthest from heat sources). Link came up immediately.
+          </div>
+
+          <pre><code># Check thermal status first
+8360-core# show system temperature
+Temperature Status: Normal
+Current Temperature: 42°C
+Maximum Operating Temperature: 65°C
+Thermal Shutdown Temperature: 75°C
+
+# Verify optic compatibility in new port
+8360-core# show interface 1/1/52 transceiver
+Interface: 1/1/52
+ Transceiver: Present
+ Type: 100GBASE-LR4
+ Vendor: Aruba Networks
+ Temperature: 38.2°C (Normal)</code></pre>
+
+          <h4>Long-term Solutions</h4>
+          <ol>
+            <li><strong>Improved cooling</strong>: Added supplemental rack fans targeting the switch intake</li>
+            <li><strong>Optic selection</strong>: Switched to lower-power SR4 optics where fiber distance allowed</li>
+            <li><strong>Port planning</strong>: Reserved 1/1/49-50 for lower-power connections</li>
+          </ol>
+
+          <h4>Monitoring</h4>
+          <p>Added thermal monitoring to our network automation:</p>
+
+          <pre><code># Daily thermal check via SNMP
+snmpwalk -v2c -c public 8360-core 1.3.6.1.4.1.47196.4.1.1.3.2.1.1.5
+
+# Alert if any sensor > 50°C
+if [[ $temp -gt 50 ]]; then
+  echo "ALERT: Switch thermal warning - $temp°C" | mail admin@sprintwave.co.uk
+fi</code></pre>
+
+          <p>
+            This experience taught us to always check thermal design guides when planning 100G deployments, especially in dense configurations. The 8360 is a solid switch, but like all high-density gear, thermal management matters.
+          </p>
+
+          <div class="p-3 mb-3" style="background:#fff3cd;border-left:4px solid #ffc107;border-radius:8px;">
+            <strong>Pro Tip:</strong> Always test 100G optics in their intended ports during site surveys. What works in the lab doesn't always work in a warm server room.
+          </div>
+
+          <div class="mt-4 p-3" style="background: #f8fafc; border-radius: 10px;">
+            <strong>Tags:</strong> 
+            <span class="badge bg-secondary me-1">Aruba8360</span>
+            <span class="badge bg-secondary me-1">100G</span>
+            <span class="badge bg-secondary me-1">Thermal</span>
+            <span class="badge bg-secondary me-1">Troubleshooting</span>
+            <span class="badge bg-secondary me-1">Optics</span>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="{{ url_for('blog') }}" class="btn btn-accent">
+              <i class="bi bi-arrow-left me-2"></i>Back to Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5" style="background: #ffffff;">
+  <div class="container text-center">
+    <h3 class="mb-4">Need Help With Aruba Hardware Issues?</h3>
+    <p class="text-muted mb-4">Get expert advice on Aruba switch troubleshooting, thermal design, and 100G deployments.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk">
+        <i class="bi bi-envelope me-2"></i>Email Us
+      </a>
+      <a class="btn btn-accent" href="tel:+441553824408">
+        <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

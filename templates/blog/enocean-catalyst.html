@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EnOcean & Cisco Issues | Sprintwave Blog</title>
+<meta name="description" content="Troubleshooting EnOcean USB dongle detection issues with Cisco Catalyst APs and 9800 controllers on firmware 17.9.5.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  body {
+    background-color: #e6f0ef;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+  .navbar {
+    background-color: #ffffff !important;
+  }
+  .accent {
+    color: #007f73;
+  }
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .blog-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin: 2rem 0;
+  }
+  pre {
+    background: #f8f9fa;
+    padding: 1em;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  code {
+    background: #f1f5f9;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .issue-card {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .solution-card {
+    background: #d1edda;
+    border-left: 4px solid #198754;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .info-card {
+    background: #f8fafc;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="btn btn-accent ms-2" href="{{ url_for('home') }}#contact">
+            <i class="bi bi-telephone me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 fw-bold">
+          <i class="bi bi-usb-plug me-3" style="color: #007f73;"></i>
+          EnOcean & Cisco Issues
+        </h1>
+        <p class="lead text-muted">Fixing USB dongle detection issues with EnOcean devices on Cisco Catalyst APs</p>
+        <p class="text-muted"><small>Posted June 2025 • by Sprintwave Team</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="blog-content">
+          <h4>What is EnOcean?</h4>
+          <p>
+            For anyone that doesn't know, EnOcean are a company that produces IOT dongle type devices that can plug into access points (they do a lot more than this too). These dongles then wirelessly talk to (868MHz in the UK) smart IOT devices such as power clamps. So they operate on a different frequency than WiFi meaning no interference.
+          </p>
+
+          <div class="info-card">
+            <h5 class="accent mb-3">How EnOcean Works with Cisco APs</h5>
+            <p>On Cisco access points a small docker container is installed on the AP that interfaces with this dongle and tunnels the data back to an EnOcean IOT connector (can be in the cloud). DNAC can be used to distribute this docker container or it can be done manually using the CLI.</p>
+          </div>
+
+          <h4>The Problem</h4>
+          <div class="issue-card">
+            <h5><strong>Issue Summary</strong></h5>
+            <p>What we have found when deploying this is that they don't seem to work on the controller and AP version <strong>17.9.5</strong> which is currently the gold standard release for the 9800-40 controllers. We have only tested this on <strong>Catalyst 9166 APs</strong>.</p>
+          </div>
+
+          <p>
+            The issue is that the USB device isn't detected correctly by the access points and when deploying the docker container from DNAC we receive this error:
+          </p>
+
+          <pre><code>ERR_AH_-1043 error during app installation – requested USB device not found on the AP</code></pre>
+
+          <p>We receive a similar error when deploying via the CLI.</p>
+
+          <h4>Initial Investigation</h4>
+          <p>
+            Initially we believed this was because the USB module type was not supported by the AP (<strong>PID/VID/VER 403/6015/1000</strong>) as it was not present when the <code>show usb list</code> command was entered.
+          </p>
+
+          <h4>Workaround Attempt</h4>
+          <p>With the help of EnOcean we tried to manually allow this USB device type with the following commands:</p>
+
+          <pre><code># Add support for the EnOcean USB device
+test usb load module ftdi-sio vendor-id 403 product-id 6015 version 1000
+
+# Restart USB subsystem
+test usb disable
+test usb enable</code></pre>
+
+          <div class="issue-card">
+            <p><strong>Result:</strong> Once this was done we could see the USB type now supported in the <code>show usb list</code> command. The EnOcean dongle is detected and seems ok from an AP perspective but the issue when deploying the docker/IOX container still presented the same error.</p>
+          </div>
+
+          <h4>The Solution</h4>
+          <div class="solution-card">
+            <h5><strong>Firmware Update Required</strong></h5>
+            <p>Upgrading the firmware to <strong>17.12.4</strong> fixes this problem and enables the application to be installed onto the access point.</p>
+          </div>
+
+          <h4>Environment Details</h4>
+          <div class="info-card">
+            <strong>Tested Configuration:</strong>
+            <ul>
+              <li><strong>Controller:</strong> Cisco 9800-40</li>
+              <li><strong>Access Points:</strong> Catalyst 9166</li>
+              <li><strong>Problematic Firmware:</strong> 17.9.5 (Gold Standard)</li>
+              <li><strong>Working Firmware:</strong> 17.12.4</li>
+              <li><strong>EnOcean Device:</strong> USB dongle (PID/VID/VER 403/6015/1000)</li>
+              <li><strong>Frequency:</strong> 868MHz (UK)</li>
+            </ul>
+          </div>
+
+          <h4>Deployment Methods</h4>
+          <p>EnOcean containers can be deployed using either:</p>
+          <ul>
+            <li><strong>DNAC:</strong> Centralized deployment and management</li>
+            <li><strong>CLI:</strong> Manual installation on individual APs</li>
+          </ul>
+
+          <h4>Key Takeaways</h4>
+          <div class="info-card">
+            <ul class="mb-0">
+              <li>EnOcean operates on 868MHz, completely separate from WiFi frequencies</li>
+              <li>Version 17.9.5 has USB detection issues with EnOcean dongles</li>
+              <li>Manual USB module loading doesn't resolve the IOX container deployment issue</li>
+              <li>Upgrading to 17.12.4 resolves the problem completely</li>
+              <li>Consider firmware compatibility when planning IoT integrations</li>
+            </ul>
+          </div>
+
+          <p>
+            This was a frustrating issue that appeared to be hardware compatibility but turned out to be a firmware bug. Always worth testing IoT integrations on the latest firmware versions before large-scale deployments.
+          </p>
+
+          <div class="mt-4 p-3" style="background: #f8fafc; border-radius: 10px;">
+            <strong>Tags:</strong> 
+            <span class="badge bg-secondary me-1">EnOcean</span>
+            <span class="badge bg-secondary me-1">CiscoCatalyst</span>
+            <span class="badge bg-secondary me-1">IoT</span>
+            <span class="badge bg-secondary me-1">USB</span>
+            <span class="badge bg-secondary me-1">Troubleshooting</span>
+            <span class="badge bg-secondary me-1">9800</span>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="{{ url_for('blog') }}" class="btn btn-accent">
+              <i class="bi bi-arrow-left me-2"></i>Back to Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5" style="background: #ffffff;">
+  <div class="container text-center">
+    <h3 class="mb-4">Need Help With IoT Integration?</h3>
+    <p class="text-muted mb-4">Get expert advice on integrating IoT devices with enterprise wireless infrastructure.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk">
+        <i class="bi bi-envelope me-2"></i>Email Us
+      </a>
+      <a class="btn btn-accent" href="tel:+441553824408">
+        <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

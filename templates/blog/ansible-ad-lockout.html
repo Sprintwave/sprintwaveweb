@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Preventing AD Lockouts When Automating Aruba Devices with Ansible | Sprintwave Blog</title>
+<meta name="description" content="Learn how to prevent Active Directory lockouts when automating Aruba switch configurations with Ansible. Essential tips for network automation.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  body {
+    background-color: #e6f0ef;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+  .navbar {
+    background-color: #ffffff !important;
+  }
+  .accent {
+    color: #007f73;
+  }
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .blog-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin: 2rem 0;
+  }
+  pre {
+    background: #f8f9fa;
+    padding: 1em;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  code {
+    background: #f1f5f9;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="btn btn-accent ms-2" href="{{ url_for('home') }}#contact">
+            <i class="bi bi-telephone me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 fw-bold">
+          <span style="font-size:1.5em; vertical-align:middle;">🔐</span>
+          Preventing AD Lockouts When Automating Aruba Devices with Ansible
+        </h1>
+        <p class="lead text-muted">Essential techniques for safe network automation</p>
+        <p class="text-muted"><small>Posted August 2025 • by Sprintwave Team</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="blog-content">
+          <p>
+            When you're automating configuration backups or deployments across Aruba switches using Ansible, there's a real risk of getting your AD account locked out—especially if multiple SSH sessions fail or time out simultaneously. We hit this exact issue when a few unreachable devices caused a cascade of authentication failures.
+          </p>
+
+          <p>
+            The most common cause? Parallel sessions trying to authenticate at once, often against AOS devices that require an <code>enable</code> password or have strict SSH key exchange settings.
+          </p>
+
+          <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;">
+            <strong>Key Fixes</strong>
+            <ul>
+              <li>Limit concurrency using forks: <code>-f 2</code></li>
+              <li>Set connection timeouts and retries conservatively</li>
+              <li>Use <code>ignore_errors: yes</code> on fail-prone tasks</li>
+              <li>Split AOS switches into separate inventory groups for fine-tuned control</li>
+            </ul>
+          </div>
+
+          <h4>Example 1: Run your playbook with 2 concurrent forks</h4>
+          <pre><code>ansible-playbook backup.yml -i inventory.yaml -f 2</code></pre>
+
+          <h4>Example 2: Inventory group for AOS switches</h4>
+          <pre><code>all:
+  children:
+    aruba_aos:
+      hosts:
+        switch01:
+        switch02:
+        switch03:
+      vars:
+        ansible_connection: network_cli
+        ansible_user: "{% raw %}{{ vault_username }}{% endraw %}"
+        ansible_password: "{% raw %}{{ vault_password }}{% endraw %}"
+        ansible_become: true
+        ansible_become_method: enable
+        ansible_become_password: "{% raw %}{{ vault_enable_password }}{% endraw %}"
+        ansible_ssh_common_args: '-o KexAlgorithms=+diffie-hellman-group14-sha1'</code></pre>
+
+          <h4>Example 3: Graceful error handling in the playbook</h4>
+          <pre><code>- name: Backup running config
+  hosts: aruba_aos
+  gather_facts: no
+
+  tasks:
+    - name: Get running config
+      raw: show running-config  
+      register: output
+      ignore_errors: yes
+
+    - name: Save config to file
+      copy:
+        content: "{% raw %}{{ output.stdout[0] }}{% endraw %}"
+        dest: "backups/{% raw %}{{ inventory_hostname }}{% endraw %}.txt"
+      when: output.stdout is defined</code></pre>
+
+          <p>
+            With these steps in place, our backups completed without triggering any AD lockouts, even when some switches timed out or had outdated SSH settings. We could re-run the playbook safely without re-auth failures.
+          </p>
+
+          <p>
+            <strong>Pro tip:</strong> Aruba AOS devices often require an <code>enable</code> password even for read-only commands. Make sure it's set correctly in your inventory or vault.
+          </p>
+
+          <div class="mt-4 p-3" style="background: #f8fafc; border-radius: 10px;">
+            <strong>Tags:</strong> 
+            <span class="badge bg-secondary me-1">Ansible</span>
+            <span class="badge bg-secondary me-1">ArubaAOS</span>
+            <span class="badge bg-secondary me-1">NetworkAutomation</span>
+            <span class="badge bg-secondary me-1">ADLockout</span>
+            <span class="badge bg-secondary me-1">SecureAutomation</span>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="{{ url_for('blog') }}" class="btn btn-accent">
+              <i class="bi bi-arrow-left me-2"></i>Back to Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5" style="background: #ffffff;">
+  <div class="container text-center">
+    <h3 class="mb-4">Need Help With Network Automation?</h3>
+    <p class="text-muted mb-4">Get expert advice on Ansible, Aruba networks, and automation best practices.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk">
+        <i class="bi bi-envelope me-2"></i>Email Us
+      </a>
+      <a class="btn btn-accent" href="tel:+441553824408">
+        <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

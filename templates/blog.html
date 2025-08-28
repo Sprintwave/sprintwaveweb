@@ -177,14 +177,24 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
         <!-- Core Services -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
             <i class="bi bi-gear me-1"></i> Services
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ url_for('home') }}#about">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
               <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
             </a></li>
             <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
               <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
@@ -206,10 +216,34 @@
         </li>
 
         <!-- Resources -->
-        <li class="nav-item">
-          <a class="nav-link fw-bold d-flex align-items-center" href="{{ url_for('blog') }}" style="color: #1e3a8a;">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
             <i class="bi bi-book me-1"></i> Resources
           </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
         </li>
 
         <!-- Contact -->
@@ -237,401 +271,82 @@
 <!-- ✅ Blog Content -->
 <main class="container py-4">
   <div class="blog-card" id="welcome">
-  <h3 class="accent mb-2">Welcome to the Sprintwave Blog</h3>
-  <p class="text-muted mb-1"><small>Posted July 2025 • by Sprintwave Team</small></p>
-  <p>
-    This is where we’ll share news, technical guides, and stories from our work in network automation, wireless, and security. Stay tuned for regular updates!
-  </p>
-  <!-- Blog menu inside the welcome card -->
-  <div class="card shadow-sm p-3 mt-4" style="border-radius: 1rem; background: #f8fafc;">
-    <h5 class="mb-3 accent" style="font-weight:700;">
-      <span style="font-size:1.3em;vertical-align:middle;">📚</span> Blog Posts Menu
-    </h5>
-    <div class="d-flex flex-wrap justify-content-center gap-2">
-      <a class="btn blog-menu-btn" href="#ansible-ad-lockout">
-        🔐Preventing AD Lockouts When Automating Aruba Devices with Ansible
-      </a>
-      <a class="btn blog-menu-btn" href="#aruba-ansible-backup">
-        💾 Backing Up Aruba Switches with Ansible 
-      </a>
-      <a class="btn blog-menu-btn" href="#why-100g-aruba-8360">
-        🔍 100G Optic Not Working in Port 1/1/49
-      </a>
-      <a class="btn blog-menu-btn" href="#aruba-clearpass-api">
-        <i class="bi bi-terminal me-1"></i> ClearPass API for Static Host Lists
-      </a>
-      <a class="btn blog-menu-btn" href="#ise-vs-clearpass">
-        <i class="bi bi-diagram-3 me-1"></i> Cisco ISE vs. Aruba ClearPass
-      </a>
-      <a class="btn blog-menu-btn" href="#enocean-catalyst">
-        <i class="bi bi-usb-plug me-1"></i> EnOcean Dongle Issues with Cisco Catalyst
-      </a>
-    </div>
-  </div>
-</div>
-<!-- Blog post: Preventing AD Lockouts When Automating Aruba Devices -->
-<div class="blog-card" id="ansible-ad-lockout">
-  <h3 class="accent mb-2">
-    <span style="font-size:1.5em; vertical-align:middle;">🔐</span>
-    Preventing AD Lockouts When Automating Aruba Devices with Ansible
-  </h3>
-  <p class="text-muted mb-1"><small>Posted August 2025 • by Sprintwave Team</small></p>
-  <p>
-    When you're automating configuration backups or deployments across Aruba switches using Ansible, there's a real risk of getting your AD account locked out—especially if multiple SSH sessions fail or time out simultaneously. We hit this exact issue when a few unreachable devices caused a cascade of authentication failures.
-  </p>
-
-  <p>
-    The most common cause? Parallel sessions trying to authenticate at once, often against AOS devices that require an <code>enable</code> password or have strict SSH key exchange settings.
-  </p>
-
-  <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;text-align:left;">
-    <strong>Key Fixes</strong>
-    <ul>
-      <li>Limit concurrency using forks: <code>-f 2</code></li>
-      <li>Set connection timeouts and retries conservatively</li>
-      <li>Use <code>ignore_errors: yes</code> on fail-prone tasks</li>
-      <li>Split AOS switches into separate inventory groups for fine-tuned control</li>
-    </ul>
-  </div>
-
-  <p><strong>Example 1: Run your playbook with 2 concurrent forks</strong></p>
-  <pre><code>ansible-playbook backup.yml -i inventory.yaml -f 2</code></pre>
-
-  <p><strong>Example 2: Inventory group for AOS switches</strong></p>
-  <pre><code>all:
-  children:
-    aruba_aos:
-      hosts:
-        switch01:
-        switch02:
-        switch03:
-      vars:
-        ansible_connection: network_cli
-        ansible_user: "{{ vault_username }}"
-        ansible_password: "{{ vault_password }}"
-        ansible_become: true
-        ansible_become_method: enable
-        ansible_become_password: "{{ vault_enable_password }}"
-        ansible_ssh_common_args: '-o KexAlgorithms=+diffie-hellman-group14-sha1'</code></pre>
-
-  <p><strong>Example 3: Graceful error handling in the playbook</strong></p>
-  <pre><code>- name: Backup running config
-  hosts: aruba_aos
-  gather_facts: no
-
-  tasks:
-    - name: Get running config
-      raw: show running-config  
-      register: output
-      ignore_errors: yes
-
-    - name: Save config to file
-      copy:
-        content: "{{ "{{" }} output.stdout[0] {{ "}}" }}"
-        dest: "backups/{{ inventory_hostname }}.txt"
-      when: output.stdout is defined</code></pre>
-
-  <p>
-    With these steps in place, our backups completed without triggering any AD lockouts, even when some switches timed out or had outdated SSH settings. We could re-run the playbook safely without re-auth failures.
-  </p>
-
-  <p>
-    <strong>Pro tip:</strong> Aruba AOS devices often require an <code>enable</code> password even for read-only commands. Make sure it's set correctly in your inventory or vault.
-  </p>
-
-  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
-    #Ansible #ArubaAOS #NetworkAutomation #ADLockout #SecureAutomation #AOSBackups #InfrastructureAsCode
-  </div>
-</div>
-
-
-<!-- Blog post: Backing Up Aruba CX & AOS Switches with Ansible -->
-<div class="blog-card" id="aruba-ansible-backup">
-  <h3 class="accent mb-2">
-    <span style="font-size:1.5em; vertical-align:middle;">💾</span>
-    Backing Up Aruba CX and AOS Switch Configurations with Ansible
-  </h3>
-  <p class="text-muted mb-1"><small>Posted August 2025 • by Sprintwave Team</small></p>
-  <p>
-    Managing backups across mixed Aruba environments? Whether you're running the modern Aruba CX (AOS-CX) or older AOS switches, Ansible provides a flexible way to automate configuration snapshots—without logging into each device manually.
-  </p>
-
-  <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;text-align:left;">
-    <strong>Goal</strong><br>
-    Connect to both Aruba CX and legacy AOS switches via SSH and back up their current configurations to structured text files.
-  </div>
-
-  <h4 class="mt-3">📁 Step 1: Use a Structured Inventory</h4>
-  <p>Create an <code>inventory.ini</code> with groupings for each platform:</p>
-  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>[aruba_cx]
-cx-switch-1
-cx-switch-2
-
-[aruba_aos]
-aos-switch-1
-aos-switch-2
-
-[aruba_cx:vars]
-ansible_connection=network_cli
-ansible_network_os=arubanetworks.aoscx.aoscx
-ansible_user={{ "{{" }} vault_username {{ "}}" }}
-ansible_password={{ "{{" }} vault_password {{ "}}" }}
-
-[aruba_aos:vars]
-ansible_connection=network_cli
-ansible_user={{ "{{" }} vault_username {{ "}}" }}
-ansible_password={{ "{{" }} vault_password {{ "}}" }}
-ansible_become=yes
-ansible_become_method=enable
-ansible_become_password={{ vault_enable_password }}
-ansible_ssh_common_args='-o KexAlgorithms=+diffie-hellman-group14-sha1'</code></pre>
-
-  <h4 class="mt-3">📝 Step 2: Backup Playbook</h4>
-  <p>This playbook handles both switch types using conditional logic and the appropriate command module:</p>
-  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>- name: Backup running configs from Aruba switches
-  hosts: aruba_cx:aruba_aos
-  gather_facts: no
-
-  tasks:
-    - name: Get config from Aruba CX
-      when: "'aoscx' in ansible_network_os"
-      arubanetworks.aoscx.aoscx_command:
-        commands: show running-config
-      register: cx_output
-
-    - name: Get config from Aruba AOS (fallback using raw module)
-      when: "'aruba_aos' in group_names"
-      raw: show running-config
-      register: aos_output
-      ignore_errors: yes
-
-    - name: Save config to file (CX)
-      when: cx_output is defined
-      copy:
-        content: "{{ "{{" }} cx_output.stdout[0] {{ "}}" }}"
-        dest: "./backups/{{ "{{" }} inventory_hostname {{ "}}" }}.txt"
-
-    - name: Save config to file (AOS)
-      when: aos_output is defined
-      copy:
-        content: "{{ "{{" }} aos_output.stdout[0] {{ "}}" }}"
-        dest: "./backups/{{ "{{" }} inventory_hostname {{ "}}" }}.txt"</code></pre>
-
-  <h4 class="mt-3">▶️ Step 3: Run the Backup</h4>
-  <p>Run the playbook while limiting concurrency to avoid AD lockouts:</p>
-  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>ansible-playbook backup.yml -i inventory.ini -f 2</code></pre>
-
-  <h4 class="mt-3">🔐 Step 4: Secure Credentials with Vault</h4>
-  <p>
-    Store your login details safely with <code>ansible-vault</code>. Create <code>vault.yml</code>:
-  </p>
-  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>vault_username: netadmin
-vault_password: SuperSecurePassword
-vault_enable_password: EnablePasswordIfNeeded</code></pre>
-
-  <p>Then reference it in the playbook via:</p>
-  <pre style="background:#f4f4f4;padding:1em;border-radius:6px;"><code>vars_files:
-  - group_vars/aruba_aos/vault.yml</code></pre>
-
-  <div class="mt-3" style="color:#007f73;font-size:1.1em;">
-    #ArubaCX #ArubaAOS #AnsibleAutomation #ConfigBackups #AOSCX #ArubaSwitching #InfraOps #NetworkAutomation
-  </div>
-</div>
-
-
-  <!-- Blog post: 100G Optic Not Working in Port 1/1/49 -->
-  <div class="blog-card" id="why-100g-aruba-8360">
-    <h3 class="accent mb-2">
-      <span style="font-size:1.5em; vertical-align:middle;">🔍</span>
-      Why Your 100G Single Mode Optic Isn’t Working in Port 1/1/49 on the Aruba 8360 Switch
-    </h3>
+    <h3 class="accent mb-2">Welcome to the Sprintwave Blog</h3>
     <p class="text-muted mb-1"><small>Posted July 2025 • by Sprintwave Team</small></p>
     <p>
-      If you're deploying 100G optics on the Aruba 8360 (JL720C) switch, here's a critical detail that might save you hours of troubleshooting.
+      This is where we share news, technical guides, and stories from our work in network automation, wireless, and security. Click on any post below to read the full article.
     </p>
-    <p>
-      Recently, I encountered an issue where a 100G FR1 single mode transceiver failed to initialize in port <strong>1/1/49</strong>. After reviewing the hardware guide, I discovered that in <strong>power-to-port airflow</strong> configurations, Aruba only supports ER4L and FR1 transceivers in ports <strong>1/1/50</strong> and <strong>1/1/52</strong>—and only if the ambient temperature is <strong>35°C or lower</strong>.
-    </p>
-    <p>
-      This limitation is due to thermal design constraints, not a faulty optic or misconfiguration.
-    </p>
-    <div class="p-3 mb-3" style="background:#f8fafc;border-left:4px solid #007f73;border-radius:8px;text-align:left;">
-      <strong>Key Takeaway</strong><br>
-      If your 100G single mode optic isn’t working in port 49 on an Aruba 8360 switch, check:
-      <ul>
-        <li>Airflow direction (<strong>power-to-port</strong> vs. port-to-power)</li>
-        <li>Transceiver type (<strong>FR1</strong> or <strong>ER4L</strong>)</li>
-        <li>Ambient temperature (must be ≤ 35°C)</li>
-        <li>Supported ports (use <strong>ports 50 or 52</strong> for these optics)</li>
-      </ul>
+  </div>
+
+  <!-- Blog Posts Grid -->
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="blog-card">
+        <h4 class="accent mb-2">
+          🔐 Preventing AD Lockouts with Ansible
+        </h4>
+        <p class="text-muted small mb-2">August 2025</p>
+        <p>Essential techniques for safely automating Aruba switch configurations without triggering Active Directory lockouts.</p>
+        <a href="{{ url_for('ansible_ad_lockout') }}" class="btn btn-accent btn-sm">Read More</a>
+      </div>
     </div>
-    <p>
-      As 100G optics become more common in modern data center networks, it’s crucial to align your thermal and airflow planning with hardware design limits.
-    </p>
-    <p>
-      <strong>Pro tip:</strong> Always consult the Aruba Transceiver Guide or Hardware Installation Guide when deploying high-speed optics.
-    </p>
-    <div class="mt-2" style="color:#007f73;font-size:1.1em;">
-      #Aruba8360 #100G #SingleMode #FR1 #DataCenterNetworking #ArubaSwitching #Port1/1/49 #NetworkEngineering
+
+    <div class="col-md-6">
+      <div class="blog-card">
+        <h4 class="accent mb-2">
+          💾 Aruba Switch Backups with Ansible
+        </h4>
+        <p class="text-muted small mb-2">August 2025</p>
+        <p>Complete guide to automating configuration backups across mixed Aruba CX and AOS environments.</p>
+        <a href="{{ url_for('aruba_ansible_backup') }}" class="btn btn-accent btn-sm">Read More</a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="blog-card">
+        <h4 class="accent mb-2">
+          🔍 100G Optic Issues on Aruba 8360
+        </h4>
+        <p class="text-muted small mb-2">July 2025</p>
+        <p>Why your 100G single mode optic isn't working in port 1/1/49 and how to fix thermal design constraints.</p>
+        <a href="{{ url_for('aruba_100g') }}" class="btn btn-accent btn-sm">Read More</a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="blog-card">
+        <h4 class="accent mb-2">
+          <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+        </h4>
+        <p class="text-muted small mb-2">July 2025</p>
+        <p>Step-by-step guide to authenticating and querying Aruba ClearPass API for static host lists.</p>
+        <a href="{{ url_for('clearpass_api') }}" class="btn btn-accent btn-sm">Read More</a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="blog-card">
+        <h4 class="accent mb-2">
+          <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+        </h4>
+        <p class="text-muted small mb-2">July 2025</p>
+        <p>Detailed comparison of Cisco ISE and Aruba ClearPass network access control architectures.</p>
+        <a href="{{ url_for('ise_vs_clearpass') }}" class="btn btn-accent btn-sm">Read More</a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="blog-card">
+        <h4 class="accent mb-2">
+          <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+        </h4>
+        <p class="text-muted small mb-2">June 2024</p>
+        <p>Troubleshooting EnOcean USB dongle compatibility issues with Cisco Catalyst 9800 and 9166 APs.</p>
+        <a href="{{ url_for('enocean_catalyst') }}" class="btn btn-accent btn-sm">Read More</a>
+      </div>
     </div>
   </div>
-
-  <!-- Blog post: ClearPass API for Static Host Lists -->
-  <div class="blog-card" id="aruba-clearpass-api">
-  <h3 class="accent mb-2">
-    <i class="bi bi-terminal me-1"></i> How to Authenticate and Query Aruba ClearPass API for Static Host Lists
-  </h3>
-  <p class="text-muted mb-1"><small>Posted July 2025 • by Sprintwave Team</small></p>
-  <p>
-    Working with the Aruba ClearPass REST API can be powerful, but there are a few unintuitive steps to get started. Here’s how to authenticate and pull static host list data using Postman.
-  </p>
-
-  <h5 class="mt-3">Step-by-Step Guide</h5>
-  <ol>
-    <li>Login to the ClearPass Policy Manager GUI.</li>
-    <li>In the top right, click <strong>Guest</strong> to switch to the guest interface.</li>
-    <li>Navigate to <strong>Administration → API Services → API Clients</strong>.</li>
-    <li>Create a new API Client with appropriate scopes and token lifetime.</li>
-    <li>Click the client and choose <strong>Generate Access Token</strong>. Copy the token.</li>
-    <li>Open Postman and set the request URL to: <code>https://&lt;your-clearpass-url&gt;/api/static-host-list</code>.</li>
-    <li>In Postman, use the <strong>Bearer Token</strong> authentication type and paste the copied token.</li>
-    <li>Send the request to receive a list of static host entries in JSON format.</li>
-  </ol>
-
-  <h5 class="mt-3">Sample JSON Response</h5>
-  <pre style="background:#f8f9fa; padding:1em; border-left:4px solid #007f73; border-radius:8px; font-size:0.9em; overflow-x:auto;">
-{
-  "_embedded": {
-    "items": [
-      {
-        "id": 3001,
-        "name": "Test-Test",
-        "host_entries": [
-          {
-            "host_address": "00-00-AA-22-33-44",
-            "host_address_desc": "Test-44"
-          }
-        ]
-      },
-      {
-        "id": 3002,
-        "name": "sprintwave VLAN 20",
-        "host_entries": [
-          {
-            "host_address": "66-55-44-33-22-11",
-            "host_address_desc": "Device1234"
-          }
-        ]
-      }
-    ]
-  }
-}
-  </pre>
-
-  <p class="mt-3">
-    This API call is especially useful for inventorying or validating MAC address-based static host groups within your ClearPass environment.
-  </p>
-  <p>
-    <strong>Pro tip:</strong> You can also browse all available API endpoints using the ClearPass API Explorer at: <code>https://&lt;your-clearpass-url&gt;/api-docs</code>.
-  </p>
-
-  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
-    #ClearPass #ArubaNetworks #NetworkAutomation #API #Postman #StaticHostList #NetworkSecurity
-  </div>
-</div>
-
-  <!-- Blog post: Cisco ISE vs. Aruba ClearPass -->
-  <div class="blog-card" id="ise-vs-clearpass">
-  <h3 class="accent mb-2">
-    <i class="bi bi-diagram-3 me-1"></i> Cisco ISE vs. Aruba ClearPass: Network Access Control Architecture Compared
-  </h3>
-  <p class="text-muted mb-1"><small>Posted July 2025 • by Sprintwave Team</small></p>
-  <p>
-    Cisco ISE (Identity Services Engine) and Aruba ClearPass (ClearPass Policy Manager or CPPM) are two of the most widely adopted solutions for <strong>network access control (NAC)</strong>. Both platforms offer centralized policy enforcement, secure access, and compliance controls—but differ slightly in how they’re architected and deployed.
-  </p>
-
-  <h5 class="mt-3">Deployment Options</h5>
-  <p>
-    Both Cisco ISE and Aruba ClearPass support flexible deployment models, including <strong>virtual appliances</strong>, <strong>physical hardware</strong>, and <strong>cloud-based instances</strong>. Regardless of the deployment type, each server is called a <strong>node</strong>. This allows organizations to scale and deploy based on their infrastructure strategy.
-  </p>
-
-  <h5 class="mt-3">Cluster Architecture</h5>
-  <p>
-    A typical NAC deployment involves multiple nodes forming a <strong>cluster</strong>. These clusters can range from small (2 nodes) to large-scale (up to 50+ nodes), depending on network size.
-  </p>
-  <ul>
-    <li><strong>Cisco ISE:</strong> The central configuration node is called the <em>Policy Administration Node (PAN)</em>. A secondary PAN can be added for redundancy.</li>
-    <li><strong>Aruba ClearPass:</strong> The main configuration node is the <em>Publisher</em>, with an optional <em>Standby Publisher</em> for failover support.</li>
-  </ul>
-
-  <h5 class="mt-3">RADIUS Request Handling</h5>
-  <p>
-    Both platforms are RADIUS-based and capable of handling authentication and authorization efficiently—but with different terminologies:
-  </p>
-  <ul>
-    <li><strong>Cisco ISE:</strong> Nodes that handle RADIUS traffic are called <em>Policy Services Nodes (PSNs)</em>.</li>
-    <li><strong>Aruba ClearPass:</strong> These are referred to as <em>Subscribers</em>. A ClearPass node can act as both a Subscriber and a Publisher, depending on role assignment.</li>
-  </ul>
-
-  <h5 class="mt-3">Conclusion</h5>
-  <p>
-    While both Cisco ISE and Aruba ClearPass offer enterprise-grade NAC features, the differences in architecture and terminology are worth noting. Both systems are scalable, secure, and proven in real-world deployments. The choice between them often comes down to <strong>vendor alignment</strong>, <strong>feature needs</strong>, and <strong>environment compatibility</strong>.
-  </p>
-
-  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
-    #CiscoISE #ArubaClearPass #NAC #NetworkSecurity #ZeroTrust #RADIUS #NetworkArchitecture
-  </div>
-</div>
-
-  <!-- Blog post: EnOcean Dongle Issues with Cisco Catalyst 9800 and APs -->
-  <div class="blog-card" id="enocean-catalyst">
-  <h3 class="accent mb-2">
-    <i class="bi bi-usb-plug me-1"></i> EnOcean Dongle Issues with Cisco Catalyst 9800 and APs
-  </h3>
-  <p class="text-muted mb-1"><small>Posted June 2024 • by Joey Scott</small></p>
-  <p>
-    If you're working with **EnOcean USB dongles** and **Cisco Catalyst 9800 wireless controllers**, here’s something important we discovered during deployment—especially for Catalyst 9166 APs running version 17.9.5.
-  </p>
-
-  <h5 class="mt-3">What Is EnOcean?</h5>
-  <p>
-    EnOcean produces wireless IoT dongles that plug directly into access points and communicate with smart devices (e.g., power clamps) using the 868 MHz band (in the UK). This frequency is **non-interfering with Wi-Fi**, making EnOcean a good fit for enterprise IoT environments.
-  </p>
-
-  <h5 class="mt-3">How It Works with Cisco APs</h5>
-  <p>
-    A lightweight Docker container runs on the AP to interface with the EnOcean dongle, forwarding data to a cloud or on-prem EnOcean connector. This container can be deployed manually or via **Cisco DNA Center (DNAC)**.
-  </p>
-
-  <h5 class="mt-3">The Problem with Version 17.9.5</h5>
-  <p>
-    On version <strong>17.9.5</strong> (gold standard at time of writing), EnOcean dongles are **not detected properly** on Catalyst 9166 APs. Attempts to deploy the Docker container using DNAC result in:
-    <code class="d-block my-2">ERR_AH_-1043 – Requested USB device not found on the AP</code>
-    The same error appears when attempting CLI-based deployment.
-  </p>
-
-  <h5 class="mt-3">Initial Troubleshooting</h5>
-  <p>
-    Initially, the issue appeared to be unsupported USB device type (PID/VID/VER <code>403/6015/1000</code>)—not visible via <code>show usb list</code>. With assistance from EnOcean, we enabled the USB module manually:
-  </p>
-  <pre style="background:#f8f9fa; padding:1em; border-left:4px solid #007f73; border-radius:8px; font-size:0.9em;">
-test usb load module ftdi-sio vendor-id 403 product-id 6015 version 1000
-test usb disable
-test usb enable
-  </pre>
-  <p>
-    After this, the dongle appeared in the USB list, but deploying the application still failed with the same error.
-  </p>
-
-  <h5 class="mt-3">The Fix</h5>
-  <p>
-    Upgrading the controller and AP firmware to <strong>version 17.12.4</strong> resolved the issue. After the upgrade, the application installed successfully and the dongle functioned as expected.
-  </p>
-
-  <div class="mt-2" style="color:#007f73;font-size:1.1em;">
-    #Cisco9800 #Catalyst9166 #EnOcean #DNAC #IoT #USB #Docker #CiscoWLC #WirelessTroubleshooting
-  </div>
-</div>
+</main>
 
 <!-- Contact Section -->
 <section id="contact" style="background: #ffffff;">

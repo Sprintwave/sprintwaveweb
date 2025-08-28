@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aruba Switch Backups with Ansible | Sprintwave Blog</title>
+<meta name="description" content="Complete guide to automating configuration backups across mixed Aruba CX and AOS environments using Ansible.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  body {
+    background-color: #e6f0ef;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+  .navbar {
+    background-color: #ffffff !important;
+  }
+  .accent {
+    color: #007f73;
+  }
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .blog-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin: 2rem 0;
+  }
+  pre {
+    background: #f8f9fa;
+    padding: 1em;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  code {
+    background: #f1f5f9;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .step-card {
+    background: #f8fafc;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="btn btn-accent ms-2" href="{{ url_for('home') }}#contact">
+            <i class="bi bi-telephone me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 fw-bold">
+          <span style="font-size:1.5em; vertical-align:middle;">💾</span>
+          Aruba Switch Backups with Ansible
+        </h1>
+        <p class="lead text-muted">Automating configuration backups across mixed Aruba environments</p>
+        <p class="text-muted"><small>Posted August 2025 • by Sprintwave Team</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="blog-content">
+          <p>
+            Managing backups across mixed Aruba environments? Whether you're running the modern Aruba CX (AOS-CX) or older AOS switches, Ansible provides a flexible way to automate configuration snapshots—without logging into each device manually.
+          </p>
+
+          <div class="step-card">
+            <h5 class="accent mb-3">Goal</h5>
+            <p>Connect to both Aruba CX and legacy AOS switches via SSH and back up their current configurations to structured text files.</p>
+          </div>
+
+          <h4>📁 Step 1: Use a Structured Inventory</h4>
+          <p>Create an <code>inventory.ini</code> with groupings for each platform:</p>
+
+          <pre><code>[aruba_cx]
+cx-switch-1
+cx-switch-2
+
+[aruba_aos]
+aos-switch-1
+aos-switch-2
+
+[aruba_cx:vars]
+ansible_connection=network_cli
+ansible_network_os=arubanetworks.aoscx.aoscx
+ansible_user={{ vault_username }}
+ansible_password={{ vault_password }}
+
+[aruba_aos:vars]
+ansible_connection=network_cli
+ansible_user={{ vault_username }}
+ansible_password={{ vault_password }}
+ansible_become=yes
+ansible_become_method=enable
+ansible_become_password=
+ansible_ssh_common_args='-o KexAlgorithms=+diffie-hellman-group14-sha1'</code></pre>
+
+          <h4>📝 Step 2: Backup Playbook</h4>
+          <p>This playbook handles both switch types using conditional logic and the appropriate command module:</p>
+
+          <pre><code>- name: Backup running configs from Aruba switches
+  hosts: aruba_cx:aruba_aos
+  gather_facts: no
+
+  tasks:
+    - name: Get config from Aruba CX
+      when: "'aoscx' in ansible_network_os"
+      arubanetworks.aoscx.aoscx_command:
+        commands: show running-config
+      register: cx_output
+
+    - name: Get config from Aruba AOS (fallback using raw module)
+      when: "'aruba_aos' in group_names"
+      raw: show running-config
+      register: aos_output
+      ignore_errors: yes
+
+    - name: Save config to file (CX)
+      when: cx_output is defined
+      copy:
+        content: "{{ cx_output.stdout[0] }}"
+        dest: "./backups/{{ inventory_hostname }}.txt"
+
+    - name: Save config to file (AOS)
+      when: aos_output is defined
+      copy:
+        content: "{{ aos_output.stdout[0] }}"
+        dest: "./backups/{{ inventory_hostname }}.txt"</code></pre>
+
+          <h4>▶️ Step 3: Run the Backup</h4>
+          <p>Run the playbook while limiting concurrency to avoid AD lockouts:</p>
+
+          <pre><code>ansible-playbook backup.yml -i inventory.ini -f 2</code></pre>
+
+          <h4>🔐 Step 4: Secure Credentials with Vault</h4>
+          <p>Store your login details safely with ansible-vault. Create <code>vault.yml</code>:</p>
+
+          <pre><code>vault_username: netadmin
+vault_password: SuperSecurePassword
+vault_enable_password: EnablePasswordIfNeeded</code></pre>
+
+          <p>Then reference it in the playbook via:</p>
+
+          <pre><code>vars_files:
+  - group_vars/aruba_aos/vault.yml</code></pre>
+
+          <div class="step-card">
+            <h5 class="accent mb-3">Key Benefits</h5>
+            <ul class="mb-0">
+              <li><strong>Mixed platform support:</strong> Handles both CX and AOS switches in one playbook</li>
+              <li><strong>Conditional logic:</strong> Uses appropriate modules for each platform</li>
+              <li><strong>Error handling:</strong> Continues backup process even if some devices fail</li>
+              <li><strong>Secure credentials:</strong> Uses Ansible Vault for password protection</li>
+              <li><strong>Concurrency control:</strong> Limits simultaneous connections to prevent AD lockouts</li>
+            </ul>
+          </div>
+
+          <p>
+            This approach provides a clean, maintainable solution for backing up mixed Aruba environments. The conditional logic ensures each platform gets the right treatment while keeping everything in a single, manageable playbook.
+          </p>
+
+          <div class="mt-4 p-3" style="background: #f8fafc; border-radius: 10px;">
+            <strong>Tags:</strong> 
+            <span class="badge bg-secondary me-1">ArubaCX</span>
+            <span class="badge bg-secondary me-1">ArubaAOS</span>
+            <span class="badge bg-secondary me-1">AnsibleAutomation</span>
+            <span class="badge bg-secondary me-1">ConfigBackups</span>
+            <span class="badge bg-secondary me-1">AOSCX</span>
+            <span class="badge bg-secondary me-1">ArubaSwitching</span>
+            <span class="badge bg-secondary me-1">InfraOps</span>
+            <span class="badge bg-secondary me-1">NetworkAutomation</span>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="{{ url_for('blog') }}" class="btn btn-accent">
+              <i class="bi bi-arrow-left me-2"></i>Back to Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5" style="background: #ffffff;">
+  <div class="container text-center">
+    <h3 class="mb-4">Need Help With Aruba Automation?</h3>
+    <p class="text-muted mb-4">Get expert advice on Aruba CX/AOS automation, backups, and network management.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk">
+        <i class="bi bi-envelope me-2"></i>Email Us
+      </a>
+      <a class="btn btn-accent" href="tel:+441553824408">
+        <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Authenticating to the ClearPass API | Sprintwave Blog</title>
+<meta name="description" content="Step-by-step guide to authenticating and querying Aruba ClearPass API for static host lists and network access control.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  body {
+    background-color: #e6f0ef;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+  .navbar {
+    background-color: #ffffff !important;
+  }
+  .accent {
+    color: #007f73;
+  }
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .blog-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin: 2rem 0;
+  }
+  pre {
+    background: #f8f9fa;
+    padding: 1em;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  code {
+    background: #f1f5f9;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .step-card {
+    background: #f8fafc;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="btn btn-accent ms-2" href="{{ url_for('home') }}#contact">
+            <i class="bi bi-telephone me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 fw-bold">
+          <i class="bi bi-terminal me-3" style="color: #007f73;"></i>
+          Authenticating to the ClearPass API
+        </h1>
+        <p class="lead text-muted">Step-by-step guide to accessing Aruba ClearPass API for static host lists</p>
+        <p class="text-muted"><small>Posted July 2025 • by Sprintwave Team</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="blog-content">
+          <p>
+            To authenticate to the ClearPass API you first need to go to the GUI of ClearPass Policy Manager and login.
+          </p>
+
+          <div class="step-card">
+            <h5 class="accent mb-3">Step 1: Access Guest Section</h5>
+            <p>Once logged in browse to the top right corner and select <strong>Guest</strong>. It is weird that the API settings are in the guest part of ClearPass, but there must be a reason the developers done it this way.</p>
+          </div>
+
+          <div class="step-card">
+            <h5 class="accent mb-3">Step 2: Navigate to API Services</h5>
+            <p>Go to <strong>Administration</strong> on the left menu system, then browse to <strong>API Services > API Clients</strong>.</p>
+          </div>
+
+          <div class="step-card">
+            <h5 class="accent mb-3">Step 3: Create API Client</h5>
+            <p>On the right browse to <strong>"Create API client"</strong>.</p>
+            <p>Create the API client as below, giving the relevant access and lifetime.</p>
+          </div>
+
+          <div class="step-card">
+            <h5 class="accent mb-3">Step 4: Generate Access Token</h5>
+            <p>After the API client has been created, click the new client and select <strong>generate access token</strong>. Copy the HTTP Authorization bearer into Postman.</p>
+          </div>
+
+          <div class="step-card">
+            <h5 class="accent mb-3">Step 5: Browse API Explorer</h5>
+            <p>Browse to the API explorer at <code>https://&lt;ip/url&gt;/api-docs</code>. Choose what API you want to use.</p>
+          </div>
+
+          <h4>Example: Getting Static Host Lists</h4>
+          <p>For this example I'm doing a simple GET request using Postman to pull all of the static host lists.</p>
+
+          <div class="step-card">
+            <h5 class="accent mb-3">Postman Configuration</h5>
+            <ul>
+              <li><strong>URL:</strong> <code>https://&lt;ip or url&gt;/api/static-host-list</code></li>
+              <li><strong>Method:</strong> GET</li>
+              <li><strong>Authorization:</strong> Bearer Token</li>
+              <li><strong>Token:</strong> Paste the token from ClearPass into the box</li>
+            </ul>
+          </div>
+
+          <h4>Response Example</h4>
+          <p>Once this is sent you will get a response from ClearPass containing the static host lists in JSON format.</p>
+
+          <pre><code>{
+    "_links": {
+        "self": {
+            "href": "https://192.168.0.48/api/static-host-list/?calculate_count=false&offset=0&limit=25&sort=%2Bid&filter=%7B%7D"
+        },
+        "first": {
+            "href": "https://192.168.0.48/api/static-host-list/?calculate_count=false&offset=0&limit=25&sort=%2Bid&filter=%7B%7D"
+        }
+    },
+    "_embedded": {
+        "items": [
+            {
+                "id": 3001,
+                "name": "Test-Test",
+                "description": "Add MAC with API call",
+                "host_format": "list",
+                "host_type": "MACAddress",
+                "host_entries": [
+                    {
+                        "host_address": "00-00-AA-22-33-44",
+                        "host_address_desc": "Test-44"
+                    },
+                    {
+                        "host_address": "AA-BB-CC-DD-EE-FF",
+                        "host_address_desc": "Test-ff"
+                    },
+                    {
+                        "host_address": "00-AA-BB-CC-DD-EE",
+                        "host_address_desc": "Test-ee"
+                    },
+                    {
+                        "host_address": "11-AA-BB-CC-DD-FF",
+                        "host_address_desc": "Test-11"
+                    }
+                ],
+                "_links": {
+                    "self": {
+                        "href": "https://192.168.0.48/api/static-host-list/3001"
+                    }
+                }
+            },
+            {
+                "id": 3002,
+                "name": "MFT PDA VLAN 2004",
+                "description": "",
+                "host_format": "list",
+                "host_type": "MACAddress",
+                "host_entries": [
+                    {
+                        "host_address": "66-55-44-33-22-11",
+                        "host_address_desc": "Device1234"
+                    },
+                    {
+                        "host_address": "22-33-44-55-66-77",
+                        "host_address_desc": "device4321"
+                    }
+                ],
+                "_links": {
+                    "self": {
+                        "href": "https://192.168.0.48/api/static-host-list/3002"
+                    }
+                }
+            }
+        ]
+    }
+}</code></pre>
+
+          <p>
+            This simple example shows how to authenticate and retrieve static host lists from ClearPass. The API can be used for much more complex operations including adding/removing endpoints, managing guest access, and integrating with other systems.
+          </p>
+
+          <div class="mt-4 p-3" style="background: #f8fafc; border-radius: 10px;">
+            <strong>Tags:</strong> 
+            <span class="badge bg-secondary me-1">ClearPass</span>
+            <span class="badge bg-secondary me-1">API</span>
+            <span class="badge bg-secondary me-1">Authentication</span>
+            <span class="badge bg-secondary me-1">Postman</span>
+            <span class="badge bg-secondary me-1">NetworkAccess</span>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="{{ url_for('blog') }}" class="btn btn-accent">
+              <i class="bi bi-arrow-left me-2"></i>Back to Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5" style="background: #ffffff;">
+  <div class="container text-center">
+    <h3 class="mb-4">Need Help With ClearPass Integration?</h3>
+    <p class="text-muted mb-4">Get expert advice on ClearPass API development, automation, and custom integrations.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk">
+        <i class="bi bi-envelope me-2"></i>Email Us
+      </a>
+      <a class="btn btn-accent" href="tel:+441553824408">
+        <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

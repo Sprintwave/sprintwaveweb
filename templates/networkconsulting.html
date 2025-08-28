@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<!-- SEO POWERHOUSE META TAGS -->
+<title>Network Consulting Norfolk | Cisco ISE, SDA, Wireless Expert | CCNP Enterprise & Security | Sprintwave</title>
+<meta name="description" content="Expert network consulting in Norfolk. CCNP Enterprise, Security & ISE certified. 25+ Cisco ISE deployments, SDA design, wireless networks for NHS trusts, universities & enterprise.">
+<meta name="keywords" content="Network Consultant Norfolk, Cisco ISE Expert, CCNP Enterprise Norfolk, Cisco SDA Design, Wireless Network Consultant, NHS Network Design, University Network Consulting, Enterprise Network Architecture Norfolk">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- LOCAL SEO -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Norfolk, UK">
+<meta name="geo.position" content="52.6309;1.2974">
+<meta name="ICBM" content="52.6309, 1.2974">
+
+<!-- SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="Expert Network Consulting Norfolk | Cisco ISE & SDA Specialist">
+<meta property="og:description" content="CCNP Enterprise & Security certified network consultant. 25+ Cisco ISE deployments, SDA design for NHS trusts, universities & enterprise networks.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/network-consulting">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/network-consulting-norfolk.jpg">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://www.sprintwave.co.uk/network-consulting">
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+<meta name="theme-color" content="#007f73">
+
+<!-- Bootstrap & Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #e6f0ef;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+
+  .navbar {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .navbar-brand {
+    color: #007f73 !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .accent {
+    color: #007f73;
+  }
+
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,127,115,0.3);
+  }
+
+  .btn-consulting {
+    background: linear-gradient(135deg, #007f73, #005f57);
+    color: #fff;
+    border-radius: 999px;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-consulting:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,127,115,0.4);
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, #e6f0ef 0%, #ffffff 100%);
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23007f73" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+    opacity: 0.3;
+  }
+
+  .service-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid rgba(0,127,115,0.1);
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    border-color: rgba(0,127,115,0.2);
+  }
+
+  .cert-badge {
+    background: linear-gradient(135deg, #007f73, #005f57);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+    display: inline-block;
+    box-shadow: 0 2px 10px rgba(0,127,115,0.3);
+  }
+
+  .stats-card {
+    background: linear-gradient(135deg, #007f73, #005f57);
+    color: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,127,115,0.3);
+  }
+
+  .stats-card h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    border-left: 4px solid #007f73;
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .skill-tag {
+    background: #f8fafc;
+    color: #1a1a1a;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin: 0.2rem;
+    display: inline-block;
+    border: 1px solid rgba(0,127,115,0.2);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .contact-section {
+    background: linear-gradient(135deg, #007f73, #005f57);
+    color: #fff;
+    padding: 80px 0;
+    position: relative;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') repeat;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 60px 0 40px;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#expertise">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="btn btn-accent ms-2" href="#contact">
+            <i class="bi bi-telephone me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-4">
+          Expert <span class="accent">Network Consulting</span> for Enterprise & Public Sector
+        </h1>
+        <p class="lead mb-4">
+          CCNP Enterprise & Security certified consultant with 8+ years delivering secure, scalable network solutions. Specializing in Cisco ISE, SDA, and enterprise wireless architectures for NHS trusts, universities, and major organizations.
+        </p>
+        
+        <!-- Certifications -->
+        <div class="mb-4">
+          <span class="cert-badge">CCNP Enterprise</span>
+          <span class="cert-badge">CCNP Security</span>
+          <span class="cert-badge">CCNP ISE</span>
+          <span class="cert-badge">Aruba Certified Professional</span>
+          <span class="cert-badge">DEVNET Associate</span>
+          <span class="cert-badge">Cisco Firejumper</span>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3">
+          <a class="btn btn-consulting" href="#contact">
+            <i class="bi bi-telephone me-2"></i>Get Expert Consultation
+          </a>
+          <a class="btn btn-accent" href="#projects">
+            <i class="bi bi-briefcase me-2"></i>View Projects
+          </a>
+        </div>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="stats-card">
+              <h3>25+</h3>
+              <p class="mb-0">Cisco ISE Deployments</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stats-card">
+              <h3>20+</h3>
+              <p class="mb-0">Catalyst 9800 Projects</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stats-card">
+              <h3>8+</h3>
+              <p class="mb-0">Years Experience</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stats-card">
+              <h3>100%</h3>
+              <p class="mb-0">Client Satisfaction</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Expertise Section -->
+<section id="expertise" class="py-5">
+  <div class="container">
+    <div class="section-header">
+      <h2>Core <span class="accent">Expertise</span></h2>
+      <p class="lead text-muted">Delivering enterprise-grade network solutions with automation and security at the forefront</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card">
+          <div class="text-center mb-3">
+            <i class="bi bi-shield-check" style="font-size: 3rem; color: #007f73;"></i>
+          </div>
+          <h4 class="accent mb-3">Cisco ISE & Network Security</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>25+ ISE deployments across enterprise</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Network segmentation & access control</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Cisco Firepower & Umbrella integration</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Security policy automation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card">
+          <div class="text-center mb-3">
+            <i class="bi bi-diagram-3" style="font-size: 3rem; color: #007f73;"></i>
+          </div>
+          <h4 class="accent mb-3">Software Defined Access (SDA)</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>End-to-end SDA architecture design</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>DNA Center deployment & automation</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Fabric enablement & troubleshooting</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Policy-based network segmentation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card">
+          <div class="text-center mb-3">
+            <i class="bi bi-wifi" style="font-size: 3rem; color: #007f73;"></i>
+          </div>
+          <h4 class="accent mb-3">Enterprise Wireless Networks</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Catalyst 9800 WLC deployments</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>RF design & wireless surveys</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Eduroam & Govroam implementation</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>High-density wireless optimization</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card">
+          <div class="text-center mb-3">
+            <i class="bi bi-code-slash" style="font-size: 3rem; color: #007f73;"></i>
+          </div>
+          <h4 class="accent mb-3">Network Automation</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Python, Ansible & Netmiko expertise</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Custom automation tools & scripts</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Configuration management & backups</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>API integration & orchestration</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card">
+          <div class="text-center mb-3">
+            <i class="bi bi-search" style="font-size: 3rem; color: #007f73;"></i>
+          </div>
+          <h4 class="accent mb-3">Network Audits & Assessment</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Comprehensive network reviews</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Security posture assessments</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Performance optimization analysis</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Future-proofing recommendations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card">
+          <div class="text-center mb-3">
+            <i class="bi bi-arrow-up-right-circle" style="font-size: 3rem; color: #007f73;"></i>
+          </div>
+          <h4 class="accent mb-3">Strategic Network Planning</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Enterprise architecture design</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Technology roadmap development</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Vendor evaluation & selection</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Budget planning & ROI analysis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Projects Section -->
+<section id="projects" class="py-5" style="background: #ffffff;">
+  <div class="container">
+    <div class="section-header">
+      <h2>Key <span class="accent">Projects</span></h2>
+      <p class="lead text-muted">Recent enterprise network deployments as lead consultant</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="project-card">
+          <h5 class="accent mb-2">🏭 Billion $ Manufacturing Company</h5>
+          <p class="text-muted mb-1"><strong>Project:</strong> Cisco Software Defined Access (SDA) design & deployment</p>
+          <p class="mb-0">Complete network transformation with automated segmentation and policy enforcement across multiple sites.</p>
+        </div>
+
+        <div class="project-card">
+          <h5 class="accent mb-2">🏥 Large NHS Foundation Trust</h5>
+          <p class="text-muted mb-1"><strong>Project:</strong> Cisco SDA design & deployment + ISE integration</p>
+          <p class="mb-0">Secure medical network infrastructure with patient data protection and clinical system optimization.</p>
+        </div>
+
+        <div class="project-card">
+          <h5 class="accent mb-2">🎓 2 Prestigious UK Universities</h5>
+          <p class="text-muted mb-1"><strong>Project:</strong> Cisco ISE & DNA Center design and deployment</p>
+          <p class="mb-0">Campus-wide network security and wireless infrastructure serving 50,000+ students and staff.</p>
+        </div>
+
+        <div class="project-card">
+          <h5 class="accent mb-2">🚑 Large Ambulance Trust</h5>
+          <p class="text-muted mb-1"><strong>Project:</strong> Cisco ISE & network segmentation</p>
+          <p class="mb-0">Critical emergency services network with zero-trust security model and real-time monitoring.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="project-card">
+          <h5 class="accent mb-2">🏛️ Large Council</h5>
+          <p class="text-muted mb-1"><strong>Project:</strong> Network and security audit</p>
+          <p class="mb-0">Comprehensive infrastructure assessment with security recommendations and modernization roadmap.</p>
+        </div>
+
+        <div class="project-card">
+          <h5 class="accent mb-2">❤️ Large Charity Organization</h5>
+          <p class="text-muted mb-1"><strong>Project:</strong> Cisco ISE in Azure design & deployment</p>
+          <p class="mb-0">Cloud-based network access control with hybrid on-premises integration and remote worker support.</p>
+        </div>
+
+        <div class="project-card">
+          <h5 class="accent mb-2">🏥 Largest NHS Trust</h5>
+          <p class="text-muted mb-1"><strong>Project:</strong> DNA Center design & wireless migration</p>
+          <p class="mb-0">Enterprise-scale wireless infrastructure transformation supporting 15,000+ healthcare professionals.</p>
+        </div>
+
+        <div class="project-card">
+          <h5 class="accent mb-2">🏥 5+ NHS Trusts</h5>
+          <p class="text-muted mb-1"><strong>Project:</strong> Govroam design & deployment</p>
+          <p class="mb-0">Secure government wireless access across multiple healthcare sites with centralized authentication.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technical Skills Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="section-header">
+      <h2>Technical <span class="accent">Expertise</span></h2>
+      <p class="lead text-muted">Comprehensive skill set across enterprise networking technologies</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card text-center">
+          <h5 class="accent mb-3">Security & Access Control</h5>
+          <div class="text-start">
+            <span class="skill-tag">Cisco ISE</span>
+            <span class="skill-tag">Cisco SDA</span>
+            <span class="skill-tag">Aruba ClearPass</span>
+            <span class="skill-tag">Cisco Firepower</span>
+            <span class="skill-tag">Cisco Umbrella</span>
+            <span class="skill-tag">Cisco SecureX</span>
+            <span class="skill-tag">Cisco Duo</span>
+            <span class="skill-tag">Checkpoint</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card text-center">
+          <h5 class="accent mb-3">Wireless & Switching</h5>
+          <div class="text-start">
+            <span class="skill-tag">Catalyst 9800 WLC</span>
+            <span class="skill-tag">DNA Center</span>
+            <span class="skill-tag">Prime Infrastructure</span>
+            <span class="skill-tag">Cisco Meraki</span>
+            <span class="skill-tag">Aruba Switching</span>
+            <span class="skill-tag">Extreme Networks</span>
+            <span class="skill-tag">Nexus</span>
+            <span class="skill-tag">WiFi 6/6E</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card text-center">
+          <h5 class="accent mb-3">Automation & Development</h5>
+          <div class="text-start">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Ansible</span>
+            <span class="skill-tag">Netmiko</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">JSON/YAML</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">DevNet</span>
+            <span class="skill-tag">Network Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card text-center">
+          <h5 class="accent mb-3">Cloud & Analytics</h5>
+          <div class="text-start">
+            <span class="skill-tag">Cisco Cloud Analytics</span>
+            <span class="skill-tag">Azure Networking</span>
+            <span class="skill-tag">Hybrid Cloud</span>
+            <span class="skill-tag">Network Monitoring</span>
+            <span class="skill-tag">Performance Analysis</span>
+            <span class="skill-tag">Troubleshooting</span>
+            <span class="skill-tag">RF Analysis</span>
+            <span class="skill-tag">Site Surveys</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="container text-center position-relative">
+    <h2 class="mb-4">Ready to Transform Your Network Infrastructure?</h2>
+    <p class="lead mb-5">Get expert consultation on your next network project. From design to deployment, we deliver enterprise-grade solutions.</p>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="service-card" style="background: rgba(255,255,255,0.95);">
+          <h4 class="accent mb-3">Get Your Network Consultation</h4>
+          <p class="mb-4" style="color: #1a1a1a;">
+            <span style="color: #007f73; font-weight: 600;">✅ Free initial assessment</span><br>
+            <span style="color: #007f73; font-weight: 600;">✅ Detailed technical proposal</span><br>
+            <span style="color: #007f73; font-weight: 600;">✅ CCNP certified expertise</span><br>
+            <span style="color: #007f73; font-weight: 600;">✅ Proven track record with major organizations</span>
+          </p>
+          
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a class="btn btn-consulting" href="tel:+441553824408">
+              <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+            </a>
+            <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk?subject=Network Consulting Enquiry">
+              <i class="bi bi-envelope me-2"></i>Email for Consultation
+            </a>
+          </div>
+          
+          <div class="mt-4 text-muted">
+            <small>
+              <i class="bi bi-geo-alt me-1"></i>
+              Serving Norfolk, East Anglia & UK-wide • Remote and on-site support available
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

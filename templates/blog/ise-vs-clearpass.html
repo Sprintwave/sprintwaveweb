@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ISE vs ClearPass | Sprintwave Blog</title>
+<meta name="description" content="Comparison of Cisco ISE and Aruba ClearPass network access control architectures, deployment options, and node configurations.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  body {
+    background-color: #e6f0ef;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+  .navbar {
+    background-color: #ffffff !important;
+  }
+  .accent {
+    color: #007f73;
+  }
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .blog-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin: 2rem 0;
+  }
+  .comparison-table {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  }
+  .info-card {
+    background: #f8fafc;
+    border-left: 4px solid #007f73;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="btn btn-accent ms-2" href="{{ url_for('home') }}#contact">
+            <i class="bi bi-telephone me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 fw-bold">
+          <i class="bi bi-diagram-3 me-3" style="color: #007f73;"></i>
+          ISE vs ClearPass
+        </h1>
+        <p class="lead text-muted">Understanding the architectural similarities and differences between Cisco ISE and Aruba ClearPass</p>
+        <p class="text-muted"><small>Posted July 2025 • by Sprintwave Team</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="blog-content">
+          <p>
+            Cisco ISE (Identity Services Engine) and Aruba ClearPass, also known as CPPM (ClearPass Policy Manager), are two widely used solutions in the world of network access control (NAC). Both products are designed to provide secure access, manage policies, and enforce compliance across networks. While they achieve similar goals, they differ slightly in how they go about it.
+          </p>
+
+          <h4>Deployment Options</h4>
+          <p>
+            Both Cisco ISE and Aruba ClearPass offer flexible deployment options to suit different network environments. They can be deployed as virtual machines, physical appliances, or cloud-based solutions, giving organisations the freedom to choose the infrastructure that best fits their needs. Regardless of the deployment method, each instance of ISE or ClearPass is referred to as a "node."
+          </p>
+
+          <h4>Cluster Architecture</h4>
+          <p>
+            In a typical deployment, multiple nodes are joined together to form what is commonly referred to as a cluster. Clusters can consist of as few as two nodes or scale up to 50, depending on the size and needs of the organisation.
+          </p>
+
+          <div class="info-card">
+            <p>
+              At the heart of every cluster is a node responsible for managing configuration and distributing policies across the entire deployment. In Cisco ISE, this central node is called the <strong>Policy Administration Node (PAN)</strong>, with the option to add a secondary PAN for redundancy. In Aruba ClearPass, the primary node performing this role is referred to as the <strong>Publisher</strong>, with a <strong>Standby Publisher</strong> acting as its backup.
+            </p>
+          </div>
+
+          <h4>Node Comparison Table</h4>
+          <div class="comparison-table mb-4">
+            <table class="table table-striped mb-0">
+              <thead style="background: #007f73; color: white;">
+                <tr>
+                  <th>Function</th>
+                  <th>Cisco ISE</th>
+                  <th>Aruba ClearPass</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Primary Management Node</strong></td>
+                  <td>Policy Administration Node (PAN)</td>
+                  <td>Publisher</td>
+                </tr>
+                <tr>
+                  <td><strong>Backup Management Node</strong></td>
+                  <td>Secondary PAN</td>
+                  <td>Standby Publisher</td>
+                </tr>
+                <tr>
+                  <td><strong>RADIUS Processing Node</strong></td>
+                  <td>Policy Services Node (PSN)</td>
+                  <td>Subscriber</td>
+                </tr>
+                <tr>
+                  <td><strong>Maximum Cluster Size</strong></td>
+                  <td>50 nodes</td>
+                  <td>50 nodes</td>
+                </tr>
+                <tr>
+                  <td><strong>Minimum Cluster Size</strong></td>
+                  <td>2 nodes</td>
+                  <td>2 nodes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Handling RADIUS Requests</h4>
+          <p>
+            Both solutions are built to handle RADIUS requests, which are fundamental to network authentication and authorisation. However, each product refers to the nodes handling these requests differently.
+          </p>
+
+          <p>
+            In Cisco ISE, nodes that process RADIUS requests are called <strong>Policy Services Nodes (PSNs)</strong>. A PSN can be a dedicated node, or it can share roles with other personas, such as the PAN. On the other hand, Aruba ClearPass refers to these nodes as <strong>Subscribers</strong>. Similar to Cisco ISE, a node in ClearPass can serve as both a Publisher and a Subscriber if needed.
+          </p>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="info-card">
+                <h5 class="accent">Cisco ISE Node Roles</h5>
+                <ul>
+                  <li><strong>PAN:</strong> Configuration management and policy distribution</li>
+                  <li><strong>PSN:</strong> RADIUS request processing and policy enforcement</li>
+                  <li><strong>Combined:</strong> PAN + PSN on same node (smaller deployments)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-card">
+                <h5 class="accent">ClearPass Node Roles</h5>
+                <ul>
+                  <li><strong>Publisher:</strong> Configuration management and policy distribution</li>
+                  <li><strong>Subscriber:</strong> RADIUS request processing and policy enforcement</li>
+                  <li><strong>Combined:</strong> Publisher + Subscriber on same node</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <h4>Scalability Considerations</h4>
+          <p>
+            Both platforms offer excellent scalability options:
+          </p>
+          <ul>
+            <li>Start with a 2-node cluster for redundancy</li>
+            <li>Add nodes as user base and RADIUS load increases</li>
+            <li>Distribute RADIUS processing across multiple nodes</li>
+            <li>Geographically distribute nodes for optimal performance</li>
+          </ul>
+
+          <h4>Deployment Best Practices</h4>
+          <div class="info-card">
+            <strong>Shared Recommendations:</strong>
+            <ul class="mb-0">
+              <li>Always deploy with redundancy (minimum 2 nodes)</li>
+              <li>Separate management and RADIUS processing for large deployments</li>
+              <li>Consider geographic distribution for global organisations</li>
+              <li>Plan for growth - easier to add nodes than redesign architecture</li>
+              <li>Use virtual deployments for flexibility, physical for maximum performance</li>
+            </ul>
+          </div>
+
+          <h4>Conclusion</h4>
+          <p>
+            While Cisco ISE and Aruba ClearPass share many similarities in terms of functionality and architecture, the key difference lies in how they refer to and organise their core components. Both are powerful network access control solutions that allow for highly scalable and secure network environments. Deciding between them often comes down to existing vendor relationships, feature preferences, and specific organisational needs.
+          </p>
+
+          <div class="mt-4 p-3" style="background: #f8fafc; border-radius: 10px;">
+            <strong>Tags:</strong> 
+            <span class="badge bg-secondary me-1">CiscoISE</span>
+            <span class="badge bg-secondary me-1">ClearPass</span>
+            <span class="badge bg-secondary me-1">NAC</span>
+            <span class="badge bg-secondary me-1">Architecture</span>
+            <span class="badge bg-secondary me-1">NetworkSecurity</span>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="{{ url_for('blog') }}" class="btn btn-accent">
+              <i class="bi bi-arrow-left me-2"></i>Back to Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5" style="background: #ffffff;">
+  <div class="container text-center">
+    <h3 class="mb-4">Need Help With NAC Architecture Design?</h3>
+    <p class="text-muted mb-4">Get expert advice on ISE and ClearPass cluster design, deployment planning, and architecture optimization.</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk">
+        <i class="bi bi-envelope me-2"></i>Email Us
+      </a>
+      <a class="btn btn-accent" href="tel:+441553824408">
+        <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
