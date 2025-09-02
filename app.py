@@ -33,7 +33,7 @@ def wireless_surveys():
     return render_template('wifisurveys.html')
 
 @app.route('/network-consulting')
-def network_consulting():
+def network_consulting():  # This is the function name
     return render_template('networkconsulting.html')
 
 @app.route('/sitemap.xml')
