@@ -89,7 +89,7 @@
             <i class="bi bi-gear me-1"></i> Services
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+            <li><a class="dropdown-item" href="{{ url_for('networkconsulting') }}">
               <i class="bi bi-diagram-3 me-2"></i>Network Consulting
             </a></li>
             <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
@@ -198,13 +198,13 @@ aos-switch-2
 [aruba_cx:vars]
 ansible_connection=network_cli
 ansible_network_os=arubanetworks.aoscx.aoscx
-ansible_user={{ vault_username }}
-ansible_password={{ vault_password }}
+ansible_user={{ "{{" }} vault_username {{ "}}" }}
+ansible_password={{ "{{" }} vault_password {{ "}}" }}
 
 [aruba_aos:vars]
 ansible_connection=network_cli
-ansible_user={{ vault_username }}
-ansible_password={{ vault_password }}
+ansible_user={{ "{{" }} vault_username {{ "}}" }}
+ansible_password={{ "{{" }} vault_password {{ "}}" }}
 ansible_become=yes
 ansible_become_method=enable
 ansible_become_password=
@@ -233,14 +233,14 @@ ansible_ssh_common_args='-o KexAlgorithms=+diffie-hellman-group14-sha1'</code></
     - name: Save config to file (CX)
       when: cx_output is defined
       copy:
-        content: "{{ cx_output.stdout[0] }}"
-        dest: "./backups/{{ inventory_hostname }}.txt"
+        content: "{{ "{{" }} cx_output.stdout[0] {{ "}}" }}"
+        dest: "./backups/{{ "{{" }} inventory_hostname {{ "}}" }}.txt"
 
     - name: Save config to file (AOS)
       when: aos_output is defined
       copy:
-        content: "{{ aos_output.stdout[0] }}"
-        dest: "./backups/{{ inventory_hostname }}.txt"</code></pre>
+        content: "{{ "{{" }} aos_output.stdout[0] {{ "}}" }}"
+        dest: "./backups/{{ "{{" }} inventory_hostname {{ "}}" }}.txt"</code></pre>
 
           <h4>▶️ Step 3: Run the Backup</h4>
           <p>Run the playbook while limiting concurrency to avoid AD lockouts:</p>
