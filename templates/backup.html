@@ -248,103 +248,123 @@
 </head>
 <body>
 
-<!-- Header/Navbar -->
-<header>
-  <nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
-        <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
-        <span class="fw-semibold fs-4" style="color: #1a1a1a;"></span>
-      </a>
-      <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav align-items-center">
-                  <!-- Home Button -->
+<!-- Navbar -->
+<!-- COPY THIS NAVBAR TO ALL TEMPLATE FILES -->
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
         <li class="nav-item">
           <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
             <i class="bi bi-house me-1"></i> Home
           </a>
         </li>
-          <!-- Core Services -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
-              <i class="bi bi-gear me-1"></i> Services
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
-                <i class="bi bi-diagram-3 me-2"></i>Network Consulting
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
-                <i class="bi bi-wifi me-2"></i>WiFi Surveys
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
-                <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
-                <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
-              </a></li>
-              <li><a class="dropdown-item" href="#packages">
-                <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
-              </a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
-                <i class="bi bi-code-slash me-2"></i>Web Design
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('home') }}#applications">
-                <i class="bi bi-lightning me-2"></i>Custom Apps
-              </a></li>
-            </ul>
-          </li>
 
-          <!-- Blog Dropdown (Newly Added) -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
-              <i class="bi bi-book me-1"></i> Blog
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{{ url_for('blog') }}">
-                <i class="bi bi-house me-2"></i>Blog Home
-              </a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
-                🛰️ How Starlink Works: Technical Deep-Dive
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
-                🔐 Preventing AD Lockouts with Ansible
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
-                💾 Aruba Switch Backups with Ansible
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
-                🔍 100G Optic Issues on Aruba 8360
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
-                <i class="bi bi-terminal me-1"></i> ClearPass API Guide
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
-                <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
-              </a></li>
-              <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
-                <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
-              </a></li>
-            </ul>
-          </li>
+        <!-- About -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('about') }}" style="color: #1a1a1a;">
+            <i class="bi bi-people me-1"></i> About
+          </a>
+        </li>
 
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('rural_broadband') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🌾</span>Rural Broadband
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
 
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
+              🛰️ How Starlink Works: Technical Deep-Dive
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
 
-          <!-- Contact -->
-          <li class="nav-item">
-            <a class="btn btn-accent ms-2" href="#contact">
-              <i class="bi bi-telephone me-1"></i> Contact
-            </a>
-          </li>
-        </ul>
-      </div>
+        <!-- Social & Contact -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-person-lines-fill me-1"></i> Connect
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="tel:+441553824408">
+              <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+            </a></li>
+            <li><a class="dropdown-item" href="mailto:info@sprintwave.co.uk">
+              <i class="bi bi-envelope me-2"></i>Email Us
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://www.linkedin.com/company/sprintwave/" target="_blank">
+              <i class="bi bi-linkedin me-2" style="color: #0077b5;"></i>LinkedIn
+            </a></li>
+            <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=61579592293313" target="_blank">
+              <i class="bi bi-facebook me-2" style="color: #1877f2;"></i>Facebook
+            </a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
+
 
 <!-- Hero Section -->
 <section class="text-center" id="vanta-bg">

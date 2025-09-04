@@ -50,12 +50,12 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #ffffff;">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
       <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
     </a>
-    <button class="navbar-toggler text-dark" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -67,13 +67,20 @@
           </a>
         </li>
 
+        <!-- About -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('about') }}" style="color: #1a1a1a;">
+            <i class="bi bi-people me-1"></i> About
+          </a>
+        </li>
+
         <!-- Core Services -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
             <i class="bi bi-gear me-1"></i> Services
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ url_for('networkconsulting') }}">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
               <i class="bi bi-diagram-3 me-2"></i>Network Consulting
             </a></li>
             <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
@@ -81,6 +88,9 @@
             </a></li>
             <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
               <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('rural_broadband') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🌾</span>Rural Broadband
             </a></li>
             <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
               <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
@@ -139,6 +149,7 @@
     </div>
   </div>
 </nav>
+
 
 <!-- Main Content -->
 {% block content %}{% endblock %}

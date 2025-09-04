@@ -36,6 +36,14 @@ def wireless_surveys():
 def network_consulting():  # This is the function name
     return render_template('networkconsulting.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/rural-broadband')
+def rural_broadband():
+    return render_template('rural-broadband.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Generate sitemap XML for Google Search Console"""
@@ -52,7 +60,19 @@ def sitemap():
         <priority>1.0</priority>
     </url>
     <url>
+        <loc>https://www.sprintwave.co.uk/about</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://www.sprintwave.co.uk/starlink</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/rural-broadband</loc>
         <lastmod>{current_date}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<!-- SEO POWERHOUSE META TAGS -->
+<title>About Sprintwave | Network Consulting Specialists | Kings Lynn, Norfolk | Joseph Scott CCNP</title>
+<meta name="description" content="Meet Sprintwave's expert team of CCIE & CCNP certified network consultants based in Kings Lynn, Norfolk. Led by founder Joseph Scott with military communications background, serving nationwide customers.">
+<meta name="keywords" content="About Sprintwave, Network Consultants Kings Lynn, Joseph Scott CCNP, Military Communications, CCIE Contractors, Norfolk Network Specialists, Enterprise Network Team">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- LOCAL SEO -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Kings Lynn, Norfolk, UK">
+<meta name="geo.position" content="52.7554;0.3963">
+<meta name="ICBM" content="52.7554, 0.3963">
+
+<!-- SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="About Sprintwave | Expert Network Consulting Team | Kings Lynn, Norfolk">
+<meta property="og:description" content="Meet our team of CCIE & CCNP certified network consultants led by founder Joseph Scott. Based in Kings Lynn, serving nationwide customers with military-grade precision.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/about">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/about-sprintwave-team.jpg">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://www.sprintwave.co.uk/about">
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+<meta name="theme-color" content="#007f73">
+
+<!-- Bootstrap & Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #e6f0ef;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+
+  .navbar {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .navbar-brand {
+    color: #007f73 !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .accent {
+    color: #007f73;
+  }
+
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,127,115,0.3);
+  }
+
+  .btn-military {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    color: #fff;
+    border-radius: 999px;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-military:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(30,58,138,0.4);
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, #1e3a8a 0%, #007f73 100%);
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+    opacity: 0.3;
+  }
+
+  .founder-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(0,127,115,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .founder-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1e3a8a, #007f73);
+  }
+
+  .founder-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    border-color: rgba(0,127,115,0.3);
+  }
+
+  .team-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid rgba(0,127,115,0.1);
+  }
+
+  .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    border-color: rgba(0,127,115,0.2);
+  }
+
+  .cert-badge {
+    background: linear-gradient(135deg, #007f73, #005f57);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+    display: inline-block;
+    box-shadow: 0 2px 10px rgba(0,127,115,0.3);
+  }
+
+  .military-badge {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+    display: inline-block;
+    box-shadow: 0 2px 10px rgba(30,58,138,0.3);
+  }
+
+  .stats-card {
+    background: linear-gradient(135deg, #007f73, #005f57);
+    color: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,127,115,0.3);
+  }
+
+  .stats-card h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .values-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    border-left: 4px solid #007f73;
+    transition: all 0.3s ease;
+  }
+
+  .values-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .location-section {
+    background: linear-gradient(135deg, #f8fafc, #ffffff);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,127,115,0.1);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: #1a1a1a;
+  }
+  
+  .social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #1a1a1a;
+  }
+  
+  .social-link.linkedin {
+    border-color: #0077b5;
+  }
+  
+  .social-link.linkedin:hover {
+    background: #0077b5;
+    color: #ffffff;
+  }
+  
+  .social-link.facebook {
+    border-color: #1877f2;
+  }
+  
+  .social-link.facebook:hover {
+    background: #1877f2;
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 60px 0 40px;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #ffffff;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- About -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('about') }}" style="color: #1a1a1a;">
+            <i class="bi bi-people me-1"></i> About
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('rural_broadband') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🌾</span>Rural Broadband
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
+              🛰️ How Starlink Works: Technical Deep-Dive
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Social & Contact -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-person-lines-fill me-1"></i> Connect
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="tel:+441553824408">
+              <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+            </a></li>
+            <li><a class="dropdown-item" href="mailto:info@sprintwave.co.uk">
+              <i class="bi bi-envelope me-2"></i>Email Us
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://www.linkedin.com/company/sprintwave/" target="_blank">
+              <i class="bi bi-linkedin me-2" style="color: #0077b5;"></i>LinkedIn
+            </a></li>
+            <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=61579592293313" target="_blank">
+              <i class="bi bi-facebook me-2" style="color: #1877f2;"></i>Facebook
+            </a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-4">
+          About <span style="color: #00d4aa;">Sprintwave</span>
+        </h1>
+        <p class="lead mb-4">
+          Elite network consulting specialists based in Kings Lynn, Norfolk, delivering enterprise-grade solutions to customers nationwide and globally with precision and expertise.
+        </p>
+        
+        <div class="mb-4">
+          <span class="cert-badge">📡 Communications Expert</span>
+          <span class="cert-badge">CCIE Team</span>
+          <span class="cert-badge">CCNP Certified</span>
+          <span class="cert-badge">Aruba Professionals</span>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3">
+          <a class="btn btn-military" href="#founder">
+            <i class="bi bi-person-badge me-2"></i>Meet Our Founder
+          </a>
+          <a class="btn btn-accent" href="#team">
+            <i class="bi bi-people me-2"></i>Our Expert Team
+          </a>
+        </div>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="stats-card">
+              <h3>8+</h3>
+              <p class="mb-0">Years Experience</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stats-card">
+              <h3>50+</h3>
+              <p class="mb-0">Major Projects</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stats-card">
+              <h3>100%</h3>
+              <p class="mb-0">Client Satisfaction</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stats-card">
+              <h3>24/7</h3>
+              <p class="mb-0">Support Available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founder Section -->
+<section id="founder" class="py-5">
+  <div class="container">
+    <div class="section-header">
+      <h2>Meet Our <span class="accent">Founder</span></h2>
+      <p class="lead text-muted">Technical excellence meets enterprise networking innovation</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="founder-card">
+          <div class="row align-items-center">
+            <div class="col-lg-4 text-center mb-4 mb-lg-0">
+              <div class="position-relative">
+                <img src="{{ url_for('static', filename='founder.png') }}" alt="Joseph Scott - Founder & Lead Network Consultant" class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover; border: 4px solid #007f73;">
+              </div>
+              <h4 class="mt-3 mb-1">Joseph Scott</h4>
+              <p class="accent fw-semibold">Founder & Lead Consultant</p>
+            </div>
+            
+            <div class="col-lg-8">
+              <h5 class="accent mb-3">📡 Communications Systems Background</h5>
+              <p class="mb-3">
+                Joseph founded Sprintwave with extensive experience in critical communications systems and enterprise networking. His background in complex, mission-critical infrastructure instilled the reliability, precision, and security-first mindset that defines our approach to every project.
+              </p>
+              
+              <h5 class="accent mb-3">🏆 Industry Recognition</h5>
+              <p class="mb-3">
+                Having worked for and on behalf of some of the biggest networks in the UK, Joseph has built a reputation for delivering complex, mission-critical infrastructure projects. His experience spans from NHS foundation trusts to billion-pound manufacturing companies.
+              </p>
+
+              <!-- Certifications -->
+              <div class="mb-3">
+                <span class="cert-badge">CCNP Enterprise</span>
+                <span class="cert-badge">CCNP Security</span>
+                <span class="cert-badge">CCNP ISE</span>
+                <span class="cert-badge">Aruba Certified Professional</span>
+                <span class="cert-badge">DEVNET Associate</span>
+                <span class="cert-badge">Cisco Firejumper</span>
+                <span class="cert-badge">Communications Specialist</span>
+              </div>
+
+              <blockquote class="blockquote border-start border-4 ps-3" style="border-color: #007f73 !important;">
+                <p class="mb-2 fst-italic">"Every network we design reflects our commitment to excellence - built for reliability, secured by design, and delivered with precision. We don't just deploy infrastructure; we engineer solutions that protect and empower organizations."</p>
+                <footer class="blockquote-footer mt-2">Joseph Scott, <cite title="Founder">Founder & Lead Consultant</cite></footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Expert Team Section -->
+<section id="team" class="py-5" style="background: #ffffff;">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Expert <span class="accent">Team</span></h2>
+      <p class="lead text-muted">Elite contractors with CCIE, CCNP, and Aruba certifications</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+      <div class="col-lg-4 col-md-6">
+        <div class="team-card">
+          <div class="text-center mb-3">
+            <i class="bi bi-award" style="font-size: 3rem; color: #1e3a8a;"></i>
+          </div>
+          <h4 class="accent mb-3">CCIE Specialists</h4>
+          <p class="mb-3">Our team includes Cisco Certified Internetwork Experts (CCIE) with deep expertise in:</p>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Enterprise Infrastructure</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Security Architecture</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Data Center Technologies</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Collaboration Systems</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="team-card">
+          <div class="text-center mb-3">
+            <i class="bi bi-shield-check" style="font-size: 3rem; color: #007f73;"></i>
+          </div>
+          <h4 class="accent mb-3">CCNP Professionals</h4>
+          <p class="mb-3">Multiple CCNP certified professionals across specialized tracks:</p>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Enterprise Networking</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Security Implementation</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Wireless Solutions</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Service Provider Technologies</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="team-card">
+          <div class="text-center mb-3">
+            <i class="bi bi-wifi" style="font-size: 3rem; color: #ff6b35;"></i>
+          </div>
+          <h4 class="accent mb-3">Aruba Specialists</h4>
+          <p class="mb-3">Certified Aruba professionals with expertise in:</p>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Aruba CX Switching</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>ClearPass Authentication</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>AirWave Management</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i>Campus Network Design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="team-card text-center">
+          <h4 class="accent mb-3">🌍 Global Reach, Local Expertise</h4>
+          <p class="mb-3">
+            Our contractor network spans the UK and beyond, allowing us to deploy expert teams anywhere in the world while maintaining our local Kings Lynn roots. Every contractor is hand-picked for their technical excellence and shares our commitment to military-grade precision.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-2">
+            <span class="cert-badge">UK-Wide Coverage</span>
+            <span class="cert-badge">Global Deployment</span>
+            <span class="cert-badge">24/7 Support</span>
+            <span class="cert-badge">Vetted Professionals</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Values Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our <span class="accent">Values</span></h2>
+      <p class="lead text-muted">Professional principles driving enterprise excellence</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="values-card">
+          <h5 class="accent mb-2">🎯 Precision & Excellence</h5>
+          <p class="mb-0">Every deployment reflects our commitment to quality - planned with precision, executed flawlessly, and delivered to the highest standards. We don't accept "good enough" when excellence is achievable.</p>
+        </div>
+
+        <div class="values-card">
+          <h5 class="accent mb-2">🔒 Security by Design</h5>
+          <p class="mb-0">Security isn't an afterthought - it's built into every solution from the ground up. Our communications systems background ensures your network is protected against evolving threats.</p>
+        </div>
+
+        <div class="values-card">
+          <h5 class="accent mb-2">⚡ Enterprise-Grade Reliability</h5>
+          <p class="mb-0">When systems fail, organizations suffer. We engineer solutions with the reliability and redundancy required for critical business operations, backed by comprehensive support.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="values-card">
+          <h5 class="accent mb-2">🤝 Partnership Approach</h5>
+          <p class="mb-0">We're not just vendors - we're strategic partners invested in your success. Our long-term relationships with major organizations prove our commitment to ongoing excellence.</p>
+        </div>
+
+        <div class="values-card">
+          <h5 class="accent mb-2">🎓 Continuous Innovation</h5>
+          <p class="mb-0">Technology evolves rapidly. Our team maintains cutting-edge certifications and develops innovative automation solutions to keep your infrastructure ahead of the curve.</p>
+        </div>
+
+        <div class="values-card">
+          <h5 class="accent mb-2">🌍 Global Standards, Local Care</h5>
+          <p class="mb-0">Based in Norfolk but serving globally, we combine international best practices with personal, local service. Every client receives the attention they deserve.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Location & Coverage Section -->
+<section class="py-5" style="background: #ffffff;">
+  <div class="container">
+    <div class="section-header">
+      <h2>Based in <span class="accent">Kings Lynn</span>, Serving the World</h2>
+      <p class="lead text-muted">Norfolk roots, global reach</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="location-section">
+          <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+              <h4 class="accent mb-3">🏡 Our Norfolk Heritage</h4>
+              <p class="mb-3">
+                Proudly based in Kings Lynn, Norfolk, Sprintwave combines the reliability and community values of East Anglia with world-class technical expertise. Our local roots keep us grounded while our global vision drives innovation.
+              </p>
+              
+              <h5 class="accent mb-3">📍 Coverage Areas</h5>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-geo-alt-fill accent me-2"></i>Norfolk & East Anglia</li>
+                    <li class="mb-2"><i class="bi bi-geo-alt-fill accent me-2"></i>Greater London</li>
+                    <li class="mb-2"><i class="bi bi-geo-alt-fill accent me-2"></i>UK-Wide</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-globe accent me-2"></i>European Union</li>
+                    <li class="mb-2"><i class="bi bi-globe accent me-2"></i>North America</li>
+                    <li class="mb-2"><i class="bi bi-globe accent me-2"></i>Global Projects</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-6">
+              <div class="team-card">
+                <h5 class="accent mb-3">🌐 Global Delivery Model</h5>
+                <p class="mb-3">Our hybrid approach combines local expertise with global capabilities:</p>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i><strong>Remote Design & Planning</strong> - Initial assessments and architecture design</li>
+                  <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i><strong>On-Site Implementation</strong> - Physical deployment and configuration</li>
+                  <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i><strong>Hybrid Support</strong> - Ongoing monitoring and maintenance</li>
+                  <li class="mb-2"><i class="bi bi-check-circle-fill accent me-2"></i><strong>24/7 Emergency Response</strong> - Critical issue resolution</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #1e3a8a, #007f73); color: #fff;">
+  <div class="container text-center">
+    <h2 class="mb-4">Ready to Work with Elite Network Professionals?</h2>
+    <p class="lead mb-5">Experience the Sprintwave difference - where technical precision meets enterprise networking excellence.</p>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="team-card" style="background: rgba(255,255,255,0.95);">
+          <h4 class="accent mb-3">Get Started with Sprintwave</h4>
+          <p class="mb-4" style="color: #1a1a1a;">
+            <span style="color: #007f73; font-weight: 600;">✅ Free initial consultation</span><br>
+            <span style="color: #007f73; font-weight: 600;">✅ Enterprise-grade security approach</span><br>
+            <span style="color: #007f73; font-weight: 600;">✅ CCIE & CCNP certified team</span><br>
+            <span style="color: #007f73; font-weight: 600;">✅ Global deployment capabilities</span>
+          </p>
+          
+          <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+            <a class="btn btn-military" href="tel:+441553824408">
+              <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+            </a>
+            <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk?subject=About Sprintwave Enquiry">
+              <i class="bi bi-envelope me-2"></i>Email Our Team
+            </a>
+          </div>
+          
+          <!-- Social Media Links -->
+          <div class="d-flex justify-content-center gap-3 mb-3">
+            <a href="https://www.linkedin.com/company/sprintwave/" target="_blank" class="btn btn-outline-primary btn-sm">
+              <i class="bi bi-linkedin me-1"></i>LinkedIn
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61579592293313" target="_blank" class="btn btn-outline-primary btn-sm">
+              <i class="bi bi-facebook me-1"></i>Facebook
+            </a>
+          </div>
+          
+          <div class="mt-4 text-muted">
+            <small>
+              <i class="bi bi-geo-alt me-1"></i>
+              Kings Lynn, Norfolk | Serving UK & Global Customers
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
