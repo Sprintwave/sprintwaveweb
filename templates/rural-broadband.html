@@ -93,9 +93,9 @@
     box-shadow: 0 8px 25px rgba(16,185,129,0.4);
   }
 
+  /* Animated Rural Hero Section */
   .hero-section {
-    background: linear-gradient(135deg, rgba(16,185,129,0.9), rgba(5,150,105,0.9)), 
-                url('{{ url_for("static", filename="background.png") }}') center/cover;
+    background: linear-gradient(135deg, rgba(16,185,129,0.9), rgba(5,150,105,0.9));
     padding: 120px 0 100px;
     position: relative;
     overflow: hidden;
@@ -103,20 +103,224 @@
     min-height: 600px;
   }
 
+  /* Make background animations MUCH more visible */
   .hero-section::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(16,185,129,0.85), rgba(5,150,105,0.85));
+    width: 100%;
+    height: 100%;
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.2) 0px,
+        rgba(255,255,255,0.2) 4px,
+        transparent 4px,
+        transparent 30px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(255,255,255,0.15) 0px,
+        rgba(255,255,255,0.15) 3px,
+        transparent 3px,
+        transparent 25px
+      );
+    animation: wheatSway 5s ease-in-out infinite;
     z-index: 1;
   }
 
-  .hero-section .container {
-    position: relative;
+  /* Super visible floating particles */
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4) 5px, transparent 5px),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 4px, transparent 4px),
+      radial-gradient(circle at 50% 40%, rgba(255,255,255,0.35) 4.5px, transparent 4.5px),
+      radial-gradient(circle at 30% 80%, rgba(255,255,255,0.25) 3.5px, transparent 3.5px),
+      radial-gradient(circle at 70% 20%, rgba(255,255,255,0.3) 4px, transparent 4px);
+    background-size: 150px 150px, 120px 120px, 180px 180px, 100px 100px, 140px 140px;
+    animation: ruralFloat 8s ease-in-out infinite;
+    z-index: 1;
+  }
+
+  /* SUPER VISIBLE farm icons */
+  .farm-float {
+    position: absolute;
+    color: rgba(255,255,255,0.8);
+    font-size: 5rem;
+    animation: farmFloat 6s ease-in-out infinite;
     z-index: 2;
+    text-shadow: 0 0 30px rgba(255,255,255,0.6);
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+  }
+
+  .farm-float:nth-child(1) { 
+    top: 20%; 
+    left: 75%; 
+    animation-delay: 0s;
+    font-size: 4rem;
+  }
+  .farm-float:nth-child(2) { 
+    top: 60%; 
+    left: 85%; 
+    animation-delay: 1s;
+    font-size: 4.5rem;
+  }
+  .farm-float:nth-child(3) { 
+    top: 35%; 
+    left: 80%; 
+    animation-delay: 2s;
+    font-size: 5rem;
+  }
+  .farm-float:nth-child(4) { 
+    top: 70%; 
+    left: 75%; 
+    animation-delay: 3s;
+    font-size: 4.2rem;
+  }
+  .farm-float:nth-child(5) { 
+    top: 15%; 
+    left: 85%; 
+    animation-delay: 4s;
+    font-size: 4.8rem;
+  }
+
+  @keyframes farmFloat {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg) scale(1); 
+      opacity: 0.8; 
+    }
+    50% { 
+      transform: translateY(-50px) rotate(15deg) scale(1.2); 
+      opacity: 1; 
+    }
+  }
+
+  @keyframes wheatSway {
+    0%, 100% { 
+      transform: translateX(0px) translateY(0px) rotate(0deg); 
+      opacity: 1;
+    }
+    25% { 
+      transform: translateX(20px) translateY(-10px) rotate(2deg); 
+      opacity: 0.8;
+    }
+    50% { 
+      transform: translateX(-15px) translateY(-20px) rotate(-1deg); 
+      opacity: 0.9;
+    }
+    75% { 
+      transform: translateX(18px) translateY(-8px) rotate(1.5deg); 
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes ruralFloat {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) scale(1); 
+    }
+    25% { 
+      transform: translateY(-40px) translateX(20px) scale(1.3); 
+    }
+    50% { 
+      transform: translateY(-20px) translateX(-25px) scale(0.7); 
+    }
+    75% { 
+      transform: translateY(-45px) translateX(15px) scale(1.1); 
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Floating farm elements */
+  .farm-float {
+    position: absolute;
+    color: rgba(255,255,255,0.3);
+    font-size: 3rem;
+    animation: farmFloat 10s ease-in-out infinite;
+    z-index: 2;
+    text-shadow: 0 0 15px rgba(255,255,255,0.2);
+  }
+
+  .farm-float:nth-child(1) { 
+    top: 20%; 
+    left: 80%; 
+    animation-delay: 0s;
+    font-size: 2.5rem;
+  }
+  .farm-float:nth-child(2) { 
+    top: 60%; 
+    left: 85%; 
+    animation-delay: 2s;
+    font-size: 2rem;
+  }
+  .farm-float:nth-child(3) { 
+    top: 35%; 
+    left: 75%; 
+    animation-delay: 4s;
+    font-size: 3.5rem;
+  }
+  .farm-float:nth-child(4) { 
+    top: 70%; 
+    left: 90%; 
+    animation-delay: 6s;
+    font-size: 2.2rem;
+  }
+  .farm-float:nth-child(5) { 
+    top: 15%; 
+    left: 70%; 
+    animation-delay: 8s;
+    font-size: 2.8rem;
+  }
+
+  @keyframes farmFloat {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg) scale(1); 
+      opacity: 0.3; 
+    }
+    50% { 
+      transform: translateY(-30px) rotate(10deg) scale(1.1); 
+      opacity: 0.6; 
+    }
+  }
+
+  /* Pulsing rural badges */
+  .rural-badge {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+    display: inline-block;
+    box-shadow: 0 2px 10px rgba(16,185,129,0.3);
+    animation: ruralBadgePulse 3s ease-in-out infinite;
+  }
+
+  .rural-badge:nth-child(1) { animation-delay: 0s; }
+  .rural-badge:nth-child(2) { animation-delay: 0.5s; }
+  .rural-badge:nth-child(3) { animation-delay: 1s; }
+  .rural-badge:nth-child(4) { animation-delay: 1.5s; }
+
+  @keyframes ruralBadgePulse {
+    0%, 100% { 
+      transform: scale(1); 
+      box-shadow: 0 2px 10px rgba(16,185,129,0.3); 
+    }
+    50% { 
+      transform: scale(1.05); 
+      box-shadow: 0 4px 20px rgba(16,185,129,0.5); 
+    }
   }
 
   .service-card {
@@ -135,18 +339,6 @@
     border-color: rgba(0,127,115,0.3);
   }
 
-  .rural-badge {
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin: 0.25rem;
-    display: inline-block;
-    box-shadow: 0 2px 10px rgba(16,185,129,0.3);
-  }
-
   .section-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -163,6 +355,16 @@
       padding: 80px 0 60px;
       min-height: 500px;
     }
+    
+    .farm-float {
+      font-size: 2rem;
+    }
+    
+    .farm-float:nth-child(1) { font-size: 1.8rem; }
+    .farm-float:nth-child(2) { font-size: 1.5rem; }
+    .farm-float:nth-child(3) { font-size: 2.5rem; }
+    .farm-float:nth-child(4) { font-size: 1.7rem; }
+    .farm-float:nth-child(5) { font-size: 2rem; }
     
     .section-header h2 {
       font-size: 2rem;
@@ -294,7 +496,14 @@
 
 <!-- Hero Section -->
 <section class="hero-section">
-  <div class="container">
+  <!-- Floating Farm Icons - THESE NEED TO BE ADDED! -->
+  <div class="farm-float">🌾</div>
+  <div class="farm-float">🚜</div>
+  <div class="farm-float">🏡</div>
+  <div class="farm-float">📡</div>
+  <div class="farm-float">🐄</div>
+
+  <div class="container hero-content">
     <div class="row align-items-center">
       <div class="col-lg-6">
         <h1 class="display-4 fw-bold mb-4">
