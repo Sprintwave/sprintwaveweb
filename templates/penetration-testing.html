@@ -1,0 +1,723 @@
+<!-- Save this as templates/penetration-testing.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<!-- SEO POWERHOUSE META TAGS -->
+<title>Penetration Testing UK | Cyber Security Assessments | Vulnerability Testing | Sprintwave</title>
+<meta name="description" content="Professional penetration testing services across the UK. Vulnerability assessments, web application testing, cloud security, and infrastructure pen testing. Expert cybersecurity consultants serving nationwide.">
+<meta name="keywords" content="Penetration Testing UK, Cyber Security UK, Vulnerability Assessment UK, Security Testing UK, Ethical Hacking UK, Web Application Testing UK, Pen Testing Services UK">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- LOCAL SEO -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Norfolk, UK">
+<meta name="geo.position" content="52.6309;1.2974">
+<meta name="ICBM" content="52.6309, 1.2974">
+
+<!-- SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="Penetration Testing UK | Professional Cyber Security Assessments">
+<meta property="og:description" content="Comprehensive penetration testing and vulnerability assessments across the UK. Protect your infrastructure with expert security testing from qualified cyber security professionals.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/penetration-testing">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/penetration-testing-norfolk.jpg">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://www.sprintwave.co.uk/penetration-testing">
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+<meta name="theme-color" content="#dc2626">
+
+<!-- Bootstrap & Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #f8fafc;
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
+
+  .navbar {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .accent {
+    color: #dc2626;
+  }
+
+  .btn-accent {
+    background-color: #007f73;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-accent:hover {
+    background-color: #005f57;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,127,115,0.3);
+  }
+
+  .btn-security {
+    background: linear-gradient(45deg, #dc2626, #b91c1c);
+    color: #fff;
+    border-radius: 999px;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-security:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(220,38,38,0.4);
+  }
+
+  /* Update the hero-section CSS with more visible animations */
+  .hero-section {
+    background: linear-gradient(135deg, rgba(220,38,38,0.95), rgba(185,28,28,0.95));
+    padding: 120px 0 100px;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  /* More visible animated background particles */
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255,255,255,0.3) 3px, transparent 3px),
+      radial-gradient(circle at 75% 75%, rgba(255,255,255,0.2) 2px, transparent 2px),
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.25) 2.5px, transparent 2.5px),
+      radial-gradient(circle at 15% 65%, rgba(255,255,255,0.15) 1.5px, transparent 1.5px),
+      radial-gradient(circle at 85% 35%, rgba(255,255,255,0.2) 2px, transparent 2px);
+    background-size: 80px 80px, 60px 60px, 100px 100px, 40px 40px, 70px 70px;
+    animation: particleFloat 12s ease-in-out infinite;
+    z-index: 1;
+  }
+
+  /* Matrix-style scanning effect */
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 1px,
+      rgba(255,255,255,0.08) 1px,
+      rgba(255,255,255,0.08) 3px,
+      transparent 3px,
+      transparent 20px,
+      rgba(255,255,255,0.12) 20px,
+      rgba(255,255,255,0.12) 21px
+    );
+    animation: matrixScan 8s linear infinite;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+  }
+
+  @keyframes particleFloat {
+    0% { transform: translateY(0px) translateX(0px) scale(1); }
+    25% { transform: translateY(-30px) translateX(20px) scale(1.1); }
+    50% { transform: translateY(-15px) translateX(-25px) scale(0.9); }
+    75% { transform: translateY(-40px) translateX(15px) scale(1.05); }
+    100% { transform: translateY(0px) translateX(0px) scale(1); }
+  }
+
+  @keyframes matrixScan {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(50%) translateY(50%) rotate(45deg); }
+  }
+
+  /* Much more visible floating security icons */
+  .security-float {
+    position: absolute;
+    color: rgba(255,255,255,0.4);
+    font-size: 3.5rem;
+    animation: securityFloat 6s ease-in-out infinite;
+    z-index: 2;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+  }
+
+  .security-float:nth-child(1) { 
+    top: 15%; 
+    left: 75%; 
+    animation-delay: 0s;
+    font-size: 4rem;
+  }
+  .security-float:nth-child(2) { 
+    top: 55%; 
+    left: 80%; 
+    animation-delay: 1.5s;
+    font-size: 3rem;
+  }
+  .security-float:nth-child(3) { 
+    top: 25%; 
+    left: 85%; 
+    animation-delay: 3s;
+    font-size: 3.5rem;
+  }
+  .security-float:nth-child(4) { 
+    top: 65%; 
+    left: 70%; 
+    animation-delay: 4.5s;
+    font-size: 2.5rem;
+  }
+
+  @keyframes securityFloat {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg) scale(1); 
+      opacity: 0.4; 
+    }
+    50% { 
+      transform: translateY(-40px) rotate(180deg) scale(1.2); 
+      opacity: 0.7; 
+    }
+  }
+
+  /* Add pulsing effect to security badges */
+  .security-badge {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+    display: inline-block;
+    box-shadow: 0 2px 10px rgba(220,38,38,0.3);
+    animation: badgePulse 3s ease-in-out infinite;
+  }
+
+  .security-badge:nth-child(1) { animation-delay: 0s; }
+  .security-badge:nth-child(2) { animation-delay: 0.5s; }
+  .security-badge:nth-child(3) { animation-delay: 1s; }
+  .security-badge:nth-child(4) { animation-delay: 1.5s; }
+
+  @keyframes badgePulse {
+    0%, 100% { 
+      transform: scale(1); 
+      box-shadow: 0 2px 10px rgba(220,38,38,0.3); 
+    }
+    50% { 
+      transform: scale(1.05); 
+      box-shadow: 0 4px 20px rgba(220,38,38,0.5); 
+    }
+  }
+
+  /* Add hover animations to service cards */
+  .security-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    transition: all 0.4s ease;
+    border: 2px solid rgba(220,38,38,0.1);
+    height: 100%;
+  }
+
+  .security-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(220,38,38,0.2);
+    border-color: rgba(220,38,38,0.4);
+  }
+
+  .threat-icon {
+    font-size: 3rem;
+    color: #dc2626;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .security-card:hover .threat-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: #b91c1c;
+  }
+
+  /* Add data matrix background pattern */
+  .hero-section {
+    background: 
+      linear-gradient(135deg, rgba(220,38,38,0.95), rgba(185,28,28,0.95)),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.02) 2px,
+        rgba(255,255,255,0.02) 4px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.02) 2px,
+        rgba(255,255,255,0.02) 4px
+      );
+    background-size: auto, 20px 20px, 20px 20px;
+    padding: 120px 0 100px;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  /* Mobile responsiveness for animations */
+  @media (max-width: 768px) {
+    .security-float {
+      font-size: 2.5rem;
+    }
+    
+    .security-float:nth-child(1) { font-size: 3rem; }
+    .security-float:nth-child(2) { font-size: 2rem; }
+    .security-float:nth-child(3) { font-size: 2.5rem; }
+    .security-float:nth-child(4) { font-size: 2rem; }
+    
+    .hero-section::before {
+      background-size: 60px 60px, 40px 40px, 80px 80px, 30px 30px, 50px 50px;
+    }
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .process-step {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 2px solid rgba(220,38,38,0.1);
+    margin-bottom: 2rem;
+  }
+
+  .step-number {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0 auto 1rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
+    </a>
+    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <!-- Home Button -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
+            <i class="bi bi-house me-1"></i> Home
+          </a>
+        </li>
+
+        <!-- About -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="{{ url_for('about') }}" style="color: #1a1a1a;">
+            <i class="bi bi-people me-1"></i> About
+          </a>
+        </li>
+
+        <!-- Core Services -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-gear me-1"></i> Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
+              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
+              <i class="bi bi-wifi me-2"></i>WiFi Surveys
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('rural_broadband') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🌾</span>Rural Broadband
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
+              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('penetration_testing') }}">
+              <i class="bi bi-shield-exclamation me-2"></i>Penetration Testing
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
+              <i class="bi bi-code-slash me-2"></i>Web Design
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Blog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
+            <i class="bi bi-book me-1"></i> Blog
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
+              <i class="bi bi-house me-2"></i>Blog Home
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
+              🛰️ How Starlink Works: Technical Deep-Dive
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
+              🔐 Preventing AD Lockouts with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
+              💾 Aruba Switch Backups with Ansible
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
+              🔍 100G Optic Issues on Aruba 8360
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
+              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
+              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
+              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
+            <i class="bi bi-person-lines-fill me-1"></i> Connect
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="tel:+441553824408">
+              <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+            </a></li>
+            <li><a class="dropdown-item" href="mailto:info@sprintwave.co.uk">
+              <i class="bi bi-envelope me-2"></i>Email Us
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://www.linkedin.com/in/joseph-scott-sprintwave/" target="_blank">
+              <i class="bi bi-linkedin me-2" style="color: #0077b5;"></i>LinkedIn
+            </a></li>
+            <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=61579592293313" target="_blank">
+              <i class="bi bi-facebook me-2" style="color: #1877f2;"></i>Facebook
+            </a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <!-- Floating Security Icons -->
+  <div class="security-float"><i class="bi bi-shield-lock"></i></div>
+  <div class="security-float"><i class="bi bi-bug"></i></div>
+  <div class="security-float"><i class="bi bi-eye"></i></div>
+  <div class="security-float"><i class="bi bi-search"></i></div>
+
+  <div class="container hero-content">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h1 class="display-4 fw-bold mb-4">
+          Penetration Testing <span style="color: #fbbf24;">UK</span>
+        </h1>
+        <p class="lead mb-4">
+          Professional cybersecurity assessments to identify vulnerabilities before attackers do. Comprehensive penetration testing services delivered by senior security professionals across the UK.
+        </p>
+        
+        <div class="mb-4">
+          <span class="security-badge">🛡️ Senior Pen Tester</span>
+          <span class="security-badge">🔍 Vulnerability Assessments</span>
+          <span class="security-badge">☁️ Cloud Security</span>
+          <span class="security-badge">🌐 Web App Testing</span>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3">
+          <a class="btn btn-security" href="#contact">
+            <i class="bi bi-shield-check me-2"></i>Security Assessment
+          </a>
+          <a class="btn btn-accent" href="#services">
+            <i class="bi bi-info-circle me-2"></i>Our Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-5">
+  <div class="container">
+    <div class="section-header">
+      <h2>Penetration Testing <span class="accent">Services</span></h2>
+      <p class="lead text-muted">Comprehensive security assessments by experienced cybersecurity professionals</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="security-card">
+          <div class="threat-icon">
+            <i class="bi bi-search"></i>
+          </div>
+          <h3 class="accent mb-3">Vulnerability Assessments</h3>
+          <p class="mb-4">Comprehensive security scanning and analysis to identify potential weaknesses in your infrastructure and applications.</p>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Automated vulnerability scanning</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Manual security assessment</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Risk prioritization</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Detailed remediation guidance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="security-card">
+          <div class="threat-icon">
+            <i class="bi bi-diagram-3"></i>
+          </div>
+          <h3 class="accent mb-3">Infrastructure Testing</h3>
+          <p class="mb-4">Internal and external network penetration testing to assess your infrastructure security posture.</p>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>External network assessment</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Internal network testing</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Wireless security testing</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Network segmentation review</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="security-card">
+          <div class="threat-icon">
+            <i class="bi bi-cloud-check"></i>
+          </div>
+          <h3 class="accent mb-3">Cloud Infrastructure</h3>
+          <p class="mb-4">Security assessment of cloud environments including AWS, Azure, and Google Cloud Platform configurations.</p>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Cloud configuration review</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>IAM policy assessment</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Storage security analysis</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Container security testing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="security-card">
+          <div class="threat-icon">
+            <i class="bi bi-globe"></i>
+          </div>
+          <h3 class="accent mb-3">Web Application Testing</h3>
+          <p class="mb-4">Comprehensive web application security testing following OWASP Top 10 and industry best practices.</p>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>OWASP Top 10 testing</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Authentication bypass testing</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>SQL injection assessment</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>XSS vulnerability testing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="security-card">
+          <div class="threat-icon">
+            <i class="bi bi-gear"></i>
+          </div>
+          <h3 class="accent mb-3">Configuration & Build Reviews</h3>
+          <p class="mb-4">Security-focused review of system configurations, build processes, and deployment procedures to ensure security best practices.</p>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Security configuration review</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Hardening recommendations</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Compliance gap analysis</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>CI/CD pipeline security</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Infrastructure as Code review</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Security policy assessment</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-5" style="background: #f8fafc;">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our <span class="accent">Process</span></h2>
+      <p class="lead text-muted">Structured approach to comprehensive security assessment</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h5 class="accent">Scoping & Planning</h5>
+          <p class="mb-0">Define assessment scope, objectives, and testing methodology.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h5 class="accent">Reconnaissance</h5>
+          <p class="mb-0">Information gathering and attack surface mapping.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h5 class="accent">Vulnerability Testing</h5>
+          <p class="mb-0">Active testing and vulnerability exploitation attempts.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h5 class="accent">Reporting</h5>
+          <p class="mb-0">Detailed findings, risk assessment, and remediation recommendations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5" style="background: #ffffff;">
+  <div class="container text-center">
+    <h2 class="mb-4">Secure Your Infrastructure Today</h2>
+    <p class="text-muted mb-4">Professional penetration testing by experienced cybersecurity specialists. Protecting organizations across the UK before attackers find vulnerabilities.</p>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="security-card">
+          <h4 class="accent mb-3">Get Your Security Assessment</h4>
+          <p class="mb-4">
+            ✅ Senior penetration tester<br>
+            ✅ Comprehensive vulnerability assessment<br>
+            ✅ Detailed remediation guidance<br>
+            ✅ Professional security reporting<br>
+            ✅ UK-wide service coverage
+          </p>
+          
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a class="btn btn-security" href="tel:+441553824408">
+              <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+            </a>
+            <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk?subject=Penetration Testing UK Enquiry">
+              <i class="bi bi-envelope me-2"></i>Email for Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer class="text-center text-muted">
+  <div class="container">
+    <p class="mb-1 small">© 2025 Sprintwave. All rights reserved.</p>
+    <p class="mb-1 small">Company Number: 15831681 | Network Consulting & Starlink Installation Specialists</p>
+    <p class="mb-1 small">📞 01553 824408 | 📧 info@sprintwave.co.uk</p>
+    
+    <!-- Social Media Buttons -->
+    <div class="d-flex justify-content-center gap-2 mt-2">
+      <a 
+        href="https://www.linkedin.com/company/sprintwave" 
+        target="_blank" 
+        rel="noopener" 
+        class="btn btn-outline-primary btn-sm"
+        style="border-radius: 999px;"
+        aria-label="Sprintwave LinkedIn"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+          <path d="M0 1.146C0 .513.324 0 .725 0h14.55c.401 0 .725.513.725 1.146v13.708c0 .633-.324 1.146-.725 1.146H.725A.723.723 0 0 1 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.212h2.4V9.359c0-.215.016-.43.08-.586.175-.43.573-.877 1.242-.877.876 0 1.226.662 1.226 1.634v4.864h2.4V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.6 5.6 0 0 1 .016-.025V6.169h-2.4c.03.7 0 7.225 0 7.225z"/>
+        </svg>
+      </a>
+      
+      <a 
+        href="https://www.facebook.com/profile.php?id=61579592293313" 
+        target="_blank" 
+        rel="noopener" 
+        class="btn btn-outline-primary btn-sm"
+        style="border-radius: 999px; border-color: #1877f2; color: #1877f2;"
+        aria-label="Sprintwave Facebook"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

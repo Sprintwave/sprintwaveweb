@@ -11,7 +11,11 @@ def home():
 @app.route('/blog')
 def blog():
     return render_template('blog.html')
+# Add this route after your existing routes, around line 35:
 
+@app.route('/penetration-testing')
+def penetration_testing():
+    return render_template('penetration-testing.html')
 @app.route('/starlink')
 def starlink():
     return render_template('starlink.html')
