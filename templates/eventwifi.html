@@ -370,7 +370,7 @@
     </div>
     <h1 class="display-4 fw-bold">Event WiFi Hire in Norfolk & UK</h1>
     <p class="lead text-muted">Reliable Starlink-powered internet for weddings, festivals, and rural events. Enterprise-grade WiFi with on-site support across Norfolk and beyond.</p>
-    <a class="btn btn-event mt-3 me-3" href="#contact">
+    <a class="btn btn-event mt-3 me-3" href="#contact" onclick="trackButtonClick()">
       <i class="bi bi-calendar-check me-2"></i>Book Your Event WiFi
     </a>
     <a class="btn btn-accent mt-3" href="#packages">
@@ -391,7 +391,7 @@
           </div>
           <h5 class="accent">Starlink High-Speed</h5>
           <p class="text-muted">
-            Reliable satellite internet delivering 25-220+ Mbps anywhere in the UK, perfect for remote venues and rural events.
+            Reliable satellite internet delivering 25-400+ Mbps anywhere in the UK, perfect for remote venues and rural events.
           </p>
         </div>
       </div>
@@ -450,9 +450,9 @@
           <ul class="text-start mb-4">
             <li>Up to 50 users</li>
             <li>Starlink connection</li>
-            <li>2x Enterprise WiFi access points</li>
+            <li>1-10 Enterprise WiFi access points</li>
             <li>Bluetti battery pack (12+ hours)</li>
-            <li>100% off-grid capable</li>
+            <li>Off-grid capable</li>
             <li>Setup & collection included</li>
             <li>Email support</li>
           </ul>
@@ -474,7 +474,7 @@
           <ul class="text-start mb-4" style="color: rgba(255,255,255,0.9);">
             <li>Up to 200 users</li>
             <li>Starlink + backup connection</li>
-            <li>5x Enterprise WiFi access points</li>
+            <li>10x Enterprise WiFi access points</li>
             <li>Multiple Bluetti battery packs</li>
             <li>24+ hours off-grid operation</li>
             <li>On-site engineer (4 hours)</li>
@@ -495,9 +495,8 @@
           <ul class="text-start mb-4">
             <li>Up to 1000+ users</li>
             <li>Multiple Starlink connections</li>
-            <li>10+ Enterprise WiFi access points</li>
+            <li>50+ Enterprise WiFi access points</li>
             <li>Industrial Bluetti power systems</li>
-            <li>48+ hours off-grid capability</li>
             <li>Dedicated on-site engineer</li>
             <li>24/7 support hotline</li>
           </ul>
@@ -620,8 +619,8 @@
             <a class="btn btn-event" href="tel:+441553824408">
               <i class="bi bi-telephone me-2"></i>Call Now - 01553 824408
             </a>
-            <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk?subject=Event WiFi Hire Enquiry">
-              <i class="bi bi-envelope me-2"></i>Email for Quote
+            <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal" class="btn btn-event" onclick="trackButtonClick()">
+              <i class="bi bi-envelope me-2"></i>Get Quote
             </a>
           </div>
           
@@ -636,6 +635,177 @@
     </div>
   </div>
 </section>
+
+<!-- Contact Form Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="background: linear-gradient(45deg, #ff5722, #ff9800); color: white;">
+        <h5 class="modal-title" id="contactModalLabel">
+          <i class="bi bi-calendar-check me-2"></i>Book Your Event WiFi
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="eventWifiForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="firstName" class="form-label">First Name *</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" required>
+            </div>
+            <div class="col-md-6">
+              <label for="lastName" class="form-label">Last Name *</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email Address *</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone Number *</label>
+              <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="eventType" class="form-label">Event Type *</label>
+              <select class="form-control" id="eventType" name="eventType" required>
+                <option value="">Select Event Type</option>
+                <option value="wedding">Wedding</option>
+                <option value="festival">Festival</option>
+                <option value="corporate">Corporate Event</option>
+                <option value="conference">Conference</option>
+                <option value="exhibition">Exhibition</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="eventDate" class="form-label">Event Date *</label>
+              <input type="date" class="form-control" id="eventDate" name="eventDate" required>
+            </div>
+
+            <div class="col-12">
+              <label for="venue" class="form-label">Venue/Location *</label>
+              <input type="text" class="form-control" id="venue" name="venue" placeholder="Venue name and location" required>
+            </div>
+
+            <div class="col-12">
+              <label for="requirements" class="form-label">Event Details & Requirements</label>
+              <textarea class="form-control" id="requirements" name="message" rows="3" placeholder="Guest count, duration, special requirements..."></textarea>
+            </div>
+
+            <!-- Hidden fields for tracking -->
+            <input type="hidden" name="form_source" value="Event WiFi Page">
+            <input type="hidden" name="website" value="sprintwave.co.uk">
+            <input type="hidden" name="_subject" value="Event WiFi Inquiry - New Lead">
+          </div>
+
+          <div class="mt-4">
+            <button type="submit" class="btn btn-event w-100">
+              <i class="bi bi-send me-2"></i>Send Event WiFi Enquiry
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Track button clicks (micro-conversions)
+function trackButtonClick() {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-XXXXXXXXX/BUTTON_CLICK_LABEL', // Your button click conversion ID
+      'value': 0.5,
+      'currency': 'GBP',
+      'event_category': 'Lead Generation',
+      'event_label': 'Contact Button Click'
+    });
+  }
+  
+  // Also track as a custom event
+  gtag('event', 'contact_button_click', {
+    'event_category': 'engagement',
+    'event_label': 'event_wifi_interest'
+  });
+}
+
+// Track form submissions with Formspree
+document.getElementById('eventWifiForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Get form data
+  const formData = new FormData(this);
+  
+  // Track successful form submission (higher value conversion)
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-XXXXXXXXX/FORM_SUBMIT_LABEL', // Your form submission conversion ID
+      'value': 2.0, // Higher value for actual form submission
+      'currency': 'GBP',
+      'event_category': 'Lead Generation',
+      'event_label': 'Event WiFi Form Submitted'
+    });
+  }
+  
+  // Send to Formspree
+  fetch('https://formspree.io/f/meolnede', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      // Show success message
+      const modalBody = document.querySelector('#contactModal .modal-body');
+      modalBody.innerHTML = `
+        <div class="text-center py-4">
+          <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+          <h4 class="mt-3 text-success">Thank You!</h4>
+          <p class="lead">Your event WiFi enquiry has been received.</p>
+          <p class="text-muted">
+            We'll contact you within 2 hours to discuss your requirements and provide a detailed quote.
+          </p>
+          <div class="mt-4">
+            <strong>What happens next?</strong><br>
+            📞 Phone consultation within 2 hours<br>
+            📋 Free site survey if required<br>
+            💰 Detailed quote within 24 hours<br>
+            🎯 Equipment booking & setup coordination
+          </div>
+        </div>
+      `;
+      
+      // Auto-close modal after 5 seconds
+      setTimeout(() => {
+        bootstrap.Modal.getInstance(document.getElementById('contactModal')).hide();
+      }, 5000);
+    } else {
+      throw new Error('Form submission failed');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    
+    // Show error message
+    const modalBody = document.querySelector('#contactModal .modal-body');
+    modalBody.innerHTML = `
+      <div class="text-center py-4">
+        <i class="bi bi-exclamation-triangle-fill text-warning" style="font-size: 4rem;"></i>
+        <h4 class="mt-3 text-warning">Oops!</h4>
+        <p class="lead">There was an error submitting your form.</p>
+        <p class="text-muted">Please try calling us directly at 01553 824408</p>
+        <a href="tel:+441553824408" class="btn btn-event">
+          <i class="bi bi-telephone me-2"></i>Call Now
+        </a>
+      </div>
+    `;
+  });
+});
+</script>
 
 <!-- Footer -->
 <footer class="text-center text-muted">
@@ -692,6 +862,60 @@
     backgroundColor: 0xe6f0ef,
     spacing: 15.0
   });
+</script>
+<script>
+document.getElementById('eventWifiForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Get form data
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData);
+  
+  // Google Ads Conversion Tracking
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'conversion', {
+      'send_to': 'YOUR_CONVERSION_ID/YOUR_CONVERSION_LABEL', // Replace with your actual conversion ID
+      'value': 1.0,
+      'currency': 'GBP',
+      'event_category': 'Lead Generation',
+      'event_label': 'Event WiFi Booking Form'
+    });
+  }
+  
+  // Show success message
+  const modalBody = document.querySelector('#contactModal .modal-body');
+  modalBody.innerHTML = `
+    <div class="text-center py-4">
+      <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+      <h4 class="mt-3 text-success">Thank You!</h4>
+      <p class="lead">Your event WiFi enquiry has been received.</p>
+      <p class="text-muted">
+        We'll contact you within 2 hours to discuss your requirements and provide a detailed quote.
+      </p>
+      <div class="mt-4">
+        <strong>What happens next?</strong><br>
+        📞 Phone consultation within 2 hours<br>
+        📋 Free site survey if required<br>
+        💰 Detailed quote within 24 hours<br>
+        🎯 Equipment booking & setup coordination
+      </div>
+    </div>
+  `;
+  
+  // Optional: Send data to your backend
+  // fetch('/submit-event-wifi-form', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(data)
+  // });
+  
+  // Auto-close modal after 5 seconds
+  setTimeout(() => {
+    bootstrap.Modal.getInstance(document.getElementById('contactModal')).hide();
+  }, 5000);
+});
 </script>
 </body>
 </html>

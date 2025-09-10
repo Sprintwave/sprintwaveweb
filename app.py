@@ -1,6 +1,9 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request, jsonify
 import os
 from datetime import datetime
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
@@ -200,6 +203,59 @@ def enocean_catalyst():
 @app.route('/blog/starlink-technical')
 def starlink_technical():
     return render_template('blog/starlink-technical.html')
+
+@app.route('/submit-contact-form', methods=['POST'])
+def submit_contact_form():
+    try:
+        # Get form data
+        data = request.get_json()
+        
+        # Email configuration
+        smtp_server = "smtp.gmail.com"  # or your email provider
+        smtp_port = 587
+        sender_email = "your-sender@gmail.com"  # Your sending email
+        sender_password = "your-app-password"   # App password
+        recipient_email = "info@sprintwave.co.uk"  # Where to send inquiries
+        
+        # Create email
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = recipient_email
+        msg['Subject'] = f"Event WiFi Inquiry - {data.get('eventType', 'General')}"
+        
+        # Email body
+        body = f"""
+        New Event WiFi Inquiry:
+        
+        Contact Information:
+        - Name: {data.get('firstName', '')} {data.get('lastName', '')}
+        - Email: {data.get('email', '')}
+        - Phone: {data.get('phone', '')}
+        
+        Event Details:
+        - Type: {data.get('eventType', '')}
+        - Date: {data.get('eventDate', '')}
+        - Venue: {data.get('venue', '')}
+        - Requirements: {data.get('requirements', '')}
+        
+        Submitted from: Event WiFi Page
+        """
+        
+        msg.attach(MIMEText(body, 'plain'))
+        
+        # Send email
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        text = msg.as_string()
+        server.sendmail(sender_email, recipient_email, text)
+        server.quit()
+        
+        return jsonify({'status': 'success', 'message': 'Email sent successfully'})
+        
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return jsonify({'status': 'error', 'message': 'Failed to send email'}), 500
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
