@@ -416,7 +416,7 @@
     </div>
     <h1 class="display-4 fw-bold">WiFi Surveys & Wireless Network Consulting</h1>
     <p class="lead text-muted">Professional wireless site surveys using Hamina & Ekahau for hospitals, universities, and enterprise networks across Norfolk and East Anglia.</p>
-    <a class="btn btn-survey mt-3 me-3" href="#contact">
+    <a class="btn btn-survey mt-3 me-3" href="#" data-bs-toggle="modal" data-bs-target="#surveyModal" onclick="trackSurveyButtonClick()">
       <i class="bi bi-calendar-check me-2"></i>Book Survey
     </a>
     <a class="btn btn-accent mt-3" href="#services">
@@ -746,8 +746,8 @@
             <a class="btn btn-survey" href="tel:+441553824408">
               <i class="bi bi-telephone me-2"></i>Call: 01553 824408
             </a>
-            <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk?subject=WiFi Survey Enquiry">
-              <i class="bi bi-envelope me-2"></i>Email for Quote
+            <a class="btn btn-accent" href="#" data-bs-toggle="modal" data-bs-target="#surveyModal" onclick="trackSurveyButtonClick()">
+              <i class="bi bi-envelope me-2"></i>Get Survey Quote
             </a>
           </div>
           
@@ -762,6 +762,148 @@
     </div>
   </div>
 </section>
+
+<!-- WiFi Survey Contact Form Modal -->
+<div class="modal fade" id="surveyModal" tabindex="-1" aria-labelledby="surveyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="background: linear-gradient(45deg, #2563eb, #3b82f6); color: white;">
+        <h5 class="modal-title" id="surveyModalLabel">
+          <i class="bi bi-wifi me-2"></i>Request WiFi Survey Quote
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="wifiSurveyForm">
+          <div class="row g-3">
+            <!-- Contact Information -->
+            <div class="col-md-6">
+              <label for="firstName" class="form-label">First Name *</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" required>
+            </div>
+            <div class="col-md-6">
+              <label for="lastName" class="form-label">Last Name *</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email Address *</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone Number *</label>
+              <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+
+            <!-- Organization Details -->
+            <div class="col-md-6">
+              <label for="organization" class="form-label">Organization *</label>
+              <input type="text" class="form-control" id="organization" name="organization" placeholder="Company, Hospital, University, etc." required>
+            </div>
+            <div class="col-md-6">
+              <label for="industry" class="form-label">Industry/Sector *</label>
+              <select class="form-control" id="industry" name="industry" required>
+                <option value="">Select Industry</option>
+                <option value="healthcare">Healthcare/Hospital</option>
+                <option value="education">Education/University</option>
+                <option value="corporate">Corporate/Enterprise</option>
+                <option value="government">Government</option>
+                <option value="manufacturing">Manufacturing</option>
+                <option value="hospitality">Hospitality</option>
+                <option value="retail">Retail</option>
+                <option value="warehouse">Warehouse/Logistics</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Facility Details -->
+            <div class="col-12">
+              <label for="facilityLocation" class="form-label">Facility Location *</label>
+              <input type="text" class="form-control" id="facilityLocation" name="facilityLocation" placeholder="Building/site address or general location" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="facilitySize" class="form-label">Facility Size *</label>
+              <select class="form-control" id="facilitySize" name="facilitySize" required>
+                <option value="">Select Size</option>
+                <option value="small">Small (< 5,000 sq ft)</option>
+                <option value="medium">Medium (5,000 - 20,000 sq ft)</option>
+                <option value="large">Large (20,000 - 100,000 sq ft)</option>
+                <option value="very-large">Very Large (> 100,000 sq ft)</option>
+                <option value="multi-building">Multi-building campus</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="userCount" class="form-label">Expected User Count</label>
+              <select class="form-control" id="userCount" name="userCount">
+                <option value="">Select User Count</option>
+                <option value="1-50">1-50 users</option>
+                <option value="51-200">51-200 users</option>
+                <option value="201-500">201-500 users</option>
+                <option value="501-1000">501-1,000 users</option>
+                <option value="1000+">1,000+ users</option>
+              </select>
+            </div>
+
+            <!-- Survey Requirements -->
+            <div class="col-md-6">
+              <label for="surveyType" class="form-label">Survey Type Required *</label>
+              <select class="form-control" id="surveyType" name="surveyType" required>
+                <option value="">Select Survey Type</option>
+                <option value="predictive">Predictive Survey (RF Planning)</option>
+                <option value="active">Active Site Survey</option>
+                <option value="post-deployment">Post-Deployment Validation</option>
+                <option value="full-assessment">Complete Assessment (All phases)</option>
+                <option value="not-sure">Not sure - need consultation</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="timeline" class="form-label">Required Timeline</label>
+              <select class="form-control" id="timeline" name="timeline">
+                <option value="">Select Timeline</option>
+                <option value="urgent">Urgent (Within 1 week)</option>
+                <option value="asap">ASAP (1-2 weeks)</option>
+                <option value="month">Within 1 month</option>
+                <option value="quarter">Within 3 months</option>
+                <option value="flexible">Flexible timing</option>
+              </select>
+            </div>
+
+            <!-- Additional Requirements -->
+            <div class="col-12">
+              <label for="currentIssues" class="form-label">Current WiFi Issues or Requirements</label>
+              <textarea class="form-control" id="currentIssues" name="message" rows="3" placeholder="Describe any current WiFi problems, specific requirements, or project goals..."></textarea>
+            </div>
+
+            <!-- Budget -->
+            <div class="col-12">
+              <label for="budget" class="form-label">Budget Range (Optional)</label>
+              <select class="form-control" id="budget" name="budget">
+                <option value="">Prefer not to say</option>
+                <option value="under-2k">Under £2,000</option>
+                <option value="2k-5k">£2,000 - £5,000</option>
+                <option value="5k-10k">£5,000 - £10,000</option>
+                <option value="10k-25k">£10,000 - £25,000</option>
+                <option value="25k+">£25,000+</option>
+              </select>
+            </div>
+
+            <!-- Hidden fields for tracking -->
+            <input type="hidden" name="form_source" value="WiFi Survey Page">
+            <input type="hidden" name="website" value="sprintwave.co.uk">
+            <input type="hidden" name="_subject" value="WiFi Survey Inquiry - New Lead">
+          </div>
+
+          <div class="mt-4">
+            <button type="submit" class="btn btn-survey w-100">
+              <i class="bi bi-send me-2"></i>Request WiFi Survey Quote
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer class="text-center text-muted">
   <div class="container">
@@ -817,6 +959,103 @@
     backgroundColor: 0xe6f0ef,
     spacing: 15.0
   });
+</script>
+
+<!-- Add this JavaScript before the closing </body> tag -->
+<script>
+// Track survey button clicks (micro-conversions)
+function trackSurveyButtonClick() {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-XXXXXXXXX/SURVEY_BUTTON_CLICK_LABEL', // Your survey button click conversion ID
+      'value': 0.5,
+      'currency': 'GBP',
+      'event_category': 'Lead Generation',
+      'event_label': 'WiFi Survey Button Click'
+    });
+  }
+  
+  // Also track as a custom event
+  gtag('event', 'survey_button_click', {
+    'event_category': 'engagement',
+    'event_label': 'wifi_survey_interest'
+  });
+}
+
+// Track form submissions with Formspree
+document.getElementById('wifiSurveyForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Get form data
+  const formData = new FormData(this);
+  
+  // Track successful form submission (higher value conversion)
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-XXXXXXXXX/SURVEY_FORM_SUBMIT_LABEL', // Your survey form submission conversion ID
+      'value': 3.0, // Higher value for professional survey leads
+      'currency': 'GBP',
+      'event_category': 'Lead Generation',
+      'event_label': 'WiFi Survey Form Submitted'
+    });
+  }
+  
+  // Send to Formspree (you'll need a separate form for surveys)
+  fetch('https://formspree.io/f/mdklbbjj', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      // Show success message
+      const modalBody = document.querySelector('#surveyModal .modal-body');
+      modalBody.innerHTML = `
+        <div class="text-center py-4">
+          <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+          <h4 class="mt-3 text-success">Thank You!</h4>
+          <p class="lead">Your WiFi survey inquiry has been received.</p>
+          <p class="text-muted">
+            We'll contact you within 24 hours to discuss your requirements and provide a detailed proposal.
+          </p>
+          <div class="mt-4">
+            <strong>What happens next?</strong><br>
+            📞 Initial consultation call within 24 hours<br>
+            📋 Detailed survey proposal and methodology<br>
+            💰 Comprehensive quote within 48 hours<br>
+            📡 Professional survey scheduling
+          </div>
+        </div>
+      `;
+      
+      // Auto-close modal after 6 seconds
+      setTimeout(() => {
+        bootstrap.Modal.getInstance(document.getElementById('surveyModal')).hide();
+      }, 6000);
+    } else {
+      throw new Error('Form submission failed');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    
+    // Show error message
+    const modalBody = document.querySelector('#surveyModal .modal-body');
+    modalBody.innerHTML = `
+      <div class="text-center py-4">
+        <i class="bi bi-exclamation-triangle-fill text-warning" style="font-size: 4rem;"></i>
+        <h4 class="mt-3 text-warning">Oops!</h4>
+        <p class="lead">There was an error submitting your form.</p>
+        <p class="text-muted">Please try calling us directly at 01553 824408</p>
+        <a href="tel:+441553824408" class="btn btn-survey">
+          <i class="bi bi-telephone me-2"></i>Call Now
+        </a>
+      </div>
+    `;
+  });
+});
 </script>
 </body>
 </html>
