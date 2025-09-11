@@ -51,6 +51,10 @@ def about():
 def rural_broadband():
     return render_template('rural-broadband.html')
 
+@app.route('/thank-you-event-wifi')
+def thank_you_event_wifi():
+    return render_template('thank-you-event-wifi.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Generate sitemap XML for Google Search Console"""
