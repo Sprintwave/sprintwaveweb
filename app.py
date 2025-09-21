@@ -59,6 +59,49 @@ def thank_you_event_wifi():
 def thank_you_rural_broadband():
     return render_template('thank-you-rural-broadband.html')
 
+@app.route('/case-studies')
+def case_studies():
+    return render_template('case_studies/index.html')
+
+@app.route('/case-studies/enterprise-network')
+def case_study_enterprise_network():
+    return render_template('case_studies/enterprise_network.html')
+
+@app.route('/case-studies/hospital-wifi')
+def case_study_hospital_wifi():
+    return render_template('case_studies/hospital_wifi.html')
+
+@app.route('/case-studies/manufacturing')
+def case_study_manufacturing():
+    return render_template('case_studies/manufacturing.html')
+
+@app.route('/case-studies/starlink-farm')
+def case_study_starlink_farm():
+    return render_template('case_studies/starlink_farm.html')
+
+
+@app.route('/case-studies/backup-internet')
+def case_study_backup_internet():
+    return render_template('case_studies/backup_internet.html')
+
+@app.route('/case-studies/clearpass')
+def case_study_clearpass():
+    return render_template('case_studies/clearpass.html')
+
+@app.route('/case-studies/pentest')
+def case_study_pentest():
+    return render_template('case_studies/pentest.html')
+
+# Add these routes to your Flask application
+
+@app.route('/case-studies/event-wifi')
+def case_study_event_wifi():
+    return render_template('case_study_event_wifi.html')
+
+@app.route('/case-studies/starlink')
+def case_study_starlink():
+    return render_template('case_study_starlink.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Generate sitemap XML for Google Search Console"""

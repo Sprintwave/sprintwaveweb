@@ -72,15 +72,280 @@
       from { transform: scale(1); }
       to   { transform: scale(1.06); }
     }
+
+    /* Hero Section with Animation */
+    #vanta-bg {
+        min-height: 100vh;
+        position: relative;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #1a202c;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+    
+    /* Animated Background Fallback */
+    #vanta-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 60%),
+            radial-gradient(circle at 75% 75%, rgba(0, 127, 115, 0.1) 0%, transparent 60%),
+            linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+        animation: heroFloat 8s ease-in-out infinite;
+    }
+    
+    @keyframes heroFloat {
+        0%, 100% { 
+            transform: translateY(0px) rotate(0deg);
+            opacity: 1;
+        }
+        25% { 
+            transform: translateY(-20px) rotate(1deg);
+            opacity: 0.8;
+        }
+        50% { 
+            transform: translateY(-10px) rotate(-1deg);
+            opacity: 1;
+        }
+        75% { 
+            transform: translateY(-15px) rotate(0.5deg);
+            opacity: 0.9;
+        }
+    }
+    
+    #vanta-bg .container {
+        position: relative;
+        z-index: 10;
+    }
+    
+    /* Hero text styling - BLACK TEXT FOR VISIBILITY */
+    #vanta-bg h1 {
+        color: #1a202c !important;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        font-weight: 800;
+    }
+    
+    #vanta-bg .lead {
+        color: #2d3748 !important;
+        text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+        font-weight: 600;
+    }
+    
+    /* Hero text styling - FIX FOR VISIBILITY */
+    .hero-highlight {
+        color: #1a202c !important;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        font-weight: 700;
+    }
+    
+    .hero-badge {
+        background: rgba(255, 255, 255, 0.9);
+        color: #1a202c;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 127, 115, 0.3);
+        animation: pulse 2s ease-in-out infinite alternate;
+        box-shadow: 0 4px 15px rgba(0, 127, 115, 0.2);
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(1.05); opacity: 0.9; }
+    }
+    
+    .btn-hero {
+        background: linear-gradient(45deg, #007f73, #00d4aa);
+        color: #fff;
+        border-radius: 999px;
+        padding: 1rem 2.5rem;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(0,127,115,0.3);
+    }
+    
+    .btn-hero:hover {
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,127,115,0.4);
+        background: linear-gradient(45deg, #005f57, #007f73);
+    }
+    
+    .feature-icon {
+        background: linear-gradient(45deg, #007f73, #00d4aa);
+        color: white;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        box-shadow: 0 8px 25px rgba(0,127,115,0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .feature-icon:hover {
+        transform: scale(1.1) rotate(10deg);
+        box-shadow: 0 12px 30px rgba(0,127,115,0.4);
+    }
+    
+    .stats-card {
+        background: linear-gradient(135deg, #007f73, #005f57);
+        color: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(0,127,115,0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .stats-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+        transform: rotate(45deg);
+        animation: shimmer 3s linear infinite;
+    }
+    
+    @keyframes shimmer {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .stats-card:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 12px 40px rgba(0,127,115,0.4);
+    }
+    
+    .stats-card h3 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .stats-card p {
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* Service cards styling */
+    .service-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+        border: 1px solid rgba(0,127,115,0.1);
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0,127,115,0.15);
+    }
+    
+    /* SEO-friendly content visibility */
+    .seo-content {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+    
+    /* Performance optimization */
+    .service-card img,
+    .feature-icon {
+        will-change: transform;
+    }
+    
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+        .hero-badge, .stats-card::before, #vanta-bg::before {
+            animation: none;
+        }
+        
+        .feature-icon:hover, .stats-card:hover {
+            transform: none;
+        }
+    }
+    
+    /* Additional styles for extended content */
+    .testimonial-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+        border-left: 4px solid #007f73;
+    }
+    
+    .tech-badge {
+        background: linear-gradient(45deg, #007f73, #00d4aa);
+        color: #fff;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin: 0.2rem;
+        display: inline-block;
+    }
+    
+    .faq-item {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(0,127,115,0.1);
+    }
+    
+    .faq-item h5 {
+        color: #007f73;
+        margin-bottom: 0.8rem;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
+<!-- SEO Content (Hidden but crawlable) -->
+<div class="seo-content">
+    <h1>Sprintwave - Elite Network Consulting & Starlink Installation Services in Kings Lynn, Norfolk</h1>
+    <p>Professional network consulting services including enterprise network design, WiFi surveys, Starlink satellite internet installation, rural broadband solutions, and emergency backup internet across Norfolk, East Anglia, and the UK. CCIE and CCNP certified consultants with military communications background.</p>
+    <address>
+        Sprintwave Network Consulting
+        Kings Lynn, Norfolk, UK
+        Phone: 01553 824408
+        Email: info@sprintwave.co.uk
+    </address>
+</div>
+
 <!-- Hero Section -->
 <section class="text-center" id="vanta-bg">
   <div class="container">
     <h1 class="display-4 fw-bold">Expert Network Consulting & Solutions</h1>
-    <p class="lead text-muted">Empowering IT teams with secure, scalable infrastructure and bringing high-speed internet to rural Norfolk and the UK.</p>
+    <p class="lead">Empowering IT teams with secure, scalable infrastructure and bringing high-speed internet to rural Norfolk and the UK.</p>
     <a class="btn btn-accent mt-3" href="#contact">Network Consulting</a>
     <a class="btn btn-accent mt-3 ms-2" href="{{ url_for('starlink') }}">
       <i class="bi bi-satellite me-2"></i>Starlink Services
@@ -94,51 +359,139 @@
   </div>
 </section>
 
+<!-- Core Services Section - MOVED TO DIRECTLY BELOW BANNER -->
+<section id="services" class="py-5" style="background: #ffffff;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Core <span class="accent">Services</span></h2>
+            <p class="lead text-muted">Professional network solutions delivered with precision and expertise</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-diagram-3" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent mb-3">Network Consulting</h3>
+                    <p class="mb-4">Enterprise network design, implementation, and optimization by CCIE & CCNP certified professionals. Campus networks, data centers, and security implementations.</p>
+                    <a href="{{ url_for('network_consulting') }}" class="btn btn-accent" aria-label="Learn more about network consulting services">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        🛰️
+                    </div>
+                    <h3 class="accent mb-3">Starlink Installation</h3>
+                    <p class="mb-4">Professional Starlink satellite internet setup and optimization for homes, businesses, and remote locations across Norfolk and the UK. Expert positioning and configuration.</p>
+                    <a href="{{ url_for('starlink') }}" class="btn btn-accent" aria-label="Professional Starlink installation services">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-wifi" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent mb-3">WiFi Surveys</h3>
+                    <p class="mb-4">Comprehensive wireless site surveys and design for optimal coverage and performance. Heat mapping, interference analysis, and capacity planning for enterprise environments.</p>
+                    <a href="{{ url_for('wireless_surveys') }}" class="btn btn-accent" aria-label="Professional WiFi survey services">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        🌾
+                    </div>
+                    <h3 class="accent mb-3">Rural Broadband</h3>
+                    <p class="mb-4">Specialized connectivity solutions for agricultural and remote locations across Norfolk. Bridging the digital divide with innovative satellite and wireless technologies.</p>
+                    <a href="{{ url_for('rural_broadband') }}" class="btn btn-accent" aria-label="Rural broadband internet solutions">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        🎉
+                    </div>
+                    <h3 class="accent mb-3">Event WiFi</h3>
+                    <p class="mb-4">Temporary high-capacity WiFi solutions for events, festivals, and conferences. Scalable infrastructure with professional support for seamless connectivity.</p>
+                    <a href="{{ url_for('event_wifi') }}" class="btn btn-accent" aria-label="Event WiFi rental and setup">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        🚨
+                    </div>
+                    <h3 class="accent mb-3">Emergency Backup</h3>
+                    <p class="mb-4">Business continuity solutions with Starlink backup internet and portable power systems. Rapid deployment for critical operations and disaster recovery.</p>
+                    <a href="{{ url_for('backup_internet') }}" class="btn btn-accent" aria-label="Emergency backup internet solutions">Learn More</a>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- About Section -->
-<section id="about">
+<section id="about" class="py-5">
   <div class="container text-center">
     <h2 class="mb-4">About <span class="accent">Sprintwave</span></h2>
     <div class="row justify-content-center">
       <div class="col-md-6 mb-4">
-        <h5 class="accent">Who We Are</h5>
-        <p class="text-muted">
-          Sprintwave is led by a senior network consultant with deep expertise in designing and delivering secure, high-performance, and automated infrastructure. We also specialize in Starlink installation for rural West Norfolk.
-        </p>
+        <div class="service-card">
+          <h5 class="accent">Who We Are</h5>
+          <p class="text-muted">
+            Sprintwave is led by a senior network consultant with deep expertise in designing and delivering secure, high-performance, and automated infrastructure. We also specialize in Starlink installation for rural West Norfolk.
+          </p>
+        </div>
       </div>
       <div class="col-md-6 mb-4">
-        <h5 class="accent">Our Specialisms</h5>
-        <p class="text-muted">
-          We specialise in Cisco and Aruba technologies, offering advanced switching, wireless solutions, and expert wireless surveys for enterprises and public sector organisations.
-        </p>
+        <div class="service-card">
+          <h5 class="accent">Our Specialisms</h5>
+          <p class="text-muted">
+            We specialise in Cisco and Aruba technologies, offering advanced switching, wireless solutions, and expert wireless surveys for enterprises and public sector organisations.
+          </p>
+        </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-6 mb-4">
-        <h5 class="accent">Project Experience</h5>
-        <p class="text-muted">
-          Our team has delivered complex networking projects for a range of clients—including extensive work with the NHS. We work with technologies like Cisco DNA Center and Software-Defined Access (SD-Access), focusing on automation and operational efficiency.
-        </p>
+        <div class="service-card">
+          <h5 class="accent">Project Experience</h5>
+          <p class="text-muted">
+            Our team has delivered complex networking projects for a range of clients—including extensive work with the NHS. We work with technologies like Cisco DNA Center and Software-Defined Access (SD-Access), focusing on automation and operational efficiency.
+          </p>
+        </div>
       </div>
       <div class="col-md-6 mb-4">
-        <h5 class="accent">Innovation & Automation</h5>
-        <p class="text-muted">
-          We develop custom Python-based applications to automate network tasks and reduce manual overhead. Looking ahead, we're embracing AI to drive smarter, more scalable network management.
-        </p>
+        <div class="service-card">
+          <h5 class="accent">Innovation & Automation</h5>
+          <p class="text-muted">
+            We develop custom Python-based applications to automate network tasks and reduce manual overhead. Looking ahead, we're embracing AI to drive smarter, more scalable network management.
+          </p>
+        </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <h5 class="accent">Powered by Python</h5>
-        <p class="text-muted">
-          The same technologies that power our solutions power this website—built with Python.
-        </p>
+        <div class="service-card">
+          <h5 class="accent">Powered by Python</h5>
+          <p class="text-muted">
+            The same technologies that power our solutions power this website—built with Python.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Technologies Section -->
-<section id="technologies">
+<section id="technologies" class="py-5" style="background: #ffffff;">
   <div class="container text-center">
     <h2 class="mb-4">Technologies We Work With</h2>
     <div class="row g-4 justify-content-center">
@@ -180,39 +533,35 @@
 </section>
 
 <!-- Bespoke Applications Section -->
-<section id="applications">
+<section id="applications" class="py-5">
   <div class="container text-center">
-    <h2 class="mb-4">Bespoke Applications</h2>
+    <h2 class="mb-4">Bespoke <span class="accent">Applications</span></h2>
     <p class="text-muted">
       At Sprintwave, we develop custom applications to automate, monitor, and enhance network operations. Here are some of our current projects, embedded live below:
     </p>
     <div class="row g-4 justify-content-center">
       <div class="col-md-6 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">nocbot.ai</h5>
-            <div class="ratio ratio-16x9 mb-3">
-              <iframe src="https://nocbot.ai" title="nocbot.ai" style="border:1px solid #ccc; border-radius:8px;" allowfullscreen></iframe>
-            </div>
-            <p class="card-text text-muted">
-              Built for help desks and NOC teams, our AI chatbot gives instant, conversational insight into your network—no command line needed. It quickly surfaces issues, statuses, and metrics, so frontline teams can resolve problems faster and escalate less. That means fewer interruptions for senior engineers and more time focused on what matters.
-            </p>
-            <a href="https://nocbot.ai" target="_blank" class="btn btn-accent btn-sm mt-2">Visit App</a>
+        <div class="service-card h-100">
+          <h5 class="accent">nocbot.ai</h5>
+          <div class="ratio ratio-16x9 mb-3">
+            <iframe src="https://nocbot.ai" title="nocbot.ai" style="border:1px solid #ccc; border-radius:8px;" allowfullscreen loading="lazy"></iframe>
           </div>
+          <p class="text-muted">
+            Built for help desks and NOC teams, our AI chatbot gives instant, conversational insight into your network—no command line needed. It quickly surfaces issues, statuses, and metrics, so frontline teams can resolve problems faster and escalate less. That means fewer interruptions for senior engineers and more time focused on what matters.
+          </p>
+          <a href="https://nocbot.ai" target="_blank" class="btn btn-accent btn-sm mt-2">Visit App</a>
         </div>
       </div>
       <div class="col-md-6 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">dot1x.io</h5>
-            <div class="ratio ratio-16x9 mb-3">
-              <iframe src="https://dot1x.io" title="dot1x.io" style="border:1px solid #ccc; border-radius:8px;" allowfullscreen></iframe>
-            </div>
-            <p class="card-text text-muted">
-              dot1x.io is a custom-built web interface for managing MAC address authentication and endpoint visibility across enterprise networks integrated with Cisco ISE or Aruba ClearPass. Designed with a clean UI and security-first aesthetic, the app simplifies everyday network access control tasks for IT administrators.
-            </p>
-            <a href="https://dot1x.io" target="_blank" class="btn btn-accent btn-sm mt-2">Visit App</a>
+        <div class="service-card h-100">
+          <h5 class="accent">dot1x.io</h5>
+          <div class="ratio ratio-16x9 mb-3">
+            <iframe src="https://dot1x.io" title="dot1x.io" style="border:1px solid #ccc; border-radius:8px;" allowfullscreen loading="lazy"></iframe>
           </div>
+          <p class="text-muted">
+            dot1x.io is a custom-built web interface for managing MAC address authentication and endpoint visibility across enterprise networks integrated with Cisco ISE or Aruba ClearPass. Designed with a clean UI and security-first aesthetic, the app simplifies everyday network access control tasks for IT administrators.
+          </p>
+          <a href="https://dot1x.io" target="_blank" class="btn btn-accent btn-sm mt-2">Visit App</a>
         </div>
       </div>
     </div>
@@ -222,39 +571,95 @@
   </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact">
-  <div class="container text-center">
-    <h2 class="mb-4">Contact Us</h2>
-    <p class="text-muted mb-3">Looking to improve your network infrastructure or scale your operations? Let's talk.</p>
-    <div class="d-flex flex-wrap justify-content-center gap-3">
-      <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk">
-        <i class="bi bi-envelope me-2"></i>Email Us
-      </a>
-      <a class="btn btn-starlink" href="tel:+441553824408">
-        <i class="bi bi-telephone me-2"></i>Call Now - 01553 824408
-      </a>
+<!-- Call to Action -->
+<section id="contact" class="py-5" style="background: linear-gradient(135deg, #1e3a8a, #007f73); color: #fff;">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-4">Ready to Transform Your Network?</h2>
+        <p class="lead mb-5">Get expert consultation from Norfolk's leading network professionals</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="service-card" style="background: rgba(255,255,255,0.95);">
+                    <h3 class="accent mb-3">Get Started Today</h3>
+                    <p class="mb-4" style="color: #1a1a1a;">
+                        <span style="color: #007f73; font-weight: 600;">✅ Free initial consultation & site survey</span><br>
+                        <span style="color: #007f73; font-weight: 600;">✅ Expert network design & implementation</span><br>
+                        <span style="color: #007f73; font-weight: 600;">✅ Local Norfolk expertise with global standards</span><br>
+                        <span style="color: #007f73; font-weight: 600;">✅ 24/7 support & emergency response</span>
+                    </p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                        <a class="btn btn-hero" href="tel:+441553824408" aria-label="Call Sprintwave for network consulting">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                        <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk?subject=Network Consulting Enquiry" aria-label="Email Sprintwave for consultation">
+                            <i class="bi bi-envelope me-2"></i>Email Consultation
+                        </a>
+                    </div>
+                    
+                    <!-- Social Media Links -->
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://www.linkedin.com/company/sprintwave/" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm" aria-label="Follow Sprintwave on LinkedIn">
+                            <i class="bi bi-linkedin me-1"></i>LinkedIn
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61579592293313" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm" aria-label="Follow Sprintwave on Facebook">
+                            <i class="bi bi-facebook me-1"></i>Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 {% endblock %}
 
-{% block extra_js %}
+{% block javascript %}
 <script>
-  VANTA.WAVES({
-    shininess: 50,
-    waveHeight: 15,
-    waveSpeed: 0.5,
-    color: 0x007f73,
-    el: "#vanta-bg",
-    mouseControls: true,
-    touchControls: true,
-    minHeight: 400.00,
-    minWidth: 200.00,
-    scale: 1.0,
-    scaleMobile: 1.0,
-    backgroundColor: 0xe6f0ef,
-    spacing: 15.0
-  });
+// Initialize Vanta.js animation with error handling
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        if (typeof VANTA !== 'undefined' && VANTA.WAVES) {
+            VANTA.WAVES({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x007f73,
+                color2: 0x1e3a8a,
+                backgroundColor: 0xf8fafc,
+                shininess: 30.00,
+                waveHeight: 15.00,
+                waveSpeed: 1.00,
+                zoom: 0.75
+            });
+            console.log('Vanta.js waves animation loaded successfully');
+        } else {
+            console.log('Vanta.js not available, using CSS fallback animation');
+        }
+    } catch (error) {
+        console.log('Vanta animation failed to load, graceful fallback:', error);
+    }
+});
+
+// Smooth scrolling for internal links
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+        });
+});
 </script>
 {% endblock %}
