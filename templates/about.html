@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+{% extends "base.html" %}
 
-<!-- SEO POWERHOUSE META TAGS -->
+{% block meta %}
+<!-- SEO META TAGS -->
 <title>About Sprintwave | Network Consulting Specialists | Kings Lynn, Norfolk | Joseph Scott CCNP</title>
 <meta name="description" content="Meet Sprintwave's expert team of CCIE & CCNP certified network consultants based in Kings Lynn, Norfolk. Led by founder Joseph Scott with military communications background, serving nationwide customers.">
 <meta name="keywords" content="About Sprintwave, Network Consultants Kings Lynn, Joseph Scott CCNP, Military Communications, CCIE Contractors, Norfolk Network Specialists, Enterprise Network Team">
 <meta name="author" content="Sprintwave">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
 
 <!-- LOCAL SEO -->
 <meta name="geo.region" content="GB-NFK">
@@ -23,62 +21,92 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.sprintwave.co.uk/about">
 <meta property="og:image" content="https://www.sprintwave.co.uk/static/about-sprintwave-team.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sprintwave network consulting team">
 <meta property="og:site_name" content="Sprintwave">
 <meta property="og:locale" content="en_GB">
+
+<!-- TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Sprintwave | Expert Network Consulting Team">
+<meta name="twitter:description" content="Meet our team of CCIE & CCNP certified network consultants led by founder Joseph Scott. Based in Kings Lynn, serving nationwide customers.">
+<meta name="twitter:image" content="https://www.sprintwave.co.uk/static/about-sprintwave-team.jpg">
+<meta name="twitter:image:alt" content="Sprintwave network consulting team">
 
 <!-- CANONICAL URL -->
 <link rel="canonical" href="https://www.sprintwave.co.uk/about">
 
-<!-- FAVICON -->
-<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
-<meta name="theme-color" content="#007f73">
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Sprintwave",
+  "founder": {
+    "@type": "Person",
+    "name": "Joseph Scott",
+    "jobTitle": "Founder & Lead Network Consultant",
+    "description": "CCNP certified network consultant with military communications background"
+  },
+  "description": "Elite network consulting specialists based in Kings Lynn, Norfolk, delivering enterprise-grade solutions with CCIE and CCNP certified team.",
+  "url": "https://www.sprintwave.co.uk/about",
+  "logo": "https://www.sprintwave.co.uk/static/logo.png",
+  "image": "https://www.sprintwave.co.uk/static/about-sprintwave-team.jpg",
+  "telephone": "+441553824408",
+  "email": "info@sprintwave.co.uk",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kings Lynn",
+    "addressRegion": "Norfolk",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "52.7554",
+    "longitude": "0.3963"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Kings Lynn"
+    },
+    {
+      "@type": "State",
+      "name": "Norfolk"
+    },
+    {
+      "@type": "Country",
+      "name": "United Kingdom"
+    }
+  ],
+  "knowsAbout": [
+    "Network Consulting",
+    "CCIE Expertise", 
+    "CCNP Enterprise",
+    "Aruba Networks",
+    "Enterprise Security",
+    "WiFi Surveys"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/sprintwave"
+  ]
+}
+</script>
+{% endblock %}
 
-<!-- Bootstrap & Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
+{% block custom_css %}
 <style>
-  html {
-    scroll-behavior: smooth;
-  }
-  
   body {
     background-color: #e6f0ef;
     color: #1a1a1a;
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
   }
-
-  .navbar {
-    background-color: #ffffff !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  section {
+    padding: 80px 0;
   }
-
-  .navbar-brand {
-    color: #007f73 !important;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-
   .accent {
     color: #007f73;
-  }
-
-  .btn-accent {
-    background-color: #007f73;
-    color: #fff;
-    border-radius: 999px;
-    padding: 0.7rem 2rem;
-    font-weight: 600;
-    border: none;
-    transition: all 0.3s ease;
-    text-decoration: none;
-  }
-
-  .btn-accent:hover {
-    background-color: #005f57;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,127,115,0.3);
   }
 
   .btn-military {
@@ -234,51 +262,6 @@
     border: 1px solid rgba(0,127,115,0.1);
   }
 
-  .social-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .social-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    background: #ffffff;
-    border: 2px solid #e2e8f0;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    color: #1a1a1a;
-  }
-  
-  .social-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-decoration: none;
-    color: #1a1a1a;
-  }
-  
-  .social-link.linkedin {
-    border-color: #0077b5;
-  }
-  
-  .social-link.linkedin:hover {
-    background: #0077b5;
-    color: #ffffff;
-  }
-  
-  .social-link.facebook {
-    border-color: #1877f2;
-  }
-  
-  .social-link.facebook:hover {
-    background: #1877f2;
-    color: #ffffff;
-  }
-
   @media (max-width: 768px) {
     .hero-section {
       padding: 60px 0 40px;
@@ -289,128 +272,9 @@
     }
   }
 </style>
-</head>
-<body>
+{% endblock %}
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #ffffff;">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
-      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
-    </a>
-    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav align-items-center">
-        <!-- Home Button -->
-        <li class="nav-item">
-          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
-            <i class="bi bi-house me-1"></i> Home
-          </a>
-        </li>
-
-        <!-- About -->
-        <li class="nav-item">
-          <a class="nav-link fw-bold" href="{{ url_for('about') }}" style="color: #1a1a1a;">
-            <i class="bi bi-people me-1"></i> About
-          </a>
-        </li>
-
-        <!-- Core Services -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
-            <i class="bi bi-gear me-1"></i> Services
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
-              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
-              <i class="bi bi-wifi me-2"></i>WiFi Surveys
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
-              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('rural_broadband') }}">
-              <span style="font-size:1.1em; margin-right: 0.5em;">🌾</span>Rural Broadband
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
-              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
-              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
-            </a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ url_for('penetration_testing') }}">
-              <i class="bi bi-shield-exclamation me-2"></i>Penetration Testing
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
-              <i class="bi bi-code-slash me-2"></i>Web Design
-            </a></li>
-          </ul>
-        </li>
-
-        <!-- Blog -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
-            <i class="bi bi-book me-1"></i> Blog
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
-              <i class="bi bi-house me-2"></i>Blog Home
-            </a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
-              🛰️ How Starlink Works: Technical Deep-Dive
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
-              🔐 Preventing AD Lockouts with Ansible
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
-              💾 Aruba Switch Backups with Ansible
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
-              🔍 100G Optic Issues on Aruba 8360
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
-              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
-              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
-              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
-            </a></li>
-          </ul>
-        </li>
-
-        <!-- Social & Contact -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle fw-bold" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
-            <i class="bi bi-person-lines-fill me-1"></i> Connect
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="tel:+441553824408">
-              <i class="bi bi-telephone me-2"></i>Call: 01553 824408
-            </a></li>
-            <li><a class="dropdown-item" href="mailto:info@sprintwave.co.uk">
-              <i class="bi bi-envelope me-2"></i>Email Us
-            </a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="https://www.linkedin.com/company/sprintwave/" target="_blank">
-              <i class="bi bi-linkedin me-2" style="color: #0077b5;"></i>LinkedIn
-            </a></li>
-            <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=61579592293313" target="_blank">
-              <i class="bi bi-facebook me-2" style="color: #1877f2;"></i>Facebook
-            </a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
+{% block content %}
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="container position-relative">
@@ -752,42 +616,4 @@
     </div>
   </div>
 </section>
-<footer class="text-center text-muted">
-  <div class="container">
-    <p class="mb-1 small">© 2025 Sprintwave. All rights reserved.</p>
-    <p class="mb-1 small">Company Number: 15831681 | Network Consulting & Starlink Installation Specialists</p>
-    <p class="mb-1 small">📞 01553 824408 | 📧 info@sprintwave.co.uk</p>
-    
-    <!-- Social Media Buttons -->
-    <div class="d-flex justify-content-center gap-2 mt-2">
-      <a 
-        href="https://www.linkedin.com/company/sprintwave" 
-        target="_blank" 
-        rel="noopener" 
-        class="btn btn-outline-primary btn-sm"
-        style="border-radius: 999px;"
-        aria-label="Sprintwave LinkedIn"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-          <path d="M0 1.146C0 .513.324 0 .725 0h14.55c.401 0 .725.513.725 1.146v13.708c0 .633-.324 1.146-.725 1.146H.725A.723.723 0 0 1 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.212h2.4V9.359c0-.215.016-.43.08-.586.175-.43.573-.877 1.242-.877.876 0 1.226.662 1.226 1.634v4.864h2.4V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.6 5.6 0 0 1 .016-.025V6.169h-2.4c.03.7 0 7.225 0 7.225z"/>
-        </svg>
-      </a>
-      
-      <a 
-        href="https://www.facebook.com/profile.php?id=61579592293313" 
-        target="_blank" 
-        rel="noopener" 
-        class="btn btn-outline-primary btn-sm"
-        style="border-radius: 999px; border-color: #1877f2; color: #1877f2;"
-        aria-label="Sprintwave Facebook"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-        </svg>
-      </a>
-    </div>
-  </div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% endblock %}

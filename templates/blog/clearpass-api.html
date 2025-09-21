@@ -1,39 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+{% extends "base.html" %}
+
+{% block meta %}
+<!-- SEO META TAGS -->
 <title>Authenticating to the ClearPass API | Sprintwave Blog</title>
 <meta name="description" content="Step-by-step guide to authenticating and querying Aruba ClearPass API for static host lists and network access control.">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<meta name="keywords" content="ClearPass API, Aruba ClearPass, API authentication, static host lists, network access control, RADIUS, Postman, Norfolk">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
+<!-- LOCAL SEO -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Norfolk, UK">
+<meta name="geo.position" content="52.6309;1.2974">
+<meta name="ICBM" content="52.6309, 1.2974">
+
+<!-- SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="Authenticating to the ClearPass API | Sprintwave Blog">
+<meta property="og:description" content="Complete guide to ClearPass API authentication, client creation, and querying static host lists. Expert tutorial from Norfolk network specialists.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.sprintwave.co.uk/blog/clearpass-api">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/clearpass-api-guide.jpg">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ClearPass API Authentication Guide">
+<meta name="twitter:description" content="Step-by-step guide to accessing Aruba ClearPass API for static host lists">
+<meta name="twitter:image" content="https://www.sprintwave.co.uk/static/clearpass-api-guide.jpg">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://www.sprintwave.co.uk/blog/clearpass-api">
+
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Authenticating to the ClearPass API",
+  "description": "Step-by-step guide to authenticating and querying Aruba ClearPass API for static host lists and network access control",
+  "image": "https://www.sprintwave.co.uk/static/clearpass-api-guide.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Sprintwave"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sprintwave",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sprintwave.co.uk/static/logo.png"
+    }
+  },
+  "datePublished": "2025-07-01",
+  "dateModified": "2025-07-01",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.sprintwave.co.uk/blog/clearpass-api"
+  }
+}
+</script>
+{% endblock %}
+
+{% block custom_css %}
 <style>
   body {
     background-color: #e6f0ef;
     color: #1a1a1a;
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
   }
-  .navbar {
-    background-color: #ffffff !important;
-  }
-  .accent {
-    color: #007f73;
-  }
-  .btn-accent {
-    background-color: #007f73;
-    color: #fff;
-    border-radius: 999px;
-    padding: 0.7rem 2rem;
-    font-weight: 600;
-    border: none;
-    transition: all 0.3s ease;
-  }
-  .btn-accent:hover {
-    background-color: #005f57;
-    color: #fff;
-    transform: translateY(-2px);
-  }
+
   .blog-content {
     background: #fff;
     border-radius: 15px;
@@ -41,19 +77,24 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     margin: 2rem 0;
   }
+
   pre {
     background: #f8f9fa;
     padding: 1em;
     border-left: 4px solid #007f73;
     border-radius: 8px;
     overflow-x: auto;
+    font-size: 0.85em;
+    line-height: 1.4;
   }
+
   code {
     background: #f1f5f9;
     padding: 0.2em 0.4em;
     border-radius: 4px;
     font-size: 0.9em;
   }
+
   .step-card {
     background: #f8fafc;
     border-left: 4px solid #007f73;
@@ -61,133 +102,45 @@
     padding: 1.5rem;
     margin: 1.5rem 0;
   }
+
+  .hero-section {
+    padding: 100px 0 60px;
+    background-color: #e6f0ef;
+    text-align: center;
+  }
+
+  .hero-section h1 {
+    color: #1a1a1a;
+    font-weight: 700;
+  }
+
+  .hero-section p {
+    color: #555;
+  }
+
+  @media (max-width: 768px) {
+    .blog-content {
+      padding: 1.5rem;
+    }
+    
+    .hero-section {
+      padding: 80px 0 40px;
+    }
+    
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+
+    pre {
+      font-size: 0.75em;
+    }
+  }
 </style>
-</head>
-<body>
+{% endblock %}
 
-<!-- Navbar -->
-<!-- COPY THIS NAVBAR TO ALL TEMPLATE FILES -->
-<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #ffffff;">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
-      <img alt="Sprintwave Logo" class="me-2" height="48" src="{{ url_for('static', filename='logo.png') }}"/>
-    </a>
-    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav align-items-center">
-        <!-- Home Button -->
-        <li class="nav-item">
-          <a class="nav-link fw-bold" href="{{ url_for('home') }}" style="color: #1a1a1a;">
-            <i class="bi bi-house me-1"></i> Home
-          </a>
-        </li>
-
-        <!-- About -->
-        <li class="nav-item">
-          <a class="nav-link fw-bold" href="{{ url_for('about') }}" style="color: #1a1a1a;">
-            <i class="bi bi-people me-1"></i> About
-          </a>
-        </li>
-
-        <!-- Core Services -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
-            <i class="bi bi-gear me-1"></i> Services
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
-              <i class="bi bi-diagram-3 me-2"></i>Network Consulting
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
-              <i class="bi bi-wifi me-2"></i>WiFi Surveys
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
-              <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('rural_broadband') }}">
-              <span style="font-size:1.1em; margin-right: 0.5em;">🌾</span>Rural Broadband
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('event_wifi') }}">
-              <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
-              <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
-            </a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ url_for('penetration_testing') }}">
-              <i class="bi bi-shield-exclamation me-2"></i>Penetration Testing
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
-              <i class="bi bi-code-slash me-2"></i>Web Design
-            </a></li>
-          </ul>
-        </li>
-
-        <!-- Blog -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
-            <i class="bi bi-book me-1"></i> Blog
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ url_for('blog') }}">
-              <i class="bi bi-house me-2"></i>Blog Home
-            </a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
-              🛰️ How Starlink Works: Technical Deep-Dive
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
-              🔐 Preventing AD Lockouts with Ansible
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
-              💾 Aruba Switch Backups with Ansible
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
-              🔍 100G Optic Issues on Aruba 8360
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
-              <i class="bi bi-terminal me-1"></i> ClearPass API Guide
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
-              <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
-            </a></li>
-            <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
-              <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
-            </a></li>
-          </ul>
-        </li>
-
-        <!-- Social & Contact -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle fw-bold" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
-            <i class="bi bi-person-lines-fill me-1"></i> Connect
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="tel:+441553824408">
-              <i class="bi bi-telephone me-2"></i>Call: 01553 824408
-            </a></li>
-            <li><a class="dropdown-item" href="mailto:info@sprintwave.co.uk">
-              <i class="bi bi-envelope me-2"></i>Email Us
-            </a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="https://www.linkedin.com/company/sprintwave/" target="_blank">
-              <i class="bi bi-linkedin me-2" style="color: #0077b5;"></i>LinkedIn
-            </a></li>
-            <li><a class="dropdown-item" href="https://www.facebook.com/profile.php?id=61579592293313" target="_blank">
-              <i class="bi bi-facebook me-2" style="color: #1877f2;"></i>Facebook
-            </a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
+{% block content %}
 <!-- Hero Section -->
-<section class="py-5">
+<section class="hero-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto text-center">
@@ -195,8 +148,8 @@
           <i class="bi bi-terminal me-3" style="color: #007f73;"></i>
           Authenticating to the ClearPass API
         </h1>
-        <p class="lead text-muted">Step-by-step guide to accessing Aruba ClearPass API for static host lists</p>
-        <p class="text-muted"><small>Posted July 2025 • by Sprintwave Team</small></p>
+        <p class="lead">Step-by-step guide to accessing Aruba ClearPass API for static host lists</p>
+        <p><small>Posted July 2025 • by Sprintwave Team</small></p>
       </div>
     </div>
   </div>
@@ -325,6 +278,33 @@
             This simple example shows how to authenticate and retrieve static host lists from ClearPass. The API can be used for much more complex operations including adding/removing endpoints, managing guest access, and integrating with other systems.
           </p>
 
+          <h4>Additional API Endpoints</h4>
+          <div class="step-card">
+            <h5 class="accent mb-3">Common ClearPass API Operations</h5>
+            <ul>
+              <li><code>GET /api/static-host-list</code> - Retrieve all static host lists</li>
+              <li><code>GET /api/static-host-list/{id}</code> - Get specific host list</li>
+              <li><code>POST /api/static-host-list</code> - Create new host list</li>
+              <li><code>PUT /api/static-host-list/{id}</code> - Update existing host list</li>
+              <li><code>DELETE /api/static-host-list/{id}</code> - Delete host list</li>
+              <li><code>GET /api/endpoint</code> - Retrieve endpoints</li>
+              <li><code>GET /api/guest</code> - Manage guest accounts</li>
+            </ul>
+          </div>
+
+          <h4>Best Practices</h4>
+          <div class="step-card">
+            <strong>API Security Tips:</strong>
+            <ul class="mb-0">
+              <li>Use appropriate token lifetimes - not too long for security, not too short for usability</li>
+              <li>Limit API client permissions to only what's needed</li>
+              <li>Always use HTTPS when making API calls</li>
+              <li>Store tokens securely and never commit them to version control</li>
+              <li>Monitor API usage and set up proper logging</li>
+              <li>Test API calls in a lab environment before production deployment</li>
+            </ul>
+          </div>
+
           <div class="mt-4 p-3" style="background: #f8fafc; border-radius: 10px;">
             <strong>Tags:</strong> 
             <span class="badge bg-secondary me-1">ClearPass</span>
@@ -360,42 +340,4 @@
     </div>
   </div>
 </section>
-<footer class="text-center text-muted">
-  <div class="container">
-    <p class="mb-1 small">© 2025 Sprintwave. All rights reserved.</p>
-    <p class="mb-1 small">Company Number: 15831681 | Network Consulting & Starlink Installation Specialists</p>
-    <p class="mb-1 small">📞 01553 824408 | 📧 info@sprintwave.co.uk</p>
-    
-    <!-- Social Media Buttons -->
-    <div class="d-flex justify-content-center gap-2 mt-2">
-      <a 
-        href="https://www.linkedin.com/company/sprintwave" 
-        target="_blank" 
-        rel="noopener" 
-        class="btn btn-outline-primary btn-sm"
-        style="border-radius: 999px;"
-        aria-label="Sprintwave LinkedIn"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-          <path d="M0 1.146C0 .513.324 0 .725 0h14.55c.401 0 .725.513.725 1.146v13.708c0 .633-.324 1.146-.725 1.146H.725A.723.723 0 0 1 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.212h2.4V9.359c0-.215.016-.43.08-.586.175-.43.573-.877 1.242-.877.876 0 1.226.662 1.226 1.634v4.864h2.4V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.6 5.6 0 0 1 .016-.025V6.169h-2.4c.03.7 0 7.225 0 7.225z"/>
-        </svg>
-      </a>
-      
-      <a 
-        href="https://www.facebook.com/profile.php?id=61579592293313" 
-        target="_blank" 
-        rel="noopener" 
-        class="btn btn-outline-primary btn-sm"
-        style="border-radius: 999px; border-color: #1877f2; color: #1877f2;"
-        aria-label="Sprintwave Facebook"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-        </svg>
-      </a>
-    </div>
-  </div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% endblock %}
