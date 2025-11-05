@@ -138,6 +138,12 @@ def sitemap():
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.sprintwave.co.uk/penetration-testing</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>https://www.sprintwave.co.uk/blog</loc>
         <lastmod>{current_date}</lastmod>
         <changefreq>weekly</changefreq>
@@ -185,7 +191,13 @@ def sitemap():
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
-        <url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/case-studies</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://www.sprintwave.co.uk/case-studies/event-wifi</loc>
         <lastmod>{current_date}</lastmod>
         <changefreq>monthly</changefreq>
@@ -196,6 +208,24 @@ def sitemap():
         <lastmod>{current_date}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals/examcontent</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals/comingsoon</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
     </url>
 </urlset>"""
     
