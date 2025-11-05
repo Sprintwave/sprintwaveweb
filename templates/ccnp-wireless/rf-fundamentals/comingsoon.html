@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Coming Soon - CCNP Wireless 350-101 Course | Sprintwave</title>
+<meta name="description" content="New CCNP Wireless 350-101 lessons coming soon. RF Propagation, Signal Strength, Interference, SNR and more wireless networking topics.">
+<meta name="keywords" content="CCNP Wireless, 350-101, coming soon, RF propagation, signal strength, interference, SNR">
+<meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .coming-soon-hero {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: white;
+        padding: 100px 0;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+    }
+    
+    .course-badge {
+        background: rgba(255,255,255,0.9);
+        color: #1f2937;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    
+    .coming-soon-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-left: 4px solid #dc2626;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .coming-soon-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+    
+    .lesson-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    
+    .progress-ring {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1rem;
+    }
+    
+    .progress-ring-circle {
+        stroke: #dc2626;
+        stroke-width: 4;
+        fill: transparent;
+        stroke-dasharray: 283;
+        stroke-dashoffset: 255; /* 10% complete = 283 - (283 * 0.1) = 255 */
+        stroke-linecap: round;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+        animation: progress 2s ease-in-out;
+    }
+    
+    @keyframes progress {
+        from { stroke-dashoffset: 283; }
+        to { stroke-dashoffset: 255; }
+    }
+    
+    .pulse-animation {
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Coming Soon Hero -->
+<section class="coming-soon-hero">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="course-badge pulse-animation">
+                    📡 CCNP Wireless 350-101
+                </div>
+                <h1 class="display-4 fw-bold mb-4">More Lessons Coming Soon!</h1>
+                <p class="lead mb-4">We're working hard to bring you comprehensive CCNP Wireless 350-101 content. The next lessons in RF fundamentals are currently in development.</p>
+                
+                <!-- Progress Circle -->
+                <div class="progress-ring">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="progress-ring-circle" cx="50" cy="50" r="45"></circle>
+                    </svg>
+                </div>
+                <p class="mb-4"><strong>Course Progress: 10% Complete</strong></p>
+                
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{{ url_for('rf_fundamentals') }}" class="btn btn-light btn-lg">
+                        <i class="bi bi-arrow-left me-2"></i>Back to RF Fundamentals
+                    </a>
+                    <a href="{{ url_for('home') }}" class="btn btn-outline-light btn-lg">
+                        <i class="bi bi-house me-2"></i>Explore Other Courses
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Lessons -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">What's Coming Next</h2>
+                    <p class="text-muted">The complete CCNP Wireless 350-101 RF Fundamentals curriculum</p>
+                </div>
+
+                <!-- Lesson 1.1 -->
+                <div class="coming-soon-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center">
+                            <span class="lesson-icon">📶</span>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="text-primary mb-2">1.1 Propagation of Radio Waves</h4>
+                            <p class="text-muted mb-2">Learn how RF waves travel through different environments, including:</p>
+                            <ul class="text-muted mb-0">
+                                <li>Free space path loss calculations</li>
+                                <li>Reflection, refraction, and diffraction</li>
+                                <li>Multipath and Fresnel zones</li>
+                                <li>Indoor vs outdoor propagation</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <span class="badge bg-warning text-dark p-2">In Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 1.2a -->
+                <div class="coming-soon-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center">
+                            <span class="lesson-icon">📊</span>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="text-primary mb-2">1.2a Signal Strength</h4>
+                            <p class="text-muted mb-2">Master wireless signal measurements and power calculations:</p>
+                            <ul class="text-muted mb-0">
+                                <li>dBm, dBi, and dB conversions</li>
+                                <li>RSSI and received signal strength</li>
+                                <li>Link budgets and power planning</li>
+                                <li>Transmit power regulations</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <span class="badge bg-info text-white p-2">Planning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 1.2b -->
+                <div class="coming-soon-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center">
+                            <span class="lesson-icon">⚡</span>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="text-primary mb-2">1.2b Interference, Noise & Rogue APs</h4>
+                            <p class="text-muted mb-2">Identify and mitigate sources of RF problems:</p>
+                            <ul class="text-muted mb-0">
+                                <li>Co-channel and adjacent channel interference</li>
+                                <li>Non-WiFi interference sources</li>
+                                <li>Rogue AP detection and prevention</li>
+                                <li>Spectrum analysis techniques</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <span class="badge bg-info text-white p-2">Planning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 1.2c -->
+                <div class="coming-soon-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center">
+                            <span class="lesson-icon">📉</span>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="text-primary mb-2">1.2c Device Capabilities</h4>
+                            <p class="text-muted mb-2">Understand client device limitations and characteristics:</p>
+                            <ul class="text-muted mb-0">
+                                <li>Client device RF capabilities</li>
+                                <li>Antenna patterns and gain</li>
+                                <li>Power management features</li>
+                                <li>Legacy device considerations</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <span class="badge bg-secondary text-white p-2">Research</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 1.2d -->
+                <div class="coming-soon-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center">
+                            <span class="lesson-icon">📈</span>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="text-primary mb-2">1.2d SNR (Signal-to-Noise Ratio)</h4>
+                            <p class="text-muted mb-2">Master the critical relationship between signal and noise:</p>
+                            <ul class="text-muted mb-0">
+                                <li>SNR calculations and measurements</li>
+                                <li>Impact on data rates and performance</li>
+                                <li>Noise floor analysis</li>
+                                <li>SNR optimization techniques</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <span class="badge bg-secondary text-white p-2">Research</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="coming-soon-card text-center mt-5">
+                    <h3 class="accent mb-3">Keep Learning</h3>
+                    <p class="text-muted mb-4">While we develop these new lessons, continue strengthening your RF fundamentals and explore our other courses.</p>
+                    
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-md-4">
+                            <a href="{{ url_for('rf_fundamentals') }}" class="btn btn-success w-100">
+                                <i class="bi bi-arrow-repeat me-2"></i>Review RF Basics
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ url_for('home') }}" class="btn btn-primary w-100">
+                                <i class="bi bi-house me-2"></i>Explore Other Courses
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ url_for('about') }}" class="btn btn-outline-primary w-100">
+                                <i class="bi bi-info-circle me-2"></i>About Sprintwave
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_js %}
+<script>
+// Track page view
+if (typeof gtag !== 'undefined') {
+    gtag('event', 'page_view', {
+        'event_category': 'coming_soon',
+        'event_label': 'ccnp_wireless_lessons',
+        'course': 'ccnp_wireless_350_101'
+    });
+}
+</script>
+{% endblock %}

@@ -96,6 +96,46 @@
             padding: 80px 0;
         }
         
+        /* Dropdown Submenu Styles */
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+            border-radius: 0 6px 6px 6px;
+        }
+
+        .dropdown-submenu:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-submenu .dropdown-toggle::after {
+            transform: rotate(-90deg);
+            float: right;
+            margin-top: 8px;
+        }
+
+        /* Mobile responsive submenu */
+        @media (max-width: 767px) {
+            .dropdown-submenu .dropdown-menu {
+                position: static !important;
+                float: none;
+                width: auto;
+                margin-top: 0;
+                background-color: #f8f9fa;
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            
+            .dropdown-submenu .dropdown-item {
+                padding-left: 2rem;
+            }
+        }
+        
         /* Custom page styles can be added here */
         {% block custom_css %}{% endblock %}
     </style>
@@ -181,6 +221,40 @@
                         </a></li>
                     </ul>
                 </li>
+                                <!-- CCNP Wireless -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="ccnpDropdown" role="button" data-bs-toggle="dropdown" style="color: #dc2626;">
+                        <i class="bi bi-wifi me-1"></i> CCNP Wireless 350-101
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">
+                                <i class="bi bi-broadcast me-2"></i>RF Fundamentals
+                            </a>
+                            <ul class="dropdown-menu dropdown-submenu-left">
+                                <li><a class="dropdown-item" href="{{ url_for('rf_fundamentals') }}">
+                                    📡1.0 RF Fundamentals
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    📶1.1 Describe the propagation of Radio Waves
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    📊1.2a Signal Strength
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    ⚡ 1.2b Interference, noise, rogue AP
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    📉 1.2c Device capabilities
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    📉 1.2d SNR
+                                </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
 
                 <!-- Blog -->
                 <li class="nav-item dropdown">
