@@ -1,0 +1,661 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>CCNP Wireless 350-101 Exam Content - Complete Study Guide | Sprintwave</title>
+<meta name="description" content="Complete breakdown of Cisco CCNP Wireless 350-101 exam content. RF fundamentals, 802.11 technology, wireless implementation, client connectivity, monitoring and automation topics.">
+<meta name="keywords" content="CCNP Wireless, 350-101, WLCOR, exam content, study guide, RF fundamentals, 802.11, wireless networking, Cisco certification">
+<meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .exam-hero {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: white;
+        padding: 80px 0;
+    }
+    
+    .exam-badge {
+        background: rgba(255,255,255,0.9);
+        color: #1f2937;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    
+    .topic-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-left: 6px solid #dc2626;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .topic-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+    
+    .percentage-badge {
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.2rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    
+    .subtopic {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
+    
+    .subtopic-header {
+        font-weight: 600;
+        color: #1e40af;
+        margin-bottom: 0.5rem;
+    }
+    
+    .detail-list {
+        margin: 0;
+        padding-left: 1.5rem;
+    }
+    
+    .detail-list li {
+        margin-bottom: 0.25rem;
+        color: #4b5563;
+    }
+    
+    .exam-overview {
+        background: linear-gradient(135deg, #3b82f6, #1e40af);
+        color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .stat-card {
+        text-align: center;
+        background: rgba(255,255,255,0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        display: block;
+    }
+    
+    .progress-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 6px solid rgba(255,255,255,0.3);
+        border-top-color: #ffffff;
+        margin: 0 auto 1rem;
+        position: relative;
+    }
+    
+    .certification-path {
+        background: #f0fdf4;
+        border: 2px solid #bbf7d0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Exam Hero Section -->
+<section class="exam-hero">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="exam-badge">
+                    🎯 Cisco Certification
+                </div>
+                <h1 class="display-4 fw-bold mb-4">CCNP Wireless 350-101 Exam Content</h1>
+                <p class="lead mb-4">Complete breakdown of the Implementing and Operating Cisco Wireless Core Technologies (WLCOR) exam</p>
+                
+                <!-- Quick Stats -->
+                <div class="row g-4 mt-4">
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <span class="stat-number">120</span>
+                            <small>Minutes</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <span class="stat-number">7</span>
+                            <small>Main Topics</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <span class="stat-number">CCNP</span>
+                            <small>Certification</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <span class="stat-number">CCIE</span>
+                            <small>Prerequisite</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Exam Overview -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="exam-overview">
+                    <h3 class="mb-4"><i class="bi bi-info-circle me-2"></i>Exam Overview</h3>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="mb-3">The <strong>Implementing and Operating Cisco Wireless Core Technologies v1.0 (WLCOR 350-101)</strong> is a 120-minute exam associated with the CCNP and CCIE Wireless Certification.</p>
+                            
+                            <p class="mb-3">This exam tests a candidate's knowledge of implementing core wireless technologies including:</p>
+                            
+                            <ul class="mb-4">
+                                <li>Radio frequency fundamentals</li>
+                                <li>802.11 technology fundamentals</li>
+                                <li>Client connectivity</li>
+                                <li>Wireless monitoring and management</li>
+                                <li>Automation and AI</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="progress-circle"></div>
+                            <h5>Ready to Start?</h5>
+                            <a href="{{ url_for('rf_fundamentals') }}" class="btn btn-light">
+                                Begin with RF Fundamentals
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification Path -->
+                <div class="certification-path">
+                    <h5 class="text-success mb-3"><i class="bi bi-award me-2"></i>Certification Path</h5>
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <p class="mb-2"><strong>CCNP Wireless:</strong> Pass this exam (350-101) plus one concentration exam</p>
+                            <p class="mb-0"><strong>CCIE Wireless:</strong> This exam serves as the written qualification exam</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <img src="/static/ccnp-wireless/ccnp.png" alt="CCNP Wireless Badge" style="max-height: 80px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Exam Topics Breakdown -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Exam Topics Breakdown</h2>
+                    <p class="text-muted">Detailed content outline for each exam domain</p>
+                </div>
+
+                <!-- Topic 1: RF Fundamentals (15%) -->
+                <div class="topic-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="percentage-badge me-3">15%</div>
+                        <h3 class="mb-0">1.0 RF Fundamentals</h3>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">1.1 Describe the propagation of radio waves</div>
+                        <ul class="detail-list">
+                            <li>Free space path loss</li>
+                            <li>Reflection, refraction, diffraction</li>
+                            <li>Multipath and Fresnel zones</li>
+                            <li>Indoor vs outdoor propagation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">1.2 Describe RF signal measurements</div>
+                        <ul class="detail-list">
+                            <li><strong>1.2.a Signal strength</strong> - RSSI, transmit power, receive sensitivity</li>
+                            <li><strong>1.2.b Interference, noise, rogue AP</strong> - Sources and mitigation</li>
+                            <li><strong>1.2.c Device capabilities</strong> - Smartphones, laptops, tablets</li>
+                            <li><strong>1.2.d SNR</strong> - Signal-to-Noise Ratio calculations and impact</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">1.3 Describe the principles of RF mathematics</div>
+                        <ul class="detail-list">
+                            <li>dB, dBm, dBi calculations</li>
+                            <li>Link budget analysis</li>
+                            <li>Power calculations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">1.4 Describe Wi-Fi antenna characteristics</div>
+                        <ul class="detail-list">
+                            <li>Antenna patterns and gain</li>
+                            <li>Polarization and diversity</li>
+                            <li>Beamforming and MIMO</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <a href="{{ url_for('rf_fundamentals') }}" class="btn btn-primary">
+                            <i class="bi bi-play-circle me-2"></i>Start RF Fundamentals
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Topic 2: 802.11 Technology Fundamentals (10%) -->
+                <div class="topic-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="percentage-badge me-3">10%</div>
+                        <h3 class="mb-0">2.0 802.11 Technology Fundamentals</h3>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">2.1 Describe Wi-Fi governance</div>
+                        <ul class="detail-list">
+                            <li><strong>2.1.a Regional regulatory bodies</strong> - FCC, ETSI, IC</li>
+                            <li><strong>2.1.b IEEE 802.11</strong> - Standards development</li>
+                            <li><strong>2.1.c Wi-Fi Alliance</strong> - Certification programs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">2.2 Describe usable channel and power combination</div>
+                        <ul class="detail-list">
+                            <li><strong>2.2.a Regional EIRP limitation examples</strong></li>
+                            <li><strong>2.2.b Frequency bands</strong> - 2.4, 5, 6 GHz</li>
+                            <li><strong>2.2.c RRM fundamental</strong> - Radio Resource Management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">2.3 Describe 802.11 fundamentals</div>
+                        <ul class="detail-list">
+                            <li><strong>2.3.a Modulation techniques</strong> - OFDM, QAM</li>
+                            <li><strong>2.3.b Channel width</strong> - 20, 40, 80, 160 MHz</li>
+                            <li><strong>2.3.c MIMO / MU-MIMO / MLO</strong></li>
+                            <li><strong>2.3.d Wireless topologies</strong> - BSS, ESS, IBSS</li>
+                            <li><strong>2.3.e Frame types</strong> - Management, control, data</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <a href="{{ url_for('comingsoon') }}" class="btn btn-outline-primary">
+                            <i class="bi bi-clock me-2"></i>Coming Soon
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Topic 3: Wireless Network Implementation (10%) -->
+                <div class="topic-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="percentage-badge me-3">10%</div>
+                        <h3 class="mb-0">3.0 Wireless Network Implementation</h3>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">3.1 Describe Cisco wireless architectures</div>
+                        <ul class="detail-list">
+                            <li><strong>3.1.a Fabric</strong> - SD-Access integration</li>
+                            <li><strong>3.1.b Mesh</strong> - Outdoor mesh networks</li>
+                            <li><strong>3.1.c Local</strong> - Local mode operations</li>
+                            <li><strong>3.1.d Cloud</strong> - Meraki and cloud management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">3.2 Implement the physical infrastructure connections</div>
+                        <ul class="detail-list">
+                            <li>Power over Ethernet (PoE) requirements</li>
+                            <li>Cable infrastructure and backbone</li>
+                            <li>Switch port configuration</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">3.3 Implement AP, WLC, and dashboard management access</div>
+                        <ul class="detail-list">
+                            <li>Management interfaces</li>
+                            <li>HTTPS and SSH access</li>
+                            <li>Dashboard connectivity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topic 4: Wireless Network Operation (20%) -->
+                <div class="topic-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="percentage-badge me-3">20%</div>
+                        <h3 class="mb-0">4.0 Wireless Network Operation</h3>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">4.1 Configure the initial setup of Cisco wireless infrastructures</div>
+                        <ul class="detail-list">
+                            <li>WLC initial configuration</li>
+                            <li>Management interface setup</li>
+                            <li>System parameters</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">4.2 Implement AP discovery and join process</div>
+                        <ul class="detail-list">
+                            <li>CAPWAP discovery mechanisms</li>
+                            <li>AP join process</li>
+                            <li>Certificate validation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">4.3 Implement AP modes</div>
+                        <ul class="detail-list">
+                            <li>Local mode</li>
+                            <li>Monitor mode</li>
+                            <li>FlexConnect mode</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">4.4 Configure WLAN access for client connectivity</div>
+                        <ul class="detail-list">
+                            <li>SSID configuration</li>
+                            <li>Security policies</li>
+                            <li>QoS profiles</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">4.5 Configure client management rules and policies</div>
+                        <ul class="detail-list">
+                            <li>WLC policies</li>
+                            <li>Dashboard management</li>
+                            <li>Catalyst Center integration</li>
+                            <li>ISE and Spaces integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topic 5: Client Connectivity Configuration (20%) -->
+                <div class="topic-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="percentage-badge me-3">20%</div>
+                        <h3 class="mb-0">5.0 Client Connectivity Configuration</h3>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">5.1 Configure authentication mechanisms outside the controller</div>
+                        <ul class="detail-list">
+                            <li>RADIUS server configuration</li>
+                            <li>Active Directory integration</li>
+                            <li>Certificate authorities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">5.2 Configure WLAN authentication mechanisms on the controller</div>
+                        <ul class="detail-list">
+                            <li>PSK authentication</li>
+                            <li>802.1X/EAP methods</li>
+                            <li>Web authentication</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">5.3 Configure client connectivity in different operating systems</div>
+                        <ul class="detail-list">
+                            <li>Windows configuration</li>
+                            <li>macOS configuration</li>
+                            <li>Mobile device setup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">5.4 Describe roaming</div>
+                        <ul class="detail-list">
+                            <li>Layer 2 roaming</li>
+                            <li>Layer 3 roaming</li>
+                            <li>Fast roaming standards</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">5.5 Configure wireless guest networking</div>
+                        <ul class="detail-list">
+                            <li>Guest WLAN setup</li>
+                            <li>Captive portal configuration</li>
+                            <li>Guest access policies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topic 6: Wireless Monitoring and Management (15%) -->
+                <div class="topic-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="percentage-badge me-3">15%</div>
+                        <h3 class="mb-0">6.0 Wireless Monitoring and Management</h3>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">6.1 Manage wireless network maintenance</div>
+                        <ul class="detail-list">
+                            <li>Software upgrades</li>
+                            <li>Configuration backups</li>
+                            <li>Performance monitoring</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">6.2 Configure client monitoring</div>
+                        <ul class="detail-list">
+                            <li>Client health monitoring</li>
+                            <li>Connection statistics</li>
+                            <li>Performance metrics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">6.3 Troubleshoot client connectivity</div>
+                        <ul class="detail-list">
+                            <li>Authentication issues</li>
+                            <li>Association problems</li>
+                            <li>Performance troubleshooting</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">6.4 Describe device and platform integrations</div>
+                        <ul class="detail-list">
+                            <li>Third-party integrations</li>
+                            <li>API connectivity</li>
+                            <li>Management platform integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Topic 7: Automation and AI (10%) -->
+                <div class="topic-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="percentage-badge me-3">10%</div>
+                        <h3 class="mb-0">7.0 Automation and AI</h3>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">7.1 Interpret basic Python components and scripts</div>
+                        <ul class="detail-list">
+                            <li>Python syntax and structures</li>
+                            <li>API interaction scripts</li>
+                            <li>Data manipulation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">7.2 Describe NETCONF/YANG</div>
+                        <ul class="detail-list">
+                            <li>NETCONF protocol</li>
+                            <li>YANG data models</li>
+                            <li>Configuration management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">7.3 Interpret wireless infrastructure APIs</div>
+                        <ul class="detail-list">
+                            <li>REST API calls</li>
+                            <li>JSON data structures</li>
+                            <li>API authentication</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">7.4 Describe AI Analytics in Catalyst Center</div>
+                        <ul class="detail-list">
+                            <li>Network insights</li>
+                            <li>Predictive analytics</li>
+                            <li>Performance optimization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">7.5 Describe AI Operations in Catalyst Center</div>
+                        <ul class="detail-list">
+                            <li>Automated troubleshooting</li>
+                            <li>Proactive monitoring</li>
+                            <li>Issue resolution</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subtopic">
+                        <div class="subtopic-header">7.6 Describe AI-RRM</div>
+                        <ul class="detail-list">
+                            <li>AI-enhanced Radio Resource Management</li>
+                            <li>Dynamic optimization</li>
+                            <li>Machine learning algorithms</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Study Resources -->
+                <div class="topic-card" style="background: linear-gradient(135deg, #059669, #047857); color: white;">
+                    <h3 class="mb-4"><i class="bi bi-book me-2"></i>Study Resources & Next Steps</h3>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <h5><i class="bi bi-play-circle me-2"></i>Available Lessons</h5>
+                            <ul class="mb-4">
+                                <li>✅ RF Fundamentals (Lesson 1.0) - Complete</li>
+                                <li>🚧 RF Propagation (Lesson 1.1) - Coming Soon</li>
+                                <li>📅 Signal Measurements (Lesson 1.2) - In Development</li>
+                            </ul>
+                            
+                            <div class="d-flex gap-2 flex-wrap">
+                                <a href="{{ url_for('rf_fundamentals') }}" class="btn btn-light">
+                                    Start Learning
+                                </a>
+                                <a href="{{ url_for('comingsoon') }}" class="btn btn-outline-light">
+                                    View Roadmap
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h5><i class="bi bi-bookmark me-2"></i>Additional Resources</h5>
+                            <ul class="mb-4">
+                                <li>Cisco Learning Network</li>
+                                <li>Official Cert Guide</li>
+                                <li>Hands-on Lab Practice</li>
+                                <li>Practice Exams</li>
+                            </ul>
+                            
+                            <div class="alert alert-light">
+                                <small><i class="bi bi-info-circle me-2"></i><strong>Note:</strong> Content guidelines may change without notice. Always refer to the official Cisco exam topics for the most current information.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_js %}
+<script>
+// Smooth scrolling for anchor links
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click tracking for topic sections
+    document.querySelectorAll('.topic-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+                const topicTitle = this.querySelector('h3').textContent;
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'topic_interest', {
+                        'event_category': 'exam_content',
+                        'event_label': topicTitle,
+                        'exam': 'ccnp_wireless_350_101'
+                    });
+                }
+            }
+        });
+    });
+
+    // Track page view
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'event_category': 'exam_content',
+            'event_label': 'ccnp_wireless_350_101_overview',
+            'page_title': 'CCNP Wireless 350-101 Exam Content'
+        });
+    }
+});
+
+// Animate progress circle
+document.addEventListener('DOMContentLoaded', function() {
+    const progressCircle = document.querySelector('.progress-circle');
+    if (progressCircle) {
+        progressCircle.style.animation = 'spin 2s linear infinite';
+    }
+});
+
+// Add CSS for spin animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+</script>
+{% endblock %}

@@ -301,6 +301,10 @@ def rf_fundamentals():
 def comingsoon():
     return render_template('ccnp-wireless/rf-fundamentals/comingsoon.html')
 
+@app.route('/ccnp-wireless/rf_fundamentals/examcontent')
+def examcontent():
+    return render_template('ccnp-wireless/rf-fundamentals/examcontent.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
