@@ -1,0 +1,410 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Aruba ClearPass Services - Network Access Control & Policy Management | Sprintwave</title>
+<meta name="description" content="Expert Aruba ClearPass deployment services. Network access control, policy enforcement, and BYOD management solutions for enterprise environments.">
+<meta name="keywords" content="Aruba ClearPass, network access control, NAC, policy enforcement, BYOD, guest access, network security, Aruba CPPM">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Aruba ClearPass Services - Network Access Control">
+<meta property="og:description" content="Professional Aruba ClearPass deployment and management services for enterprise network security.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sprintwave.co.uk/aruba-clearpass">
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #ff6900 0%, #e55100 100%);
+        color: white;
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+        min-height: 500px;
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .service-badge {
+        background: rgba(255,255,255,0.95);
+        color: #1f2937;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .btn-clearpass {
+        background: linear-gradient(135deg, #ff6900, #e55100);
+        border: none;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 105, 0, 0.4);
+    }
+    
+    .btn-clearpass:hover {
+        background: linear-gradient(135deg, #e55100, #d84315);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 105, 0, 0.6);
+    }
+    
+    .feature-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-left: 6px solid #ff6900;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        border-left-color: #e55100;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff6900, #e55100);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 auto 1rem;
+    }
+    
+    .clearpass-feature {
+        background: linear-gradient(135deg, #fff3e0, #ffe0b3);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        border: 2px solid rgba(255, 105, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .clearpass-feature:hover {
+        border-color: rgba(255, 105, 0, 0.5);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 105, 0, 0.15);
+    }
+    
+    .contact-cta {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: white;
+        border-radius: 15px;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin: 3rem 0;
+    }
+    
+    .deployment-highlight {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border: 3px solid #ff6900;
+        margin: 2rem 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="hero-content">
+                    <div class="service-badge">
+                        🛡️ Network Access Control
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Aruba ClearPass Services</h1>
+                    <p class="lead mb-4">Expert Aruba ClearPass Policy Manager deployment and configuration. Complete network access control solutions deployed from scratch for enterprise environments.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                        <a href="#clearpass-services" class="btn btn-light btn-lg">
+                            <i class="bi bi-shield-check me-2"></i>Our Solutions
+                        </a>
+                        <a href="tel:+441553824408" class="btn btn-clearpass btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Deployment Experience -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="deployment-highlight">
+                    <h3 class="text-primary mb-3">From Scratch Deployments</h3>
+                    <p class="lead mb-0">Proven experience deploying Aruba ClearPass Policy Manager from ground zero, including architecture design, installation, configuration, and policy implementation for enterprise networks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ClearPass Services -->
+<section id="clearpass-services" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">ClearPass Solutions</h2>
+                    <p class="text-muted">Complete network access control and policy management services</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-gear"></i>
+                            </div>
+                            <h5>Policy Manager Deployment</h5>
+                            <p class="mb-0">Complete ClearPass Policy Manager installation and configuration from scratch with enterprise-grade architecture.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                            <h5>Network Access Control</h5>
+                            <p class="mb-0">802.1X authentication, device profiling, and dynamic VLAN assignment for secure network access.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h5>BYOD & Guest Access</h5>
+                            <p class="mb-0">Secure bring-your-own-device onboarding and guest access portals with self-service capabilities.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-eye"></i>
+                            </div>
+                            <h5>Device Profiling</h5>
+                            <p class="mb-0">Automated device discovery and classification for IoT, mobile devices, and network equipment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-diagram-2"></i>
+                            </div>
+                            <h5>Policy Enforcement</h5>
+                            <p class="mb-0">Dynamic policy enforcement based on user identity, device type, location, and security posture.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <h5>Monitoring & Reporting</h5>
+                            <p class="mb-0">Real-time network visibility, compliance reporting, and security analytics with custom dashboards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Features -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">ClearPass Capabilities</h2>
+                    <p class="text-muted">Comprehensive network access control platform</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="clearpass-feature">
+                            <h5><i class="bi bi-shield-check text-success me-2"></i>Authentication Services</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>802.1X wired and wireless</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>MAC authentication bypass</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Web authentication portals</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Certificate-based authentication</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="clearpass-feature">
+                            <h5><i class="bi bi-person-check text-primary me-2"></i>Identity Management</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Active Directory integration</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>LDAP directory services</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Local user databases</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>External authentication sources</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="clearpass-feature">
+                            <h5><i class="bi bi-gear text-info me-2"></i>Policy Framework</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Role-based access control</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Dynamic VLAN assignment</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Time-based access policies</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Location-aware policies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="clearpass-feature">
+                            <h5><i class="bi bi-activity text-warning me-2"></i>Network Visibility</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Real-time device tracking</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Network usage analytics</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Security event monitoring</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Compliance reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Implementation Process -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Deployment Process</h2>
+                    <p class="text-muted">Our structured approach to ClearPass implementation</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">1</span>
+                            </div>
+                            <h5>Planning</h5>
+                            <p class="mb-0">Requirements analysis and architecture design</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">2</span>
+                            </div>
+                            <h5>Installation</h5>
+                            <p class="mb-0">ClearPass Policy Manager deployment</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">3</span>
+                            </div>
+                            <h5>Configuration</h5>
+                            <p class="mb-0">Policy setup and system integration</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">4</span>
+                            </div>
+                            <h5>Testing</h5>
+                            <p class="mb-0">Validation and production rollout</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-cta">
+                    <h3 class="mb-4">Deploy ClearPass with Confidence</h3>
+                    <p class="mb-4">Ready to implement Aruba ClearPass? Our experienced engineers will deploy your network access control solution from the ground up.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="tel:+441553824408" class="btn btn-light btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                        <a href="mailto:info@sprintwave.co.uk?subject=Aruba ClearPass Consultation" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-envelope me-2"></i>Email Consultation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Track page view
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'event_category': 'enterprise_services',
+            'event_label': 'aruba_clearpass',
+            'page_title': 'Aruba ClearPass Services'
+        });
+    }
+    
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call', {
+                    'event_category': 'contact',
+                    'event_label': 'aruba_clearpass_page'
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

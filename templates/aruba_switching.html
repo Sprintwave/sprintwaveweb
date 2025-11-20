@@ -1,0 +1,749 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Aruba Switching Services - VSX & Aruba Central Deployments | Sprintwave</title>
+<meta name="description" content="Expert Aruba switching solutions with VSX deployment via command line and Aruba Central. Enterprise network switching, redundancy, and centralized management.">
+<meta name="keywords" content="Aruba switching, Aruba VSX, Virtual Switching Extension, Aruba Central, network switching, enterprise networking, CX series switches, redundancy">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Aruba Switching Services - VSX & Central Management">
+<meta property="og:description" content="Professional Aruba switching deployments with VSX and Aruba Central management expertise.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sprintwave.co.uk/aruba-switching">
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #ff6900 0%, #e55100 100%);
+        color: white;
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+    }
+    
+    /* Aruba Switching Animation */
+    .switching-animation-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .core-switch {
+        position: absolute;
+        font-size: 3rem;
+        color: rgba(255,255,255,0.9);
+        animation: corePulse 5s infinite ease-in-out;
+        text-shadow: 0 0 30px rgba(255,255,255,0.6);
+    }
+    
+    .vsx-pair {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        gap: 3rem;
+        animation: vsxSync 6s infinite ease-in-out;
+    }
+    
+    .vsx-switch {
+        font-size: 3.5rem;
+        color: rgba(255,255,255,0.9);
+        text-shadow: 0 0 40px rgba(255,255,255,0.7);
+    }
+    
+    .access-switch {
+        position: absolute;
+        color: rgba(255,255,255,0.8);
+        font-size: 2rem;
+        animation: accessPulse 4s infinite ease-in-out;
+    }
+    
+    .network-link {
+        position: absolute;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+        animation: linkFlow 5s infinite linear;
+        border-radius: 2px;
+        box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    }
+    
+    .lag-bundle {
+        position: absolute;
+        height: 6px;
+        background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.9), transparent);
+        animation: lagFlow 4s infinite linear;
+        border-radius: 3px;
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+    }
+    
+    .central-cloud {
+        position: absolute;
+        top: 15%;
+        right: 15%;
+        font-size: 2.5rem;
+        color: rgba(255,255,255,0.8);
+        animation: cloudFloat 8s infinite ease-in-out;
+    }
+    
+    .redundancy-path {
+        position: absolute;
+        border: 2px dashed rgba(34, 197, 94, 0.7);
+        border-radius: 5px;
+        animation: redundancyGlow 7s infinite ease-in-out;
+    }
+    
+    @keyframes corePulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.9;
+            text-shadow: 0 0 30px rgba(255,255,255,0.6);
+        }
+        50% {
+            transform: scale(1.1);
+            opacity: 1;
+            text-shadow: 0 0 50px rgba(255,255,255,0.9);
+        }
+    }
+    
+    @keyframes vsxSync {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.9;
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.05);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes accessPulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.8;
+            text-shadow: 0 0 15px rgba(255, 105, 0, 0.5);
+        }
+        50% {
+            transform: scale(1.15);
+            opacity: 1;
+            text-shadow: 0 0 25px rgba(255, 105, 0, 0.8);
+        }
+    }
+    
+    @keyframes linkFlow {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        25% {
+            opacity: 1;
+        }
+        75% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(300%);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes lagFlow {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        20% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(250%);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes cloudFloat {
+        0%, 100% {
+            transform: translateY(0);
+            opacity: 0.8;
+        }
+        50% {
+            transform: translateY(-15px);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes redundancyGlow {
+        0%, 100% {
+            opacity: 0.4;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+        }
+        50% {
+            opacity: 0.8;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
+        }
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .service-badge {
+        background: rgba(255,255,255,0.95);
+        color: #1f2937;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .vsx-badge {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        display: inline-block;
+        margin: 1rem 0;
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        border: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    .btn-aruba {
+        background: linear-gradient(135deg, #ff6900, #e55100);
+        border: none;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 105, 0, 0.4);
+    }
+    
+    .btn-aruba:hover {
+        background: linear-gradient(135deg, #e55100, #d84315);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 105, 0, 0.6);
+    }
+    
+    .feature-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-left: 6px solid #ff6900;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        border-left-color: #e55100;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff6900, #e55100);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 auto 1rem;
+    }
+    
+    .vsx-feature {
+        background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        border: 2px solid rgba(16, 185, 129, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .vsx-feature:hover {
+        border-color: rgba(16, 185, 129, 0.5);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+    }
+    
+    .central-feature {
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .central-feature:hover {
+        border-color: rgba(59, 130, 246, 0.5);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+    }
+    
+    .switch-series {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid #ff6900;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    
+    .contact-cta {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: white;
+        border-radius: 15px;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin: 3rem 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Switching Animation -->
+<section class="hero-section">
+    <!-- Aruba Switching Animation Background -->
+    <div class="switching-animation-container">
+        <!-- VSX Pair (Core) -->
+        <div class="vsx-pair">
+            <div class="vsx-switch">
+                <i class="bi bi-hdd-stack"></i>
+            </div>
+            <div class="vsx-switch">
+                <i class="bi bi-hdd-stack"></i>
+            </div>
+        </div>
+        
+        <!-- Aruba Central Cloud -->
+        <div class="central-cloud">
+            <i class="bi bi-cloud-check"></i>
+        </div>
+        
+        <!-- Access Switches -->
+        <div class="access-switch" style="top: 20%; left: 20%; animation-delay: 0s;">
+            <i class="bi bi-diagram-3"></i>
+        </div>
+        <div class="access-switch" style="top: 30%; right: 20%; animation-delay: 1s;">
+            <i class="bi bi-diagram-3"></i>
+        </div>
+        <div class="access-switch" style="bottom: 30%; left: 25%; animation-delay: 2s;">
+            <i class="bi bi-diagram-3"></i>
+        </div>
+        <div class="access-switch" style="bottom: 25%; right: 25%; animation-delay: 1.5s;">
+            <i class="bi bi-diagram-3"></i>
+        </div>
+        
+        <!-- LAG Bundles (High Bandwidth) -->
+        <div class="lag-bundle" style="top: 35%; left: 25%; width: 200px; transform: rotate(25deg); animation-delay: 0s;"></div>
+        <div class="lag-bundle" style="top: 55%; left: 30%; width: 180px; transform: rotate(-20deg); animation-delay: 2s;"></div>
+        <div class="lag-bundle" style="bottom: 35%; left: 40%; width: 220px; transform: rotate(-35deg); animation-delay: 1s;"></div>
+        
+        <!-- Network Links -->
+        <div class="network-link" style="top: 40%; right: 25%; width: 160px; transform: rotate(45deg); animation-delay: 3s;"></div>
+        <div class="network-link" style="bottom: 40%; right: 30%; width: 170px; transform: rotate(60deg); animation-delay: 4s;"></div>
+        <div class="network-link" style="top: 25%; left: 45%; width: 140px; transform: rotate(-45deg); animation-delay: 1.5s;"></div>
+        
+        <!-- Redundancy Paths -->
+        <div class="redundancy-path" style="top: 40%; left: 35%; width: 200px; height: 100px; animation-delay: 0s;"></div>
+        <div class="redundancy-path" style="bottom: 35%; right: 30%; width: 150px; height: 80px; animation-delay: 4s;"></div>
+    </div>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="hero-content">
+                    <div class="service-badge">
+                        🔗 Enterprise Switching Solutions
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Aruba Switching Services</h1>
+                    <p class="lead mb-4">Expert Aruba switching deployment with VSX (Virtual Switching Extension) and Aruba Central management. Enterprise-grade network switching solutions with advanced redundancy.</p>
+                    
+                    <div class="vsx-badge">
+                        ⚡ VSX Deployment via CLI & Aruba Central
+                    </div>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                        <a href="#switching-services" class="btn btn-light btn-lg">
+                            <i class="bi bi-diagram-3 me-2"></i>Our Solutions
+                        </a>
+                        <a href="tel:+441553824408" class="btn btn-aruba btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Switching Services Overview -->
+<section id="switching-services" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Aruba Switching Solutions</h2>
+                    <p class="text-muted">Complete enterprise switching infrastructure with advanced features</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-arrow-repeat"></i>
+                            </div>
+                            <h5>VSX Deployment</h5>
+                            <p class="mb-0">Expert Virtual Switching Extension deployment via command line and Aruba Central for maximum redundancy and performance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-cloud-check"></i>
+                            </div>
+                            <h5>Aruba Central Management</h5>
+                            <p class="mb-0">Cloud-based centralized management for simplified operations, monitoring, and configuration across your switching infrastructure.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-diagram-3"></i>
+                            </div>
+                            <h5>CX Series Switches</h5>
+                            <p class="mb-0">Deployment of Aruba CX series switches with advanced features including programmability and built-in analytics.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h5>Network Redundancy</h5>
+                            <p class="mb-0">High availability designs with VSX, LAG, and multi-path redundancy for zero-downtime network operations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+                            <h5>Performance Optimization</h5>
+                            <p class="mb-0">Advanced QoS, traffic shaping, and network optimization for maximum throughput and low latency.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <h5>Network Analytics</h5>
+                            <p class="mb-0">Built-in network analytics and monitoring with real-time visibility into network performance and utilization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VSX Features -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Aruba VSX (Virtual Switching Extension)</h2>
+                    <p class="text-muted">Advanced redundancy and simplified management</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="vsx-feature">
+                            <h5><i class="bi bi-arrow-repeat text-success me-2"></i>Active-Active Redundancy</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Dual-chassis high availability</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Load sharing across both switches</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Sub-second failover times</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Synchronized state information</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="vsx-feature">
+                            <h5><i class="bi bi-gear text-primary me-2"></i>Simplified Management</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Single point of management</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Unified configuration across pair</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Automatic configuration sync</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Command line and Central support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="vsx-feature">
+                            <h5><i class="bi bi-diagram-2 text-info me-2"></i>Network Protocols</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Multi-chassis LAG (MC-LAG)</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Distributed L3 routing</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>VRRP and anycast gateway</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>EVPN-VXLAN support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="vsx-feature">
+                            <h5><i class="bi bi-speedometer2 text-warning me-2"></i>Performance Benefits</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Doubled effective bandwidth</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Optimal traffic distribution</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Reduced network convergence time</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Enhanced scalability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Aruba Central Management -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Aruba Central Cloud Management</h2>
+                    <p class="text-muted">Unified cloud-based network operations</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="central-feature">
+                            <h5><i class="bi bi-cloud-upload text-primary me-2"></i>Cloud-Native Operations</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Zero-touch provisioning</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Centralized configuration management</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Automated software updates</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Global policy deployment</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="central-feature">
+                            <h5><i class="bi bi-eye text-info me-2"></i>Network Visibility</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Real-time monitoring dashboards</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Network topology visualization</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Performance analytics</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Proactive alerting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="central-feature">
+                            <h5><i class="bi bi-shield-check text-success me-2"></i>Security & Compliance</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Role-based access control</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Audit trails and logging</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Compliance reporting</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Security policy enforcement</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="central-feature">
+                            <h5><i class="bi bi-tools text-warning me-2"></i>Troubleshooting Tools</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>AI-powered issue detection</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Automated remediation</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Packet capture and analysis</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Historical performance data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Implementation Process -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Deployment Process</h2>
+                    <p class="text-muted">Our proven approach to Aruba switching implementation</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">1</span>
+                            </div>
+                            <h6>Assessment</h6>
+                            <p class="small mb-0">Network requirements and design</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">2</span>
+                            </div>
+                            <h6>Planning</h6>
+                            <p class="small mb-0">VSX architecture and topology</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">3</span>
+                            </div>
+                            <h6>Deployment</h6>
+                            <p class="small mb-0">Switch installation and cabling</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">4</span>
+                            </div>
+                            <h6>Configuration</h6>
+                            <p class="small mb-0">CLI and Central setup</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">5</span>
+                            </div>
+                            <h6>Testing</h6>
+                            <p class="small mb-0">Validation and optimization</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">6</span>
+                            </div>
+                            <h6>Go-Live</h6>
+                            <p class="small mb-0">Production cutover and support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-cta">
+                    <h3 class="mb-4">Deploy Aruba Switching Excellence</h3>
+                    <p class="mb-4">Ready to implement enterprise-grade Aruba switching with VSX? Our experienced engineers deploy robust switching solutions via CLI and Aruba Central management.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="tel:+441553824408" class="btn btn-light btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                        <a href="mailto:info@sprintwave.co.uk?subject=Aruba Switching Consultation" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-envelope me-2"></i>Email Consultation
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <small class="opacity-75">
+                            <i class="bi bi-arrow-repeat me-2"></i>VSX deployment experts
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-cloud-check me-2"></i>Aruba Central certified
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-shield-check me-2"></i>Enterprise switching specialists
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Track page view
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'event_category': 'enterprise_services',
+            'event_label': 'aruba_switching',
+            'page_title': 'Aruba Switching Services'
+        });
+    }
+    
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call', {
+                    'event_category': 'contact',
+                    'event_label': 'aruba_switching_page'
+                });
+            }
+        });
+    });
+    
+    // Add interactive effects to VSX pair
+    document.querySelector('.vsx-pair').addEventListener('mouseenter', function() {
+        this.style.animationDuration = '3s';
+        this.style.transform = 'translate(-50%, -50%) scale(1.1)';
+    });
+    
+    document.querySelector('.vsx-pair').addEventListener('mouseleave', function() {
+        this.style.animationDuration = '6s';
+        this.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+});
+</script>
+{% endblock %}

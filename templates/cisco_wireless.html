@@ -1,0 +1,951 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Cisco Wireless Services - Catalyst 9800 Controllers & WiFi 6/6E Solutions | Sprintwave</title>
+<meta name="description" content="Expert Cisco wireless deployments with Catalyst 9800 controllers. 25+ enterprise installations supporting networks up to 5000 APs. WiFi 6/6E, DNA Spaces, and wireless assurance.">
+<meta name="keywords" content="Cisco Catalyst 9800, Cisco wireless, WiFi 6, WiFi 6E, wireless controller, enterprise wireless, DNA Spaces, wireless assurance, large scale WiFi">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Cisco Wireless Services - Catalyst 9800 Controllers">
+<meta property="og:description" content="Expert Cisco wireless solutions with proven large-scale deployments up to 5000 APs using Catalyst 9800 controllers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sprintwave.co.uk/cisco-wireless">
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        color: white;
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+    }
+    
+    /* Wireless Network Animation */
+    .wireless-animation-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .controller-node {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4rem;
+        color: rgba(255,255,255,0.9);
+        animation: controllerPulse 6s infinite ease-in-out;
+        text-shadow: 0 0 40px rgba(255,255,255,0.6);
+    }
+    
+    .access-point {
+        position: absolute;
+        color: rgba(255,255,255,0.8);
+        font-size: 2rem;
+        animation: apPulse 4s infinite ease-in-out;
+    }
+    
+    .wifi-signal {
+        position: absolute;
+        border: 2px solid rgba(34, 197, 94, 0.6);
+        border-radius: 50%;
+        animation: signalExpand 5s infinite ease-in-out;
+    }
+    
+    .client-device {
+        position: absolute;
+        color: rgba(34, 197, 94, 0.8);
+        font-size: 1.2rem;
+        animation: clientConnect 7s infinite ease-in-out;
+    }
+    
+    .data-stream {
+        position: absolute;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.8), transparent);
+        animation: dataFlow 4s infinite linear;
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+    }
+    
+    .coverage-zone {
+        position: absolute;
+        border: 2px dashed rgba(255,255,255,0.4);
+        border-radius: 50%;
+        animation: coverageGlow 8s infinite ease-in-out;
+    }
+    
+    .wireless-bridge {
+        position: absolute;
+        height: 2px;
+        background: rgba(255,255,255,0.5);
+        animation: bridgeFlow 6s infinite linear;
+        border-radius: 1px;
+    }
+    
+    @keyframes controllerPulse {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.9;
+            text-shadow: 0 0 40px rgba(255,255,255,0.6);
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+            text-shadow: 0 0 60px rgba(255,255,255,0.9);
+        }
+    }
+    
+    @keyframes apPulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.8;
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+        }
+        50% {
+            transform: scale(1.15);
+            opacity: 1;
+            text-shadow: 0 0 30px rgba(34, 197, 94, 0.8);
+        }
+    }
+    
+    @keyframes signalExpand {
+        0%, 100% {
+            transform: scale(0.5);
+            opacity: 0.3;
+        }
+        50% {
+            transform: scale(2);
+            opacity: 0.7;
+        }
+    }
+    
+    @keyframes clientConnect {
+        0%, 100% {
+            transform: scale(0.8);
+            opacity: 0.6;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes dataFlow {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        25% {
+            opacity: 1;
+        }
+        75% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(300%);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes coverageGlow {
+        0%, 100% {
+            opacity: 0.3;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+        50% {
+            opacity: 0.6;
+            box-shadow: 0 0 40px rgba(255,255,255,0.5);
+        }
+    }
+    
+    @keyframes bridgeFlow {
+        0% {
+            transform: scaleX(0);
+            opacity: 0;
+        }
+        25% {
+            opacity: 1;
+        }
+        75% {
+            opacity: 1;
+        }
+        100% {
+            transform: scaleX(1);
+            opacity: 0;
+        }
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .service-badge {
+        background: rgba(255,255,255,0.95);
+        color: #1f2937;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .experience-badge {
+        background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        color: #1f2937;
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        display: inline-block;
+        margin: 1rem 0;
+        box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+        border: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    .btn-wireless {
+        background: linear-gradient(135deg, #16a34a, #15803d);
+        border: none;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(22, 163, 74, 0.4);
+    }
+    
+    .btn-wireless:hover {
+        background: linear-gradient(135deg, #15803d, #166534);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(22, 163, 74, 0.6);
+    }
+    
+    .feature-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-left: 6px solid #16a34a;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        border-left-color: #15803d;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #16a34a, #15803d);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 auto 1rem;
+    }
+    
+    .catalyst-9800-feature {
+        background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        border: 2px solid rgba(22, 163, 74, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .catalyst-9800-feature:hover {
+        border-color: rgba(22, 163, 74, 0.5);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(22, 163, 74, 0.15);
+    }
+    
+    .deployment-stat {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-top: 5px solid #16a34a;
+        transition: all 0.3s ease;
+    }
+    
+    .deployment-stat:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #16a34a;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+    
+    .wifi6-badge {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        margin: 0.25rem;
+    }
+    
+    .contact-cta {
+        background: linear-gradient(135deg, #dc3545, #c82333);
+        color: white;
+        border-radius: 15px;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin: 3rem 0;
+    }
+    
+    .wireless-component {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid #16a34a;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Wireless Animation -->
+<section class="hero-section">
+    <!-- Wireless Network Animation Background -->
+    <div class="wireless-animation-container">
+        <!-- Central Controller (Catalyst 9800) -->
+        <div class="controller-node">
+            <i class="bi bi-hdd-rack-fill"></i>
+        </div>
+        
+        <!-- Access Points -->
+        <div class="access-point" style="top: 20%; left: 20%; animation-delay: 0s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="access-point" style="top: 30%; left: 70%; animation-delay: 1s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="access-point" style="top: 70%; left: 25%; animation-delay: 2s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="access-point" style="bottom: 20%; right: 20%; animation-delay: 1.5s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="access-point" style="top: 15%; left: 50%; animation-delay: 0.5s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="access-point" style="bottom: 15%; left: 60%; animation-delay: 2.5s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        
+        <!-- WiFi Signal Coverage -->
+        <div class="wifi-signal" style="top: 15%; left: 15%; width: 120px; height: 120px; animation-delay: 0s;"></div>
+        <div class="wifi-signal" style="top: 25%; left: 65%; width: 150px; height: 150px; animation-delay: 2s;"></div>
+        <div class="wifi-signal" style="top: 65%; left: 20%; width: 140px; height: 140px; animation-delay: 4s;"></div>
+        <div class="wifi-signal" style="bottom: 15%; right: 15%; width: 130px; height: 130px; animation-delay: 1s;"></div>
+        
+        <!-- Coverage Zones -->
+        <div class="coverage-zone" style="top: 25%; left: 30%; width: 200px; height: 200px; animation-delay: 0s;"></div>
+        <div class="coverage-zone" style="bottom: 30%; right: 30%; width: 180px; height: 180px; animation-delay: 4s;"></div>
+        
+        <!-- Client Devices -->
+        <div class="client-device" style="top: 25%; left: 35%; animation-delay: 0s;">
+            <i class="bi bi-laptop"></i>
+        </div>
+        <div class="client-device" style="top: 45%; left: 15%; animation-delay: 2s;">
+            <i class="bi bi-phone"></i>
+        </div>
+        <div class="client-device" style="top: 65%; right: 30%; animation-delay: 4s;">
+            <i class="bi bi-tablet"></i>
+        </div>
+        <div class="client-device" style="bottom: 25%; left: 45%; animation-delay: 1s;">
+            <i class="bi bi-laptop"></i>
+        </div>
+        <div class="client-device" style="top: 35%; right: 25%; animation-delay: 3s;">
+            <i class="bi bi-phone"></i>
+        </div>
+        
+        <!-- Data Streams -->
+        <div class="data-stream" style="top: 30%; left: 25%; width: 180px; transform: rotate(25deg); animation-delay: 0s;"></div>
+        <div class="data-stream" style="top: 55%; left: 30%; width: 160px; transform: rotate(-20deg); animation-delay: 2s;"></div>
+        <div class="data-stream" style="top: 40%; right: 25%; width: 200px; transform: rotate(45deg); animation-delay: 4s;"></div>
+        <div class="data-stream" style="bottom: 35%; left: 40%; width: 150px; transform: rotate(-35deg); animation-delay: 1s;"></div>
+        
+        <!-- Wireless Bridges -->
+        <div class="wireless-bridge" style="top: 35%; left: 30%; width: 150px; transform: rotate(30deg); animation-delay: 0s;"></div>
+        <div class="wireless-bridge" style="top: 60%; left: 45%; width: 120px; transform: rotate(-40deg); animation-delay: 3s;"></div>
+    </div>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="hero-content">
+                    <div class="service-badge">
+                        📡 Enterprise Wireless Solutions
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Cisco Wireless Services</h1>
+                    <p class="lead mb-4">Expert deployment of Cisco Catalyst 9800 wireless controllers and WiFi 6/6E solutions. Proven experience with large-scale enterprise wireless networks.</p>
+                    
+                    <div class="experience-badge">
+                        🏆 25+ Catalyst 9800 Deployments | Networks up to 5,000 APs
+                    </div>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                        <a href="#wireless-services" class="btn btn-light btn-lg">
+                            <i class="bi bi-wifi me-2"></i>Our Solutions
+                        </a>
+                        <a href="tel:+441553824408" class="btn btn-wireless btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Deployment Experience Stats -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Our Wireless Deployment Track Record</h2>
+                    <p class="text-muted">Proven expertise in large-scale Cisco wireless implementations</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="deployment-stat">
+                            <div class="stat-number">25+</div>
+                            <h5>Catalyst 9800 Deployments</h5>
+                            <p class="text-muted mb-0">Successfully implemented enterprise wireless solutions</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="deployment-stat">
+                            <div class="stat-number">5,000</div>
+                            <h5>Maximum APs Managed</h5>
+                            <p class="text-muted mb-0">Large-scale wireless network deployment experience</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="deployment-stat">
+                            <div class="stat-number">99.9%</div>
+                            <h5>Network Uptime</h5>
+                            <p class="text-muted mb-0">Enterprise-grade reliability and performance</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="deployment-stat">
+                            <div class="stat-number">100%</div>
+                            <h5>Project Success Rate</h5>
+                            <p class="text-muted mb-0">On-time, on-budget wireless deployments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wireless Services Overview -->
+<section id="wireless-services" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Comprehensive Cisco Wireless Solutions</h2>
+                    <p class="text-muted">End-to-end wireless services from design to ongoing management</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-hdd-rack"></i>
+                            </div>
+                            <h5>Catalyst 9800 Deployment</h5>
+                            <p class="mb-0">Expert installation and configuration of Cisco Catalyst 9800 wireless controllers with high availability and scalability.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-wifi"></i>
+                            </div>
+                            <h5>WiFi 6/6E Implementation</h5>
+                            <p class="mb-0">Latest generation WiFi 6 and 6E access point deployment with advanced features and optimal performance tuning.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <h5>Wireless Assurance</h5>
+                            <p class="mb-0">AI-powered wireless analytics, optimization, and troubleshooting for maximum network performance and user experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <h5>DNA Spaces Integration</h5>
+                            <p class="mb-0">Location-based services, analytics, and engagement platforms integrated with your wireless infrastructure.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h5>Security & Authentication</h5>
+                            <p class="mb-0">Advanced wireless security with WPA3, 802.1X authentication, and integration with Identity Services Engine (ISE).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+                            <h5>Performance Optimization</h5>
+                            <p class="mb-0">RF optimization, capacity planning, and performance tuning for optimal wireless coverage and throughput.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Catalyst 9800 Features -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Cisco Catalyst 9800 Wireless Controllers</h2>
+                    <p class="text-muted">Enterprise-grade wireless control with cloud-scale architecture</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="catalyst-9800-feature">
+                            <h5><i class="bi bi-cloud text-primary me-2"></i>Cloud-Native Architecture</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Microservices-based design</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Container-ready deployment options</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Elastic scaling capabilities</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Zero-downtime software updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="catalyst-9800-feature">
+                            <h5><i class="bi bi-arrows-fullscreen text-success me-2"></i>Massive Scale Support</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Up to 6,000 APs per controller cluster</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>64,000 concurrent clients</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Distributed forwarding architecture</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Linear performance scaling</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="catalyst-9800-feature">
+                            <h5><i class="bi bi-shield-fill-check text-info me-2"></i>Advanced Security</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>WPA3 and Enhanced Open support</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Encrypted traffic analytics</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Rogue detection and mitigation</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Policy enforcement integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="catalyst-9800-feature">
+                            <h5><i class="bi bi-cpu text-warning me-2"></i>Intelligent Operations</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>AI/ML-powered optimization</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Predictive analytics and insights</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Automated troubleshooting</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Proactive issue detection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WiFi 6/6E Technology -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">WiFi 6 & WiFi 6E Technology</h2>
+                    <p class="text-muted">Next-generation wireless performance and efficiency</p>
+                </div>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+                            <h5>4x Faster</h5>
+                            <p class="mb-0">Higher data rates up to 9.6 Gbps theoretical throughput</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h5>4x More Devices</h5>
+                            <p class="mb-0">OFDMA technology for increased device density</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <i class="bi bi-battery-charging"></i>
+                            </div>
+                            <h5>Better Battery Life</h5>
+                            <p class="mb-0">Target Wake Time (TWT) for IoT device efficiency</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h5>Enhanced Security</h5>
+                            <p class="mb-0">WPA3 with improved encryption and protection</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="wifi6-badge">
+                            <i class="bi bi-wifi me-2"></i>WiFi 6 (802.11ax)
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="wifi6-badge">
+                            <i class="bi bi-broadcast me-2"></i>WiFi 6E (6 GHz)
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="wifi6-badge">
+                            <i class="bi bi-cpu me-2"></i>OFDMA/MU-MIMO
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Large Scale Deployment Expertise -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Large-Scale Deployment Expertise</h2>
+                    <p class="text-muted">Proven methodologies for enterprise wireless implementations</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="wireless-component">
+                            <h5><i class="bi bi-diagram-3 text-primary me-2"></i>Scalable Architecture Design</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-arrow-right me-2"></i>Multi-controller clustering for redundancy</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Hierarchical RF design principles</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Capacity planning for growth</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Load balancing and failover strategies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="wireless-component">
+                            <h5><i class="bi bi-graph-up text-success me-2"></i>Performance Optimization</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-arrow-right me-2"></i>RF survey and heat mapping</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Channel planning and interference mitigation</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>QoS policy implementation</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Roaming optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="wireless-component">
+                            <h5><i class="bi bi-tools text-info me-2"></i>Deployment Methodology</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-arrow-right me-2"></i>Phased rollout strategies</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Zero-touch provisioning setup</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Automated configuration templates</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Comprehensive testing protocols</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="wireless-component">
+                            <h5><i class="bi bi-headset text-warning me-2"></i>Ongoing Management</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-arrow-right me-2"></i>24/7 monitoring and alerting</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Proactive maintenance schedules</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Performance reporting and analytics</li>
+                                <li><i class="bi bi-arrow-right me-2"></i>Capacity planning and upgrades</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Implementation Process -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Our Wireless Implementation Process</h2>
+                    <p class="text-muted">Structured approach ensuring successful large-scale deployments</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">1</span>
+                            </div>
+                            <h6>Site Survey</h6>
+                            <p class="small mb-0">RF analysis and capacity planning</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">2</span>
+                            </div>
+                            <h6>Design</h6>
+                            <p class="small mb-0">Architecture and deployment planning</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">3</span>
+                            </div>
+                            <h6>Controller Setup</h6>
+                            <p class="small mb-0">Catalyst 9800 installation and config</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">4</span>
+                            </div>
+                            <h6>AP Deployment</h6>
+                            <p class="small mb-0">Access point installation and testing</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">5</span>
+                            </div>
+                            <h6>Optimization</h6>
+                            <p class="small mb-0">RF tuning and performance validation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">6</span>
+                            </div>
+                            <h6>Go-Live</h6>
+                            <p class="small mb-0">Production cutover and monitoring</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-cta">
+                    <h3 class="mb-4">Scale Your Wireless Infrastructure</h3>
+                    <p class="mb-4">Ready to deploy enterprise-grade Cisco wireless? Our certified engineers bring proven large-scale deployment expertise with 25+ successful Catalyst 9800 implementations.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="tel:+441553824408" class="btn btn-light btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                        <a href="mailto:info@sprintwave.co.uk?subject=Cisco Wireless Consultation" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-envelope me-2"></i>Email Consultation
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <small class="opacity-75">
+                            <i class="bi bi-award me-2"></i>25+ Catalyst 9800 deployments
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-speedometer2 me-2"></i>Networks up to 5,000 APs
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-shield-check me-2"></i>Enterprise wireless experts
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Track page view
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'event_category': 'enterprise_services',
+            'event_label': 'cisco_wireless',
+            'page_title': 'Cisco Wireless Services'
+        });
+    }
+    
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call', {
+                    'event_category': 'contact',
+                    'event_label': 'cisco_wireless_page'
+                });
+            }
+        });
+    });
+    
+    // Track email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'email_click', {
+                    'event_category': 'contact',
+                    'event_label': 'cisco_wireless_page'
+                });
+            }
+        });
+    });
+    
+    // Add interactive hover effects to wireless elements
+    document.querySelectorAll('.access-point').forEach(ap => {
+        ap.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.2)';
+            this.style.textShadow = '0 0 40px rgba(34, 197, 94, 1)';
+        });
+        
+        ap.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.textShadow = '0 0 20px rgba(34, 197, 94, 0.5)';
+        });
+    });
+    
+    // Animate stats on scroll
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumber = entry.target.querySelector('.stat-number');
+                if (statNumber) {
+                    statNumber.style.animation = 'countUp 2s ease-out forwards';
+                }
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.deployment-stat').forEach(stat => {
+        observer.observe(stat);
+    });
+});
+
+// Add CSS animation for count up effect
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes countUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
+{% endblock %}

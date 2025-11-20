@@ -1,0 +1,573 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Cisco Firepower Services - Enterprise Network Security | Sprintwave</title>
+<meta name="description" content="Expert Cisco Firepower NGFW services including deployment, configuration, management, and support. Advanced threat protection and network security solutions for enterprises.">
+<meta name="keywords" content="Cisco Firepower, NGFW, network security, threat protection, FMC, FTD, enterprise firewall, intrusion prevention, malware protection">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Cisco Firepower Services - Enterprise Network Security">
+<meta property="og:description" content="Professional Cisco Firepower next-generation firewall services. Expert deployment, configuration, and management.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sprintwave.co.uk/cisco-firepower">
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #1ba1e2 0%, #0073e6 100%);
+        color: white;
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+    }
+    
+    /* Cisco Firepower Security Animation */
+    .security-animation-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .security-shield {
+        position: absolute;
+        color: rgba(255,255,255,0.8);
+        font-size: 2.5rem;
+        animation: shieldPulse 4s infinite ease-in-out;
+    }
+    
+    .threat-indicator {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #dc3545;
+        border-radius: 50%;
+        animation: threatMove 6s infinite linear;
+        box-shadow: 0 0 15px rgba(220, 53, 69, 0.6);
+    }
+    
+    .firewall-barrier {
+        position: absolute;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, rgba(40, 167, 69, 0.8), transparent);
+        animation: barrierScan 3s infinite ease-in-out;
+        border-radius: 2px;
+    }
+    
+    .network-traffic {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+        animation: trafficFlow 5s infinite linear;
+    }
+    
+    .security-node {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: #28a745;
+        border-radius: 50%;
+        animation: securityPulse 3s infinite ease-in-out;
+        box-shadow: 0 0 20px rgba(40, 167, 69, 0.5);
+    }
+    
+    @keyframes shieldPulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.8;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        50% {
+            transform: scale(1.1);
+            opacity: 1;
+            text-shadow: 0 0 30px rgba(255,255,255,0.8);
+        }
+    }
+    
+    @keyframes threatMove {
+        0% {
+            transform: translateX(-50px) translateY(0);
+            opacity: 0;
+            background: #dc3545;
+        }
+        25% {
+            opacity: 1;
+            background: #dc3545;
+        }
+        50% {
+            opacity: 0.3;
+            background: #28a745;
+            box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
+        }
+        75% {
+            opacity: 0.7;
+            background: #28a745;
+        }
+        100% {
+            transform: translateX(200px) translateY(-20px);
+            opacity: 0;
+            background: #28a745;
+        }
+    }
+    
+    @keyframes barrierScan {
+        0%, 100% {
+            opacity: 0.6;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.4);
+        }
+        50% {
+            opacity: 1;
+            box-shadow: 0 0 25px rgba(40, 167, 69, 0.8);
+        }
+    }
+    
+    @keyframes trafficFlow {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        20% {
+            opacity: 0.8;
+        }
+        80% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateX(300%);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes securityPulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.8;
+        }
+        50% {
+            transform: scale(1.3);
+            opacity: 1;
+        }
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .service-badge {
+        background: rgba(255,255,255,0.95);
+        color: #1f2937;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .btn-cisco {
+        background: linear-gradient(135deg, #1ba1e2, #0073e6);
+        border: none;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(27, 161, 226, 0.4);
+    }
+    
+    .btn-cisco:hover {
+        background: linear-gradient(135deg, #0073e6, #005bb5);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(27, 161, 226, 0.6);
+    }
+    
+    .feature-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-left: 6px solid #1ba1e2;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        border-left-color: #0073e6;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #1ba1e2, #0073e6);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 auto 1rem;
+    }
+    
+    .firepower-module {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid #1ba1e2;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    
+    .contact-cta {
+        background: linear-gradient(135deg, #dc3545, #c82333);
+        color: white;
+        border-radius: 15px;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin: 3rem 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Security Animation -->
+<section class="hero-section">
+    <!-- Security Animation Background -->
+    <div class="security-animation-container">
+        <!-- Central Security Shields -->
+        <div class="security-shield" style="top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 0s;">
+            <i class="bi bi-shield-fill-check"></i>
+        </div>
+        
+        <!-- Additional Security Elements -->
+        <div class="security-shield" style="top: 30%; left: 25%; animation-delay: 2s;">
+            <i class="bi bi-shield-lock"></i>
+        </div>
+        <div class="security-shield" style="bottom: 30%; right: 25%; animation-delay: 4s;">
+            <i class="bi bi-shield-exclamation"></i>
+        </div>
+        
+        <!-- Threat Indicators (blocked) -->
+        <div class="threat-indicator" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="threat-indicator" style="top: 40%; left: 5%; animation-delay: 2s;"></div>
+        <div class="threat-indicator" style="top: 60%; left: 15%; animation-delay: 4s;"></div>
+        <div class="threat-indicator" style="bottom: 20%; left: 8%; animation-delay: 1s;"></div>
+        
+        <!-- Firewall Barriers -->
+        <div class="firewall-barrier" style="top: 30%; left: 30%; width: 200px; transform: rotate(45deg); animation-delay: 0s;"></div>
+        <div class="firewall-barrier" style="top: 60%; left: 20%; width: 180px; transform: rotate(-30deg); animation-delay: 1s;"></div>
+        <div class="firewall-barrier" style="top: 45%; right: 20%; width: 220px; transform: rotate(60deg); animation-delay: 2s;"></div>
+        
+        <!-- Network Traffic Flow -->
+        <div class="network-traffic" style="top: 25%; left: 20%; width: 150px; animation-delay: 0s;"></div>
+        <div class="network-traffic" style="top: 55%; left: 30%; width: 180px; animation-delay: 2s;"></div>
+        <div class="network-traffic" style="top: 75%; left: 40%; width: 160px; animation-delay: 4s;"></div>
+        
+        <!-- Security Nodes -->
+        <div class="security-node" style="top: 35%; left: 35%; animation-delay: 0s;"></div>
+        <div class="security-node" style="top: 65%; left: 65%; animation-delay: 1s;"></div>
+        <div class="security-node" style="top: 20%; right: 30%; animation-delay: 2s;"></div>
+        <div class="security-node" style="bottom: 25%; left: 45%; animation-delay: 1.5s;"></div>
+    </div>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="hero-content">
+                    <div class="service-badge">
+                        🛡️ Enterprise Network Security
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Cisco Firepower Services</h1>
+                    <p class="lead mb-4">Expert Cisco Firepower NGFW deployment, configuration, and management services. Advanced threat protection, intrusion prevention, and comprehensive security analytics for enterprise networks.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                        <a href="#firepower-services" class="btn btn-light btn-lg">
+                            <i class="bi bi-shield-fill-check me-2"></i>Our Services
+                        </a>
+                        <a href="tel:+441553824408" class="btn btn-cisco btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Firepower Services Overview -->
+<section id="firepower-services" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Comprehensive Cisco Firepower Solutions</h2>
+                    <p class="text-muted">Full lifecycle Cisco Firepower services from planning to ongoing management and optimization</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-diagram-3"></i>
+                            </div>
+                            <h5>Architecture & Design</h5>
+                            <p class="mb-0">Custom Firepower architecture design tailored to your network topology, security requirements, and compliance needs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-gear"></i>
+                            </div>
+                            <h5>Deployment & Configuration</h5>
+                            <p class="mb-0">Professional installation and configuration of Firepower Management Center (FMC) and Firepower Threat Defense (FTD) appliances.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-shield-exclamation"></i>
+                            </div>
+                            <h5>Threat Protection</h5>
+                            <p class="mb-0">Advanced malware protection, intrusion prevention, and application control with real-time threat intelligence.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <h5>Security Analytics</h5>
+                            <p class="mb-0">Comprehensive security event monitoring, analysis, and reporting with custom dashboards and alerting.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-arrows-fullscreen"></i>
+                            </div>
+                            <h5>Policy Management</h5>
+                            <p class="mb-0">Centralized security policy creation, deployment, and management across multiple Firepower devices.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-tools"></i>
+                            </div>
+                            <h5>Ongoing Support</h5>
+                            <p class="mb-0">24/7 monitoring, maintenance, updates, and technical support to ensure optimal security posture.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Firepower Modules -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Firepower Security Modules</h2>
+                    <p class="text-muted">Comprehensive security capabilities through integrated threat protection modules</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="firepower-module">
+                            <h5><i class="bi bi-bug text-danger me-2"></i>Advanced Malware Protection (AMP)</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Real-time malware detection and blocking</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>File reputation analysis</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Sandboxing and behavioral analysis</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Retrospective security alerts</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="firepower-module">
+                            <h5><i class="bi bi-shield-exclamation text-warning me-2"></i>Intrusion Prevention System (IPS)</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Network-based intrusion detection</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Vulnerability-based rules</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Custom signature creation</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Automatic rule updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="firepower-module">
+                            <h5><i class="bi bi-globe text-info me-2"></i>URL Filtering</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Real-time web categorization</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Custom URL blocking/allowing</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Risk-based URL reputation</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>HTTPS inspection capabilities</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="firepower-module">
+                            <h5><i class="bi bi-eye text-primary me-2"></i>Application Control</h5>
+                            <ul class="list-unstyled mt-3 mb-0">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Application visibility and control</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Granular application policies</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>User-based application access</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Application usage reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Implementation Process -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Our Firepower Implementation Process</h2>
+                    <p class="text-muted">Structured approach ensuring successful deployment and optimal security outcomes</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">1</span>
+                            </div>
+                            <h5>Security Assessment</h5>
+                            <p class="mb-0">Comprehensive network security analysis and requirements gathering</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">2</span>
+                            </div>
+                            <h5>Design & Planning</h5>
+                            <p class="mb-0">Custom Firepower architecture design and implementation planning</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">3</span>
+                            </div>
+                            <h5>Deployment</h5>
+                            <p class="mb-0">Professional installation, configuration, and policy deployment</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="text-center">
+                            <div class="feature-icon mx-auto mb-3">
+                                <span class="fw-bold">4</span>
+                            </div>
+                            <h5>Optimization</h5>
+                            <p class="mb-0">Fine-tuning, testing, and ongoing performance optimization</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-cta">
+                    <h3 class="mb-4">Strengthen Your Network Security</h3>
+                    <p class="mb-4">Ready to deploy Cisco Firepower NGFW? Our certified security experts will assess your requirements and design a comprehensive security solution.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="tel:+441553824408" class="btn btn-light btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                        <a href="mailto:info@sprintwave.co.uk?subject=Cisco Firepower Consultation" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-envelope me-2"></i>Email Consultation
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <small class="opacity-75">
+                            <i class="bi bi-shield-check me-2"></i>Cisco certified engineers
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-clock me-2"></i>24/7 support available
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-award me-2"></i>Enterprise security expertise
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Track page view
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'event_category': 'enterprise_services',
+            'event_label': 'cisco_firepower',
+            'page_title': 'Cisco Firepower Services'
+        });
+    }
+    
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call', {
+                    'event_category': 'contact',
+                    'event_label': 'cisco_firepower_page'
+                });
+            }
+        });
+    });
+    
+    // Track email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'email_click', {
+                    'event_category': 'contact',
+                    'event_label': 'cisco_firepower_page'
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

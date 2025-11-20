@@ -31,6 +31,11 @@ def event_wifi():
 def backup_internet():
     return render_template('backup.html')
 
+@app.route('/cisco_firepower')
+def cisco_firepower():
+    return render_template('cisco_firepower.html')
+
+
 @app.route('/web-design')
 def web_design():
     return render_template('webdesign.html')
@@ -355,6 +360,31 @@ def comingsoon():
 @app.route('/ccnp-wireless/rf_fundamentals/examcontent')
 def examcontent():
     return render_template('ccnp-wireless/rf-fundamentals/examcontent.html')
+
+# Add these routes to your app.py file
+@app.route('/cisco-sda')
+def cisco_sda():
+    return render_template('cisco_sda.html')
+
+@app.route('/cisco-wireless')
+def cisco_wireless():
+    return render_template('cisco_wireless.html')
+
+@app.route('/cisco-ise')
+def cisco_ise():
+    return render_template('cisco_ise.html')
+
+@app.route('/aruba-clearpass')
+def aruba_clearpass():
+    return render_template('aruba_clearpass.html')
+
+@app.route('/aruba-switching')
+def aruba_switching():
+    return render_template('aruba_switching.html')
+
+@app.route('/aruba-wireless')
+def aruba_wireless():
+    return render_template('aruba_wireless.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

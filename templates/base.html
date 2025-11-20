@@ -188,6 +188,46 @@
                         <li><a class="dropdown-item" href="{{ url_for('penetration_testing') }}">
                             <i class="bi bi-shield-exclamation me-2"></i>Penetration Testing
                         </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        
+                        <!-- Cisco Enterprise Services -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#" style="color: #1ba1e2;">
+                                <i class="bi bi-router me-2"></i>Cisco Solutions
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url_for('cisco_firepower') }}">
+                                    <i class="bi bi-shield-fill-check me-2"></i>Cisco Firepower Services
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('cisco_sda') }}">
+                                    <i class="bi bi-diagram-2 me-2"></i>Software Defined Access
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('cisco_wireless') }}">
+                                    <i class="bi bi-wifi me-2"></i>Cisco Wireless Services
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('cisco_ise') }}">
+                                    <i class="bi bi-person-check me-2"></i>Cisco ISE Services
+                                </a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Aruba Enterprise Services -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#" style="color: #ff6900;">
+                                <i class="bi bi-broadcast me-2"></i>Aruba Solutions
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url_for('aruba_clearpass') }}">
+                                    <i class="bi bi-shield-lock me-2"></i>Aruba ClearPass Services
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('aruba_switching') }}">
+                                    <i class="bi bi-diagram-3 me-2"></i>Aruba Switching Services
+                                </a></li>
+                                <!-- <li><a class="dropdown-item" href="{{ url_for('aruba_wireless') }}">
+                                    <i class="bi bi-wifi me-2"></i>Aruba Wireless Services
+                                </a></li> -->
+                            </ul>
+                        </li>
                     </ul>
                 </li>
 
