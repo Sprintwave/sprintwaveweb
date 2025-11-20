@@ -1,0 +1,1000 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Small Business Network Setup King's Lynn & Norfolk - Complete IT Infrastructure Solutions | Sprintwave</title>
+<meta name="description" content="Complete small business network setup services in King's Lynn, Norwich & Norfolk. Professional IT infrastructure, servers, switches, WiFi, and security solutions for growing businesses.">
+<meta name="keywords" content="small business network setup, IT infrastructure, King's Lynn, Norwich, Norfolk, business networking, servers, switches, firewall, small business IT, network design, East Anglia">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Small Business Network Setup King's Lynn & Norfolk - Complete IT Solutions">
+<meta property="og:description" content="Professional network setup and IT infrastructure services for small businesses across Norfolk. Complete solutions from planning to implementation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sprintwave.co.uk/small-business-setup">
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="King's Lynn, Norfolk">
+<meta name="geo.position" content="52.7508;0.4040">
+<meta name="ICBM" content="52.7508, 0.4040">
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        color: white;
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+    }
+    
+    /* Network Infrastructure Animation Background */
+    .network-animation-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    /* Central Server/Switch */
+    .central-server {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        color: rgba(255,255,255,0.9);
+        animation: serverPulse 4s infinite ease-in-out;
+        z-index: 5;
+    }
+    
+    /* Network Connections */
+    .network-connection {
+        position: absolute;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.8), transparent);
+        border-radius: 2px;
+        animation: dataFlow 6s infinite linear;
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    }
+    
+    /* Network Devices */
+    .network-device {
+        position: absolute;
+        color: rgba(255,255,255,0.8);
+        font-size: 2rem;
+        animation: deviceBlink 3s infinite ease-in-out;
+    }
+    
+    /* Network Topology Lines */
+    .topology-line {
+        position: absolute;
+        background: rgba(255,255,255,0.3);
+        transform-origin: left center;
+        animation: topologyGlow 5s infinite ease-in-out;
+    }
+    
+    /* Security Shield */
+    .security-shield {
+        position: absolute;
+        color: rgba(251, 191, 36, 0.9);
+        font-size: 2.5rem;
+        animation: shieldRotate 8s infinite linear;
+    }
+    
+    /* Data Packets */
+    .data-packet {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: packetTravel 4s infinite linear;
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+    }
+    
+    /* Network Nodes */
+    .network-node {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #3b82f6;
+        border-radius: 50%;
+        animation: nodePulse 3s infinite ease-in-out;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    @keyframes serverPulse {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.9;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+            text-shadow: 0 0 30px rgba(255,255,255,0.8);
+        }
+    }
+    
+    @keyframes dataFlow {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        25% {
+            opacity: 1;
+        }
+        75% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(200%);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes deviceBlink {
+        0%, 100% {
+            opacity: 0.6;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    }
+    
+    @keyframes topologyGlow {
+        0%, 100% {
+            opacity: 0.3;
+            box-shadow: 0 0 5px rgba(255,255,255,0.2);
+        }
+        50% {
+            opacity: 0.6;
+            box-shadow: 0 0 15px rgba(255,255,255,0.4);
+        }
+    }
+    
+    @keyframes shieldRotate {
+        0% {
+            transform: rotate(0deg);
+            opacity: 0.8;
+        }
+        100% {
+            transform: rotate(360deg);
+            opacity: 0.8;
+        }
+    }
+    
+    @keyframes packetTravel {
+        0% {
+            transform: translateX(-20px) translateY(0px);
+            opacity: 0;
+        }
+        20% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(150px) translateY(-10px);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes nodePulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.8;
+        }
+        50% {
+            transform: scale(1.3);
+            opacity: 1;
+        }
+    }
+    
+    .service-badge {
+        background: rgba(255,255,255,0.95);
+        color: #1f2937;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .btn-call-now {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        border: none;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    }
+    
+    .btn-call-now:hover {
+        background: linear-gradient(135deg, #d97706, #b45309);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+    }
+    
+    .setup-step-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-left: 6px solid #059669;
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .setup-step-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        border-left-color: #047857;
+    }
+    
+    .step-number {
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #059669, #047857);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #059669, #047857);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 auto 1rem;
+    }
+    
+    .technology-showcase {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .technology-showcase:hover {
+        border-color: #059669;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(5, 150, 105, 0.15);
+    }
+    
+    .tech-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .pricing-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+    }
+    
+    .pricing-card.featured {
+        border-color: #059669;
+        transform: scale(1.05);
+    }
+    
+    .pricing-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .price-tag {
+        background: linear-gradient(135deg, #059669, #047857);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .coverage-area-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        margin-bottom: 1rem;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .coverage-area-card:hover {
+        border-color: #059669;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(5, 150, 105, 0.15);
+    }
+    
+    .location-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .contact-cta {
+        background: linear-gradient(135deg, #1e40af, #1d4ed8);
+        color: white;
+        border-radius: 15px;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin: 3rem 0;
+    }
+    
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .benefit-item {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        text-align: center;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .benefit-item:hover {
+        border-color: #059669;
+        transform: translateY(-3px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Network Animation -->
+<section class="hero-section">
+    <!-- Network Animation Background -->
+    <div class="network-animation-container">
+        <!-- Central Server/Switch -->
+        <div class="central-server">
+            <i class="bi bi-hdd-rack"></i>
+        </div>
+        
+        <!-- Network Topology Lines -->
+        <div class="topology-line" style="top: 50%; left: 20%; width: 30%; height: 2px; transform: rotate(0deg); animation-delay: 0s;"></div>
+        <div class="topology-line" style="top: 30%; left: 40%; width: 25%; height: 2px; transform: rotate(45deg); animation-delay: 1s;"></div>
+        <div class="topology-line" style="top: 70%; left: 40%; width: 25%; height: 2px; transform: rotate(-45deg); animation-delay: 2s;"></div>
+        <div class="topology-line" style="top: 50%; left: 50%; width: 30%; height: 2px; transform: rotate(0deg); animation-delay: 0.5s;"></div>
+        <div class="topology-line" style="top: 20%; left: 60%; width: 20%; height: 2px; transform: rotate(30deg); animation-delay: 1.5s;"></div>
+        <div class="topology-line" style="top: 80%; left: 60%; width: 20%; height: 2px; transform: rotate(-30deg); animation-delay: 2.5s;"></div>
+        
+        <!-- Network Devices -->
+        <div class="network-device" style="top: 20%; left: 15%; animation-delay: 0s;">
+            <i class="bi bi-laptop"></i>
+        </div>
+        <div class="network-device" style="top: 30%; left: 80%; animation-delay: 1s;">
+            <i class="bi bi-router"></i>
+        </div>
+        <div class="network-device" style="bottom: 20%; left: 20%; animation-delay: 2s;">
+            <i class="bi bi-printer"></i>
+        </div>
+        <div class="network-device" style="bottom: 30%; right: 15%; animation-delay: 1.5s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="network-device" style="top: 15%; right: 20%; animation-delay: 0.5s;">
+            <i class="bi bi-phone"></i>
+        </div>
+        <div class="network-device" style="bottom: 15%; left: 45%; animation-delay: 2.5s;">
+            <i class="bi bi-camera-video"></i>
+        </div>
+        
+        <!-- Security Shields -->
+        <div class="security-shield" style="top: 25%; left: 25%; animation-delay: 0s;">
+            <i class="bi bi-shield-check"></i>
+        </div>
+        <div class="security-shield" style="bottom: 25%; right: 25%; animation-delay: 4s;">
+            <i class="bi bi-shield-lock"></i>
+        </div>
+        
+        <!-- Network Connections with Data Flow -->
+        <div class="network-connection" style="top: 25%; left: 25%; width: 200px; transform: rotate(20deg); animation-delay: 0s;"></div>
+        <div class="network-connection" style="top: 55%; left: 30%; width: 180px; transform: rotate(-25deg); animation-delay: 2s;"></div>
+        <div class="network-connection" style="top: 35%; left: 55%; width: 150px; transform: rotate(40deg); animation-delay: 4s;"></div>
+        <div class="network-connection" style="bottom: 25%; left: 35%; width: 220px; transform: rotate(15deg); animation-delay: 1s;"></div>
+        <div class="network-connection" style="top: 15%; left: 50%; width: 170px; transform: rotate(-35deg); animation-delay: 3s;"></div>
+        
+        <!-- Network Nodes -->
+        <div class="network-node" style="top: 35%; left: 35%; animation-delay: 0s;"></div>
+        <div class="network-node" style="top: 65%; left: 65%; animation-delay: 1s;"></div>
+        <div class="network-node" style="top: 25%; left: 70%; animation-delay: 2s;"></div>
+        <div class="network-node" style="bottom: 35%; left: 25%; animation-delay: 1.5s;"></div>
+        
+        <!-- Data Packets -->
+        <div class="data-packet" style="top: 30%; left: 20%; animation-delay: 0s;"></div>
+        <div class="data-packet" style="top: 60%; left: 40%; animation-delay: 1s;"></div>
+        <div class="data-packet" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
+        <div class="data-packet" style="top: 70%; left: 15%; animation-delay: 1.5s;"></div>
+    </div>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="hero-content">
+                    <div class="service-badge">
+                        🏢 Complete Business Network Solutions
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Small Business Network Setup<br>King's Lynn & Norfolk</h1>
+                    <p class="lead mb-4">Complete IT infrastructure solutions for small businesses across Norfolk & East Anglia. From planning to implementation - servers, switches, WiFi, security, and ongoing support.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                        <a href="#setup-process" class="btn btn-light btn-lg">
+                            <i class="bi bi-diagram-3 me-2"></i>Our Process
+                        </a>
+                        <a href="tel:+441553824408" class="btn btn-call-now btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Areas -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Small Business Network Setup Across Norfolk</h2>
+                    <p class="text-muted">Professional IT infrastructure services for growing businesses throughout the region</p>
+                </div>
+                
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🏛️</div>
+                            <h6>King's Lynn</h6>
+                            <small class="text-muted">Business IT Setup</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🏰</div>
+                            <h6>Norwich</h6>
+                            <small class="text-muted">Enterprise Networks</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🌊</div>
+                            <h6>Great Yarmouth</h6>
+                            <small class="text-muted">Coastal Business IT</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🌾</div>
+                            <h6>Thetford</h6>
+                            <small class="text-muted">Rural Network Solutions</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🏘️</div>
+                            <h6>Dereham</h6>
+                            <small class="text-muted">Small Business Networks</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🌅</div>
+                            <h6>Fakenham</h6>
+                            <small class="text-muted">Complete IT Solutions</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🛣️</div>
+                            <h6>Swaffham</h6>
+                            <small class="text-muted">Business Networking</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🏪</div>
+                            <h6>Downham Market</h6>
+                            <small class="text-muted">Retail IT Infrastructure</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Setup Process -->
+<section id="setup-process" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Our Complete Network Setup Process</h2>
+                    <p class="text-muted">From initial consultation to ongoing support - we handle every aspect of your business network setup</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="setup-step-card">
+                            <div class="step-number">1</div>
+                            <h5 class="mt-4">Business Assessment</h5>
+                            <p class="mb-3">Comprehensive analysis of your business requirements, current infrastructure, and growth plans.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Site survey and assessment</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>User requirements analysis</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Budget and timeline planning</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Security requirements review</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="setup-step-card">
+                            <div class="step-number">2</div>
+                            <h5 class="mt-4">Network Design</h5>
+                            <p class="mb-3">Custom network topology design tailored to your business needs and future growth.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Network topology planning</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Equipment specification</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Security architecture design</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Scalability planning</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="setup-step-card">
+                            <div class="step-number">3</div>
+                            <h5 class="mt-4">Equipment Procurement</h5>
+                            <p class="mb-3">Sourcing and procurement of enterprise-grade networking equipment from trusted vendors.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Competitive pricing</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Warranty and support</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Quality assurance testing</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Delivery coordination</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="setup-step-card">
+                            <div class="step-number">4</div>
+                            <h5 class="mt-4">Installation & Cabling</h5>
+                            <p class="mb-3">Professional installation of all network infrastructure including structured cabling.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Cat6/Cat6a cabling installation</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Rack and cabinet setup</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Power and cooling solutions</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Cable management and labeling</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="setup-step-card">
+                            <div class="step-number">5</div>
+                            <h5 class="mt-4">Configuration & Testing</h5>
+                            <p class="mb-3">Complete network configuration, security implementation, and comprehensive testing.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Network device configuration</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Security policy implementation</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Performance optimization</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Comprehensive testing</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="setup-step-card">
+                            <div class="step-number">6</div>
+                            <h5 class="mt-4">Training & Support</h5>
+                            <p class="mb-3">Staff training and ongoing support to ensure optimal network performance.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="bi bi-check-circle text-success me-2"></i>User training sessions</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Documentation and procedures</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Remote monitoring setup</li>
+                                <li><i class="bi bi-check-circle text-success me-2"></i>Ongoing support contracts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology Showcase -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Enterprise-Grade Technology Stack</h2>
+                    <p class="text-muted">We use only the best networking equipment and technologies for your business infrastructure</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="technology-showcase text-center">
+                            <div class="tech-icon" style="color: #059669;">
+                                <i class="bi bi-hdd-rack"></i>
+                            </div>
+                            <h5>Servers & Storage</h5>
+                            <ul class="list-unstyled small text-muted">
+                                <li>Dell PowerEdge</li>
+                                <li>HPE ProLiant</li>
+                                <li>Synology NAS</li>
+                                <li>Cloud Integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="technology-showcase text-center">
+                            <div class="tech-icon" style="color: #3b82f6;">
+                                <i class="bi bi-diagram-3"></i>
+                            </div>
+                            <h5>Network Switches</h5>
+                            <ul class="list-unstyled small text-muted">
+                                <li>Cisco Catalyst</li>
+                                <li>Aruba CX Series</li>
+                                <li>Ubiquiti UniFi</li>
+                                <li>PoE+ Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="technology-showcase text-center">
+                            <div class="tech-icon" style="color: #ef4444;">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h5>Security & Firewall</h5>
+                            <ul class="list-unstyled small text-muted">
+                                <li>SonicWall TZ Series</li>
+                                <li>Fortinet FortiGate</li>
+                                <li>WatchGuard Firebox</li>
+                                <li>Advanced Threat Protection</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="technology-showcase text-center">
+                            <div class="tech-icon" style="color: #8b5cf6;">
+                                <i class="bi bi-wifi"></i>
+                            </div>
+                            <h5>Wireless Networks</h5>
+                            <ul class="list-unstyled small text-muted">
+                                <li>Aruba Instant</li>
+                                <li>Cisco Meraki</li>
+                                <li>Ubiquiti UniFi</li>
+                                <li>WiFi 6E Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Business Benefits -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Why Choose Professional Network Setup?</h2>
+                    <p class="text-muted">Transform your business operations with enterprise-grade network infrastructure</p>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+                        <h5>Improved Productivity</h5>
+                        <p class="mb-0">Reliable, high-speed connectivity that keeps your team productive and efficient.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        <h5>Enhanced Security</h5>
+                        <p class="mb-0">Multi-layered security protecting your business data and customer information.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h5>Scalable Growth</h5>
+                        <p class="mb-0">Future-proof infrastructure that grows with your business needs.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h5>Expert Support</h5>
+                        <p class="mb-0">Professional installation, configuration, and ongoing technical support.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-piggy-bank"></i>
+                        </div>
+                        <h5>Cost Efficiency</h5>
+                        <p class="mb-0">Reduce downtime and IT costs with properly designed network infrastructure.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="feature-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <h5>24/7 Reliability</h5>
+                        <p class="mb-0">Business-grade equipment and redundancy for maximum uptime.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Industry Solutions -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Network Solutions for Every Industry</h2>
+                    <p class="text-muted">Tailored IT infrastructure solutions for different business sectors across Norfolk</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <i class="bi bi-shop" style="font-size: 3rem; color: #059669;"></i>
+                            <h5 class="mt-3">Retail & Commerce</h5>
+                            <p class="mb-0">POS systems, inventory management, customer WiFi, and secure payment processing networks.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <i class="bi bi-building" style="font-size: 3rem; color: #059669;"></i>
+                            <h5 class="mt-3">Professional Offices</h5>
+                            <p class="mb-0">Enterprise networking, VoIP systems, file sharing, and secure remote access solutions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <i class="bi bi-hospital" style="font-size: 3rem; color: #059669;"></i>
+                            <h5 class="mt-3">Healthcare</h5>
+                            <p class="mb-0">HIPAA-compliant networks, secure patient data systems, and medical device connectivity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <i class="bi bi-tools" style="font-size: 3rem; color: #059669;"></i>
+                            <h5 class="mt-3">Manufacturing</h5>
+                            <p class="mb-0">Industrial networks, IoT device connectivity, and robust wireless coverage for operations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <i class="bi bi-book" style="font-size: 3rem; color: #059669;"></i>
+                            <h5 class="mt-3">Education</h5>
+                            <p class="mb-0">Classroom networks, student WiFi, content filtering, and device management systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <i class="bi bi-cup-hot" style="font-size: 3rem; color: #059669;"></i>
+                            <h5 class="mt-3">Hospitality</h5>
+                            <p class="mb-0">Guest WiFi systems, POS networks, and integrated hotel management solutions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <i class="bi bi-car-front" style="font-size: 3rem; color: #059669;"></i>
+                            <h5 class="mt-3">Automotive</h5>
+                            <p class="mb-0">Workshop networks, diagnostic systems, customer WiFi, and inventory management.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <i class="bi bi-house-gear" style="font-size: 3rem; color: #059669;"></i>
+                            <h5 class="mt-3">Property Management</h5>
+                            <p class="mb-0">Multi-tenant networks, security systems, and centralized management solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-cta">
+                    <h3 class="mb-4">Ready to Build Your Business Network?</h3>
+                    <p class="mb-4">Get a free consultation and detailed quote for your Norfolk business. Our network specialists will assess your requirements and design a solution that grows with your business.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="tel:+441553824408" class="btn btn-light btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                        <a href="mailto:info@sprintwave.co.uk?subject=Network Setup Consultation" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-envelope me-2"></i>Email Consultation
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <small class="opacity-75">
+                            <i class="bi bi-shield-check me-2"></i>Fully insured & certified engineers
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-clock me-2"></i>Free site surveys
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-award me-2"></i>3-year equipment warranty
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Track page view
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'event_category': 'services',
+            'event_label': 'small_business_setup',
+            'page_title': 'Small Business Network Setup Norfolk'
+        });
+    }
+    
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call', {
+                    'event_category': 'contact',
+                    'event_label': 'network_setup_page'
+                });
+            }
+        });
+    });
+    
+    // Track email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'email_click', {
+                    'event_category': 'contact',
+                    'event_label': 'network_setup_page'
+                });
+            }
+        });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Highlight featured pricing card
+    const featuredCard = document.querySelector('.pricing-card.featured');
+    if (featuredCard) {
+        setInterval(() => {
+            featuredCard.style.boxShadow = '0 15px 40px rgba(5, 150, 105, 0.2)';
+            setTimeout(() => {
+                featuredCard.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+            }, 1000);
+        }, 3000);
+    }
+});
+
+// Intersection Observer for animations
+if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                if (entry.target.classList.contains('setup-step-card')) {
+                    // Stagger animation for setup steps
+                    const index = Array.from(entry.target.parentNode.children).indexOf(entry.target.parentNode);
+                    entry.target.style.animationDelay = `${index * 0.2}s`;
+                }
+            }
+        });
+    });
+    
+    document.querySelectorAll('.service-card, .setup-step-card, .technology-showcase, .benefit-item').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Add subtle animation to network elements in hero
+document.querySelectorAll('.network-device').forEach((device, index) => {
+    device.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.2)';
+        this.style.transition = 'transform 0.3s ease';
+    });
+    
+    device.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+    });
+});
+</script>
+{% endblock %}

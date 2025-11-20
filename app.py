@@ -322,6 +322,27 @@ def submit_contact_form():
         print(f"Error sending email: {e}")
         return jsonify({'status': 'error', 'message': 'Failed to send email'}), 500
 
+# Small Business Network Services Routes
+@app.route('/wifi-installation')
+def wifi_installation():
+    return render_template('wifi-installation.html')
+
+@app.route('/starlink-business')
+def starlink_business():
+    return render_template('starlink-business.html')
+
+@app.route('/network-cabling')
+def network_cabling():
+    return render_template('network-cabling.html')
+
+@app.route('/small-business-setup')
+def small_business_setup():
+    return render_template('small-business-setup.html')
+
+@app.route('/network-health-check')
+def network_health_check():
+    return render_template('network-health-check.html')
+
 # CCNP Wireless Routes
 @app.route('/ccnp-wireless/rf_fundamentals')
 def rf_fundamentals():

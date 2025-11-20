@@ -173,10 +173,10 @@
                     </a>
                 </li>
 
-                <!-- Core Services -->
+                <!-- Core Services (Enterprise only) -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-bold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
-                        <i class="bi bi-gear me-1"></i> Services
+                        <i class="bi bi-gear me-1"></i> Enterprise Services
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ url_for('network_consulting') }}">
@@ -184,6 +184,21 @@
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('wireless_surveys') }}">
                             <i class="bi bi-wifi me-2"></i>WiFi Surveys
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('penetration_testing') }}">
+                            <i class="bi bi-shield-exclamation me-2"></i>Penetration Testing
+                        </a></li>
+                    </ul>
+                </li>
+
+                <!-- Small Business Network Services (expanded with moved items) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="businessDropdown" role="button" data-bs-toggle="dropdown" style="color: #059669;">
+                        <i class="bi bi-building me-1"></i> Small Business
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('wifi_installation') }}">
+                            <i class="bi bi-wifi me-2"></i>Wi-Fi Installation (Norfolk & East Anglia)
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
                             <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
@@ -195,14 +210,20 @@
                             <span style="font-size:1.1em; margin-right: 0.5em;">🎉</span>Event WiFi Hire
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('backup_internet') }}">
-                            <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Emergency Backup
+                            <span style="font-size:1.1em; margin-right: 0.5em;">🚨</span>Backup Internet & Failover
                         </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ url_for('penetration_testing') }}">
-                            <i class="bi bi-shield-exclamation me-2"></i>Penetration Testing
+                        <li><a class="dropdown-item" href="{{ url_for('network_cabling') }}">
+                            <i class="bi bi-ethernet me-2"></i>Network Cabling (Cat6/Cat6a)
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('small_business_setup') }}">
+                            <i class="bi bi-diagram-3 me-2"></i>Small Business Network Setup
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('web_design') }}">
                             <i class="bi bi-code-slash me-2"></i>Web Design
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ url_for('network_health_check') }}" style="color: #059669; font-weight: 600;">
+                            <i class="bi bi-check-circle me-2"></i>Free Network Health Check
                         </a></li>
                     </ul>
                 </li>
@@ -222,41 +243,7 @@
                     </ul>
                 </li>
                                 <!-- CCNP Wireless -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="ccnpDropdown" role="button" data-bs-toggle="dropdown" style="color: #dc2626;">
-                        <i class="bi bi-wifi me-1"></i> CCNP Wireless 350-101
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">
-                                <i class="bi bi-broadcast me-2"></i>RF Fundamentals
-                            </a>
-                            <ul class="dropdown-menu dropdown-submenu-left">
-                                <li><a class="dropdown-item" href="{{ url_for('examcontent') }}">
-                                    📚 Exam content overview
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('rf_fundamentals') }}">
-                                    📡1.0 RF Fundamentals
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    📶1.1 Describe the propagation of Radio Waves
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    📊1.2a Signal Strength
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    ⚡ 1.2b Interference, noise, rogue AP
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    📉 1.2c Device capabilities
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    📉 1.2d SNR
-                                </a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+
 
 
                 <!-- Blog -->
@@ -269,6 +256,41 @@
                             <i class="bi bi-house me-2"></i>Blog Home
                         </a></li>
                         <li><hr class="dropdown-divider"></li>
+                        
+                        <!-- CCNP Wireless Submenu -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#" style="color: #dc2626;">
+                                <i class="bi bi-wifi me-2"></i>CCNP Wireless 350-101
+                            </a>
+                            <ul class="dropdown-menu dropdown-submenu-left">
+                                <li><a class="dropdown-item" href="{{ url_for('examcontent') }}">
+                                    📋 Exam Content Overview
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{{ url_for('rf_fundamentals') }}">
+                                    📡 1.0 RF Fundamentals
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    📶 1.1 Propagation of Radio Waves
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    📊 1.2a Signal Strength
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    ⚡ 1.2b Interference, Noise, Rogue AP
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    📱 1.2c Device Capabilities
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                                    📈 1.2d SNR
+                                </a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        
+                        <!-- Regular Blog Posts -->
                         <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
                             🛰️ How Starlink Works: Technical Deep-Dive
                         </a></li>
