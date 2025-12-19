@@ -47,6 +47,9 @@ def wireless_surveys():
 @app.route('/network-consulting')
 def network_consulting():  # This is the function name
     return render_template('networkconsulting.html')
+@app.route('/firewall-consulting')
+def firewall_consulting():  # This is the function name
+    return render_template('firewall.html')
 
 @app.route('/about')
 def about():
