@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Page-specific meta tags will be injected here -->
-    {% block meta %}{% endblock %}
-    
-    <!-- Common favicon and theme -->
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <!-- Favicon and App Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='favicon/safari-pinned-tab.svg') }}" color="#007f73">
+    <meta name="msapplication-TileColor" content="#007f73">
     <meta name="theme-color" content="#007f73">
+    
+    <!-- Default Meta Tags (can be overridden by blocks) -->
+    {% block meta %}
+    <title>Sprintwave - Enterprise Network & Security Consulting | Expert Managed Services</title>
+    <meta name="description" content="Enterprise network consulting and firewall managed services. Expert Cisco, Aruba, Palo Alto specialists with senior consultants across the UK.">
+    <meta name="keywords" content="enterprise network consulting, firewall managed services, Cisco, Aruba, Palo Alto, network security">
+    <meta name="author" content="Sprintwave">
+    <meta property="og:title" content="Sprintwave - Enterprise Network & Security Consulting">
+    <meta property="og:description" content="Expert enterprise network consulting and firewall managed services. Cisco, Aruba, Palo Alto specialists.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sprintwave.co.uk/">
+    <meta property="og:image" content="https://www.sprintwave.co.uk{{ url_for('static', filename='images/sprintwave-og-image.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Sprintwave">
+    <meta property="og:locale" content="en_GB">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sprintwave - Enterprise Network & Security Consulting">
+    <meta name="twitter:description" content="Expert enterprise network consulting and firewall managed services. Cisco, Aruba, Palo Alto specialists.">
+    <meta name="twitter:image" content="https://www.sprintwave.co.uk{{ url_for('static', filename='images/sprintwave-og-image.png') }}">
+    <meta name="twitter:site" content="@sprintwave">
+    {% endblock %}
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.sprintwave.co.uk{{ request.path }}">
+    
+    <!-- Robots Meta -->
+    {% block robots %}
+    <meta name="robots" content="index, follow">
+    {% endblock %}
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B6EW4HRX7Q"></script>
