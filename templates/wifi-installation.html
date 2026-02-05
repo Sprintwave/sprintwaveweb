@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block meta %}
-<title>WiFi Installation King's Lynn & Norfolk - Small Business Wireless Network Solutions | Sprintwave</title>
-<meta name="description" content="Professional WiFi installation services for small businesses in King's Lynn, Norwich & Norfolk. Expert wireless network setup, access points, and WiFi surveys. Fast, reliable business WiFi.">
-<meta name="keywords" content="wifi installation, wireless network, King's Lynn, Norwich, Norfolk, small business, access points, wifi survey, business internet, network setup, East Anglia">
+<title>Professional WiFi Installation for Large Properties & Businesses | Norfolk & East Anglia | Sprintwave</title>
+<meta name="description" content="Expert WiFi installation for large properties, farm buildings, warehouses, and businesses across Norfolk. Professional site surveys, enterprise equipment, and reliable coverage for challenging properties.">
+<meta name="keywords" content="large property wifi, farm building wifi, warehouse wifi installation, business wifi Norfolk, rural wifi solutions, professional wifi survey, enterprise access points, Norfolk wifi installer">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="WiFi Installation King's Lynn & Norfolk - Small Business Wireless Solutions">
-<meta property="og:description" content="Expert WiFi installation for small businesses across Norfolk. Professional wireless network setup with enterprise-grade equipment.">
+<meta property="og:title" content="Professional WiFi for Large Properties & Businesses - Norfolk & East Anglia">
+<meta property="og:description" content="Expert WiFi installation for farms, warehouses, large offices and challenging properties. Professional site surveys and enterprise-grade solutions.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sprintwave.co.uk/wifi-installation">
 <meta name="geo.region" content="GB-NFK">
@@ -195,6 +195,22 @@
         box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
     }
     
+    .property-challenge-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        border-left: 6px solid #dc2626;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .property-challenge-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        border-left-color: #991b1b;
+    }
+    
     .wifi-benefit-card {
         background: #fff;
         border-radius: 15px;
@@ -221,6 +237,19 @@
         justify-content: center;
         color: white;
         font-size: 1.5rem;
+        margin: 0 auto 1rem;
+    }
+    
+    .large-property-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
         margin: 0 auto 1rem;
     }
     
@@ -270,6 +299,17 @@
         margin-bottom: 1rem;
         border-left: 4px solid #3b82f6;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    
+    .starlink-badge {
+        background: linear-gradient(135deg, #1f2937, #374151);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        margin: 0.5rem 0;
     }
 </style>
 {% endblock %}
@@ -332,18 +372,162 @@
             <div class="col-lg-10 text-center">
                 <div class="hero-content">
                     <div class="service-badge">
-                        📶 Professional WiFi Installation
+                        🏗️ Large Property WiFi Specialists
                     </div>
-                    <h1 class="display-4 fw-bold mb-4">WiFi Installation<br>King's Lynn & Norfolk</h1>
-                    <p class="lead mb-4">Professional wireless network installation for small businesses across Norfolk & East Anglia. Enterprise-grade WiFi systems designed for reliable performance and seamless connectivity.</p>
+                    <h1 class="display-4 fw-bold mb-4">Professional WiFi for Large Properties<br><span class="text-warning">Norfolk & East Anglia</span></h1>
+                    <p class="lead mb-4">Expert WiFi installation for challenging properties - farms, warehouses, large offices, and rural businesses. Custom site surveys and enterprise-grade solutions for complete coverage.</p>
                     
                     <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
-                        <a href="#wifi-benefits" class="btn btn-light btn-lg">
-                            <i class="bi bi-wifi me-2"></i>WiFi Solutions
+                        <a href="#large-property-solutions" class="btn btn-light btn-lg">
+                            <i class="bi bi-building me-2"></i>Large Property Solutions
                         </a>
                         <a href="tel:+441553824408" class="btn btn-call-now btn-lg">
                             <i class="bi bi-telephone me-2"></i>Call: 01553 824408
                         </a>
+                    </div>
+                    
+                    <div class="starlink-badge mt-3">
+                        🛰️ Multiple connectivity options including Starlink satellite internet
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Large Property Challenges -->
+<section id="large-property-solutions" class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">WiFi Challenges for Large Properties</h2>
+                    <p class="text-muted">Understanding the unique connectivity challenges of large buildings and rural locations</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-challenge-card">
+                            <div class="large-property-icon">
+                                <i class="bi bi-diagram-2"></i>
+                            </div>
+                            <h5>Coverage Dead Zones</h5>
+                            <p class="mb-0">Large buildings, thick walls, and metal structures create WiFi dead zones that standard routers can't overcome. We design mesh networks for complete coverage.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-challenge-card">
+                            <div class="large-property-icon">
+                                <i class="bi bi-broadcast-pin"></i>
+                            </div>
+                            <h5>Poor Rural Internet</h5>
+                            <p class="mb-0">Remote locations often have limited broadband options. We integrate multiple connectivity solutions including Starlink satellite for reliable internet.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-challenge-card">
+                            <div class="large-property-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h5>High User Density</h5>
+                            <p class="mb-0">Event venues, warehouses, and large offices need WiFi that can handle many simultaneous users without performance degradation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-challenge-card">
+                            <div class="large-property-icon">
+                                <i class="bi bi-buildings"></i>
+                            </div>
+                            <h5>Multi-Building Sites</h5>
+                            <p class="mb-0">Farms, business parks, and industrial complexes need seamless WiFi across multiple buildings and outdoor areas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-challenge-card">
+                            <div class="large-property-icon">
+                                <i class="bi bi-shield-x"></i>
+                            </div>
+                            <h5>Security Requirements</h5>
+                            <p class="mb-0">Business environments need secure networks with guest access, device isolation, and enterprise-grade security features.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-challenge-card">
+                            <div class="large-property-icon">
+                                <i class="bi bi-tools"></i>
+                            </div>
+                            <h5>Industrial Conditions</h5>
+                            <p class="mb-0">Harsh environments require ruggedized equipment that can withstand dust, moisture, temperature extremes, and vibration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Property Types We Serve -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="accent mb-3">Large Properties We Serve</h2>
+                    <p class="text-muted">Specialized WiFi solutions for challenging environments across Norfolk & East Anglia</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="wifi-benefit-card text-center">
+                            <i class="bi bi-building" style="font-size: 3rem; color: #3b82f6;"></i>
+                            <h5 class="mt-3">Farm Buildings & Agricultural</h5>
+                            <p class="mb-0">Barns, livestock buildings, grain stores, and equipment sheds. Rugged WiFi solutions for farming operations and precision agriculture.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="wifi-benefit-card text-center">
+                            <i class="bi bi-boxes" style="font-size: 3rem; color: #3b82f6;"></i>
+                            <h5 class="mt-3">Warehouses & Distribution</h5>
+                            <p class="mb-0">Large warehouses, distribution centers, and logistics facilities requiring WiFi for inventory management and mobile devices.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="wifi-benefit-card text-center">
+                            <i class="bi bi-calendar-event" style="font-size: 3rem; color: #3b82f6;"></i>
+                            <h5 class="mt-3">Event Venues & Hospitality</h5>
+                            <p class="mb-0">Wedding venues, conference centers, hotels, and event spaces needing high-capacity guest WiFi and business operations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="wifi-benefit-card text-center">
+                            <i class="bi bi-gear-wide-connected" style="font-size: 3rem; color: #3b82f6;"></i>
+                            <h5 class="mt-3">Manufacturing & Industrial</h5>
+                            <p class="mb-0">Production facilities, workshops, and industrial sites requiring robust WiFi for IoT devices and operational systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="wifi-benefit-card text-center">
+                            <i class="bi bi-buildings" style="font-size: 3rem; color: #3b82f6;"></i>
+                            <h5 class="mt-3">Business Parks & Offices</h5>
+                            <p class="mb-0">Large office complexes, business parks, and corporate campuses with multiple buildings and outdoor areas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="wifi-benefit-card text-center">
+                            <i class="bi bi-shop" style="font-size: 3rem; color: #3b82f6;"></i>
+                            <h5 class="mt-3">Large Retail & Garden Centers</h5>
+                            <p class="mb-0">Big box stores, garden centers, and retail warehouses with challenging coverage requirements and customer WiFi needs.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -357,65 +541,65 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="text-center mb-5">
-                    <h2 class="accent mb-3">WiFi Installation Across Norfolk & East Anglia</h2>
-                    <p class="text-muted">Professional wireless network services for small businesses throughout the region</p>
+                    <h2 class="accent mb-3">Large Property WiFi Installation Areas</h2>
+                    <p class="text-muted">Professional wireless network services for large properties throughout Norfolk & East Anglia</p>
                 </div>
                 
                 <div class="row g-3">
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="coverage-area-card">
-                            <div class="location-icon">🏛️</div>
+                            <div class="location-icon">🏗️</div>
                             <h6>King's Lynn</h6>
-                            <small class="text-muted">Business WiFi Installation</small>
+                            <small class="text-muted">Industrial & Business WiFi</small>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="coverage-area-card">
-                            <div class="location-icon">🏰</div>
+                            <div class="location-icon">🏭</div>
                             <h6>Norwich</h6>
-                            <small class="text-muted">Enterprise Wireless Networks</small>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="coverage-area-card">
-                            <div class="location-icon">🌊</div>
-                            <h6>Great Yarmouth</h6>
-                            <small class="text-muted">Coastal WiFi Solutions</small>
+                            <small class="text-muted">Large Office & Warehouse WiFi</small>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="coverage-area-card">
                             <div class="location-icon">🌾</div>
+                            <h6>Rural Norfolk</h6>
+                            <small class="text-muted">Farm Buildings & Agricultural</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🏢</div>
                             <h6>Thetford</h6>
-                            <small class="text-muted">Rural WiFi Installation</small>
+                            <small class="text-muted">Business Parks & Manufacturing</small>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="coverage-area-card">
-                            <div class="location-icon">🏘️</div>
-                            <h6>Dereham</h6>
-                            <small class="text-muted">Small Business Networks</small>
+                            <div class="location-icon">🎪</div>
+                            <h6>Great Yarmouth</h6>
+                            <small class="text-muted">Event Venues & Tourism</small>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="coverage-area-card">
-                            <div class="location-icon">🌅</div>
-                            <h6>Fakenham</h6>
-                            <small class="text-muted">Professional WiFi Setup</small>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="coverage-area-card">
-                            <div class="location-icon">🛣️</div>
+                            <div class="location-icon">🌿</div>
                             <h6>Swaffham</h6>
-                            <small class="text-muted">Business Connectivity</small>
+                            <small class="text-muted">Garden Centers & Retail</small>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="coverage-area-card">
                             <div class="location-icon">🏪</div>
                             <h6>Downham Market</h6>
-                            <small class="text-muted">Retail WiFi Solutions</small>
+                            <small class="text-muted">Distribution & Logistics</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="coverage-area-card">
+                            <div class="location-icon">🏛️</div>
+                            <h6>All East Anglia</h6>
+                            <small class="text-muted">Large Property Specialists</small>
                         </div>
                     </div>
                 </div>
@@ -424,34 +608,24 @@
     </div>
 </section>
 
-<!-- WiFi Benefits -->
-<section id="wifi-benefits" class="py-5">
+<!-- Our Solutions -->
+<section class="py-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="text-center mb-5">
-                    <h2 class="accent mb-3">Why Professional WiFi Installation Matters</h2>
-                    <p class="text-muted">Transform your business with enterprise-grade wireless networks designed for performance and reliability</p>
+                    <h2 class="accent mb-3">Our Large Property WiFi Solutions</h2>
+                    <p class="text-muted">Comprehensive solutions designed specifically for challenging environments</p>
                 </div>
                 
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
                         <div class="wifi-benefit-card">
                             <div class="feature-icon">
-                                <i class="bi bi-lightning-charge"></i>
+                                <i class="bi bi-clipboard-check"></i>
                             </div>
-                            <h5>High-Speed Performance</h5>
-                            <p class="mb-0">Enterprise-grade access points delivering consistent high-speed connectivity throughout your business premises.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4 col-md-6">
-                        <div class="wifi-benefit-card">
-                            <div class="feature-icon">
-                                <i class="bi bi-shield-check"></i>
-                            </div>
-                            <h5>Secure Networks</h5>
-                            <p class="mb-0">WPA3 encryption, guest networks, and advanced security features to protect your business data and customer privacy.</p>
+                            <h5>Professional Site Survey</h5>
+                            <p class="mb-0">Detailed RF site survey using professional tools to map coverage, identify obstacles, and design optimal access point placement for your specific property.</p>
                         </div>
                     </div>
                     
@@ -460,28 +634,38 @@
                             <div class="feature-icon">
                                 <i class="bi bi-diagram-3"></i>
                             </div>
-                            <h5>Seamless Coverage</h5>
-                            <p class="mb-0">Professional site surveys and strategic access point placement for complete coverage without dead zones.</p>
+                            <h5>Custom Network Design</h5>
+                            <p class="mb-0">Bespoke network architecture designed for your property layout, user requirements, and connectivity challenges. Multiple access points with seamless roaming.</p>
                         </div>
                     </div>
                     
                     <div class="col-lg-4 col-md-6">
                         <div class="wifi-benefit-card">
                             <div class="feature-icon">
-                                <i class="bi bi-people"></i>
+                                <i class="bi bi-broadcast"></i>
                             </div>
-                            <h5>Guest Access</h5>
-                            <p class="mb-0">Separate guest networks with customizable portals, time limits, and bandwidth controls for customer WiFi.</p>
+                            <h5>Enterprise Equipment</h5>
+                            <p class="mb-0">Commercial-grade access points from Aruba, Ubiquiti, and Cisco designed for high-density environments and challenging conditions.</p>
                         </div>
                     </div>
                     
                     <div class="col-lg-4 col-md-6">
                         <div class="wifi-benefit-card">
                             <div class="feature-icon">
-                                <i class="bi bi-graph-up"></i>
+                                <i class="bi bi-globe"></i>
                             </div>
-                            <h5>Scalable Solutions</h5>
-                            <p class="mb-0">WiFi systems that grow with your business - easily add more access points or increase capacity as needed.</p>
+                            <h5>Multiple Connectivity Options</h5>
+                            <p class="mb-0">Fiber, FTTP, 4G/5G, and Starlink satellite internet integration to ensure reliable connectivity even in remote locations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="wifi-benefit-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h5>Business-Grade Security</h5>
+                            <p class="mb-0">WPA3 encryption, guest networks, VLAN segmentation, and firewall integration for complete network security.</p>
                         </div>
                     </div>
                     
@@ -490,8 +674,8 @@
                             <div class="feature-icon">
                                 <i class="bi bi-tools"></i>
                             </div>
-                            <h5>Expert Support</h5>
-                            <p class="mb-0">Professional installation, configuration, and ongoing support from certified wireless networking specialists.</p>
+                            <h5>Ongoing Support</h5>
+                            <p class="mb-0">24/7 monitoring, remote management, and on-site support to ensure your large property WiFi operates reliably.</p>
                         </div>
                     </div>
                 </div>
@@ -506,138 +690,58 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="text-center mb-5">
-                    <h2 class="accent mb-3">Enterprise-Grade WiFi Equipment</h2>
-                    <p class="text-muted">We use only the best commercial wireless equipment for maximum performance and reliability</p>
+                    <h2 class="accent mb-3">Large Property WiFi Equipment</h2>
+                    <p class="text-muted">Enterprise-grade equipment designed for challenging environments and high-density usage</p>
                 </div>
                 
                 <div class="equipment-showcase">
                     <div class="row g-4">
                         <div class="col-md-6">
                             <div class="equipment-item">
-                                <h5><i class="bi bi-wifi text-primary me-2"></i>Aruba Instant Access Points</h5>
+                                <h5><i class="bi bi-wifi text-primary me-2"></i>High-Power Outdoor Access Points</h5>
                                 <ul class="list-unstyled mt-3 mb-0">
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>WiFi 6 (802.11ax) support</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Self-healing mesh networks</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Automatic RF optimization</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Cloud-managed configuration</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Weather-resistant IP65+ rated</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Long-range coverage up to 500m</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>High-gain directional antennas</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>PoE+ powered for easy installation</li>
                                 </ul>
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <div class="equipment-item">
-                                <h5><i class="bi bi-router text-primary me-2"></i>Ubiquiti UniFi Systems</h5>
+                                <h5><i class="bi bi-router text-primary me-2"></i>Industrial Access Points</h5>
                                 <ul class="list-unstyled mt-3 mb-0">
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>High-density deployments</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Advanced analytics & reporting</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Seamless roaming technology</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Enterprise security features</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Extreme temperature operation</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Vibration and shock resistant</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>DIN rail mounting options</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Redundant power inputs</li>
                                 </ul>
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <div class="equipment-item">
-                                <h5><i class="bi bi-broadcast text-primary me-2"></i>Cisco Meraki Wireless</h5>
+                                <h5><i class="bi bi-broadcast text-primary me-2"></i>Mesh Network Systems</h5>
                                 <ul class="list-unstyled mt-3 mb-0">
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Cloud-first management</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Integrated security scanning</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Location analytics</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Zero-touch provisioning</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Self-healing wireless backhaul</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Automatic load balancing</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Seamless roaming between APs</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Centralized cloud management</li>
                                 </ul>
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <div class="equipment-item">
-                                <h5><i class="bi bi-pc-display text-primary me-2"></i>Custom Solutions</h5>
+                                <h5><i class="bi bi-pc-display text-primary me-2"></i>Connectivity Solutions</h5>
                                 <ul class="list-unstyled mt-3 mb-0">
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Site-specific design</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Outdoor & industrial options</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Integration with existing systems</li>
-                                    <li><i class="bi bi-check-circle text-success me-2"></i>Future-proof technology</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>🛰️ Starlink satellite internet integration</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>4G/5G backup connections</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Fiber and FTTP connections</li>
+                                    <li><i class="bi bi-check-circle text-success me-2"></i>Automatic failover systems</li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Business Types We Serve -->
-<section class="py-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="text-center mb-5">
-                    <h2 class="accent mb-3">WiFi Solutions for Every Business</h2>
-                    <p class="text-muted">Tailored wireless network solutions for different business types across Norfolk</p>
-                </div>
-                
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="service-card text-center">
-                            <i class="bi bi-shop" style="font-size: 3rem; color: #3b82f6;"></i>
-                            <h5 class="mt-3">Retail Stores</h5>
-                            <p class="mb-0">Customer WiFi, POS systems, and staff connectivity solutions for retail environments.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6">
-                        <div class="service-card text-center">
-                            <i class="bi bi-building" style="font-size: 3rem; color: #3b82f6;"></i>
-                            <h5 class="mt-3">Offices</h5>
-                            <p class="mb-0">Professional wireless networks for offices with seamless roaming and guest access.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6">
-                        <div class="service-card text-center">
-                            <i class="bi bi-cup-hot" style="font-size: 3rem; color: #3b82f6;"></i>
-                            <h5 class="mt-3">Cafés & Restaurants</h5>
-                            <p class="mb-0">High-capacity WiFi for customer use plus secure networks for business operations.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6">
-                        <div class="service-card text-center">
-                            <i class="bi bi-hospital" style="font-size: 3rem; color: #3b82f6;"></i>
-                            <h5 class="mt-3">Medical Practices</h5>
-                            <p class="mb-0">Secure, HIPAA-compliant wireless networks for healthcare environments.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6">
-                        <div class="service-card text-center">
-                            <i class="bi bi-tools" style="font-size: 3rem; color: #3b82f6;"></i>
-                            <h5 class="mt-3">Warehouses</h5>
-                            <p class="mb-0">Industrial-grade WiFi for inventory management and mobile device connectivity.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6">
-                        <div class="service-card text-center">
-                            <i class="bi bi-book" style="font-size: 3rem; color: #3b82f6;"></i>
-                            <h5 class="mt-3">Schools</h5>
-                            <p class="mb-0">Educational WiFi networks with content filtering and device management.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6">
-                        <div class="service-card text-center">
-                            <i class="bi bi-car-front" style="font-size: 3rem; color: #3b82f6;"></i>
-                            <h5 class="mt-3">Automotive</h5>
-                            <p class="mb-0">Workshop WiFi for diagnostic equipment and customer waiting areas.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-6">
-                        <div class="service-card text-center">
-                            <i class="bi bi-house" style="font-size: 3rem; color: #3b82f6;"></i>
-                            <h5 class="mt-3">Home Offices</h5>
-                            <p class="mb-0">Professional-grade home WiFi for remote workers and small businesses.</p>
                         </div>
                     </div>
                 </div>
@@ -652,25 +756,25 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="contact-cta">
-                    <h3 class="mb-4">Ready to Transform Your Business WiFi?</h3>
-                    <p class="mb-4">Get a free WiFi survey and quote for your Norfolk business. Our experienced team will assess your premises and design a wireless network solution that meets your exact requirements.</p>
+                    <h3 class="mb-4">Ready to Solve Your Large Property WiFi Challenges?</h3>
+                    <p class="mb-4">Get a free professional site survey for your Norfolk property. Our specialists will assess your building, understand your requirements, and design a custom WiFi solution that delivers complete coverage.</p>
                     
                     <div class="d-flex flex-wrap justify-content-center gap-3">
                         <a href="tel:+441553824408" class="btn btn-light btn-lg">
                             <i class="bi bi-telephone me-2"></i>Call: 01553 824408
                         </a>
-                        <a href="mailto:info@sprintwave.co.uk?subject=WiFi Installation Quote" class="btn btn-outline-light btn-lg">
-                            <i class="bi bi-envelope me-2"></i>Email Quote Request
+                        <a href="mailto:info@sprintwave.co.uk?subject=Large Property WiFi Survey Request" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-envelope me-2"></i>Request Site Survey
                         </a>
                     </div>
                     
                     <div class="mt-4">
                         <small class="opacity-75">
-                            <i class="bi bi-shield-check me-2"></i>Fully insured & certified installers
+                            <i class="bi bi-shield-check me-2"></i>Free professional site surveys
                             <span class="mx-3">|</span>
-                            <i class="bi bi-clock me-2"></i>Free site surveys
+                            <i class="bi bi-award me-2"></i>Enterprise equipment warranty
                             <span class="mx-3">|</span>
-                            <i class="bi bi-award me-2"></i>3-year equipment warranty
+                            <i class="bi bi-tools me-2"></i>Ongoing support included
                         </small>
                     </div>
                 </div>
@@ -684,12 +788,12 @@
 {% block custom_js %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Track page view
+    // Track page view for large property WiFi
     if (typeof gtag !== 'undefined') {
         gtag('event', 'page_view', {
-            'event_category': 'services',
-            'event_label': 'wifi_installation',
-            'page_title': 'WiFi Installation Norfolk'
+            'event_category': 'large_property_services',
+            'event_label': 'wifi_installation_large_property',
+            'page_title': 'Large Property WiFi Installation Norfolk'
         });
     }
     
@@ -698,7 +802,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'phone_call', {
-                    'event_category': 'contact',
+                    'event_category': 'large_property_contact',
                     'event_label': 'wifi_installation_page'
                 });
             }
@@ -710,8 +814,8 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'email_click', {
-                    'event_category': 'contact',
-                    'event_label': 'wifi_installation_page'
+                    'event_category': 'large_property_contact',
+                    'event_label': 'site_survey_request'
                 });
             }
         });
@@ -742,7 +846,7 @@ if ('IntersectionObserver' in window) {
         });
     });
     
-    document.querySelectorAll('.service-card, .wifi-benefit-card, .coverage-area-card').forEach(el => {
+    document.querySelectorAll('.property-challenge-card, .wifi-benefit-card, .coverage-area-card').forEach(el => {
         observer.observe(el);
     });
 }
