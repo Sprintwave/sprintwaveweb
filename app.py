@@ -82,6 +82,10 @@ def case_study_event_wifi():
 def case_study_starlink():
     return render_template('case_study_starlink.html')
 
+@app.route('/case-studies/nhs-wifi-survey')
+def case_study_nhs_wifi():
+    return render_template('case_study_nhs_wifi.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Generate sitemap XML for Google Search Console"""
@@ -213,6 +217,12 @@ def sitemap():
     </url>
     <url>
         <loc>https://www.sprintwave.co.uk/case-studies/starlink</loc>
+        <lastmod>{current_date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.sprintwave.co.uk/case-studies/nhs-wifi-survey</loc>
         <lastmod>{current_date}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

@@ -1,0 +1,641 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<!-- SEO META TAGS -->
+<title>Case Study: NHS Foundation Trust WiFi Survey | 800 Access Points Healthcare Network Analysis | Sprintwave</title>
+<meta name="description" content="Professional NHS hospital WiFi survey case study. 60-day comprehensive analysis of 800 access points across all wards, theatres, and clinical areas. Detailed recommendations for network optimization.">
+<meta name="keywords" content="NHS WiFi survey, hospital wireless network, healthcare WiFi audit, medical facility network assessment, Norfolk NHS WiFi, healthcare network optimization, clinical WiFi survey, hospital IT infrastructure">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<!-- LOCAL SEO -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Norfolk, UK">
+<meta name="geo.position" content="52.6309;1.2974">
+<meta name="ICBM" content="52.6309, 1.2974">
+
+<!-- SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="NHS Foundation Trust WiFi Survey Case Study | 800 Access Points Analysis | Sprintwave">
+<meta property="og:description" content="Comprehensive 60-day WiFi survey of major NHS hospital. Professional analysis of 800 access points across all clinical areas with detailed optimization recommendations.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.sprintwave.co.uk/case-studies/nhs-wifi-survey">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/nhs-wifi-survey-case-study.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NHS hospital WiFi survey by Sprintwave">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NHS Foundation Trust WiFi Survey | 800 AP Analysis | Sprintwave">
+<meta name="twitter:description" content="Professional 60-day WiFi survey of NHS hospital covering 800 access points across all clinical and non-clinical areas.">
+<meta name="twitter:image" content="https://www.sprintwave.co.uk/static/nhs-wifi-survey-case-study.jpg">
+<meta name="twitter:image:alt" content="NHS hospital WiFi survey analysis">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://www.sprintwave.co.uk/case-studies/nhs-wifi-survey">
+
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "NHS Foundation Trust Comprehensive WiFi Survey Case Study",
+  "description": "Professional 60-day WiFi survey and analysis of 800 access points across NHS hospital including wards, theatres, and all clinical areas.",
+  "image": "https://www.sprintwave.co.uk/static/nhs-wifi-survey-case-study.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Sprintwave",
+    "url": "https://www.sprintwave.co.uk"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sprintwave",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sprintwave.co.uk/static/logo.png"
+    }
+  },
+  "datePublished": "2025-01-21",
+  "dateModified": "2025-01-21",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.sprintwave.co.uk/case-studies/nhs-wifi-survey"
+  },
+  "about": {
+    "@type": "Service",
+    "name": "Healthcare WiFi Survey",
+    "serviceType": "Network Assessment and Optimization"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CaseStudy",
+  "name": "NHS Foundation Trust WiFi Survey",
+  "description": "Comprehensive 60-day WiFi survey of NHS hospital covering 800 access points across all clinical areas including wards, theatres, and patient care facilities.",
+  "about": {
+    "@type": "Organization",
+    "name": "NHS Foundation Trust",
+    "description": "Major healthcare facility requiring comprehensive wireless network assessment"
+  },
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Sprintwave",
+    "url": "https://www.sprintwave.co.uk",
+    "telephone": "+44 1553 824408"
+  }
+}
+</script>
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+    }
+    
+    .case-study-badge {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1rem;
+        backdrop-filter: blur(10px);
+    }
+    
+    .stats-card {
+        background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        height: 100%;
+    }
+    
+    .challenge-item {
+        background: #fff;
+        border-left: 4px solid #dc2626;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    
+    .solution-item {
+        background: #fff;
+        border-left: 4px solid #059669;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    
+    .methodology-step {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .methodology-step:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .nhs-badge {
+        background: #1e40af;
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin: 0.25rem;
+        display: inline-block;
+    }
+    
+    .critical-metric {
+        background: #dc2626;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: 600;
+        margin: 0.25rem;
+        display: inline-block;
+    }
+    
+    .success-metric {
+        background: #059669;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: 600;
+        margin: 0.25rem;
+        display: inline-block;
+    }
+    
+    .area-coverage {
+        background: #f0f9ff;
+        border: 2px solid #3b82f6;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="case-study-badge">
+            🏥 Healthcare Case Study
+        </div>
+        <h1 class="display-4 fw-bold mb-4">NHS Foundation Trust WiFi Survey</h1>
+        <p class="lead mb-4">
+            Comprehensive 60-day wireless network assessment across major NHS hospital. Professional analysis of 800 access points covering every clinical and non-clinical area.
+        </p>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <span class="critical-metric">🏥 Major NHS Trust</span>
+                    <span class="critical-metric">📡 800 Access Points</span>
+                    <span class="critical-metric">⏱️ 60-Day Project</span>
+                    <span class="critical-metric">👥 2-Person Team</span>
+                    <span class="critical-metric">🌙 Night Shift Access</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Challenge Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">The <span class="accent">Challenge</span></h2>
+            <p class="text-muted">A major NHS Foundation Trust needed comprehensive wireless network assessment to optimize patient care connectivity</p>
+        </div>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6">
+                <div class="challenge-item">
+                    <h5><i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>Critical Connectivity Issues</h5>
+                    <ul class="mb-0">
+                        <li><strong>Patient Care Disruption:</strong> WiFi dead zones affecting medical devices and patient monitoring</li>
+                        <li><strong>Clinical Workflow Impact:</strong> Staff unable to access patient records in certain areas</li>
+                        <li><strong>Emergency Response:</strong> Communication blackspots in critical care areas</li>
+                        <li><strong>Infection Control:</strong> Limited access to isolation wards and infectious disease units</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="challenge-item">
+                    <h5><i class="bi bi-building-fill text-danger me-2"></i>Complex Healthcare Environment</h5>
+                    <ul class="mb-0">
+                        <li><strong>Operational Constraints:</strong> Hospital operating 24/7 with minimal disruption allowed</li>
+                        <li><strong>Security Requirements:</strong> High-security areas requiring special access protocols</li>
+                        <li><strong>Patient Privacy:</strong> Sensitive areas requiring careful survey methodology</li>
+                        <li><strong>Infrastructure Age:</strong> Legacy network with mixed equipment generations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="service-card text-center">
+                    <h4 class="accent mb-3">Project Scope & Requirements</h4>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <strong>Access Points:</strong><br>
+                            <span class="text-muted">800 APs across site</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Coverage Areas:</strong><br>
+                            <span class="text-muted">100% hospital footprint</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Timeline:</strong><br>
+                            <span class="text-muted">60 days maximum</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Disruption:</strong><br>
+                            <span class="text-muted">Minimal patient impact</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Methodology Section -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Our Professional <span class="accent">Methodology</span></h2>
+            <p class="text-muted">Systematic approach ensuring comprehensive coverage while maintaining patient care standards</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="methodology-step text-center">
+                    <div style="font-size: 3rem; color: #1e40af; margin-bottom: 1rem;">🗓️</div>
+                    <h5 class="accent">Pre-Survey Planning</h5>
+                    <ul class="text-start">
+                        <li>Liaison with NHS IT and facilities teams</li>
+                        <li>Security clearance and access protocols</li>
+                        <li>Infection control training and certification</li>
+                        <li>Detailed floor plans and AP location mapping</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="methodology-step text-center">
+                    <div style="font-size: 3rem; color: #1e40af; margin-bottom: 1rem;">🌙</div>
+                    <h5 class="accent">Night Shift Operations</h5>
+                    <ul class="text-start">
+                        <li>After-hours access to critical areas</li>
+                        <li>Operating theatre surveys during maintenance windows</li>
+                        <li>ICU assessments with minimal patient disruption</li>
+                        <li>Emergency department coordination</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="methodology-step text-center">
+                    <div style="font-size: 3rem; color: #1e40af; margin-bottom: 1rem;">📋</div>
+                    <h5 class="accent">Comprehensive Documentation</h5>
+                    <ul class="text-start">
+                        <li>Individual area reports and recommendations</li>
+                        <li>Heat maps showing coverage gaps</li>
+                        <li>Specific AP relocation proposals</li>
+                        <li>Power level optimization suggestions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Areas Covered Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Complete Hospital <span class="accent">Coverage</span></h2>
+            <p class="text-muted">Every single area of the hospital was professionally surveyed and analyzed</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="area-coverage">
+                    <h5 class="text-primary mb-3"><i class="bi bi-heart-pulse me-2"></i>Clinical Areas</h5>
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <span class="nhs-badge">All Patient Wards</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Operating Theatres</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Intensive Care Units</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Emergency Department</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Maternity Units</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Pediatric Wards</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Isolation Units</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Infectious Disease Wards</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="area-coverage">
+                    <h5 class="text-success mb-3"><i class="bi bi-building me-2"></i>Support Areas</h5>
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <span class="nhs-badge">Administrative Offices</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Consulting Rooms</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Corridors & Lobbies</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Patient Toilets</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Staff Areas</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Cafeterias</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Storage Areas</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="nhs-badge">Basement Levels</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="service-card">
+                    <h5 class="accent mb-3"><i class="bi bi-people me-2"></i>Human-Centered Approach</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong>Patient Interaction:</strong><br>
+                            <p class="mb-0 small text-muted">Respectful communication with patients during bedside surveys, explaining our work and minimizing disruption</p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>Clinical Staff Coordination:</strong><br>
+                            <p class="mb-0 small text-muted">Close collaboration with nurses, doctors, and technicians to schedule surveys around patient care</p>
+                        </div>
+                        <div class="col-md-4">
+                            <strong>Infection Control Compliance:</strong><br>
+                            <p class="mb-0 small text-muted">Full PPE protocols, hand hygiene stations, and isolation area procedures followed meticulously</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Findings Section -->
+<section class="py-5" style="background: #fef2f2;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Critical <span class="accent">Findings</span></h2>
+            <p class="text-muted">Comprehensive analysis revealed significant network optimization opportunities</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="stats-card" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);">
+                    <i class="bi bi-wifi-off fs-1 mb-3"></i>
+                    <h3>47</h3>
+                    <p class="mb-0">Critical Dead Zones Identified</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="stats-card" style="background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);">
+                    <i class="bi bi-arrow-repeat fs-1 mb-3"></i>
+                    <h3>435</h3>
+                    <p class="mb-0">Access Points Requiring Relocation</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="stats-card" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                    <i class="bi bi-plus-circle fs-1 mb-3"></i>
+                    <h3>75</h3>
+                    <p class="mb-0">New Access Points Required</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                <div class="solution-item">
+                    <h5><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>Coverage Gap Analysis</h5>
+                    <ul class="mb-0">
+                        <li><strong>Patient Care Impact:</strong> 23 wards with inadequate bedside coverage</li>
+                        <li><strong>Medical Device Connectivity:</strong> 12 areas affecting vital sign monitors</li>
+                        <li><strong>Staff Communication:</strong> 8 nurse stations with poor signal strength</li>
+                        <li><strong>Emergency Access:</strong> 4 critical care areas with dead zones</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="solution-item">
+                    <h5><i class="bi bi-tools text-success me-2"></i>Optimization Recommendations</h5>
+                    <ul class="mb-0">
+                        <li><strong>AP Relocations:</strong> 435 existing access points requiring repositioning for optimal coverage</li>
+                        <li><strong>New Installations:</strong> 75 additional access points required to eliminate dead zones</li>
+                        <li><strong>Mounting Changes:</strong> Wall-mounted APs recommended for ceiling installation in high-traffic areas</li>
+                        <li><strong>Power & Channel Optimization:</strong> Detailed adjustments for interference reduction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Deliverables Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Comprehensive <span class="accent">Deliverables</span></h2>
+            <p class="text-muted">Detailed documentation enabling informed decision-making and implementation</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="service-card">
+                    <h5 class="accent mb-3"><i class="bi bi-file-earmark-text me-2"></i>Bespoke Area Reports</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">📋 <strong>Individual Ward Analysis:</strong> Specific recommendations for each clinical area</li>
+                        <li class="mb-2">📊 <strong>Signal Strength Mapping:</strong> Heat maps showing coverage quality</li>
+                        <li class="mb-2">📍 <strong>AP Positioning:</strong> Precise relocation coordinates and mounting specifications</li>
+                        <li class="mb-2">⚙️ <strong>Power Level Settings:</strong> Optimized dBm recommendations per access point</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card">
+                    <h5 class="accent mb-3"><i class="bi bi-graph-up me-2"></i>Executive Summary</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">🎯 <strong>Priority Actions:</strong> Critical fixes ranked by patient care impact</li>
+                        <li class="mb-2">💰 <strong>Cost Analysis:</strong> Budget planning for recommended improvements</li>
+                        <li class="mb-2">📅 <strong>Implementation Timeline:</strong> Phased approach minimizing service disruption</li>
+                        <li class="mb-2">📈 <strong>Expected Outcomes:</strong> Predicted network performance improvements</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #059669 0%, #047857 100%); color: white;">
+    <div class="container text-center">
+        <h2 class="mb-4">Project <span style="color: #d1fae5;">Success</span></h2>
+        <p class="lead mb-5">Comprehensive survey delivered actionable insights enabling significant network improvements</p>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                    <h3 class="mb-2">100%</h3>
+                    <p class="mb-0">Hospital Coverage Analyzed</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📡</div>
+                    <h3 class="mb-2">435</h3>
+                    <p class="mb-0">APs to be Relocated</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">➕</div>
+                    <h3 class="mb-2">75</h3>
+                    <p class="mb-0">New APs Required</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⏰</div>
+                    <h3 class="mb-2">60</h3>
+                    <p class="mb-0">Days to Completion</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                    <h4 class="mb-3">Critical Healthcare Impact ⚕️</h4>
+                    <ul class="list-unstyled text-start">
+                        <li class="mb-2">✅ <strong>Patient Care Enhancement:</strong> Eliminated connectivity gaps affecting medical devices</li>
+                        <li class="mb-2">✅ <strong>Clinical Workflow Optimization:</strong> Improved staff access to patient records</li>
+                        <li class="mb-2">✅ <strong>Emergency Response:</strong> Enhanced communication in critical care areas</li>
+                        <li class="mb-2">✅ <strong>Infection Control Compliance:</strong> Maintained highest safety standards throughout</li>
+                        <li class="mb-2">✅ <strong>Actionable Intelligence:</strong> Detailed roadmap for network improvements</li>
+                        <li class="mb-2">✅ <strong>Professional Standards:</strong> NHS IT team equipped with comprehensive analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Healthcare WiFi Services Section -->
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Professional Healthcare WiFi Services</h2>
+        <p class="text-muted mb-4">Specialist wireless surveys and optimization for NHS trusts, private hospitals, and healthcare facilities across Norfolk</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="service-card">
+                    <h4 class="accent mb-3">🏥 Expert Healthcare Network Assessment</h4>
+                    <p class="mb-4">✅ NHS Foundation Trust experience<br>✅ Clinical environment expertise<br>✅ Infection control compliance<br>✅ 24/7 operational awareness<br>✅ Patient-centered approach</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a class="btn btn-accent" href="tel:+441553824408">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                        <a class="btn btn-outline-primary" href="{{ url_for('wireless_surveys') }}">
+                            <i class="bi bi-hospital me-2"></i>Healthcare WiFi Services
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4 text-muted">
+                        <small>
+                            <i class="bi bi-shield-check me-1"></i>
+                            CRB Checked • Infection Control Trained • Professional Indemnity Insured
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block javascript %}
+<script>
+// Track case study page views
+if (typeof gtag !== 'undefined') {
+    gtag('event', 'case_study_view', {
+        'event_category': 'engagement',
+        'event_label': 'nhs_wifi_survey_case_study',
+        'case_study_type': 'healthcare_wifi'
+    });
+}
+
+// Track phone clicks for NHS healthcare services
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call', {
+                    'event_category': 'nhs_healthcare_contact',
+                    'event_label': 'wifi_survey_inquiry'
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
