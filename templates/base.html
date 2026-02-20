@@ -320,71 +320,64 @@
 
 
 
-                <!-- Blog -->
+                <!-- Training & Certification (Professional Focus) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="trainingDropdown" role="button" data-bs-toggle="dropdown" style="color: #dc2626;">
+                        <i class="bi bi-mortarboard me-1"></i> Training
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('examcontent') }}">
+                            <i class="bi bi-award me-2"></i>CCNP Wireless Training Overview
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header text-muted">Professional RF Training</h6></li>
+                        <li><a class="dropdown-item" href="{{ url_for('rf_fundamentals') }}">
+                            📡 RF Fundamentals & Propagation
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('fspl') }}">
+                            📶 Free Space Path Loss Analysis
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                            📊 Signal Strength & Measurements
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                            ⚡ Interference & Noise Analysis
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
+                            📈 SNR & Performance Optimization
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><small class="dropdown-item text-muted">
+                            <i class="bi bi-info-circle me-1"></i>Professional wireless training by certified experts
+                        </small></li>
+                    </ul>
+                </li>
+
+                <!-- Blog (Simplified) -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
-                        <i class="bi bi-book me-1"></i> Blog
+                        <i class="bi bi-newspaper me-1"></i> Blog
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ url_for('blog') }}">
-                            <i class="bi bi-house me-2"></i>Blog Home
+                            <i class="bi bi-house me-2"></i>Technical Blog
                         </a></li>
                         <li><hr class="dropdown-divider"></li>
-                        
-                        <!-- CCNP Wireless Submenu -->
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#" style="color: #dc2626;">
-                                <i class="bi bi-wifi me-2"></i>CCNP Wireless 350-101
-                            </a>
-                            <ul class="dropdown-menu dropdown-submenu-left">
-                                <li><a class="dropdown-item" href="{{ url_for('examcontent') }}">
-                                    📋 Exam Content Overview
-                                </a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{{ url_for('rf_fundamentals') }}">
-                                    📡 1.0 RF Fundamentals
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    📶 1.1 Propagation of Radio Waves
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    📊 1.2a Signal Strength
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    ⚡ 1.2b Interference, Noise, Rogue AP
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    📱 1.2c Device Capabilities
-                                </a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('comingsoon') }}">
-                                    📈 1.2d SNR
-                                </a></li>
-                            </ul>
-                        </li>
-                        
-                        <li><hr class="dropdown-divider"></li>
-                        
-                        <!-- Regular Blog Posts -->
+                        <li><h6 class="dropdown-header text-muted">Technical Articles</h6></li>
                         <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
-                            🛰️ How Starlink Works: Technical Deep-Dive
+                            🛰️ Starlink Technical Deep-Dive
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('ansible_ad_lockout') }}">
-                            🔐 Preventing AD Lockouts with Ansible
+                            🔐 AD Lockout Prevention with Ansible
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('aruba_ansible_backup') }}">
-                            💾 Aruba Switch Backups with Ansible
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('aruba_100g') }}">
-                            🔍 100G Optic Issues on Aruba 8360
+                            💾 Aruba Automated Backups
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('clearpass_api') }}">
-                            <i class="bi bi-terminal me-1"></i> ClearPass API Guide
+                            <i class="bi bi-terminal me-1"></i> ClearPass API Integration
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('ise_vs_clearpass') }}">
-                            <i class="bi bi-diagram-3 me-1"></i> ISE vs ClearPass
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('enocean_catalyst') }}">
-                            <i class="bi bi-usb-plug me-1"></i> EnOcean & Cisco Issues
+                            <i class="bi bi-diagram-3 me-1"></i> Enterprise NAC Comparison
                         </a></li>
                     </ul>
                 </li>

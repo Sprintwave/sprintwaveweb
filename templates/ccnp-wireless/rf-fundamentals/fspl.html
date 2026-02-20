@@ -1,0 +1,1022 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Free Space Path Loss (FSPL) - Professional WiFi Design Course | Sprintwave Norfolk</title>
+<meta name="description" content="Learn FSPL for CCNP Wireless certification. Professional WiFi design services in Norfolk. RF site surveys, enterprise wireless installation, point-to-point links by certified engineers.">
+<meta name="keywords" content="FSPL, CCNP Wireless, WiFi design Norfolk, RF site survey, enterprise wireless, point-to-point links, Ubiquiti installation, wireless network design East Anglia, professional WiFi installer">
+<meta name="robots" content="index, follow">
+
+<!-- Local SEO -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Norfolk, UK">
+<meta name="geo.position" content="52.6309;1.2974">
+<meta name="ICBM" content="52.6309, 1.2974">
+
+<!-- Business Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Sprintwave",
+  "description": "Professional wireless network training and installation services",
+  "url": "https://www.sprintwave.co.uk",
+  "sameAs": [
+    "https://www.linkedin.com/company/sprintwave"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Norfolk",
+    "addressCountry": "GB"
+  },
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 52.6309,
+      "longitude": 1.2974
+    },
+    "geoRadius": "100000"
+  }
+}
+</script>
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .course-hero {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: white;
+        padding: 60px 0;
+    }
+    
+    .course-badge {
+        background: rgba(255,255,255,0.9);
+        color: #1f2937;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    
+    .learning-objective {
+        background: #f0f9ff;
+        border-left: 4px solid #3b82f6;
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+    }
+    
+    .concept-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border-left: 4px solid #dc2626;
+    }
+    
+    .formula-box {
+        background: #f8fafc;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+        font-family: 'Courier New', monospace;
+        font-size: 1.1rem;
+        margin: 1rem 0;
+    }
+    
+    .key-point {
+        background: #fef3c7;
+        border: 1px solid #f59e0b;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 2px solid #e5e7eb;
+    }
+    
+    .progress-indicator {
+        background: #e5e7eb;
+        height: 6px;
+        border-radius: 3px;
+        margin: 1rem 0;
+    }
+    
+    .progress-fill {
+        background: #dc2626;
+        height: 100%;
+        border-radius: 3px;
+        width: 20%; /* Second lesson = 20% */
+        transition: width 0.3s ease;
+    }
+
+    .collapse {
+        z-index: 1;
+    }
+
+    .service-card {
+        position: relative;
+        overflow: visible;
+        background: #fff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .concept-card, .service-card {
+        margin-bottom: 2rem;
+        clear: both;
+    }
+
+    .distance-demo {
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 1.5rem 0;
+        border: 2px solid #bae6fd;
+    }
+
+    .signal-strength-bar {
+        height: 30px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        margin: 0.5rem 0;
+        transition: all 0.3s ease;
+    }
+
+    .antenna-gain-demo {
+        background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 1.5rem 0;
+        border: 2px solid #bbf7d0;
+    }
+
+    .calculation-step {
+        background: #fafafa;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        font-family: 'Courier New', monospace;
+    }
+
+    .frequency-comparison {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .frequency-card {
+        text-align: center;
+        padding: 1.5rem;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .frequency-card:hover {
+        transform: scale(1.05);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Course Hero Section -->
+<section class="course-hero">
+    <div class="container">
+        <div class="course-badge">
+            📡 CCNP Wireless 350-101 • Lesson 1.1
+        </div>
+        <h1 class="display-5 fw-bold mb-3">Free Space Path Loss (FSPL)</h1>
+        <p class="lead mb-4">Understanding how RF signals lose strength over distance, even in perfect conditions</p>
+        
+        <!-- Progress Indicator -->
+        <div class="progress-indicator">
+            <div class="progress-fill"></div>
+        </div>
+        <small style="color: #020101; opacity: 0.9;">Lesson 2 of 10 - RF Propagation Fundamentals</small>
+    </div>
+</section>
+
+<!-- Learning Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                
+                <!-- Learning Objectives -->
+                <div class="learning-objective">
+                    <h5><i class="bi bi-bullseye me-2"></i>Learning Objectives</h5>
+                    <p class="mb-2">By the end of this lesson, you will understand:</p>
+                    <ul class="mb-0">
+                        <li>What Free Space Path Loss is and why it occurs</li>
+                        <li>The FSPL formula and how frequency and distance affect loss</li>
+                        <li>Why higher frequencies suffer more path loss</li>
+                        <li>How antenna gain compensates for path loss in real-world systems</li>
+                        <li>Real-world applications in point-to-point wireless links</li>
+                    </ul>
+                </div>
+
+                <!-- What is FSPL? -->
+                <div class="concept-card">
+                    <h3 class="accent mb-3"><i class="bi bi-broadcast me-2"></i>What is Free Space Path Loss?</h3>
+                    
+                    <p>An electromagnetic signal loses strength as it passes through obstacles like walls, floors, and furniture. That's easy to picture. <strong>What's less obvious is that a signal also loses strength even in empty space.</strong> This is called <strong>Free Space Path Loss (FSPL)</strong>.</p>
+                    
+                    <div class="key-point">
+                        <strong>🌌 Critical Understanding:</strong> FSPL isn't caused by absorption or blockage. It happens because the radio wave spreads out as it travels away from the transmitting antenna.
+                    </div>
+
+                    <!-- Signal Spreading Visualization -->
+                    <div class="text-center my-4">
+                        <img src="{{ url_for('static', filename='ccnp-wireless/signal-spreading.png') }}" 
+                             alt="Signal Spreading - RF Energy Disperses Over Larger Area With Distance" 
+                             class="img-fluid" 
+                             style="max-width: 100%; height: auto; background: transparent;">
+                        <p class="text-muted mt-2"><em>As RF waves travel, the same energy spreads over an increasingly larger spherical area</em></p>
+                    </div>
+
+                    <div class="service-card" style="background: #f0fdf4; border: 2px solid #bbf7d0;">
+                        <h6 class="text-success mb-3"><i class="bi bi-lightbulb me-2"></i>Think of a Flashlight</h6>
+                        <p class="mb-3">Imagine shining a flashlight in a dark room:</p>
+                        <ul class="mb-3">
+                            <li><strong>Close to the flashlight:</strong> The light beam is small and bright</li>
+                            <li><strong>Far from the flashlight:</strong> The same light covers a much larger area but is dimmer</li>
+                            <li><strong>Same total energy:</strong> The flashlight hasn't gotten weaker - the energy is just spread out</li>
+                            <li><strong>Your eye receives less:</strong> Each square inch receives less light because it's distributed over more area</li>
+                        </ul>
+                        <p class="mb-0"><strong>RF waves work exactly the same way!</strong> The transmitter doesn't lose power, but the receiving antenna captures less of the total energy because it's spread over a larger spherical area.</p>
+                    </div>
+
+                    <div class="distance-demo">
+                        <h6 class="text-primary mb-3"><i class="bi bi-rulers me-2"></i>The Spherical Spreading Effect</h6>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div style="width: 60px; height: 60px; background: #dc2626; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">TX</div>
+                                    <h6>At Transmitter</h6>
+                                    <p class="mb-0 small">All energy concentrated at source</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div style="width: 100px; height: 100px; border: 3px dashed #f59e0b; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: #f59e0b; font-weight: bold;">1 km</div>
+                                    <h6>1 km Distance</h6>
+                                    <p class="mb-0 small">Energy spread over larger sphere</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div style="width: 140px; height: 140px; border: 2px dashed #3b82f6; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-weight: bold;">2 km</div>
+                                    <h6>2 km Distance</h6>
+                                    <p class="mb-0 small">Same energy, even larger sphere</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="key-point mt-3 mb-0">
+                            <strong>Mathematical Reality:</strong> The surface area of a sphere is 4πr². As distance (radius) doubles, the surface area increases by 4x, so signal density decreases by 4x (-6 dB).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The FSPL Formula -->
+                <div class="concept-card">
+                    <h3 class="accent mb-3"><i class="bi bi-calculator me-2"></i>The FSPL Formula</h3>
+                    
+                    <p>There is a formula to calculate FSPL. You are <strong>very unlikely to be asked to calculate this by hand</strong> in the exam, but you should recognize what it represents and how frequency and distance affect it:</p>
+
+                    <div class="formula-box" style="background: linear-gradient(135deg, #fee2e2, #fecaca); border-color: #dc2626;">
+                        <strong>FSPL = 36.6 + 20 log₁₀(f) + 20 log₁₀(D)</strong><br><br>
+                        <em>Expanded:</em><br>
+                        <strong>Free Space Path Loss (dB) = 36.6 + 20 log₁₀(frequency in MHz) + 20 log₁₀(distance in km)</strong>
+                    </div>
+
+                    <!-- Formula Components -->
+                    <div class="row g-3 mt-4">
+                        <div class="col-md-4">
+                            <div class="service-card text-center h-100" style="background: #f0f9ff; border: 1px solid #bfdbfe;">
+                                <h6 class="text-primary">36.6</h6>
+                                <p class="mb-0"><strong>Physics Constant</strong><br>Speed of light + spherical spreading (4π) + unit conversions</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="service-card text-center h-100" style="background: #fef3c7; border: 1px solid #fde68a;">
+                                <h6 class="text-warning">20 log₁₀(f)</h6>
+                                <p class="mb-0"><strong>Frequency Effect</strong><br>Higher frequency = more loss<br><em>(f in MHz)</em></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="service-card text-center h-100" style="background: #fee2e2; border: 1px solid #fecaca;">
+                                <h6 class="text-danger">20 log₁₀(D)</h6>
+                                <p class="mb-0"><strong>Distance Effect</strong><br>Greater distance = more loss<br><em>(D in km)</em></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-point mt-4">
+                        <h6 class="text-primary"><i class="bi bi-info-circle me-2"></i>What Matters for Intuition</h6>
+                        <ul class="mb-2">
+                            <li><strong>Increase the distance → FSPL increases</strong></li>
+                            <li><strong>Increase the frequency → FSPL increases</strong></li>
+                            <li><strong>Useful rule of thumb:</strong> Doubling the distance adds about 6 dB of loss</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Frequency Effects -->
+                <div class="concept-card">
+                    <h3 class="accent mb-3"><i class="bi bi-graph-up me-2"></i>Why Frequency Matters</h3>
+                    
+                    <p><strong>Higher-frequency signals attenuate more than lower-frequency signals over the same distance.</strong> That's why, for example, a 5 GHz WiFi signal will suffer more free space loss than a 2.4 GHz signal over the same path.</p>
+
+                    <!-- Frequency Comparison -->
+                    <div class="frequency-comparison">
+                        <div class="frequency-card" style="background: linear-gradient(135deg, #fee2e2, #fecaca);">
+                            <h6 class="text-danger">2.4 GHz</h6>
+                            <div class="formula-box" style="font-size: 0.9rem; margin: 0.5rem 0; background: rgba(255,255,255,0.8);">
+                                20 log₁₀(2400) = <strong>67.6 dB</strong>
+                            </div>
+                            <p class="mb-0 small">Lower frequency component</p>
+                        </div>
+                        
+                        <div class="frequency-card" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">
+                            <h6 class="text-warning">5 GHz</h6>
+                            <div class="formula-box" style="font-size: 0.9rem; margin: 0.5rem 0; background: rgba(255,255,255,0.8);">
+                                20 log₁₀(5000) = <strong>74.0 dB</strong>
+                            </div>
+                            <p class="mb-0 small">6.4 dB more loss than 2.4 GHz</p>
+                        </div>
+                        
+                        <div class="frequency-card" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">
+                            <h6 class="text-primary">6 GHz</h6>
+                            <div class="formula-box" style="font-size: 0.9rem; margin: 0.5rem 0; background: rgba(255,255,255,0.8);">
+                                20 log₁₀(6000) = <strong>75.6 dB</strong>
+                            </div>
+                            <p class="mb-0 small">8.0 dB more loss than 2.4 GHz</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card" style="background: #f0fdf4; border: 2px solid #bbf7d0;">
+                        <h6 class="text-success mb-3"><i class="bi bi-wifi me-2"></i>WiFi Frequency Reality</h6>
+                        <p class="mb-3">This explains why you often see different behavior between WiFi bands:</p>
+                        <ul class="mb-3">
+                            <li><strong>2.4 GHz:</strong> Better range, penetrates walls better</li>
+                            <li><strong>5 GHz:</strong> Shorter range, more affected by obstacles</li>
+                            <li><strong>6 GHz:</strong> Shortest range, requires more access points for coverage</li>
+                        </ul>
+                        <p class="mb-0"><strong>Design Impact:</strong> Higher frequency bands need more access points placed closer together to achieve the same coverage area. This is fundamental physics, not a limitation of the equipment!</p>
+                    </div>
+                </div>
+
+                <!-- Distance Effects -->
+                <div class="concept-card">
+                    <h3 class="accent mb-3"><i class="bi bi-rulers me-2"></i>Distance Effects & the 6 dB Rule</h3>
+                    
+                    <p>A useful rule of thumb is that <strong>doubling the distance adds about 6 dB of loss.</strong> Let's see why this works:</p>
+
+                    <!-- Distance Demonstration -->
+                    <div class="distance-demo">
+                        <h6 class="text-primary mb-3"><i class="bi bi-calculator me-2"></i>Distance Doubling Examples</h6>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="calculation-step">
+                                    <strong>100m → 200m (Double Distance)</strong><br>
+                                    20 log₁₀(0.1) = -20 dB<br>
+                                    20 log₁₀(0.2) = -14 dB<br>
+                                    <span class="text-success"><strong>Difference: 6 dB more loss</strong></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="calculation-step">
+                                    <strong>500m → 1000m (Double Distance)</strong><br>
+                                    20 log₁₀(0.5) = -6 dB<br>
+                                    20 log₁₀(1.0) = 0 dB<br>
+                                    <span class="text-success"><strong>Difference: 6 dB more loss</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="key-point mt-3 mb-0">
+                            <strong>📏 The 6 dB Rule:</strong> This pattern holds true for any distance. Double the distance = 6 dB more path loss. This makes quick mental calculations much easier during network design!
+                        </div>
+                    </div>
+
+                    <!-- Signal Strength Visualization -->
+                    <div class="mt-4">
+                        <h6 class="accent mb-3">Signal Strength vs Distance</h6>
+                        <div class="row g-2">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="signal-strength-bar" style="background: #10b981; width: 100%; height: 50px; font-size: 1.1rem;">
+                                    100m: Strong
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="signal-strength-bar" style="background: #f59e0b; width: 100%; height: 50px; font-size: 1.1rem;">
+                                    200m: -6 dB
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="signal-strength-bar" style="background: #ef4444; width: 100%; height: 50px; font-size: 1.1rem;">
+                                    400m: -12 dB
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="signal-strength-bar" style="background: #991b1b; width: 100%; height: 50px; font-size: 1.1rem; color: white;">
+                                    800m: -18 dB
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-World Calculation Example -->
+                <div class="concept-card">
+                    <h3 class="accent mb-3"><i class="bi bi-gear me-2"></i>Real-World Example: NanoBeam Link</h3>
+                    
+                    <p>A good real-world example is <strong>Ubiquiti (UniFi) NanoBeam point-to-point radios</strong>. These typically operate around 5 GHz and, in clear line-of-sight conditions, can link sites many kilometres apart.</p>
+
+                    <!-- Example Calculation -->
+                    <div class="service-card" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 2px solid #bae6fd;">
+                        <h6 class="text-primary mb-3"><i class="bi bi-calculator me-2"></i>Example Calculation</h6>
+                        
+                        <div class="row align-items-center mb-3">
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>Link Parameters:</strong></p>
+                                <ul class="mb-0">
+                                    <li>Frequency: 5000 MHz (5 GHz)</li>
+                                    <li>Distance: 1 km</li>
+                                    <li>Clear line-of-sight</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <img src="{{ url_for('static', filename='ccnp-wireless/nanobeam-link.png') }}" 
+                                     alt="Point-to-Point NanoBeam Link Diagram" 
+                                     class="img-fluid" 
+                                     style="max-width: 200px; height: auto;">
+                            </div>
+                        </div>
+
+                        <h6 class="text-success mb-2">Step-by-Step FSPL Calculation:</h6>
+                        <div class="calculation-step mb-2">
+                            <strong>FSPL = 36.6 + 20 log₁₀(f) + 20 log₁₀(D)</strong>
+                        </div>
+                        <div class="calculation-step mb-2">
+                            FSPL = 36.6 + 20 log₁₀(5000) + 20 log₁₀(1)
+                        </div>
+                        <div class="calculation-step mb-2">
+                            FSPL = 36.6 + 20(3.699) + 20(0)
+                        </div>
+                        <div class="calculation-step mb-2">
+                            FSPL ≈ 36.6 + 73.98 + 0
+                        </div>
+                        <div class="calculation-step" style="background: #10b981; color: white;">
+                            <strong>FSPL = 110.6 dB</strong>
+                        </div>
+
+                        <div class="key-point mt-3 mb-0">
+                            <strong>🔥 110 dB sounds enormous — and it is!</strong> This is where antenna gain becomes critical. Without compensation, this level of loss would make communication impossible.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Antenna Gain to the Rescue -->
+                <div class="concept-card">
+                    <h3 class="accent mb-3"><i class="bi bi-broadcast-pin me-2"></i>How Antenna Gain Fights Path Loss</h3>
+                    
+                    <p><strong>NanoBeam antennas are highly directional, more like RF laser pointers than light bulbs.</strong> They typically have around 25 dBi of gain on each end.</p>
+
+                    <div class="antenna-gain-demo">
+                        <h6 class="text-success mb-3"><i class="bi bi-plus-circle me-2"></i>Link Budget Analysis</h6>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="service-card h-100" style="background: rgba(239, 68, 68, 0.1); border: 1px solid #fecaca;">
+                                    <h6 class="text-danger text-center">❌ Losses</h6>
+                                    <div class="calculation-step text-center">
+                                        <strong>Free Space Path Loss</strong><br>
+                                        <span class="text-danger">-110.6 dB</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="service-card h-100" style="background: rgba(16, 185, 129, 0.1); border: 1px solid #bbf7d0;">
+                                    <h6 class="text-success text-center">✅ Gains</h6>
+                                    <div class="calculation-step text-center">
+                                        <strong>TX Antenna Gain</strong><br>
+                                        <span class="text-success">+25 dBi</span>
+                                    </div>
+                                    <div class="calculation-step text-center">
+                                        <strong>RX Antenna Gain</strong><br>
+                                        <span class="text-success">+25 dBi</span>
+                                    </div>
+                                    <hr>
+                                    <div class="calculation-step text-center" style="background: #10b981; color: white;">
+                                        <strong>Total Antenna Gain</strong><br>
+                                        <span class="fw-bold">+50 dB</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <div class="formula-box" style="background: linear-gradient(135deg, #10b981, #059669); color: white; border: none;">
+                                <strong>Net Link Budget = -110.6 dB + 50 dB = -60.6 dB</strong><br>
+                                <em>Plenty of signal margin above receiver sensitivity!</em>
+                            </div>
+                        </div>
+
+                        <div class="key-point mt-3 mb-0">
+                            <strong>🎯 The Result:</strong> That 50 dB of combined antenna gain fighting back against the 110 dB of path loss leaves plenty of signal above the receiver's noise floor for a stable, high-speed link delivering hundreds of megabits per second!
+                        </div>
+                    </div>
+
+                    <!-- Antenna Pattern Comparison -->
+                    <div class="row g-3 mt-4">
+                        <div class="col-md-6">
+                            <div class="service-card text-center h-100" style="background: #fee2e2; border: 1px solid #fecaca;">
+                                <h6 class="text-danger">Omnidirectional Antenna</h6>
+                                <div style="font-size: 4rem; margin: 1rem 0;">💡</div>
+                                <p class="mb-0">Like a light bulb - spreads energy in all directions<br><strong>Lower gain (2-8 dBi)</strong></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="service-card text-center h-100" style="background: #f0fdf4; border: 1px solid #bbf7d0;">
+                                <h6 class="text-success">Directional Antenna (NanoBeam)</h6>
+                                <div style="font-size: 4rem; margin: 1rem 0;">🔦</div>
+                                <p class="mb-0">Like a laser pointer - focuses energy in one direction<br><strong>High gain (20-30 dBi)</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- External FSPL Calculator -->
+                <div class="concept-card">
+                    <h3 class="accent mb-3"><i class="bi bi-calculator me-2"></i>FSPL Calculator</h3>
+                    
+                    <p>Practice calculating FSPL for different frequencies and distances with this professional RF calculator:</p>
+
+                    <div class="service-card text-center" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 2px solid #bae6fd;">
+                        <div style="font-size: 4rem; color: #3b82f6; margin: 2rem 0;">📡</div>
+                        <h5 class="text-primary mb-3">Professional FSPL Calculator</h5>
+                        <p class="mb-4">Use this external calculator to practice FSPL calculations with automatic unit conversions and detailed explanations.</p>
+                        
+                        <a href="https://www.pasternack.com/t-calculator-fspl.aspx" target="_blank" class="btn btn-primary btn-lg">
+                            <i class="bi bi-calculator me-2"></i>Open FSPL Calculator
+                            <i class="bi bi-box-arrow-up-right ms-2"></i>
+                        </a>
+                        
+                        <p class="mt-3 mb-0 small text-muted">
+                            <i class="bi bi-info-circle me-1"></i>Try the examples: 2.4GHz @ 100m, 5GHz @ 1km, 6GHz @ 50m
+                        </p>
+                    </div>
+
+                    <!-- Quick Reference -->
+                    <div class="key-point mt-4">
+                        <h6 class="text-primary"><i class="bi bi-bookmark me-2"></i>Quick Reference Values</h6>
+                        <div class="row g-3">
+                            <div class="col-md-4 text-center">
+                                <strong>2.4 GHz @ 100m</strong><br>
+                                <span class="text-success">≈ 80 dB</span>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <strong>5 GHz @ 100m</strong><br>
+                                <span class="text-warning">≈ 87 dB</span>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <strong>5 GHz @ 1km</strong><br>
+                                <span class="text-danger">≈ 107 dB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practical Applications -->
+                <div class="concept-card">
+                    <h3 class="accent mb-3"><i class="bi bi-tools me-2"></i>Why This Still Works in Real Networks</h3>
+                    
+                    <p>When designing point-to-point wireless links or other WiFi systems, <strong>FSPL is part of the link budget</strong>. It tells you how much signal will be lost just due to distance and frequency, before you even think about antennas, cables, or interference.</p>
+
+                    <div class="service-card" style="background: #f0fdf4; border: 2px solid #bbf7d0;">
+                        <h6 class="text-success mb-3"><i class="bi bi-network-widearea me-2"></i>Real-World Applications</h6>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <h6 class="text-primary">Point-to-Point Links</h6>
+                                <ul class="mb-0">
+                                    <li>Building-to-building connections</li>
+                                    <li>Campus network backbone</li>
+                                    <li>Remote site connectivity</li>
+                                    <li>Wireless ISP infrastructure</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-warning">WiFi Coverage Planning</h6>
+                                <ul class="mb-0">
+                                    <li>Access point spacing calculations</li>
+                                    <li>Power level optimization</li>
+                                    <li>Frequency band selection</li>
+                                    <li>Coverage hole prediction</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="key-point mt-3 mb-0">
+                            <strong>💡 Professional Insight:</strong> Almost nobody sits there doing these calculations by hand anymore. There are excellent online calculators and planning tools that do this instantly and also factor in receiver sensitivity and modulation rates. The important thing for design — and for the CCNP Wireless exam — is understanding <strong>what FSPL is, why higher frequencies and longer distances cost you more, and how antenna gain and link budgets make long-distance WiFi links possible at all.</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Knowledge Check with Working Modal -->
+                <div class="concept-card" style="background: #f0f9ff; border-left: 4px solid #3b82f6;">
+                    <h4 class="text-primary mb-3"><i class="bi bi-question-circle me-2"></i>Knowledge Check</h4>
+                    <p class="mb-4">Test your understanding of Free Space Path Loss concepts.</p>
+                    
+                    <!-- Question 1 -->
+                    <div class="mb-4">
+                        <h6 class="text-primary"><strong>Question 1:</strong> What happens to FSPL when you double the distance?</h6>
+                        <div class="ms-3 mb-3">
+                            <button class="btn btn-outline-secondary btn-sm me-2 mb-2" data-bs-toggle="modal" data-bs-target="#quiz1CorrectModal">A) Increases by 6 dB</button>
+                            <button class="btn btn-outline-secondary btn-sm me-2 mb-2" data-bs-toggle="modal" data-bs-target="#quiz1Modal">B) Increases by 3 dB</button>
+                            <button class="btn btn-outline-secondary btn-sm me-2 mb-2" data-bs-toggle="modal" data-bs-target="#quiz1Modal">C) Doubles (100% increase)</button>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Question 2 -->
+                    <div class="mb-4">
+                        <h6 class="text-primary"><strong>Question 2:</strong> Why does 5 GHz WiFi have shorter range than 2.4 GHz?</h6>
+                        <div class="ms-3 mb-3">
+                            <button class="btn btn-outline-secondary btn-sm me-2 mb-2" data-bs-toggle="modal" data-bs-target="#quiz2Modal">A) 5 GHz travels slower</button>
+                            <button class="btn btn-outline-secondary btn-sm me-2 mb-2" data-bs-toggle="modal" data-bs-target="#quiz2Modal">B) 5 GHz antennas are smaller</button>
+                            <button class="btn btn-outline-secondary btn-sm me-2 mb-2" data-bs-toggle="modal" data-bs-target="#quiz2CorrectModal">C) Higher frequency = more FSPL</button>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Question 3 -->
+                    <div class="mb-4">
+                        <h6 class="text-primary"><strong>Question 3:</strong> What is the primary cause of Free Space Path Loss?</h6>
+                        <div class="ms-3 mb-3">
+                            <button class="btn btn-outline-secondary btn-sm me-2 mb-2" data-bs-toggle="modal" data-bs-target="#quiz3Modal">A) Atmospheric absorption</button>
+                            <button class="btn btn-outline-secondary btn-sm me-2 mb-2" data-bs-toggle="modal" data-bs-target="#quiz3CorrectModal">B) Spherical energy spreading</button>
+                            <button class="btn btn-outline-secondary btn-sm me-2 mb-2" data-bs-toggle="modal" data-bs-target="#quiz3Modal">C) Physical obstructions</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 1 Modals -->
+                <div class="modal fade" id="quiz1Modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Question 1 - Incorrect</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger">
+                                    <h6><i class="bi bi-x-circle me-2"></i>Incorrect!</h6>
+                                    <p class="mb-0">Doubling distance increases loss by approximately <strong>6 dB</strong>, not 3 dB or 100%. This comes from the 20 log₁₀(D) relationship in the FSPL formula - it's a fundamental rule of thumb in RF planning.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Try Again</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="quiz1CorrectModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Question 1 - Correct!</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success">
+                                    <h6><i class="bi bi-check-circle me-2"></i>Correct!</h6>
+                                    <p class="mb-0">Doubling the distance increases FSPL by approximately <strong>6 dB</strong> due to the 20 log₁₀(D) relationship. This is the fundamental "6 dB rule" used in RF planning.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 Modals -->
+                <div class="modal fade" id="quiz2Modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Question 2 - Incorrect</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger">
+                                    <h6><i class="bi bi-x-circle me-2"></i>Incorrect!</h6>
+                                    <p class="mb-0">Higher frequencies experience greater free space path loss. <strong>5 GHz has about 6.4 dB more path loss</strong> than 2.4 GHz at the same distance. This is why 5 GHz WiFi requires more access points for equivalent coverage.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Try Again</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="quiz2CorrectModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Question 2 - Correct!</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success">
+                                    <h6><i class="bi bi-check-circle me-2"></i>Correct!</h6>
+                                    <p class="mb-0">Higher frequencies experience greater free space path loss. <strong>5 GHz has about 6.4 dB more path loss</strong> than 2.4 GHz at the same distance, requiring more access points for equivalent coverage.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 Modals -->
+                <div class="modal fade" id="quiz3Modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Question 3 - Incorrect</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger">
+                                    <h6><i class="bi bi-x-circle me-2"></i>Incorrect!</h6>
+                                    <p class="mb-0">FSPL is caused by the <strong>spreading of RF energy</strong> over an increasingly larger spherical area as distance increases. The same total power is distributed over 4πr², making signal density decrease with distance.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Try Again</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="quiz3CorrectModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Question 3 - Correct!</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success">
+                                    <h6><i class="bi bi-check-circle me-2"></i>Correct!</h6>
+                                    <p class="mb-0">FSPL is caused by the <strong>spreading of RF energy</strong> over an increasingly larger spherical area as distance increases. The same total power is distributed over 4πr², making signal density decrease with distance.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="nav-buttons">
+                    <a href="{{ url_for('rf_fundamentals') }}" class="btn btn-outline-primary btn-lg">
+                        <i class="bi bi-arrow-left me-2"></i>Previous: RF Fundamentals
+                    </a>
+                    <a href="{{ url_for('comingsoon') }}" class="btn btn-primary btn-lg">
+                        Next: RF Signal Measurements <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Topics -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h3 class="accent">Continue Your CCNP Wireless Journey</h3>
+            <p class="text-muted">Master RF propagation concepts step by step</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="service-card text-center h-100">
+                    <div style="font-size: 3rem; color: #dc2626; margin-bottom: 1rem;">📊</div>
+                    <h5 class="mt-3 mb-3">1.2a Signal Strength</h5>
+                    <p class="text-muted mb-3">Learn about power measurements, dBm, RSSI, transmit power, and receive sensitivity in wireless systems.</p>
+                    <a href="{{ url_for('comingsoon') }}" class="btn btn-outline-primary">Coming Soon</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card text-center h-100">
+                    <div style="font-size: 3rem; color: #dc2626; margin-bottom: 1rem;">⚡</div>
+                    <h5 class="mt-3 mb-3">1.2b Interference & Noise</h5>
+                    <p class="text-muted mb-3">Understanding RF interference sources, noise floor, rogue APs, and mitigation strategies.</p>
+                    <a href="{{ url_for('comingsoon') }}" class="btn btn-outline-primary">Coming Soon</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card text-center h-100">
+                    <div style="font-size: 3rem; color: #dc2626; margin-bottom: 1rem;">📈</div>
+                    <h5 class="mt-3 mb-3">1.2d SNR</h5>
+                    <p class="text-muted mb-3">Master Signal-to-Noise Ratio calculations and optimization for wireless performance.</p>
+                    <a href="{{ url_for('comingsoon') }}" class="btn btn-outline-primary">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Progress -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-8">
+                <div class="service-card text-center">
+                    <h5 class="accent mb-3"><i class="bi bi-list-check me-2"></i>Course Progress</h5>
+                    <div class="progress mb-3" style="height: 10px;">
+                        <div class="progress-bar" role="progressbar" style="width: 20%; background: #dc2626;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small class="text-muted">You've completed 2 of 10 lessons in Section 1.0 RF Fundamentals</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Professional WiFi Design Services -->
+                <div class="concept-card" style="background: linear-gradient(135deg, #f0f9ff, #dbeafe); border-left: 4px solid #1e40af;">
+                    <h3 class="text-primary mb-3"><i class="bi bi-building me-2"></i>Professional WiFi Design & Implementation</h3>
+                    
+                    <p class="mb-4">Understanding FSPL is critical for enterprise wireless design. At <strong>Sprintwave</strong>, we apply these RF fundamentals to deliver high-performance wireless networks across Norfolk and beyond.</p>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="service-card h-100" style="background: #fff; border: 2px solid #3b82f6;">
+                                <h6 class="text-primary mb-3"><i class="bi bi-wifi me-2"></i>Enterprise WiFi Solutions</h6>
+                                <ul class="mb-3">
+                                    <li><strong>Professional RF Site Surveys</strong> - Using industry-standard tools to map coverage and interference</li>
+                                    <li><strong>FSPL-Based Network Planning</strong> - Optimal access point placement using path loss calculations</li>
+                                    <li><strong>Multi-Frequency Design</strong> - Leveraging 2.4GHz, 5GHz, and WiFi 6E (6GHz) bands effectively</li>
+                                    <li><strong>Capacity Planning</strong> - Ensuring adequate performance for high-density environments</li>
+                                </ul>
+                                <a href="{{ url_for('wifi_installation') }}" class="btn btn-primary">
+                                    <i class="bi bi-arrow-right me-2"></i>WiFi Installation Services
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="service-card h-100" style="background: #fff; border: 2px solid #059669;">
+                                <h6 class="text-success mb-3"><i class="bi bi-broadcast-pin me-2"></i>Point-to-Point Links</h6>
+                                <ul class="mb-3">
+                                    <li><strong>Long-Distance Connectivity</strong> - Building-to-building links up to 30km+</li>
+                                    <li><strong>Link Budget Analysis</strong> - Professional FSPL calculations and fade margin planning</li>
+                                    <li><strong>Ubiquiti & Cambium Networks</strong> - Enterprise-grade point-to-point solutions</li>
+                                    <li><strong>Redundant Connections</strong> - High-availability wireless backbone links</li>
+                                </ul>
+                                <a href="tel:01553 824408" class="btn btn-success">
+                                    <i class="bi bi-telephone me-2"></i>Call 01553 824408
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Client Success Stories -->
+                    <div class="row g-3 mt-4">
+                        <div class="col-md-4">
+                            <div class="service-card text-center h-100" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                                <div style="font-size: 2.5rem; color: #1e40af; margin-bottom: 1rem;">🏢</div>
+                                <h6>Large Property WiFi</h6>
+                                <p class="small mb-0">Country estates, manor houses, and multi-building sites requiring comprehensive wireless coverage</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="service-card text-center h-100" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                                <div style="font-size: 2.5rem; color: #059669; margin-bottom: 1rem;">🏭</div>
+                                <h6>Industrial Networks</h6>
+                                <p class="small mb-0">Harsh environment deployments with high-gain directional antennas and weatherproof equipment</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="service-card text-center h-100" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                                <div style="font-size: 2.5rem; color: #dc2626; margin-bottom: 1rem;">🎓</div>
+                                <h6>Educational Sites</h6>
+                                <p class="small mb-0">Schools and colleges requiring high-density WiFi with comprehensive coverage across multiple buildings</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="text-center mt-4 p-4" style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; border: 2px solid #bfdbfe;">
+                        <h6 class="text-primary mb-3">Planning a Wireless Network Project?</h6>
+                        <p class="mb-3">Get professional RF design services from certified wireless engineers. We apply CCNP-level expertise to every project, ensuring optimal performance and coverage.</p>
+                        <div class="row g-2 justify-content-center">
+                            <div class="col-auto">
+                                <a href="mailto:info@sprintwave.co.uk?subject=WiFi%20Design%20Consultation&body=Hi%2C%20I%27m%20interested%20in%20professional%20WiFi%20design%20services.%20Please%20contact%20me%20to%20discuss%20my%20requirements." class="btn btn-primary btn-lg">
+                                    <i class="bi bi-envelope me-2"></i>Request Site Survey
+                                </a>
+                            </div>
+                            <div class="col-auto">
+                                <a href="tel:01553 824408" class="btn btn-outline-primary btn-lg">
+                                    <i class="bi bi-telephone me-2"></i>01553 824408
+                                </a>
+                            </div>
+                        </div>
+                        <p class="mb-0 mt-3 small text-muted">
+                            <i class="bi bi-geo-alt me-1"></i>Serving Norfolk, Suffolk, Cambridge & East Anglia
+                        </p>
+                    </div>
+                </div>
+{% endblock %}
+
+{% block custom_js %}
+<script>
+// Quiz Modal Functions - Fixed
+function showQuizModal(questionNum, selectedAnswer, isCorrect, explanation) {
+    const modalTitle = document.getElementById('quizModalTitle');
+    const modalBody = document.getElementById('quizModalBody');
+    
+    modalTitle.textContent = `Question ${questionNum} Result`;
+    
+    if (isCorrect) {
+        modalBody.innerHTML = `
+            <div class="alert alert-success">
+                <h5><i class="bi bi-check-circle me-2"></i>Correct!</h5>
+                <p class="mb-2"><strong>Your Answer:</strong> ${selectedAnswer}</p>
+                <p class="mb-0">${explanation}</p>
+            </div>
+        `;
+    } else {
+        modalBody.innerHTML = `
+            <div class="alert alert-danger">
+                <h5><i class="bi bi-x-circle me-2"></i>Incorrect</h5>
+                <p class="mb-2"><strong>Your Answer:</strong> ${selectedAnswer}</p>
+                <p class="mb-0">${explanation}</p>
+            </div>
+        `;
+    }
+    
+    // Show the modal
+    const quizModal = new bootstrap.Modal(document.getElementById('quizModal'));
+    quizModal.show();
+    
+    // Track quiz interaction
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'quiz_answer', {
+            'event_category': 'education',
+            'event_label': `fspl_quiz_q${questionNum}_${isCorrect ? 'correct' : 'incorrect'}`,
+            'lesson': 'fspl'
+        });
+    }
+}
+
+// Track lesson completion
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'lesson_view', {
+            'event_category': 'education',
+            'event_label': 'fspl_lesson',
+            'course': 'ccnp_wireless_350_101',
+            'lesson_number': 2
+        });
+    }
+});
+</script>
+{% endblock %}

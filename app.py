@@ -356,6 +356,10 @@ def network_health_check():
 def rf_fundamentals():
     return render_template('ccnp-wireless/rf-fundamentals/rf_fundamentals.html')
 
+@app.route('/ccnp-wireless/rf_fundamentals/fspl')
+def fspl():
+    return render_template('ccnp-wireless/rf-fundamentals/fspl.html')
+
 @app.route('/ccnp-wireless/rf_fundamentals/comingsoon')
 def comingsoon():
     return render_template('ccnp-wireless/rf-fundamentals/comingsoon.html')
