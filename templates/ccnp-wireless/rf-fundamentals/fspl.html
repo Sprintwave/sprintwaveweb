@@ -388,7 +388,7 @@
                 <div class="concept-card">
                     <h3 class="accent mb-3"><i class="bi bi-rulers me-2"></i>Distance Effects & the 6 dB Rule</h3>
                     
-                    <p>A useful rule of thumb is that <strong>doubling the distance adds about 6 dB of loss.</strong> Let's see why this works:</p>
+                    <p>A useful rule of thumb is that <strong>doubling the distance adds about 6 dB of loss.</strong> Let's see why this works using the full FSPL formula:</p>
 
                     <!-- Distance Demonstration -->
                     <div class="distance-demo">
@@ -397,52 +397,61 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="calculation-step">
-                                    <strong>100m → 200m (Double Distance)</strong><br>
-                                    20 log₁₀(0.1) = -20 dB<br>
-                                    20 log₁₀(0.2) = -14 dB<br>
-                                    <span class="text-success"><strong>Difference: 6 dB more loss</strong></span>
+                                    <strong>5 GHz @ 100m vs 200m (Double Distance)</strong><br>
+                                    <em>100m calculation:</em><br>
+                                    FSPL = 36.6 + 20 log₁₀(5000) + 20 log₁₀(0.1)<br>
+                                    FSPL = 36.6 + 74.0 + (-20) = <strong>90.6 dB</strong><br><br>
+                                    <em>200m calculation:</em><br>
+                                    FSPL = 36.6 + 20 log₁₀(5000) + 20 log₁₀(0.2)<br>
+                                    FSPL = 36.6 + 74.0 + (-14) = <strong>96.6 dB</strong><br><br>
+                                    <span class="text-success"><strong>Difference: 6.0 dB more loss</strong></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="calculation-step">
-                                    <strong>500m → 1000m (Double Distance)</strong><br>
-                                    20 log₁₀(0.5) = -6 dB<br>
-                                    20 log₁₀(1.0) = 0 dB<br>
-                                    <span class="text-success"><strong>Difference: 6 dB more loss</strong></span>
+                                    <strong>2.4 GHz @ 500m vs 1000m (Double Distance)</strong><br>
+                                    <em>500m calculation:</em><br>
+                                    FSPL = 36.6 + 20 log₁₀(2400) + 20 log₁₀(0.5)<br>
+                                    FSPL = 36.6 + 67.6 + (-6) = <strong>98.2 dB</strong><br><br>
+                                    <em>1000m calculation:</em><br>
+                                    FSPL = 36.6 + 20 log₁₀(2400) + 20 log₁₀(1.0)<br>
+                                    FSPL = 36.6 + 67.6 + 0 = <strong>104.2 dB</strong><br><br>
+                                    <span class="text-success"><strong>Difference: 6.0 dB more loss</strong></span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="key-point mt-3 mb-0">
-                            <strong>📏 The 6 dB Rule:</strong> This pattern holds true for any distance. Double the distance = 6 dB more path loss. This makes quick mental calculations much easier during network design!
+                            <strong>📏 The 6 dB Rule Explained:</strong> This pattern holds true for any frequency and distance combination. When you double the distance, the 20 log₁₀(D) component increases by exactly 6.02 dB because log₁₀(2) = 0.301, and 20 × 0.301 ≈ 6 dB. This makes quick mental calculations much easier during network design!
                         </div>
                     </div>
 
                     <!-- Signal Strength Visualization -->
                     <div class="mt-4">
-                        <h6 class="accent mb-3">Signal Strength vs Distance</h6>
+                        <h6 class="accent mb-3">Signal Strength vs Distance (5 GHz Example)</h6>
                         <div class="row g-2">
                             <div class="col-md-3 col-sm-6">
                                 <div class="signal-strength-bar" style="background: #10b981; width: 100%; height: 50px; font-size: 1.1rem;">
-                                    100m: Strong
+                                    100m: 90.6 dB
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="signal-strength-bar" style="background: #f59e0b; width: 100%; height: 50px; font-size: 1.1rem;">
-                                    200m: -6 dB
+                                    200m: 96.6 dB
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="signal-strength-bar" style="background: #ef4444; width: 100%; height: 50px; font-size: 1.1rem;">
-                                    400m: -12 dB
+                                    400m: 102.6 dB
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="signal-strength-bar" style="background: #991b1b; width: 100%; height: 50px; font-size: 1.1rem; color: white;">
-                                    800m: -18 dB
+                                    800m: 108.6 dB
                                 </div>
                             </div>
                         </div>
+                        <p class="mt-2 small text-muted text-center">Each distance doubling adds exactly 6 dB of path loss</p>
                     </div>
                 </div>
 
