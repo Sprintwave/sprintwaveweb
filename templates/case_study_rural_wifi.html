@@ -1,0 +1,828 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<!-- ENHANCED SEO META TAGS -->
+<title>Rural Logistics WiFi Case Study | Starlink 400Mbps Installation Norfolk | Aruba Network | Sprintwave</title>
+<meta name="description" content="Rural Norfolk logistics company transformed with Starlink satellite internet (400Mbps from 1Mbps), 9 Aruba WiFi access points, professional network rack & CCTV cabling. Complete case study.">
+<meta name="keywords" content="rural WiFi Norfolk, Starlink business installation, logistics WiFi network, rural internet solutions, Aruba access points, warehouse WiFi, Norfolk connectivity, satellite internet logistics, CCTV data cabling, enterprise WiFi rural">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<!-- LOCAL SEO ENHANCED -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Norfolk, England">
+<meta name="geo.position" content="52.6309;1.2974">
+<meta name="ICBM" content="52.6309, 1.2974">
+<meta name="location" content="King's Lynn, Norfolk">
+<meta name="coverage" content="Norfolk, Suffolk, Cambridgeshire, East Anglia">
+
+<!-- ENHANCED SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="Rural Logistics WiFi Network Case Study | Starlink 400Mbps Installation Norfolk">
+<meta property="og:description" content="Complete network transformation: Norfolk logistics company upgraded from 1Mbps to 400Mbps Starlink with 9 Aruba access points, professional infrastructure & CCTV integration.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.sprintwave.co.uk/case-studies/rural-logistics-wifi">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/rural-logistics-starlink-case-study.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rural Norfolk logistics Starlink WiFi installation by Sprintwave">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- ENHANCED TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rural Logistics WiFi Network | Starlink 400Mbps Norfolk | Sprintwave">
+<meta name="twitter:description" content="400x speed increase: Norfolk logistics transformation with Starlink satellite internet, Aruba WiFi & professional network infrastructure.">
+<meta name="twitter:image" content="https://www.sprintwave.co.uk/static/rural-logistics-starlink-case-study.jpg">
+<meta name="twitter:image:alt" content="Rural Norfolk Starlink installation">
+
+<!-- ENHANCED STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Rural Norfolk Logistics Company WiFi Network Installation Case Study",
+  "description": "Complete network infrastructure transformation featuring Starlink satellite internet (400Mbps), 9 Aruba access points, professional network rack, and CCTV data cabling for Norfolk logistics company.",
+  "image": "https://www.sprintwave.co.uk/static/rural-logistics-starlink-case-study.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Sprintwave",
+    "url": "https://www.sprintwave.co.uk",
+    "logo": "https://www.sprintwave.co.uk/static/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "King's Lynn",
+      "addressRegion": "Norfolk",
+      "addressCountry": "GB"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sprintwave",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sprintwave.co.uk/static/logo.png"
+    }
+  },
+  "datePublished": "2026-03-04",
+  "dateModified": "2026-03-04",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.sprintwave.co.uk/case-studies/rural-logistics-wifi"
+  },
+  "about": [
+    {
+      "@type": "Service",
+      "name": "Starlink Installation",
+      "serviceType": "Satellite Internet Installation"
+    },
+    {
+      "@type": "Service", 
+      "name": "Enterprise WiFi Installation",
+      "serviceType": "Wireless Network Infrastructure"
+    }
+  ],
+  "keywords": "rural WiFi Norfolk, Starlink business, logistics network, satellite internet, Aruba WiFi"
+}
+</script>
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #059669 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 500px;
+    }
+    
+    /* Simple animated background that works */
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        animation: floatDots 20s ease-in-out infinite alternate;
+        z-index: 1;
+    }
+    
+    /* Animated wave pattern */
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.03),
+            transparent,
+            rgba(255,255,255,0.03),
+            transparent
+        );
+        background-size: 200px 100%;
+        animation: waveSlide 15s linear infinite;
+        z-index: 1;
+    }
+    
+    @keyframes floatDots {
+        0%, 100% { 
+            transform: translate(0px, 0px) scale(1);
+            opacity: 0.3;
+        }
+        50% { 
+            transform: translate(-20px, -20px) scale(1.1);
+            opacity: 0.6;
+        }
+    }
+    
+    @keyframes waveSlide {
+        0% { transform: translateX(-200px); }
+        100% { transform: translateX(200px); }
+    }
+    
+    /* Moving particles */
+    .floating-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 2px, transparent 2px),
+            radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 1px, transparent 1px);
+        background-size: 150px 150px, 200px 200px;
+        animation: particleFloat 25s linear infinite;
+        z-index: 1;
+    }
+    
+    @keyframes particleFloat {
+        0% { transform: translateX(-50px) translateY(-50px); }
+        100% { transform: translateX(50px) translateY(50px); }
+    }
+    
+    /* Ensure content is above background */
+    .hero-section .container {
+        position: relative;
+        z-index: 10;
+    }
+    
+    /* Fixed badge styling */
+    .case-study-badge {
+        background: rgba(255, 255, 255, 0.9);
+        color: #1e3a8a;
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        animation: badgePulse 3s infinite;
+        font-size: 1.1rem;
+        z-index: 10;
+        position: relative;
+    }
+    
+    @keyframes badgePulse {
+        0%, 100% { 
+            transform: scale(1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        50% { 
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+    }
+    
+    /* Enhanced title visibility */
+    .hero-section h1 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+        position: relative;
+    }
+    
+    .hero-section .lead {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+        position: relative;
+    }
+    
+    .stats-card {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        height: 100%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .challenge-item, .solution-item {
+        background: #fff;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .challenge-item {
+        border-left: 5px solid #dc2626;
+    }
+    
+    .solution-item {
+        border-left: 5px solid #059669;
+    }
+    
+    .challenge-item:hover, .solution-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+    
+    .tech-spec {
+        background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+        border: 2px solid #bbf7d0;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .tech-spec:hover {
+        transform: scale(1.02);
+    }
+    
+    .before-after {
+        background: linear-gradient(135deg, #fef3c7, #fde68a);
+        border: 3px solid #f59e0b;
+        border-radius: 20px;
+        padding: 3rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2);
+        animation: glow 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+        0% { box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2); }
+        100% { box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4), 0 0 30px rgba(245, 158, 11, 0.1); }
+    }
+    
+    .equipment-badge {
+        background: linear-gradient(135deg, #059669, #047857);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin: 0.25rem;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+    }
+    
+    .speed-metric {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        margin: 0.5rem;
+        display: inline-block;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: metricBounce 2s infinite;
+        animation-delay: var(--delay, 0s);
+        z-index: 10;
+        position: relative;
+    }
+    
+    @keyframes metricBounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-5px); }
+        60% { transform: translateY(-3px); }
+    }
+    
+    .speed-metric:nth-child(1) { --delay: 0s; }
+    .speed-metric:nth-child(2) { --delay: 0.2s; }
+    .speed-metric:nth-child(3) { --delay: 0.4s; }
+    .speed-metric:nth-child(4) { --delay: 0.6s; }
+    .speed-metric:nth-child(5) { --delay: 0.8s; }
+    
+    .installation-step {
+        background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .installation-step:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        border-color: #059669;
+    }
+    
+    /* Enhanced Gallery Image Styles */
+    .gallery-image {
+        width: 100%;
+        height: 280px;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        background: #f8fafc;
+        padding: 1rem;
+    }
+    
+    .gallery-image:hover {
+        transform: scale(1.05);
+    }
+    
+    .service-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        height: 100%;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    /* Section backgrounds with animations */
+    .solution-section {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .solution-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(45deg, transparent 40%, rgba(5, 150, 105, 0.05) 50%, transparent 60%);
+        background-size: 200px 200px;
+        animation: slideRight 15s infinite linear;
+        z-index: 1;
+    }
+    
+    @keyframes slideRight {
+        0% { transform: translateX(-200px); }
+        100% { transform: translateX(200px); }
+    }
+    
+    .results-section {
+        background: linear-gradient(135deg, #1e40af 0%, #3730a3 50%, #7c3aed 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .results-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px);
+        background-size: 50px 50px;
+        animation: floatDots 25s infinite linear reverse;
+        z-index: 1;
+    }
+    
+    .solution-section .container,
+    .results-section .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Add tech spec images */
+    .tech-spec-image {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 8px;
+        background: white;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <!-- Animated background elements -->
+    <div class="floating-particles"></div>
+    
+    <div class="container">
+        <div class="case-study-badge">
+            🚛 Rural Logistics Case Study
+        </div>
+        <h1 class="display-4 fw-bold mb-4">Rural Logistics WiFi Network Transformation</h1>
+        <p class="lead mb-4">
+            Complete network infrastructure installation transforming rural logistics operations. Starlink satellite internet delivering 400Mbps where only 1Mbps was previously available.
+        </p>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <span class="speed-metric">🛰️ Starlink Installation</span>
+                    <span class="speed-metric">📈 400x Speed Increase</span>
+                    <span class="speed-metric">📡 9 Aruba Access Points</span>
+                    <span class="speed-metric">📹 CCTV Data Cabling</span>
+                    <span class="speed-metric">🔍 Comprehensive Survey</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Challenge Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">The Rural Connectivity <span class="accent">Challenge</span></h2>
+            <p class="text-muted">A Norfolk logistics company struggling with inadequate rural internet connectivity affecting daily operations</p>
+        </div>
+        
+        <!-- Before/After Comparison -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="before-after text-center">
+                    <h4 class="text-warning mb-4">⚡ Connectivity Transformation</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-danger mb-3">❌ BEFORE: Rural Isolation</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><strong>1 Mbps ADSL</strong> - Barely functional internet</li>
+                                <li class="mb-2"><strong>No WiFi Coverage</strong> - Staff using mobile data</li>
+                                <li class="mb-2"><strong>Limited CCTV</strong> - Security system compromised</li>
+                                <li class="mb-2"><strong>Operational Delays</strong> - Slow data uploads/downloads</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success mb-3">✅ AFTER: Connected Operations</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><strong>400 Mbps Starlink</strong> - Enterprise-grade connectivity</li>
+                                <li class="mb-2"><strong>Complete WiFi Coverage</strong> - Indoor & outdoor access</li>
+                                <li class="mb-2"><strong>Professional Network</strong> - Structured cabling & rack</li>
+                                <li class="mb-2"><strong>Enhanced Security</strong> - Full CCTV data infrastructure</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="challenge-item">
+                    <h5><i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>Critical Business Impacts</h5>
+                    <ul class="mb-0">
+                        <li><strong>Logistics Software:</strong> Cloud-based tracking systems unusable on 1Mbps connection</li>
+                        <li><strong>Communication Barriers:</strong> No reliable WiFi for staff devices and tablets</li>
+                        <li><strong>Security Concerns:</strong> CCTV system unable to upload footage remotely</li>
+                        <li><strong>Growth Limitation:</strong> Cannot expand operations without proper connectivity</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="challenge-item">
+                    <h5><i class="bi bi-geo-alt-fill text-danger me-2"></i>Rural Location Constraints</h5>
+                    <ul class="mb-0">
+                        <li><strong>No Fiber Availability:</strong> Remote Norfolk location with no fiber infrastructure</li>
+                        <li><strong>Poor Mobile Coverage:</strong> Limited 4G/5G signal strength</li>
+                        <li><strong>Large Site Coverage:</strong> Warehouse and outdoor areas requiring WiFi</li>
+                        <li><strong>Heritage Building:</strong> Challenging cable runs in older structure</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solution Overview -->
+<section class="py-5 solution-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Complete Network <span class="accent">Solution</span></h2>
+            <p class="text-muted">Professional infrastructure transformation using enterprise-grade equipment and Starlink technology</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="tech-spec text-center">
+                    <!-- Add Starlink image here -->
+                    <img src="{{ url_for('static', filename='ruralstarlink.png') }}" 
+                         alt="Professional Starlink satellite installation" 
+                         class="tech-spec-image">
+                    <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">🛰️</div>
+                    <h5 class="accent">Starlink Connectivity</h5>
+                    <ul class="text-start list-unstyled">
+                        <li>✅ <strong>400 Mbps Download</strong></li>
+                        <li>✅ <strong>50 Mbps Upload</strong></li>
+                        <li>✅ <strong>Low Latency</strong> (~30ms)</li>
+                        <li>✅ <strong>Weather Resistant</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="tech-spec text-center">
+                    <!-- Add Switch image here -->
+                    <img src="{{ url_for('static', filename='ruralswitch.png') }}" 
+                         alt="Professional network rack with PoE switches" 
+                         class="tech-spec-image">
+                    <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">📡</div>
+                    <h5 class="accent">WiFi Infrastructure</h5>
+                    <ul class="text-start list-unstyled">
+                        <li>✅ <strong>9 Aruba Access Points</strong></li>
+                        <li>✅ <strong>Indoor & Outdoor Coverage</strong></li>
+                        <li>✅ <strong>2 PoE Switches</strong></li>
+                        <li>✅ <strong>Professional Network Rack</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="tech-spec text-center">
+                    <!-- Add External AP image here -->
+                    <img src="{{ url_for('static', filename='externalap.png') }}" 
+                         alt="External Aruba access point installation" 
+                         class="tech-spec-image">
+                    <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">📹</div>
+                    <h5 class="accent">Security & Cabling</h5>
+                    <ul class="text-start list-unstyled">
+                        <li>✅ <strong>CCTV Data Cabling</strong></li>
+                        <li>✅ <strong>Structured Network Cabling</strong></li>
+                        <li>✅ <strong>Professional Installation</strong></li>
+                        <li>✅ <strong>Full Site Survey</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Installation Process -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Professional Installation <span class="accent">Process</span></h2>
+            <p class="text-muted">Systematic approach ensuring optimal performance and minimal business disruption</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3">
+                <div class="installation-step text-center">
+                    <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">📋</div>
+                    <h5 class="accent">1. Site Survey</h5>
+                    <ul class="text-start">
+                        <li>RF spectrum analysis</li>
+                        <li>Coverage requirement mapping</li>
+                        <li>Cable route planning</li>
+                        <li>Equipment positioning design</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="installation-step text-center">
+                    <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">🛰️</div>
+                    <h5 class="accent">2. Starlink Setup</h5>
+                    <ul class="text-start">
+                        <li>Optimal satellite positioning</li>
+                        <li>Professional mounting</li>
+                        <li>Weather protection setup</li>
+                        <li>Connection testing & optimization</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="installation-step text-center">
+                    <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">🔌</div>
+                    <h5 class="accent">3. Network Infrastructure</h5>
+                    <ul class="text-start">
+                        <li>Professional rack installation</li>
+                        <li>PoE switch configuration</li>
+                        <li>Structured data cabling</li>
+                        <li>CCTV cable infrastructure</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="installation-step text-center">
+                    <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">📡</div>
+                    <h5 class="accent">4. WiFi Deployment</h5>
+                    <ul class="text-start">
+                        <li>9 Aruba access points installed</li>
+                        <li>Indoor & outdoor coverage</li>
+                        <li>Performance optimization</li>
+                        <li>Staff training & handover</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Equipment Specifications -->
+<section class="py-5" style="background: #fafafa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Professional Equipment <span class="accent">Specifications</span></h2>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="service-card">
+                    <h5 class="accent mb-3"><i class="bi bi-router me-2"></i>Network Infrastructure</h5>
+                    <div class="row g-2 mb-3">
+                        <div class="col-auto">
+                            <span class="equipment-badge">Starlink Standard</span>
+                        </div>
+                        <div class="col-auto">
+                            <span class="equipment-badge">2x PoE Switches</span>
+                        </div>
+                        <div class="col-auto">
+                            <span class="equipment-badge">19" Network Rack</span>
+                        </div>
+                        <div class="col-auto">
+                            <span class="equipment-badge">UPS Power Backup</span>
+                        </div>
+                    </div>
+                    <ul class="mb-0">
+                        <li><strong>Starlink Gen 3:</strong> 400Mbps satellite internet with low latency</li>
+                        <li><strong>Managed PoE Switches:</strong> 24-port enterprise-grade with VLAN support</li>
+                        <li><strong>Professional Rack:</strong> Organized cable management and equipment housing</li>
+                        <li><strong>Power Protection:</strong> UPS ensuring network uptime during outages</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-card">
+                    <h5 class="accent mb-3"><i class="bi bi-wifi me-2"></i>Wireless Infrastructure</h5>
+                    <div class="row g-2 mb-3">
+                        <div class="col-auto">
+                            <span class="equipment-badge">9x Aruba APs</span>
+                        </div>
+                        <div class="col-auto">
+                            <span class="equipment-badge">Indoor Coverage</span>
+                        </div>
+                        <div class="col-auto">
+                            <span class="equipment-badge">External AP</span>
+                        </div>
+                        <div class="col-auto">
+                            <span class="equipment-badge">Cat6 Cabling</span>
+                        </div>
+                    </div>
+                    <ul class="mb-0">
+                        <li><strong>Aruba 515 APs:</strong> WiFi 6 with dual-band performance</li>
+                        <li><strong>External AP:</strong> Weather-resistant outdoor coverage</li>
+                        <li><strong>Professional Cabling:</strong> Cat6 throughout with CCTV integration</li>
+                        <li><strong>Centralized Management:</strong> Single interface for all access points</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results & Performance -->
+<section class="py-5 results-section text-white">
+    <div class="container text-center">
+        <h2 class="mb-4">Outstanding <span style="color: #bfdbfe;">Performance Results</span></h2>
+        <p class="lead mb-5">Dramatic connectivity improvements enabling enhanced logistics operations across Norfolk</p>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+                    <h3 class="mb-2">400x</h3>
+                    <p class="mb-0">Speed Improvement</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📡</div>
+                    <h3 class="mb-2">100%</h3>
+                    <p class="mb-0">Site WiFi Coverage</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🏗️</div>
+                    <h3 class="mb-2">9</h3>
+                    <p class="mb-0">Access Points Installed</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📹</div>
+                    <h3 class="mb-2">✓</h3>
+                    <p class="mb-0">Complete CCTV Integration</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                    <h4 class="mb-3">Business Impact ✅</h4>
+                    <ul class="list-unstyled text-start">
+                        <li class="mb-2">✅ <strong>Operational Efficiency:</strong> Cloud logistics software now fully functional</li>
+                        <li class="mb-2">✅ <strong>Staff Productivity:</strong> Seamless WiFi access across entire facility</li>
+                        <li class="mb-2">✅ <strong>Enhanced Security:</strong> CCTV system with remote monitoring capability</li>
+                        <li class="mb-2">✅ <strong>Future-Proof Infrastructure:</strong> Scalable network supporting business growth</li>
+                        <li class="mb-2">✅ <strong>Reliable Connectivity:</strong> Consistent 400Mbps performance in rural location</li>
+                        <li class="mb-2">✅ <strong>Professional Installation:</strong> Zero downtime deployment with ongoing support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Rural Business Services Section -->
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Professional Rural Network Solutions</h2>
+        <p class="text-muted mb-4">Specialist connectivity solutions for rural businesses across Norfolk and East Anglia</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="service-card">
+                    <h4 class="accent mb-3">🚛 Rural Business Connectivity Experts</h4>
+                    <p class="mb-4">✅ Starlink satellite internet installation<br>✅ Enterprise WiFi design & installation<br>✅ CCTV & security system cabling<br>✅ Complete network infrastructure<br>✅ Rural location specialists</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a class="btn btn-accent" href="tel:+441553824408">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                        <a class="btn btn-outline-primary" href="{{ url_for('starlink') }}">
+                            <i class="bi bi-satellite me-2"></i>Starlink Installation
+                        </a>
+                        <a class="btn btn-outline-success" href="{{ url_for('wireless_surveys') }}">
+                            <i class="bi bi-broadcast me-2"></i>Network Survey
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4 text-muted">
+                        <small>
+                            <i class="bi bi-award me-1"></i>
+                            Certified Installers • Professional Indemnity Insured • Norfolk-Based Team
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block javascript %}
+<script>
+// Track case study page views
+if (typeof gtag !== 'undefined') {
+    gtag('event', 'case_study_view', {
+        'event_category': 'engagement',
+        'event_label': 'rural_logistics_wifi_case_study',
+        'case_study_type': 'rural_business_network'
+    });
+}
+
+// Track contact clicks for rural networking services
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call', {
+                    'event_category': 'rural_logistics_contact',
+                    'event_label': 'starlink_wifi_inquiry'
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
