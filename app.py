@@ -59,6 +59,10 @@ def about():
 def rural_broadband():
     return render_template('rural-broadband.html')
 
+@app.route('/unifi')
+def unifi():
+    return render_template('unifi.html')
+
 @app.route('/thank-you-event-wifi')
 def thank_you_event_wifi():
     return render_template('thank-you-event-wifi.html')

@@ -1,0 +1,1054 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<!-- ENHANCED SEO META TAGS -->
+<title>UniFi Network Installation & Management King's Lynn Norfolk | Professional Ubiquiti Solutions | Sprintwave</title>
+<meta name="description" content="Expert UniFi network installation, management & monitoring in King's Lynn, Norfolk. Professional Ubiquiti WiFi, switches, routers, optimization & proactive support across East Anglia.">
+<meta name="keywords" content="UniFi installation Norfolk, Ubiquiti network management, UniFi WiFi King's Lynn, network monitoring East Anglia, UniFi Dream Machine, Ubiquiti access points, network optimization Norwich, WiFi 6E installation">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<!-- LOCAL SEO ENHANCED -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="King's Lynn, Norfolk">
+<meta name="geo.position" content="52.7554;0.3963">
+<meta name="ICBM" content="52.7554, 0.3963">
+<meta name="location" content="King's Lynn, Norfolk">
+<meta name="coverage" content="Norfolk, Suffolk, Cambridgeshire, East Anglia">
+
+<!-- ENHANCED SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="UniFi Network Installation & Management King's Lynn Norfolk | Sprintwave">
+<meta property="og:description" content="Professional Ubiquiti UniFi network solutions: installation, management, monitoring & optimization. Expert WiFi, switches, routers across Norfolk & East Anglia.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/unifi-networks">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/unifi-network-installation-norfolk.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="UniFi network installation Norfolk by Sprintwave">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UniFi Networks Norfolk | Professional Installation & Management">
+<meta name="twitter:description" content="Expert Ubiquiti UniFi solutions: installation, management, monitoring across Norfolk. Professional WiFi, switches, routers & optimization.">
+<meta name="twitter:image" content="https://www.sprintwave.co.uk/static/unifi-network-installation-norfolk.jpg">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://www.sprintwave.co.uk/unifi-networks">
+
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "UniFi Network Installation & Management",
+  "description": "Professional Ubiquiti UniFi network installation, management, monitoring and optimization services across Norfolk and East Anglia.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Sprintwave",
+    "url": "https://www.sprintwave.co.uk",
+    "telephone": "+441553824408",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "King's Lynn",
+      "addressRegion": "Norfolk",
+      "addressCountry": "GB"
+    }
+  },
+  "areaServed": [
+    "Norfolk",
+    "Suffolk", 
+    "Cambridgeshire",
+    "East Anglia"
+  ],
+  "serviceType": [
+    "UniFi Network Installation",
+    "Network Management",
+    "WiFi Installation", 
+    "Network Monitoring",
+    "Network Optimization"
+  ]
+}
+</script>
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+        color: white;
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+    }
+    
+    /* UniFi Network Animation Background */
+    .unifi-network-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    /* Central UniFi Dream Machine */
+    .central-controller {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4rem;
+        color: rgba(255,255,255,0.9);
+        animation: controllerPulse 4s infinite ease-in-out;
+        z-index: 5;
+        text-shadow: 0 0 30px rgba(14, 165, 233, 0.6);
+    }
+    
+    /* WiFi Signal Rings */
+    .wifi-ring {
+        position: absolute;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        animation: wifiExpand 4s infinite ease-out;
+    }
+    
+    /* UniFi Access Points */
+    .unifi-ap {
+        position: absolute;
+        color: rgba(255,255,255,0.8);
+        font-size: 2.5rem;
+        animation: apBlink 3s infinite ease-in-out;
+        text-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+    }
+    
+    /* Network Connections */
+    .network-link {
+        position: absolute;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.8), transparent);
+        border-radius: 2px;
+        animation: dataTransfer 5s infinite linear;
+        box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
+    }
+    
+    /* UniFi Switch Icons */
+    .unifi-switch {
+        position: absolute;
+        color: rgba(34, 197, 94, 0.9);
+        font-size: 2rem;
+        animation: switchActivity 2.5s infinite ease-in-out;
+        text-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+    }
+    
+    /* Data Packets */
+    .data-flow {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: #22c55e;
+        border-radius: 50%;
+        animation: packetFlow 6s infinite linear;
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+    }
+    
+    /* Coverage Areas */
+    .coverage-zone {
+        position: absolute;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 60%);
+        border-radius: 50%;
+        animation: coverageExpand 8s infinite ease-in-out;
+    }
+    
+    /* Management Cloud */
+    .unifi-cloud {
+        position: absolute;
+        top: 15%;
+        right: 10%;
+        color: rgba(168, 85, 247, 0.8);
+        font-size: 2.2rem;
+        animation: cloudFloat 6s infinite ease-in-out;
+        text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    @keyframes controllerPulse {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.9;
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes wifiExpand {
+        0% {
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(3);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes apBlink {
+        0%, 100% {
+            opacity: 0.6;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.15);
+        }
+    }
+    
+    @keyframes dataTransfer {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        25% {
+            opacity: 1;
+        }
+        75% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(300%);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes switchActivity {
+        0%, 100% {
+            opacity: 0.7;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    }
+    
+    @keyframes packetFlow {
+        0% {
+            transform: translateX(-30px) translateY(0px);
+            opacity: 0;
+        }
+        20% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(200px) translateY(-20px);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes coverageExpand {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.1;
+        }
+        50% {
+            transform: scale(1.3);
+            opacity: 0.3;
+        }
+    }
+    
+    @keyframes cloudFloat {
+        0%, 100% {
+            transform: translateY(0px);
+            opacity: 0.8;
+        }
+        50% {
+            transform: translateY(-15px);
+            opacity: 1;
+        }
+    }
+    
+    .service-badge {
+        background: rgba(255,255,255,0.95);
+        color: #0ea5e9;
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        animation: badgePulse 3s infinite;
+        font-size: 1.1rem;
+        z-index: 10;
+        position: relative;
+    }
+    
+    @keyframes badgePulse {
+        0%, 100% { 
+            transform: scale(1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        50% { 
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+    }
+    
+    .hero-section h1 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+        position: relative;
+    }
+    
+    .hero-section .lead {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+        position: relative;
+    }
+    
+    .unifi-metric {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        margin: 0.5rem;
+        display: inline-block;
+        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: metricBounce 2s infinite;
+        animation-delay: var(--delay, 0s);
+        z-index: 10;
+        position: relative;
+    }
+    
+    @keyframes metricBounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-5px); }
+        60% { transform: translateY(-3px); }
+    }
+    
+    .unifi-metric:nth-child(1) { --delay: 0s; }
+    .unifi-metric:nth-child(2) { --delay: 0.2s; }
+    .unifi-metric:nth-child(3) { --delay: 0.4s; }
+    .unifi-metric:nth-child(4) { --delay: 0.6s; }
+    .unifi-metric:nth-child(5) { --delay: 0.8s; }
+    
+    .service-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        height: 100%;
+        border: 2px solid transparent;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        border-color: #0ea5e9;
+        box-shadow: 0 15px 40px rgba(14, 165, 233, 0.15);
+    }
+    
+    .product-showcase {
+        background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .product-showcase:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(14, 165, 233, 0.15);
+        border-color: #0ea5e9;
+    }
+    
+    .unifi-badge {
+        background: linear-gradient(135deg, #0ea5e9, #0284c7);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin: 0.25rem;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+    }
+    
+    .management-feature {
+        background: #fff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border-left: 4px solid #22c55e;
+        transition: all 0.3s ease;
+    }
+    
+    .management-feature:hover {
+        transform: translateX(5px);
+        box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
+    }
+    
+    .stats-card {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        height: 100%;
+        box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+    }
+    
+    .installation-step {
+        background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+    }
+    
+    .installation-step:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        border-color: #0ea5e9;
+    }
+    
+    .step-number {
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #0ea5e9, #0284c7);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+    }
+    
+    .monitoring-showcase {
+        background: linear-gradient(135deg, #fef3c7, #fde68a);
+        border: 3px solid #f59e0b;
+        border-radius: 20px;
+        padding: 3rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2);
+        animation: monitoringGlow 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes monitoringGlow {
+        0% { box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2); }
+        100% { box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4), 0 0 30px rgba(245, 158, 11, 0.1); }
+    }
+    
+    /* Professional UniFi Image Showcases */
+    .unifi-showcase {
+        background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+        border: 2px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+    }
+    
+    .unifi-showcase:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(14, 165, 233, 0.15);
+        border-color: #0ea5e9;
+    }
+    
+    .unifi-image {
+        width: 100%;
+        max-width: 100%;
+        height: 300px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+        margin-bottom: 1.5rem;
+    }
+    
+    .unifi-image:hover {
+        transform: scale(1.02);
+    }
+    
+    .deployment-type {
+        background: linear-gradient(135deg, #0ea5e9, #0284c7);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        animation: typeFloat 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes typeFloat {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(-5px); }
+    }
+    
+    .scale-badge {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin: 0.25rem;
+        display: inline-block;
+        box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+    }
+    
+    .enterprise-highlight {
+        background: linear-gradient(135deg, #7c3aed, #5b21b6);
+        color: white;
+        padding: 2.5rem;
+        border-radius: 20px;
+        text-align: center;
+        margin: 2rem 0;
+        box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
+        animation: enterpriseGlow 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes enterpriseGlow {
+        0% { box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3); }
+        100% { box-shadow: 0 20px 40px rgba(124, 58, 237, 0.5), 0 0 40px rgba(124, 58, 237, 0.2); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <!-- UniFi Network Animation -->
+    <div class="unifi-network-animation">
+        <!-- Central Controller -->
+        <div class="central-controller">
+            <i class="bi bi-hdd-rack"></i>
+        </div>
+        
+        <!-- WiFi Signal Rings -->
+        <div class="wifi-ring" style="top: 50%; left: 50%; width: 100px; height: 100px; margin-left: -50px; margin-top: -50px; animation-delay: 0s;"></div>
+        <div class="wifi-ring" style="top: 50%; left: 50%; width: 150px; height: 150px; margin-left: -75px; margin-top: -75px; animation-delay: 1s;"></div>
+        <div class="wifi-ring" style="top: 50%; left: 50%; width: 200px; height: 200px; margin-left: -100px; margin-top: -100px; animation-delay: 2s;"></div>
+        
+        <!-- Coverage Zones -->
+        <div class="coverage-zone" style="top: 30%; left: 20%; width: 150px; height: 150px; animation-delay: 0s;"></div>
+        <div class="coverage-zone" style="top: 60%; left: 70%; width: 120px; height: 120px; animation-delay: 2s;"></div>
+        <div class="coverage-zone" style="top: 20%; left: 75%; width: 100px; height: 100px; animation-delay: 4s;"></div>
+        
+        <!-- UniFi Access Points -->
+        <div class="unifi-ap" style="top: 20%; left: 15%; animation-delay: 0s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="unifi-ap" style="top: 30%; right: 20%; animation-delay: 1s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="unifi-ap" style="bottom: 25%; left: 20%; animation-delay: 2s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="unifi-ap" style="bottom: 30%; right: 15%; animation-delay: 1.5s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        
+        <!-- UniFi Switches -->
+        <div class="unifi-switch" style="top: 40%; left: 25%; animation-delay: 0s;">
+            <i class="bi bi-diagram-3"></i>
+        </div>
+        <div class="unifi-switch" style="top: 65%; right: 30%; animation-delay: 1s;">
+            <i class="bi bi-diagram-3"></i>
+        </div>
+        
+        <!-- UniFi Cloud Management -->
+        <div class="unifi-cloud">
+            <i class="bi bi-cloud"></i>
+        </div>
+        
+        <!-- Network Links -->
+        <div class="network-link" style="top: 25%; left: 25%; width: 200px; transform: rotate(20deg); animation-delay: 0s;"></div>
+        <div class="network-link" style="top: 55%; left: 30%; width: 180px; transform: rotate(-25deg); animation-delay: 2s;"></div>
+        <div class="network-link" style="top: 35%; left: 55%; width: 150px; transform: rotate(40deg); animation-delay: 4s;"></div>
+        <div class="network-link" style="bottom: 25%; left: 35%; width: 220px; transform: rotate(15deg); animation-delay: 1s;"></div>
+        
+        <!-- Data Flow -->
+        <div class="data-flow" style="top: 30%; left: 20%; animation-delay: 0s;"></div>
+        <div class="data-flow" style="top: 60%; left: 40%; animation-delay: 2s;"></div>
+        <div class="data-flow" style="top: 40%; left: 60%; animation-delay: 4s;"></div>
+    </div>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="hero-content">
+                    <div class="service-badge">
+                        📡 UniFi Network Specialists
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Professional UniFi Networks<br>Smart Homes to Enterprise</h1>
+                    <p class="lead mb-4">Complete Ubiquiti UniFi solutions for large properties and businesses across Norfolk & East Anglia. From luxury homes to enterprise deployments - expert installation, proactive monitoring, and optimization.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                        <span class="unifi-metric">🏡 Smart Homes</span>
+                        <span class="unifi-metric">🏢 Large Properties</span>
+                        <span class="unifi-metric">🏭 Enterprise</span>
+                        <span class="unifi-metric">📊 24/7 Monitoring</span>
+                        <span class="unifi-metric">⚡ WiFi 6E Ready</span>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                        <a href="#showcases" class="btn btn-light btn-lg">
+                            <i class="bi bi-images me-2"></i>View Deployments
+                        </a>
+                        <a href="tel:+441553824408" class="btn btn-warning btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- UniFi Deployment Showcases -->
+<section id="showcases" class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="accent mb-3">UniFi Deployment Showcase</h2>
+            <p class="text-muted">From smart homes to enterprise installations - see our professional UniFi solutions in action</p>
+        </div>
+        
+        <!-- Smart Home / Residential Showcase -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6">
+                <div class="unifi-showcase">
+                    <div class="deployment-type">🏡 Smart Home Deployment</div>
+                    <img src="{{ url_for('static', filename='unifiap.png') }}" 
+                         alt="UniFi Access Point installed in smart home environment" 
+                         class="unifi-image">
+                    <h4 class="accent mb-3">Premium Residential WiFi</h4>
+                    <p class="mb-3">Professional UniFi access points delivering enterprise-grade WiFi for luxury homes and large properties.</p>
+                    
+                    <div class="mb-3">
+                        <span class="scale-badge">Multi-Story Coverage</span>
+                        <span class="scale-badge">Smart Home Integration</span>
+                        <span class="scale-badge">Guest Networks</span>
+                        <span class="scale-badge">Parental Controls</span>
+                    </div>
+                    
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle text-success me-2"></i><strong>Seamless Roaming:</strong> Move throughout property without disconnections</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i><strong>Smart Device Support:</strong> Optimized for IoT and smart home devices</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i><strong>Professional Installation:</strong> Discreet mounting and cable management</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i><strong>Future-Proof:</strong> WiFi 6E technology for maximum performance</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Enterprise Control Center -->
+            <div class="col-lg-6">
+                <div class="unifi-showcase">
+                    <div class="deployment-type">🏢 Enterprise Control</div>
+                    <img src="{{ url_for('static', filename='unifidm.png') }}" 
+                         alt="UniFi Dream Machine Pro in enterprise data center" 
+                         class="unifi-image">
+                    <h4 class="accent mb-3">Centralized Management</h4>
+                    <p class="mb-3">UniFi Dream Machine Pro providing enterprise-grade security, routing, and network management for businesses.</p>
+                    
+                    <div class="mb-3">
+                        <span class="scale-badge">Enterprise Security</span>
+                        <span class="scale-badge">IDS/IPS</span>
+                        <span class="scale-badge">VPN Server</span>
+                        <span class="scale-badge">Traffic Analytics</span>
+                    </div>
+                    
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle text-success me-2"></i><strong>Unified Platform:</strong> Single controller for entire network infrastructure</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i><strong>Advanced Security:</strong> Built-in firewall with threat detection</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i><strong>Remote Management:</strong> Cloud-based administration and monitoring</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i><strong>Scalability:</strong> Support for thousands of devices and users</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Enterprise Infrastructure Showcase -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="unifi-showcase">
+                    <div class="text-center">
+                        <div class="deployment-type">🏭 Enterprise Infrastructure</div>
+                        <img src="{{ url_for('static', filename='unifirack.png') }}" 
+                             alt="Professional UniFi rack installation in enterprise data center" 
+                             class="unifi-image">
+                        <h4 class="accent mb-3">Professional Data Center Deployment</h4>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-3">
+                                <h6><strong>🔧 Rack Infrastructure</strong></h6>
+                                <p class="small">Professional rack mounting with proper cable management and redundancy</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h6><strong>⚡ High Availability</strong></h6>
+                                <p class="small">Redundant controllers and power systems for 99.9% uptime</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h6><strong>📈 Enterprise Scale</strong></h6>
+                                <p class="small">Support for thousands of access points and concurrent users</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h6><strong>🛡️ Security Compliance</strong></h6>
+                                <p class="small">Enterprise-grade security meeting corporate compliance requirements</p>
+                            </div>
+                        </div>
+                        
+                        <div class="enterprise-highlight mt-4">
+                            <h5 class="mb-3">🚀 Enterprise-Grade Performance</h5>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="unifi-badge">1000+ Concurrent Users</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="unifi-badge">Multi-Site Management</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="unifi-badge">24/7 Monitoring</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Overview -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="accent mb-3">Complete UniFi Solutions</h2>
+            <p class="text-muted">Professional Ubiquiti UniFi services from design to day-to-day management</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card text-center">
+                    <i class="bi bi-tools" style="font-size: 3rem; color: #0ea5e9; margin-bottom: 1rem;"></i>
+                    <h5>UniFi Installation</h5>
+                    <p class="mb-3">Professional installation of UniFi networks including WiFi access points, switches, routers, and Dream Machines.</p>
+                    <ul class="list-unstyled small">
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Site surveys & planning</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Equipment procurement</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Professional installation</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Configuration & testing</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card text-center">
+                    <i class="bi bi-graph-up" style="font-size: 3rem; color: #22c55e; margin-bottom: 1rem;"></i>
+                    <h5>Network Management</h5>
+                    <p class="mb-3">Ongoing day-to-day management of your UniFi network infrastructure with expert optimization.</p>
+                    <ul class="list-unstyled small">
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Daily network monitoring</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Performance optimization</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>User management</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Firmware updates</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card text-center">
+                    <i class="bi bi-shield-check" style="font-size: 3rem; color: #f59e0b; margin-bottom: 1rem;"></i>
+                    <h5>Proactive Monitoring</h5>
+                    <p class="mb-3">24/7 monitoring with proactive alerts and issue resolution before problems impact your business.</p>
+                    <ul class="list-unstyled small">
+                        <li><i class="bi bi-check-circle text-success me-2"></i>24/7 network monitoring</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Automated alerts</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Performance reports</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Issue prevention</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card text-center">
+                    <i class="bi bi-speedometer2" style="font-size: 3rem; color: #8b5cf6; margin-bottom: 1rem;"></i>
+                    <h5>Network Optimization</h5>
+                    <p class="mb-3">Continuous optimization of your UniFi network for maximum performance and reliability.</p>
+                    <ul class="list-unstyled small">
+                        <li><i class="bi bi-check-circle text-success me-2"></i>RF optimization</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Channel planning</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Load balancing</li>
+                        <li><i class="bi bi-check-circle text-success me-2"></i>Coverage analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Monitoring & Management -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="monitoring-showcase text-center">
+                    <h3 class="mb-4">🚀 Advanced Network Monitoring & Management</h3>
+                    <p class="lead mb-4">Proactive monitoring and management keeping your UniFi network optimized 24/7</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-3">
+                            <h5>📊 Real-time Analytics</h5>
+                            <p class="small">Live network performance monitoring with detailed insights and reporting.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>🚨 Proactive Alerts</h5>
+                            <p class="small">Instant notifications for network issues before they impact operations.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>🔧 Remote Optimization</h5>
+                            <p class="small">Continuous network tuning and optimization without site visits.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>📈 Performance Reports</h5>
+                            <p class="small">Regular reporting on network health, usage, and optimization opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%); color: white;">
+    <div class="container text-center">
+        <h2 class="mb-4">Proven <span style="color: #bfdbfe;">UniFi Results</span></h2>
+        <p class="lead mb-5">Delivering exceptional network performance from smart homes to enterprise deployments</p>
+        
+        <div class="row g-4">
+            <div class="col-lg-3">
+                <div class="stats-card">
+                    <h3 class="display-4 fw-bold">500+</h3>
+                    <p class="mb-0">UniFi Installations<br>Deployed</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="stats-card">
+                    <h3 class="display-4 fw-bold">99.9%</h3>
+                    <p class="mb-0">Network<br>Uptime</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="stats-card">
+                    <h3 class="display-4 fw-bold">24/7</h3>
+                    <p class="mb-0">Proactive<br>Monitoring</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="stats-card">
+                    <h3 class="display-4 fw-bold">100%</h3>
+                    <p class="mb-0">Client<br>Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Ready for Professional <span class="accent">UniFi Solutions?</span></h2>
+                <p class="text-muted mb-4">Get expert UniFi installation, management, and monitoring for your large property or business. From smart homes to enterprise deployments - we deliver exceptional network performance across Norfolk & East Anglia.</p>
+                
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="service-card text-center h-100">
+                            <i class="bi bi-house display-4 text-primary mb-3"></i>
+                            <h5>Smart Homes</h5>
+                            <p class="mb-0 small text-muted">Luxury residential properties with enterprise-grade WiFi</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="service-card text-center h-100">
+                            <i class="bi bi-building display-4 text-primary mb-3"></i>
+                            <h5>Large Properties</h5>
+                            <p class="mb-0 small text-muted">Multi-story buildings and extensive coverage areas</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="service-card text-center h-100">
+                            <i class="bi bi-gear display-4 text-primary mb-3"></i>
+                            <h5>Enterprise</h5>
+                            <p class="mb-0 small text-muted">Business-critical infrastructure with 24/7 management</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="tel:+441553824408" class="btn btn-primary btn-lg">
+                        <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                    </a>
+                    <a href="mailto:info@sprintwave.co.uk?subject=UniFi Network Consultation" class="btn btn-outline-primary btn-lg">
+                        <i class="bi bi-envelope me-2"></i>Email Consultation
+                    </a>
+                </div>
+                
+                <div class="mt-4">
+                    <small class="text-muted">
+                        <i class="bi bi-shield-check me-2"></i>Certified UniFi specialists
+                        <span class="mx-3">|</span>
+                        <i class="bi bi-clock me-2"></i>Free site surveys
+                        <span class="mx-3">|</span>
+                        <i class="bi bi-award me-2"></i>3-year warranty included
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Track page views
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'event_category': 'services',
+            'event_label': 'unifi_networks',
+            'page_title': 'UniFi Networks Norfolk'
+        });
+    }
+    
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call', {
+                    'event_category': 'contact',
+                    'event_label': 'unifi_page'
+                });
+            }
+        });
+    });
+    
+    // Track email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'email_click', {
+                    'event_category': 'contact',
+                    'event_label': 'unifi_page'
+                });
+            }
+        });
+    });
+    
+    // Image showcase interactions
+    document.querySelectorAll('.unifi-image').forEach(image => {
+        image.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'image_view', {
+                    'event_category': 'engagement',
+                    'event_label': 'unifi_showcase'
+                });
+            }
+        });
+    });
+    
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Intersection Observer for animations
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        });
+        
+        document.querySelectorAll('.service-card, .unifi-showcase, .installation-step').forEach(el => {
+            observer.observe(el);
+        });
+    }
+    
+    // Add hover effects to deployment type badges
+    document.querySelectorAll('.deployment-type').forEach(badge => {
+        badge.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) translateY(-2px)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        badge.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0px)';
+        });
+    });
+    
+    // Enhanced image hover effects
+    document.querySelectorAll('.unifi-showcase').forEach(showcase => {
+        showcase.addEventListener('mouseenter', function() {
+            const image = this.querySelector('.unifi-image');
+            if (image) {
+                image.style.transform = 'scale(1.02)';
+            }
+        });
+        
+        showcase.addEventListener('mouseleave', function() {
+            const image = this.querySelector('.unifi-image');
+            if (image) {
+                image.style.transform = 'scale(1)';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
