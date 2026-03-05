@@ -1,0 +1,764 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<!-- ENHANCED SEO META TAGS -->
+<title>NHS Cisco 9800 Wireless Migration Case Study | 4000 Access Points Catalyst 9800-CL to 9800-H1 | Sprintwave</title>
+<meta name="description" content="Major NHS Trust wireless migration: 4000 access points migrated from Cisco Catalyst 9800-40 to dual 9800-H1 controllers. Zero downtime automation, ISE policies, mobility tunnels optimization.">
+<meta name="keywords" content="Cisco 9800 migration NHS, wireless controller upgrade, Cisco Catalyst 9800-H1, NHS wireless infrastructure, enterprise WiFi migration, Cisco ISE policies, mobility tunnels, wireless automation, healthcare network upgrade, Norfolk NHS">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<!-- LOCAL SEO ENHANCED -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Norfolk, England">
+<meta name="geo.position" content="52.6309;1.2974">
+<meta name="ICBM" content="52.6309, 1.2974">
+<meta name="location" content="King's Lynn, Norfolk">
+<meta name="coverage" content="Norfolk, Suffolk, Cambridgeshire, East Anglia">
+
+<!-- ENHANCED SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="NHS Cisco 9800 Wireless Migration | 4000 Access Points Zero Downtime | Sprintwave">
+<meta property="og:description" content="Enterprise wireless migration: NHS Trust upgraded from Cisco 9800-40 to dual 9800-H1 controller SSO pairs. 4000 access points migrated with automation and zero patient care disruption.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.sprintwave.co.uk/case-studies/nhs-cisco-9800-migration">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/nhs-cisco-9800-migration-case-study.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NHS Cisco 9800 wireless controller migration by Sprintwave">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NHS Cisco 9800 Migration | 4000 APs Zero Downtime | Sprintwave">
+<meta name="twitter:description" content="Enterprise wireless migration from Cisco 9800-40 to dual 9800-H1 controllers SSO Pairs. 4000 access points with automation and ISE integration.">
+<meta name="twitter:image" content="https://www.sprintwave.co.uk/static/nhs-cisco-9800-migration-case-study.jpg">
+<meta name="twitter:image:alt" content="Cisco 9800 wireless controller migration">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://www.sprintwave.co.uk/case-studies/nhs-cisco-9800-migration">
+
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "NHS Cisco 9800 Wireless Controller Migration Case Study",
+  "description": "Enterprise-scale wireless migration: 4000 access points migrated from Cisco Catalyst 9800-40 to dual 9800-H1 controller SSO pairs with zero downtime automation and ISE integration.",
+  "image": "https://www.sprintwave.co.uk/static/nhs-cisco-9800-migration-case-study.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Sprintwave",
+    "url": "https://www.sprintwave.co.uk"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sprintwave",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sprintwave.co.uk/static/logo.png"
+    }
+  },
+  "datePublished": "2026-03-04",
+  "dateModified": "2026-03-04",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.sprintwave.co.uk/case-studies/nhs-cisco-9800-migration"
+  },
+  "about": {
+    "@type": "Service",
+    "name": "Enterprise Wireless Migration",
+    "serviceType": "Network Infrastructure Upgrade"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CaseStudy",
+  "name": "NHS Cisco 9800 Wireless Controller Migration",
+  "description": "Enterprise-scale migration of 4000 access points from Cisco Catalyst 9800-40 to dual 9800-H1 controller SSO pairs with automation, zero downtime, and ISE policy optimization.",
+  "about": {
+    "@type": "Organization",
+    "name": "NHS Foundation Trust",
+    "description": "Major healthcare facility requiring enterprise wireless infrastructure upgrade"
+  },
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Sprintwave",
+    "url": "https://www.sprintwave.co.uk",
+    "telephone": "+44 1553 824408"
+  }
+}
+</script>
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #0066cc 0%, #004499 50%, #003366 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 500px;
+    }
+    
+    /* Wireless wave animation background */
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        animation: wirelessSignal 20s ease-in-out infinite alternate;
+        z-index: 1;
+    }
+    
+    /* Floating wireless signals */
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        width: 100px;
+        height: 100px;
+        background: 
+            radial-gradient(circle, transparent 20%, rgba(255,255,255,0.1) 25%, transparent 30%),
+            radial-gradient(circle, transparent 40%, rgba(255,255,255,0.05) 45%, transparent 50%),
+            radial-gradient(circle, transparent 60%, rgba(255,255,255,0.03) 65%, transparent 70%);
+        border-radius: 50%;
+        animation: signalPulse 4s ease-in-out infinite;
+        z-index: 1;
+    }
+    
+    @keyframes wirelessSignal {
+        0%, 100% { 
+            transform: translate(0px, 0px) scale(1);
+            opacity: 0.3;
+        }
+        50% { 
+            transform: translate(-20px, -20px) scale(1.1);
+            opacity: 0.6;
+        }
+    }
+    
+    @keyframes signalPulse {
+        0%, 100% { 
+            transform: scale(1);
+            opacity: 0.4;
+        }
+        50% { 
+            transform: scale(1.3);
+            opacity: 0.8;
+        }
+    }
+    
+    /* Signal bars animation */
+    .signal-bars {
+        position: absolute;
+        top: 30%;
+        right: 15%;
+        display: flex;
+        gap: 3px;
+        z-index: 1;
+    }
+    
+    .signal-bar {
+        width: 4px;
+        background: rgba(255, 255, 255, 0.3);
+        animation: signalBars 2s ease-in-out infinite;
+    }
+    
+    .signal-bar:nth-child(1) { height: 10px; animation-delay: 0s; }
+    .signal-bar:nth-child(2) { height: 20px; animation-delay: 0.2s; }
+    .signal-bar:nth-child(3) { height: 30px; animation-delay: 0.4s; }
+    .signal-bar:nth-child(4) { height: 40px; animation-delay: 0.6s; }
+    .signal-bar:nth-child(5) { height: 50px; animation-delay: 0.8s; }
+    
+    @keyframes signalBars {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+    }
+    
+    /* Ensure content is above background */
+    .hero-section .container {
+        position: relative;
+        z-index: 10;
+    }
+    
+    /* Fixed badge styling */
+    .case-study-badge {
+        background: rgba(255, 255, 255, 0.95);
+        color: #0066cc;
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        animation: badgePulse 3s infinite;
+        font-size: 1.1rem;
+        z-index: 10;
+        position: relative;
+    }
+    
+    @keyframes badgePulse {
+        0%, 100% { 
+            transform: scale(1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        50% { 
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+    }
+    
+    /* Enhanced title visibility */
+    .hero-section h1 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+        position: relative;
+    }
+    
+    .hero-section .lead {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+        position: relative;
+    }
+    
+    .enterprise-metric {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        margin: 0.5rem;
+        display: inline-block;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: metricBounce 2s infinite;
+        animation-delay: var(--delay, 0s);
+        z-index: 10;
+        position: relative;
+    }
+    
+    @keyframes metricBounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-5px); }
+        60% { transform: translateY(-3px); }
+    }
+    
+    .enterprise-metric:nth-child(1) { --delay: 0s; }
+    .enterprise-metric:nth-child(2) { --delay: 0.2s; }
+    .enterprise-metric:nth-child(3) { --delay: 0.4s; }
+    .enterprise-metric:nth-child(4) { --delay: 0.6s; }
+    .enterprise-metric:nth-child(5) { --delay: 0.8s; }
+    
+    .stats-card {
+        background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        height: 100%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .challenge-item {
+        background: #fff;
+        border-left: 5px solid #dc2626;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .challenge-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+    
+    .solution-item {
+        background: #fff;
+        border-left: 5px solid #059669;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .solution-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+    
+    .migration-step {
+        background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .migration-step:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        border-color: #0066cc;
+    }
+    
+    .cisco-badge {
+        background: linear-gradient(135deg, #0066cc, #004499);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin: 0.25rem;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+    
+    .controller-showcase {
+        background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .controller-image {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+        background: white;
+        padding: 1rem;
+    }
+    
+    .controller-image:hover {
+        transform: scale(1.03);
+    }
+    
+    .automation-highlight {
+        background: linear-gradient(135deg, #fef3c7, #fde68a);
+        border: 3px solid #f59e0b;
+        border-radius: 20px;
+        padding: 3rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2);
+        animation: automationGlow 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes automationGlow {
+        0% { box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2); }
+        100% { box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4), 0 0 30px rgba(245, 158, 11, 0.1); }
+    }
+    
+    .success-metric {
+        background: linear-gradient(135deg, #059669, #047857);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        margin: 0.5rem;
+        display: inline-block;
+        box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3);
+        animation: successPulse 3s infinite;
+        animation-delay: var(--delay, 0s);
+    }
+    
+    @keyframes successPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.02); }
+    }
+    
+    .success-metric:nth-child(1) { --delay: 0s; }
+    .success-metric:nth-child(2) { --delay: 0.3s; }
+    .success-metric:nth-child(3) { --delay: 0.6s; }
+    .success-metric:nth-child(4) { --delay: 0.9s; }
+    
+    .service-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        height: 100%;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <!-- Wireless signal animations -->
+    <div class="signal-bars">
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+    </div>
+    
+    <div class="container">
+        <div class="case-study-badge">
+            🏥 Enterprise Migration Case Study
+        </div>
+        <h1 class="display-4 fw-bold mb-4">NHS Cisco 9800 Wireless Controller Migration</h1>
+        <p class="lead mb-4">
+            Enterprise-scale wireless infrastructure upgrade: 4000 access points migrated from Cisco Catalyst 9800-40 to dual 9800-H1 controller SSO pairs with zero downtime automation and ISE policy optimization.
+        </p>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <span class="enterprise-metric">🏥 Major NHS Trust</span>
+                    <span class="enterprise-metric">📡 4000 Access Points</span>
+                    <span class="enterprise-metric">⚡ Zero Downtime</span>
+                    <span class="enterprise-metric">🤖 Full Automation</span>
+                    <span class="enterprise-metric">🔐 ISE Integration</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Controller Showcase -->
+<section class="py-5" style="background: #fafafa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Cisco Catalyst 9800 <span class="accent">Controllers</span></h2>
+            <p class="text-muted">Enterprise-grade wireless controllers powering mission-critical healthcare infrastructure</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="controller-showcase text-center">
+                    <img src="{{ url_for('static', filename='9800.png') }}" 
+                         alt="Cisco Catalyst 9800-H1 wireless controllers installed in NHS data center" 
+                         class="controller-image mb-4">
+                    <h4 class="accent mb-3">🏢 Cisco Catalyst 9800-H1 Controllers</h4>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <strong>⚡ High Performance</strong><br>
+                            <p class="mb-0 small text-muted">Up to 6000 access points per controller</p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>🔄 Redundancy</strong><br>
+                            <p class="mb-0 small text-muted">Dual controller HA configuration</p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>📈 Scalability</strong><br>
+                            <p class="mb-0 small text-muted">Enterprise-grade performance and capacity</p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>🔐 Security</strong><br>
+                            <p class="mb-0 small text-muted">Integrated Cisco ISE policy enforcement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Challenge Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">The <span class="accent">Challenge</span></h2>
+            <p class="text-muted">Large NHS Trust needed to upgrade wireless infrastructure while maintaining 24/7 patient care operations</p>
+        </div>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6">
+                <div class="challenge-item">
+                    <h5><i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>Critical Infrastructure Requirements</h5>
+                    <ul class="mb-0">
+                        <li><strong>Zero Downtime:</strong> Patient care systems requiring continuous connectivity</li>
+                        <li><strong>Scale Challenge:</strong> 4000 access points across multiple sites and buildings</li>
+                        <li><strong>Legacy Compatibility:</strong> Mixed AP generations requiring careful migration</li>
+                        <li><strong>Security Compliance:</strong> NHS cybersecurity framework adherence essential</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="challenge-item">
+                    <h5><i class="bi bi-building-fill text-danger me-2"></i>Complex Network Architecture</h5>
+                    <ul class="mb-0">
+                        <li><strong>Multiple Organizations:</strong> Numerous mobility tunnels to partner entities</li>
+                        <li><strong>Controller Limitations:</strong> Existing 9800-40 reaching capacity limits</li>
+                        <li><strong>Performance Issues:</strong> Increased load affecting network performance</li>
+                        <li><strong>Future Expansion:</strong> Need for scalable architecture to support growth</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="service-card text-center">
+                    <h4 class="accent mb-3">Migration Scope & Requirements</h4>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <strong>Access Points:</strong><br>
+                            <span class="text-muted">4000 APs migrated</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Controllers:</strong><br>
+                            <span class="text-muted">9800-40 to 2x 9800-H1</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Downtime:</strong><br>
+                            <span class="text-muted">Zero patient impact</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Automation:</strong><br>
+                            <span class="text-muted">Full scripted deployment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solution Section -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Our Professional <span class="accent">Solution</span></h2>
+            <p class="text-muted">Comprehensive migration strategy ensuring seamless transition with zero business impact</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="migration-step text-center">
+                    <div style="font-size: 3rem; color: #0066cc; margin-bottom: 1rem;">📋</div>
+                    <h5 class="accent">Pre-Migration Planning</h5>
+                    <ul class="text-start">
+                        <li>Complete network topology documentation</li>
+                        <li>AP inventory and configuration audit</li>
+                        <li>Mobility tunnel mapping and validation</li>
+                        <li>Automated deployment script development</li>
+                        <li>Comprehensive testing procedures</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="migration-step text-center">
+                    <div style="font-size: 3rem; color: #0066cc; margin-bottom: 1rem;">⚡</div>
+                    <h5 class="accent">Automated Deployment</h5>
+                    <ul class="text-start">
+                        <li>Custom Python automation scripts</li>
+                        <li>Batch AP migration with verification</li>
+                        <li>Real-time monitoring and rollback capability</li>
+                        <li>Automatic configuration synchronization</li>
+                        <li>Zero-touch provisioning validation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="migration-step text-center">
+                    <div style="font-size: 3rem; color: #0066cc; margin-bottom: 1rem;">🔐</div>
+                    <h5 class="accent">ISE Integration</h5>
+                    <ul class="text-start">
+                        <li>Cisco ISE policy creation and optimization</li>
+                        <li>RADIUS authentication integration</li>
+                        <li>Dynamic VLAN assignment configuration</li>
+                        <li>Guest access portal customization</li>
+                        <li>Compliance reporting automation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Automation Highlight -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="automation-highlight text-center">
+                    <h3 class="mb-4">🤖 Advanced Migration Automation</h3>
+                    <p class="lead mb-4">Custom-developed automation ensuring flawless migration with comprehensive validation</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-3">
+                            <div class="cisco-badge mb-2">Python Scripts</div><br>
+                            <strong>Automated Configuration</strong><br>
+                            <span class="text-muted">Bulk AP migration with error handling</span>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="cisco-badge mb-2">API Integration</div><br>
+                            <strong>Real-time Monitoring</strong><br>
+                            <span class="text-muted">Live validation and rollback capability</span>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="cisco-badge mb-2">Config Sync</div><br>
+                            <strong>Consistency Validation</strong><br>
+                            <span class="text-muted">Automated configuration verification</span>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="cisco-badge mb-2">Zero Touch</div><br>
+                            <strong>Seamless Transition</strong><br>
+                            <span class="text-muted">Minimal manual intervention required</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Implementation -->
+<section class="py-5" style="background: #fafafa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Technical <span class="accent">Implementation</span></h2>
+            <p class="text-muted">Enterprise-grade configuration optimization and security policy implementation</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="solution-item">
+                    <h5><i class="bi bi-gear-fill text-success me-2"></i>Wireless Configuration Optimization</h5>
+                    <ul class="mb-0">
+                        <li><strong>RF Profile Tuning:</strong> Optimized power levels and channel allocation</li>
+                        <li><strong>QoS Policies:</strong> Medical device traffic prioritization</li>
+                        <li><strong>Band Steering:</strong> Intelligent client distribution across bands</li>
+                        <li><strong>Load Balancing:</strong> Even client distribution across APs</li>
+                        <li><strong>Coverage Optimization:</strong> Seamless roaming across all areas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="solution-item">
+                    <h5><i class="bi bi-shield-check-fill text-success me-2"></i>Mobility Tunnel Architecture</h5>
+                    <ul class="mb-0">
+                        <li><strong>Inter-Org Connectivity:</strong> Secure tunnels to partner organizations</li>
+                        <li><strong>Guest Access:</strong> Isolated guest network with portal authentication</li>
+                        <li><strong>Device Segmentation:</strong> Medical devices on dedicated VLANs</li>
+                        <li><strong>Centralized Management:</strong> Single pane of glass control</li>
+                        <li><strong>High Availability:</strong> Redundant controller configuration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #0066cc 0%, #004499 50%, #003366 100%); color: white;">
+    <div class="container text-center">
+        <h2 class="mb-4">Outstanding <span style="color: #bfdbfe;">Migration Results</span></h2>
+        <p class="lead mb-5">Flawless enterprise migration delivering enhanced performance and scalability</p>
+        
+        <div class="row g-4">
+            <div class="col-lg-3">
+                <div class="stats-card">
+                    <h3 class="display-4 fw-bold">4000</h3>
+                    <p class="mb-0">Access Points<br>Migrated</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="stats-card">
+                    <h3 class="display-4 fw-bold">0</h3>
+                    <p class="mb-0">Minutes<br>Downtime</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="stats-card">
+                    <h3 class="display-4 fw-bold">100%</h3>
+                    <p class="mb-0">Automation<br>Success</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="stats-card">
+                    <h3 class="display-4 fw-bold">24/7</h3>
+                    <p class="mb-0">Continuous<br>Operations</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <h4 class="mb-4">Migration Achievements</h4>
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <span class="success-metric">⚡ Zero Patient Disruption</span>
+                    <span class="success-metric">🤖 100% Automated Deployment</span>
+                    <span class="success-metric">📈 Enhanced Performance</span>
+                    <span class="success-metric">🔐 Security Policy Optimization</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Need Enterprise <span class="accent">Wireless Migration?</span></h2>
+                <p class="text-muted mb-4">Our team specializes in large-scale wireless infrastructure migrations with zero downtime automation and enterprise-grade security implementation.</p>
+                
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="service-card text-center h-100">
+                            <i class="bi bi-cpu display-4 text-primary mb-3"></i>
+                            <h5>Automation Expertise</h5>
+                            <p class="mb-0 small text-muted">Custom scripts for seamless large-scale migrations</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="service-card text-center h-100">
+                            <i class="bi bi-shield-check display-4 text-primary mb-3"></i>
+                            <h5>Zero Downtime</h5>
+                            <p class="mb-0 small text-muted">Mission-critical environments requiring continuous operations</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="service-card text-center h-100">
+                            <i class="bi bi-graph-up display-4 text-primary mb-3"></i>
+                            <h5>Enterprise Scale</h5>
+                            <p class="mb-0 small text-muted">Thousands of access points with complex requirements</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a class="btn btn-primary btn-lg me-3" href="/wireless-surveys">
+                    <i class="bi bi-wifi me-2"></i>Wireless Services
+                </a>
+                <a class="btn btn-outline-primary btn-lg" href="/contact">
+                    <i class="bi bi-telephone me-2"></i>Discuss Your Migration
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

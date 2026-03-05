@@ -90,6 +90,10 @@ def case_study_nhs_wifi():
 def case_study_rural_wifi():
     return render_template('case_study_rural_wifi.html')
 
+@app.route('/case-studies/9800')
+def case_study_9800():
+    return render_template('case_study_9800.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Generate sitemap XML for Google Search Console"""
