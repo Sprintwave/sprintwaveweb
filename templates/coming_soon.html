@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>{{ page_title or "Coming Soon" }} | Sprintwave</title>
+<meta name="description" content="{{ message or "This page is under development. Contact us for immediate assistance with your requirements." }}">
+<meta name="robots" content="noindex, follow">
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 50%, #4c1d95 100%);
+        color: white;
+        padding: 120px 0 100px;
+        position: relative;
+        overflow: hidden;
+        min-height: 70vh;
+    }
+    
+    .coming-soon-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .floating-icon {
+        position: absolute;
+        color: rgba(255,255,255,0.1);
+        font-size: 4rem;
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+        50% { transform: translateY(-20px) rotate(10deg); opacity: 0.3; }
+    }
+    
+    .content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .industry-badge {
+        background: rgba(255,255,255,0.95);
+        color: #7c3aed;
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        font-size: 1.1rem;
+    }
+    
+    .contact-card {
+        background: rgba(255, 255, 255, 0.95);
+        color: #1a1a1a;
+        border-radius: 20px;
+        padding: 2.5rem;
+        margin: 2rem 0;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+    
+    .feature-preview {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 1rem 0;
+        backdrop-filter: blur(10px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <!-- Floating Background Elements -->
+    <div class="coming-soon-animation">
+        <div class="floating-icon" style="top: 15%; left: 10%; animation-delay: 0s;">
+            <i class="bi bi-wifi"></i>
+        </div>
+        <div class="floating-icon" style="top: 25%; right: 15%; animation-delay: 1s;">
+            <i class="bi bi-building"></i>
+        </div>
+        <div class="floating-icon" style="bottom: 30%; left: 20%; animation-delay: 2s;">
+            <i class="bi bi-globe"></i>
+        </div>
+        <div class="floating-icon" style="bottom: 20%; right: 25%; animation-delay: 3s;">
+            <i class="bi bi-diagram-3"></i>
+        </div>
+        <div class="floating-icon" style="top: 40%; left: 50%; animation-delay: 1.5s;">
+            <i class="bi bi-gear"></i>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="content">
+                    <div class="industry-badge">
+                        🚀 Coming Soon
+                    </div>
+                    
+                    <h1 class="display-3 fw-bold mb-4">{{ page_title or "Industry Solutions" }}</h1>
+                    <p class="lead mb-4">{{ message or "We're developing specialized network solutions for your industry. Contact us now for immediate assistance with your requirements." }}</p>
+                    
+                    {% if industry_features %}
+                    <div class="row g-4 mt-4">
+                        {% for feature in industry_features %}
+                        <div class="col-md-6">
+                            <div class="feature-preview">
+                                <h5>{{ feature.title }}</h5>
+                                <p class="mb-0 small">{{ feature.description }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-card text-center">
+                    <h3 class="mb-4">Need Industry-Specific Networks Now?</h3>
+                    <p class="text-muted mb-4">Don't wait for the page launch! Our experts are ready to discuss your industry-specific networking requirements and provide immediate solutions.</p>
+                    
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-telephone-fill text-primary me-3" style="font-size: 2rem;"></i>
+                                <div class="text-start">
+                                    <h6 class="mb-1">Immediate Response</h6>
+                                    <small class="text-muted">Call for instant consultation</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-envelope-fill text-success me-3" style="font-size: 2rem;"></i>
+                                <div class="text-start">
+                                    <h6 class="mb-1">Detailed Proposals</h6>
+                                    <small class="text-muted">Email for comprehensive quotes</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="tel:+441553824408" class="btn btn-primary btn-lg">
+                            <i class="bi bi-telephone me-2"></i>Call: 01553 824408
+                        </a>
+                        <a href="mailto:info@sprintwave.co.uk?subject={{ page_title or 'Industry Network Solutions' }} Enquiry" class="btn btn-outline-primary btn-lg">
+                            <i class="bi bi-envelope me-2"></i>Email Consultation
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <small class="text-muted">
+                            <i class="bi bi-clock me-2"></i>Free consultations available
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-shield-check me-2"></i>Industry-specific expertise
+                            <span class="mx-3">|</span>
+                            <i class="bi bi-geo-alt me-2"></i>Norfolk & East Anglia coverage
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Track coming soon page visits
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'coming_soon_view', {
+            'event_category': 'engagement',
+            'event_label': '{{ page_title or "industry_page" }}',
+            'page_title': '{{ page_title or "Coming Soon" }}'
+        });
+    }
+    
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call', {
+                    'event_category': 'contact',
+                    'event_label': 'coming_soon_page'
+                });
+            }
+        });
+    });
+    
+    // Track email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'email_click', {
+                    'event_category': 'contact',
+                    'event_label': 'coming_soon_page'
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

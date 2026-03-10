@@ -421,6 +421,62 @@ def aruba_switching():
 def aruba_wireless():
     return render_template('aruba_wireless.html')
 
+# Add these routes to your app.py or routes file
+
+@app.route('/hospitality-networks')
+def hospitality_networks():
+    return render_template('coming_soon.html', 
+                         page_title="Hotel & Hospitality WiFi Solutions",
+                         message="Professional hospitality network infrastructure coming soon! We specialize in guest WiFi, staff networks, and compliance solutions for hotels across Norfolk & East Anglia.",
+                         industry_features=[
+                             {"title": "Guest WiFi Management", "description": "Seamless guest access with captive portals and bandwidth control"},
+                             {"title": "Staff Network Segmentation", "description": "Secure operational networks separated from guest traffic"},
+                             {"title": "Compliance & Security", "description": "Data protection and guest privacy compliance"},
+                             {"title": "24/7 Monitoring", "description": "Proactive network monitoring for guest satisfaction"}
+                         ])
+
+@app.route('/guest-wifi-solutions')
+def guest_wifi_solutions():
+    return render_template('coming_soon.html',
+                         page_title="Guest WiFi Management Solutions",
+                         message="Advanced guest WiFi management systems coming soon! Captive portals, analytics, and seamless guest experience solutions.")
+
+@app.route('/farm-connectivity')
+def farm_connectivity():
+    return render_template('coming_soon.html',
+                         page_title="Farm & Agricultural Connectivity",
+                         message="Smart farm connectivity solutions coming soon! Starlink, rural broadband, and IoT networks for modern agriculture across Norfolk.")
+
+@app.route('/rural-estate-networks')
+def rural_estate_networks():
+    return render_template('coming_soon.html',
+                         page_title="Rural Estate Network Solutions",
+                         message="Professional network solutions for large rural properties and estates coming soon!")
+
+@app.route('/manufacturing-networks')
+def manufacturing_networks():
+    return render_template('coming_soon.html',
+                         page_title="Factory & Manufacturing WiFi",
+                         message="Industrial network solutions for factories and manufacturing facilities coming soon! Secure operational networks and IoT connectivity.")
+
+@app.route('/warehouse-connectivity')
+def warehouse_connectivity():
+    return render_template('coming_soon.html',
+                         page_title="Warehouse & Logistics Networks",
+                         message="Professional warehouse network infrastructure coming soon! Optimized for logistics operations and inventory management systems.")
+
+@app.route('/healthcare-wifi')
+def healthcare_wifi():
+    return render_template('coming_soon.html',
+                         page_title="Healthcare & Care Home WiFi",
+                         message="Medical-grade network solutions coming soon! HIPAA-compliant networks for healthcare facilities and care homes.")
+
+@app.route('/education-networks')
+def education_networks():
+    return render_template('coming_soon.html',
+                         page_title="Schools & Education WiFi",
+                         message="Educational network solutions coming soon! Safe, secure, and scalable networks for schools and colleges.")
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
