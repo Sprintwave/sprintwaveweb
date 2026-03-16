@@ -478,5 +478,5 @@ def education_networks():
                          message="Educational network solutions coming soon! Safe, secure, and scalable networks for schools and colleges.")
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5001))
     app.run(debug=False, host='0.0.0.0', port=port)

@@ -366,7 +366,7 @@
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
-    <div class="particle"></div>
+    class="particle"></div>
     <div class="particle"></div>
   </div>
   <div class="container">
@@ -375,8 +375,8 @@
     </div>
     <h1 class="display-4 fw-bold">Web Design & Development in Norfolk</h1>
     <p class="lead">Custom websites, ecommerce solutions, and web applications. Professional web development services across Norwich, King's Lynn, and Norfolk.</p>
-    <a class="btn btn-web mt-3 me-3" href="#" data-bs-toggle="modal" data-bs-target="#webDesignModal" onclick="trackWebDesignButtonClick()">
-      <i class="bi bi-chat-dots me-2"></i>Start Your Project
+    <a class="btn btn-web mt-3 me-3" href="mailto:info@sprintwave.co.uk?subject=Web Design Project Inquiry&body=Hi,%0A%0AI'm interested in starting a web design project.%0A%0AProject Type:%0ACompany/Organization:%0AWebsite Requirements:%0ATimeline:%0ABudget Range:%0A%0APlease contact me to discuss further.%0A%0AThank you!" onclick="trackWebDesignButtonClick()">
+      <i class="bi bi-envelope me-2"></i>Start Your Project
     </a>
     <a class="btn btn-accent mt-3" href="#portfolio">
       <i class="bi bi-eye me-2"></i>View Portfolio
@@ -692,7 +692,7 @@
             <a class="btn btn-web" href="tel:+441553824408">
               <i class="bi bi-telephone me-2"></i>Call: 01553 824408
             </a>
-            <a class="btn btn-accent" href="#" data-bs-toggle="modal" data-bs-target="#webDesignModal" onclick="trackWebDesignButtonClick()">
+            <a class="btn btn-accent" href="mailto:info@sprintwave.co.uk?subject=Web Design Quote Request&body=Hi,%0A%0APlease send me a quote for my web design project.%0A%0AProject Type:%0ACompany/Organization:%0AWebsite Requirements:%0ANumber of Pages:%0ASpecial Features:%0ATimeline:%0ABudget Range:%0A%0APlease contact me to discuss further.%0A%0AThank you!" onclick="trackWebDesignButtonClick()">
               <i class="bi bi-envelope me-2"></i>Get Project Quote
             </a>
           </div>
@@ -708,153 +708,6 @@
     </div>
   </div>
 </section>
-
-<!-- Web Design Contact Form Modal -->
-<div class="modal fade" id="webDesignModal" tabindex="-1" aria-labelledby="webDesignModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header" style="background: linear-gradient(45deg, #6366f1, #8b5cf6); color: white;">
-        <h5 class="modal-title" id="webDesignModalLabel">
-          <i class="bi bi-laptop me-2"></i>Start Your Web Design Project
-        </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="webDesignForm">
-          <div class="row g-3">
-            <!-- Contact Information -->
-            <div class="col-md-6">
-              <label for="firstName" class="form-label">First Name *</label>
-              <input type="text" class="form-control" id="firstName" name="firstName" required>
-            </div>
-            <div class="col-md-6">
-              <label for="lastName" class="form-label">Last Name *</label>
-              <input type="text" class="form-control" id="lastName" name="lastName" required>
-            </div>
-            
-            <div class="col-md-6">
-              <label for="email" class="form-label">Email Address *</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="col-md-6">
-              <label for="phone" class="form-label">Phone Number *</label>
-              <input type="tel" class="form-control" id="phone" name="phone" required>
-            </div>
-
-            <!-- Business Details -->
-            <div class="col-md-6">
-              <label for="company" class="form-label">Company/Organization</label>
-              <input type="text" class="form-control" id="company" name="company" placeholder="Business name (optional)">
-            </div>
-            <div class="col-md-6">
-              <label for="industry" class="form-label">Industry/Business Type</label>
-              <select class="form-control" id="industry" name="industry">
-                <option value="">Select Industry</option>
-                <option value="professional-services">Professional Services</option>
-                <option value="retail">Retail & Ecommerce</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="education">Education</option>
-                <option value="hospitality">Hospitality & Tourism</option>
-                <option value="construction">Construction & Trade</option>
-                <option value="agriculture">Agriculture & Farming</option>
-                <option value="technology">Technology</option>
-                <option value="charity">Charity & Non-Profit</option>
-                <option value="personal">Personal/Portfolio</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <!-- Project Type -->
-            <div class="col-md-6">
-              <label for="projectType" class="form-label">Project Type *</label>
-              <select class="form-control" id="projectType" name="projectType" required>
-                <option value="">Select Project Type</option>
-                <option value="new-website">New Website</option>
-                <option value="website-redesign">Website Redesign</option>
-                <option value="ecommerce">Ecommerce Store</option>
-                <option value="web-application">Custom Web Application</option>
-                <option value="maintenance">Website Maintenance/Updates</option>
-                <option value="seo-optimization">SEO Optimization</option>
-                <option value="not-sure">Not Sure - Need Consultation</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="timeline" class="form-label">Required Timeline</label>
-              <select class="form-control" id="timeline" name="timeline">
-                <option value="">Select Timeline</option>
-                <option value="urgent">Urgent (1-2 weeks)</option>
-                <option value="asap">ASAP (2-4 weeks)</option>
-                <option value="month">Within 1-2 months</option>
-                <option value="quarter">Within 3 months</option>
-                <option value="flexible">Flexible timing</option>
-              </select>
-            </div>
-
-            <!-- Website Requirements -->
-            <div class="col-12">
-              <label for="currentWebsite" class="form-label">Current Website (if any)</label>
-              <input type="url" class="form-control" id="currentWebsite" name="currentWebsite" placeholder="https://yourwebsite.com (leave blank if none)">
-            </div>
-
-            <div class="col-md-6">
-              <label for="pages" class="form-label">Estimated Number of Pages</label>
-              <select class="form-control" id="pages" name="pages">
-                <option value="">Select Page Count</option>
-                <option value="1-5">1-5 pages (Small site)</option>
-                <option value="6-15">6-15 pages (Medium site)</option>
-                <option value="16-50">16-50 pages (Large site)</option>
-                <option value="50+">50+ pages (Very large site)</option>
-                <option value="dynamic">Dynamic/Database driven</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="features" class="form-label">Special Features Needed</label>
-              <select class="form-control" id="features" name="features">
-                <option value="">Select Features</option>
-                <option value="basic">Basic (Contact forms, gallery)</option>
-                <option value="ecommerce">Online store/payments</option>
-                <option value="booking">Booking/appointment system</option>
-                <option value="membership">User accounts/membership</option>
-                <option value="cms">Content management system</option>
-                <option value="custom">Custom functionality</option>
-              </select>
-            </div>
-
-            <!-- Project Details -->
-            <div class="col-12">
-              <label for="projectDetails" class="form-label">Project Description & Goals</label>
-              <textarea class="form-control" id="projectDetails" name="message" rows="3" placeholder="Tell us about your project goals, target audience, features needed, design preferences, etc."></textarea>
-            </div>
-
-            <!-- Budget -->
-            <div class="col-12">
-              <label for="budget" class="form-label">Budget Range (Optional)</label>
-              <select class="form-control" id="budget" name="budget">
-                <option value="">Prefer not to say</option>
-                <option value="under-1k">Under £1,000</option>
-                <option value="1k-3k">£1,000 - £3,000</option>
-                <option value="3k-7k">£3,000 - £7,000</option>
-                <option value="7k-15k">£7,000 - £15,000</option>
-                <option value="15k+">£15,000+</option>
-              </select>
-            </div>
-
-            <!-- Hidden fields for tracking -->
-            <input type="hidden" name="form_source" value="Web Design Page">
-            <input type="hidden" name="website" value="sprintwave.co.uk">
-            <input type="hidden" name="_subject" value="Web Design Project Inquiry - New Lead">
-          </div>
-
-          <div class="mt-4">
-            <button type="submit" class="btn btn-web w-100">
-              <i class="bi bi-send me-2"></i>Send Web Design Inquiry
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
 
 {% block javascript %}
