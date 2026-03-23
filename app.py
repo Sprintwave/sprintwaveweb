@@ -421,19 +421,12 @@ def aruba_switching():
 def aruba_wireless():
     return render_template('aruba_wireless.html')
 
-# Add these routes to your app.py or routes file
-
+# Add this route to your app.py file
 @app.route('/hospitality-networks')
 def hospitality_networks():
-    return render_template('coming_soon.html', 
-                         page_title="Hotel & Hospitality WiFi Solutions",
-                         message="Professional hospitality network infrastructure coming soon! We specialize in guest WiFi, staff networks, and compliance solutions for hotels across Norfolk & East Anglia.",
-                         industry_features=[
-                             {"title": "Guest WiFi Management", "description": "Seamless guest access with captive portals and bandwidth control"},
-                             {"title": "Staff Network Segmentation", "description": "Secure operational networks separated from guest traffic"},
-                             {"title": "Compliance & Security", "description": "Data protection and guest privacy compliance"},
-                             {"title": "24/7 Monitoring", "description": "Proactive network monitoring for guest satisfaction"}
-                         ])
+    return render_template('coming_soon.html',
+                         page_title="Hospitality Network Solutions",
+                         message="Comprehensive hospitality network solutions coming soon!")
 
 @app.route('/guest-wifi-solutions')
 def guest_wifi_solutions():
@@ -467,9 +460,7 @@ def warehouse_connectivity():
 
 @app.route('/healthcare-wifi')
 def healthcare_wifi():
-    return render_template('coming_soon.html',
-                         page_title="Healthcare & Care Home WiFi",
-                         message="Medical-grade network solutions coming soon! HIPAA-compliant networks for healthcare facilities and care homes.")
+    return render_template('healthcare-wifi-norfolk.html')
 
 @app.route('/education-networks')
 def education_networks():
@@ -477,6 +468,21 @@ def education_networks():
                          page_title="Schools & Education WiFi",
                          message="Educational network solutions coming soon! Safe, secure, and scalable networks for schools and colleges.")
 
+# Add this route to your app.py file
+@app.route('/hotel-wifi-norfolk')
+def hotel_wifi_norfolk():
+    return render_template('hotel-wifi-norfolk.html')
+
+# Add this route to your app.py file
+@app.route('/school-wifi-norfolk')
+def school_wifi_norfolk():
+    return render_template('school-wifi-norfolk.html')
+
+# Add this route to your app.py file
+@app.route('/factory-wifi-norfolk')
+def factory_wifi_norfolk():
+    return render_template('factory-wifi-norfolk.html')
+
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5001))
+    port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
