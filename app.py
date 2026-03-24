@@ -483,6 +483,11 @@ def school_wifi_norfolk():
 def factory_wifi_norfolk():
     return render_template('factory-wifi-norfolk.html')
 
+# Add this route to your app.py file
+@app.route('/case-studies/industrial-network-install')
+def case_study_industrial_network():  # This is the function name to use
+    return render_template('case_study_industrial_network.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)

@@ -1,0 +1,827 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<!-- SEO META TAGS -->
+<title>Case Study: Industrial Site Network Installation | Starlink Backhaul & Fiber Infrastructure | Sprintwave</title>
+<meta name="description" content="Case study: Complete industrial network installation with Starlink backhaul, multimode fiber, UniFi Dream Machine, WiFi 7, and professional cable management. Enterprise-grade infrastructure deployment across multiple buildings.">
+<meta name="keywords" content="industrial network installation, Starlink business backhaul, multimode fiber installation, UniFi Dream Machine, WiFi 7 deployment, industrial WiFi installation, fiber splicing Norfolk, cable tray installation, rack mounting services, enterprise network Norfolk">
+<meta name="author" content="Sprintwave">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+
+<!-- LOCAL SEO -->
+<meta name="geo.region" content="GB-NFK">
+<meta name="geo.placename" content="Norfolk Industrial">
+<meta name="geo.position" content="52.7554;0.3963">
+<meta name="ICBM" content="52.7554, 0.3963">
+
+<!-- SOCIAL MEDIA / OPEN GRAPH -->
+<meta property="og:title" content="Industrial Network Installation Case Study | Starlink & Fiber Infrastructure | Sprintwave">
+<meta property="og:description" content="Complete industrial site network deployment with Starlink backhaul, multimode fiber backbone, WiFi 7, and enterprise infrastructure across multiple buildings.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.sprintwave.co.uk/case-studies/industrial-network-install">
+<meta property="og:image" content="https://www.sprintwave.co.uk/static/industrial-network-rack.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Professional industrial network rack installation by Sprintwave">
+<meta property="og:site_name" content="Sprintwave">
+<meta property="og:locale" content="en_GB">
+
+<!-- TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Industrial Network Installation Case Study | Sprintwave">
+<meta name="twitter:description" content="Enterprise network deployment with Starlink backhaul, fiber infrastructure, WiFi 7, and professional cable management across industrial buildings.">
+<meta name="twitter:image" content="https://www.sprintwave.co.uk/static/industrial-network-rack.png">
+<meta name="twitter:image:alt" content="Professional industrial network installation">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://www.sprintwave.co.uk/case-studies/industrial-network-install">
+
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Industrial Site Network Installation Case Study",
+  "description": "Complete enterprise network deployment with Starlink backhaul, multimode fiber infrastructure, UniFi Dream Machine, and WiFi 7 across industrial buildings.",
+  "image": "https://www.sprintwave.co.uk/static/industrial-network-rack.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Sprintwave",
+    "url": "https://www.sprintwave.co.uk"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sprintwave",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sprintwave.co.uk/static/logo.png"
+    }
+  },
+  "datePublished": "2025-01-21",
+  "dateModified": "2025-01-21",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.sprintwave.co.uk/case-studies/industrial-network-install"
+  },
+  "about": {
+    "@type": "Service",
+    "name": "Industrial Network Installation",
+    "serviceType": "Enterprise Network Infrastructure"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CaseStudy",
+  "name": "Industrial Site Network Installation",
+  "description": "Complete enterprise network deployment featuring Starlink backhaul, multimode fiber infrastructure, UniFi Dream Machine, WiFi 7 access points, and professional cable management across multiple industrial buildings.",
+  "about": {
+    "@type": "Place",
+    "name": "Industrial Facility",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Norfolk",
+      "addressCountry": "GB"
+    }
+  },
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Sprintwave",
+    "url": "https://www.sprintwave.co.uk"
+  }
+}
+</script>
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Industrial Animation Background */
+    .industrial-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    /* Industrial Building */
+    .industrial-building {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4rem;
+        color: rgba(255,255,255,0.1);
+        animation: buildingPulse 6s infinite ease-in-out;
+    }
+    
+    /* Fiber Connections */
+    .fiber-connection {
+        position: absolute;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #10b981, transparent);
+        border-radius: 2px;
+        animation: dataFlow 4s infinite linear;
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    }
+    
+    /* Network Nodes */
+    .network-node {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: #3b82f6;
+        border-radius: 50%;
+        animation: nodeActivity 3s infinite ease-in-out;
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    }
+    
+    /* Starlink Signal */
+    .starlink-signal {
+        position: absolute;
+        top: 10%;
+        right: 15%;
+        color: rgba(34, 197, 94, 0.8);
+        font-size: 2.5rem;
+        animation: satelliteSignal 4s infinite ease-in-out;
+        text-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    }
+    
+    @keyframes buildingPulse {
+        0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.2; transform: translate(-50%, -50%) scale(1.05); }
+    }
+    
+    @keyframes dataFlow {
+        0% { transform: translateX(-100%); opacity: 0; }
+        25% { opacity: 1; }
+        75% { opacity: 1; }
+        100% { transform: translateX(400%); opacity: 0; }
+    }
+    
+    @keyframes nodeActivity {
+        0%, 100% { transform: scale(1); opacity: 0.7; }
+        50% { transform: scale(1.3); opacity: 1; }
+    }
+    
+    @keyframes satelliteSignal {
+        0%, 100% { opacity: 0.6; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.1); }
+    }
+    
+    .case-study-badge {
+        background: rgba(255, 255, 255, 0.95);
+        color: #1f2937;
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        animation: badgePulse 3s infinite;
+        font-size: 1.1rem;
+        z-index: 10;
+        position: relative;
+    }
+    
+    @keyframes badgePulse {
+        0%, 100% { 
+            transform: scale(1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        50% { 
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .hero-section h1 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-section .lead {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .stats-card {
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        height: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .timeline-item {
+        background: #fff;
+        border-left: 4px solid #10b981;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    
+    .image-gallery img {
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+    }
+    
+    .image-gallery img:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    }
+    
+    .tech-badge {
+        background: #f1f5f9;
+        color: #475569;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin: 0.25rem;
+        display: inline-block;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .success-metric {
+        background: #10b981;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-weight: 600;
+        margin: 0.25rem;
+        display: inline-block;
+        animation: metricBounce 2s infinite;
+        animation-delay: var(--delay, 0s);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+    
+    @keyframes metricBounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-3px); }
+        60% { transform: translateY(-2px); }
+    }
+    
+    .success-metric:nth-child(1) { --delay: 0s; }
+    .success-metric:nth-child(2) { --delay: 0.2s; }
+    .success-metric:nth-child(3) { --delay: 0.4s; }
+    .success-metric:nth-child(4) { --delay: 0.6s; }
+    
+    .service-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        height: 100%;
+        border: 2px solid transparent;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        border-color: #10b981;
+        box-shadow: 0 15px 40px rgba(16, 185, 129, 0.1);
+    }
+    
+    .infrastructure-highlight {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        padding: 2.5rem;
+        border-radius: 20px;
+        margin: 2rem 0;
+        box-shadow: 0 15px 35px rgba(59, 130, 246, 0.3);
+        animation: infraGlow 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes infraGlow {
+        0% { box-shadow: 0 15px 35px rgba(59, 130, 246, 0.3); }
+        100% { box-shadow: 0 15px 35px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.2); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <!-- Industrial Animation -->
+    <div class="industrial-animation">
+        <!-- Industrial Building -->
+        <div class="industrial-building">
+            <i class="bi bi-building-gear"></i>
+        </div>
+        
+        <!-- Starlink Signal -->
+        <div class="starlink-signal">
+            <i class="bi bi-satellite"></i>
+        </div>
+        
+        <!-- Fiber Connections -->
+        <div class="fiber-connection" style="top: 30%; left: 20%; width: 200px; transform: rotate(15deg); animation-delay: 0s;"></div>
+        <div class="fiber-connection" style="top: 60%; left: 40%; width: 180px; transform: rotate(-20deg); animation-delay: 1s;"></div>
+        <div class="fiber-connection" style="bottom: 30%; left: 25%; width: 160px; transform: rotate(25deg); animation-delay: 2s;"></div>
+        
+        <!-- Network Nodes -->
+        <div class="network-node" style="top: 25%; left: 20%; animation-delay: 0s;"></div>
+        <div class="network-node" style="top: 45%; right: 30%; animation-delay: 1s;"></div>
+        <div class="network-node" style="bottom: 40%; left: 35%; animation-delay: 2s;"></div>
+        <div class="network-node" style="top: 65%; left: 60%; animation-delay: 0.5s;"></div>
+        <div class="network-node" style="bottom: 25%; right: 25%; animation-delay: 1.5s;"></div>
+    </div>
+    
+    <div class="container">
+        <div class="hero-content">
+            <div class="case-study-badge">
+                🏭 Industrial Network Case Study
+            </div>
+            <h1 class="display-4 fw-bold mb-4">Complete Industrial Site Network Installation</h1>
+            <p class="lead mb-4">
+                Enterprise-grade network infrastructure deployment featuring Starlink backhaul, multimode fiber backbone, UniFi Dream Machine, WiFi 7 access points, and professional cable management across multiple industrial buildings.
+            </p>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <span class="success-metric">🛰️ Starlink Business Backhaul</span>
+                        <span class="success-metric">🌐 Multimode Fiber Infrastructure</span>
+                        <span class="success-metric">📡 WiFi 7 Technology</span>
+                        <span class="success-metric">🔧 Professional Installation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Challenge Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6">
+                <h2 class="mb-4">The <span class="accent">Challenge</span></h2>
+                <p class="mb-3">
+                    An expanding industrial facility required a complete network infrastructure overhaul to support modern operations:
+                </p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i><strong>No Internet Connectivity:</strong> Remote location with no existing broadband infrastructure</li>
+                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i><strong>Multiple Buildings:</strong> Network needed across several production and office buildings</li>
+                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i><strong>Industrial Environment:</strong> Harsh conditions requiring robust, reliable networking equipment</li>
+                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i><strong>Future-Proof Requirements:</strong> High-bandwidth capabilities for expanding operations</li>
+                    <li class="mb-2"><i class="bi bi-x-circle-fill text-danger me-2"></i><strong>Professional Standards:</strong> Enterprise-grade infrastructure with redundancy and monitoring</li>
+                </ul>
+                <div class="alert alert-warning mt-3">
+                    <strong>Critical Requirements:</strong> Reliable high-speed internet, inter-building connectivity, WiFi coverage, and scalable infrastructure for future expansion.
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card">
+                    <h4 class="accent mb-3">Project Specifications</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Site Type:</strong><br>
+                            <span class="text-muted">Multi-building industrial facility</span>
+                        </div>
+                        <div class="col-6">
+                            <strong>Coverage:</strong><br>
+                            <span class="text-muted">Production & office areas</span>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <strong>Infrastructure:</strong><br>
+                            <span class="text-muted">Fiber backbone with WiFi 7</span>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <strong>Timeline:</strong><br>
+                            <span class="text-muted">5-day professional installation</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="accent mb-2">Key Deliverables</h5>
+                    <div class="d-flex flex-wrap gap-1">
+                        <span class="tech-badge">Starlink Business</span>
+                        <span class="tech-badge">Multimode Fiber</span>
+                        <span class="tech-badge">UniFi Dream Machine</span>
+                        <span class="tech-badge">WiFi 7 APs</span>
+                        <span class="tech-badge">Rack Installation</span>
+                        <span class="tech-badge">Cable Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Installation Gallery Section -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Professional Installation <span class="accent">Gallery</span></h2>
+            <p class="text-muted">Enterprise-grade infrastructure deployment with attention to detail and professional standards</p>
+        </div>
+        
+        <div class="row g-4 image-gallery">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <img src="{{ url_for('static', filename='starlink-business-installation.png') }}" 
+                         alt="Starlink Business dish installation for industrial backhaul" 
+                         class="img-fluid mb-3"
+                         style="height: 280px; width: 100%; object-fit: cover;">
+                    <h5 class="accent">Starlink Business Backhaul</h5>
+                    <p class="text-muted small">Professional mounting and alignment of Starlink Business dish providing high-speed satellite connectivity</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <img src="{{ url_for('static', filename='industrial-network-rack.png') }}" 
+                         alt="Professional network rack with UniFi equipment installation" 
+                         class="img-fluid mb-3"
+                         style="height: 280px; width: 100%; object-fit: cover;">
+                    <h5 class="accent">Enterprise Network Rack</h5>
+                    <p class="text-muted small">19" rack installation with UniFi Dream Machine, switches, and professional cable management</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <img src="{{ url_for('static', filename='unifi-switch-installation.png') }}" 
+                         alt="UniFi switch installation with fiber connections" 
+                         class="img-fluid mb-3"
+                         style="height: 280px; width: 100%; object-fit: cover;">
+                    <h5 class="accent">UniFi Switch Deployment</h5>
+                    <p class="text-muted small">Enterprise UniFi switches with multimode fiber uplinks and PoE++ for access points</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <img src="{{ url_for('static', filename='wifi7-access-point.png') }}" 
+                         alt="WiFi 7 access point installation in industrial environment" 
+                         class="img-fluid mb-3"
+                         style="height: 280px; width: 100%; object-fit: cover;">
+                    <h5 class="accent">WiFi 7 Access Points</h5>
+                    <p class="text-muted small">Latest WiFi 7 technology providing ultra-fast wireless connectivity across industrial areas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Infrastructure Highlight -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="infrastructure-highlight text-center">
+                    <h2 class="mb-4">🌟 Enterprise-Grade Infrastructure Implementation</h2>
+                    <p class="lead mb-4">Professional network infrastructure designed for industrial environments with redundancy, scalability, and future-proofing built into every component.</p>
+                    <div class="row g-4">
+                        <div class="col-md-3">
+                            <h5>🛰️ Starlink Business</h5>
+                            <p class="small mb-0">Priority high-speed satellite connectivity with business SLA</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>🌐 Fiber Backbone</h5>
+                            <p class="small mb-0">Multimode fiber infrastructure with professional splicing</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>⚡ WiFi 7 Technology</h5>
+                            <p class="small mb-0">Latest wireless standard for maximum performance</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>🔧 Professional Install</h5>
+                            <p class="small mb-0">Rack mounting, cable management, and testing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solution Section -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Our <span class="accent">Solution</span></h2>
+            <p class="text-muted">Comprehensive enterprise network infrastructure deployment with cutting-edge technology and professional installation</p>
+        </div>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <i class="bi bi-satellite fs-1 mb-3"></i>
+                    <h3>Starlink Business</h3>
+                    <p class="mb-0">High-speed satellite backhaul with business-grade SLA and priority support</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <i class="bi bi-ethernet fs-1 mb-3"></i>
+                    <h3>Multimode Fiber</h3>
+                    <p class="mb-0">Professional fiber optic backbone with splice enclosures and testing</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card">
+                    <i class="bi bi-wifi fs-1 mb-3"></i>
+                    <h3>WiFi 7 Network</h3>
+                    <p class="mb-0">Latest wireless technology with enterprise access points and coverage</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4">
+                <h3 class="accent mb-3">Technical Implementation</h3>
+                <div class="timeline-item">
+                    <h5><i class="bi bi-1-circle-fill accent me-2"></i>Site Survey & Design</h5>
+                    <p class="mb-0">Comprehensive site assessment, wireless survey planning, and infrastructure design for optimal coverage and performance.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5><i class="bi bi-2-circle-fill accent me-2"></i>Starlink Business Installation</h5>
+                    <p class="mb-0">Professional mounting and alignment of Starlink Business dish with weatherproof cabling and grounding.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5><i class="bi bi-3-circle-fill accent me-2"></i>Rack & Equipment Mounting</h5>
+                    <p class="mb-0">19" rack installation with UniFi Dream Machine, switches, and structured cable management systems.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5><i class="bi bi-4-circle-fill accent me-2"></i>Fiber Backbone Installation</h5>
+                    <p class="mb-0">Multimode fiber cable installation between buildings with professional splicing and testing.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5><i class="bi bi-5-circle-fill accent me-2"></i>Cable Tray & Cat6 Installation</h5>
+                    <p class="mb-0">Professional cable tray systems and Cat6 cabling to all access point locations with proper termination.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5><i class="bi bi-6-circle-fill accent me-2"></i>WiFi 7 Access Point Deployment</h5>
+                    <p class="mb-0">Strategic placement and configuration of WiFi 7 access points for comprehensive industrial coverage.</p>
+                </div>
+                <div class="timeline-item">
+                    <h5><i class="bi bi-7-circle-fill accent me-2"></i>Testing & Optimization</h5>
+                    <p class="mb-0">Comprehensive wireless survey validation, performance testing, and network optimization.</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card">
+                    <h4 class="accent mb-3">Equipment & Infrastructure</h4>
+                    <div class="mb-3">
+                        <strong>Internet Connectivity:</strong><br>
+                        <span class="tech-badge">Starlink Business</span>
+                        <span class="tech-badge">High-Speed Satellite</span>
+                        <span class="tech-badge">Business SLA</span>
+                        <span class="tech-badge">Priority Support</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Network Infrastructure:</strong><br>
+                        <span class="tech-badge">UniFi Dream Machine</span>
+                        <span class="tech-badge">2x UniFi Switches</span>
+                        <span class="tech-badge">Multimode Fiber</span>
+                        <span class="tech-badge">Professional Splicing</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Wireless Network:</strong><br>
+                        <span class="tech-badge">WiFi 7 Standard</span>
+                        <span class="tech-badge">Enterprise Access Points</span>
+                        <span class="tech-badge">Industrial Coverage</span>
+                        <span class="tech-badge">High-Density Support</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Physical Infrastructure:</strong><br>
+                        <span class="tech-badge">19" Rack Installation</span>
+                        <span class="tech-badge">Cable Tray Systems</span>
+                        <span class="tech-badge">Cat6 Cabling</span>
+                        <span class="tech-badge">Professional Termination</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Testing & Validation:</strong><br>
+                        <span class="tech-badge">Wireless Survey</span>
+                        <span class="tech-badge">Fiber Testing</span>
+                        <span class="tech-badge">Performance Validation</span>
+                        <span class="tech-badge">Documentation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results Section -->
+<section class="py-5" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white;">
+    <div class="container text-center">
+        <h2 class="mb-4">Outstanding <span style="color: #f0fdf4;">Results</span></h2>
+        <p class="lead mb-5">Complete enterprise network transformation delivering reliable connectivity and future-proof infrastructure across the entire industrial facility</p>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+                    <h3 class="mb-2">500Mbps+</h3>
+                    <p class="mb-0">Starlink Business Speed</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🌐</div>
+                    <h3 class="mb-2">Fiber</h3>
+                    <p class="mb-0">Multi-Building Backbone</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📡</div>
+                    <h3 class="mb-2">WiFi 7</h3>
+                    <p class="mb-0">Latest Wireless Technology</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem; height: 100%;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                    <h3 class="mb-2">100%</h3>
+                    <p class="mb-0">Site Coverage</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                    <h4 class="mb-3">Project Success Achievements ✅</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled text-start">
+                                <li class="mb-2">✅ <strong>Starlink Business Backhaul:</strong> 500Mbps+ satellite connectivity with business SLA</li>
+                                <li class="mb-2">✅ <strong>Fiber Backbone:</strong> Multimode fiber connecting all buildings with professional splicing</li>
+                                <li class="mb-2">✅ <strong>Enterprise Equipment:</strong> UniFi Dream Machine and switches for reliable performance</li>
+                                <li class="mb-2">✅ <strong>WiFi 7 Technology:</strong> Latest wireless standard for maximum throughput</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled text-start">
+                                <li class="mb-2">✅ <strong>Professional Installation:</strong> Rack mounting, cable management, and testing</li>
+                                <li class="mb-2">✅ <strong>Complete Coverage:</strong> WiFi access throughout all production and office areas</li>
+                                <li class="mb-2">✅ <strong>Future-Proof Infrastructure:</strong> Scalable design for business expansion</li>
+                                <li class="mb-2">✅ <strong>Industrial Grade:</strong> Robust equipment suitable for harsh environments</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Details Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-4">Technical <span class="accent">Implementation Details</span></h2>
+            <p class="text-muted">Professional methodology and enterprise-grade equipment ensuring reliable, scalable network infrastructure</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="service-card">
+                    <h4 class="accent mb-3"><i class="bi bi-satellite me-2"></i>Starlink Business Deployment</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>Installation:</strong> Professional roof mounting with guy wires and grounding</li>
+                        <li class="mb-2"><strong>Performance:</strong> 500Mbps+ download, 50Mbps+ upload speeds</li>
+                        <li class="mb-2"><strong>SLA:</strong> Business-grade service level agreement with priority support</li>
+                        <li class="mb-2"><strong>Reliability:</strong> Built-in redundancy and 99.9% uptime guarantee</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card">
+                    <h4 class="accent mb-3"><i class="bi bi-ethernet me-2"></i>Fiber Infrastructure</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>Cable Type:</strong> OM3 multimode fiber for high-bandwidth applications</li>
+                        <li class="mb-2"><strong>Installation:</strong> Underground conduit and overhead cable tray systems</li>
+                        <li class="mb-2"><strong>Splicing:</strong> Professional fusion splicing with proper splice enclosures</li>
+                        <li class="mb-2"><strong>Testing:</strong> OTDR testing and documentation for all fiber runs</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card">
+                    <h4 class="accent mb-3"><i class="bi bi-hdd-network me-2"></i>Network Equipment</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>UniFi Dream Machine:</strong> Enterprise gateway with integrated security</li>
+                        <li class="mb-2"><strong>UniFi Switches:</strong> 2x enterprise switches with PoE++ support</li>
+                        <li class="mb-2"><strong>Rack Installation:</strong> 19" rack with proper cable management</li>
+                        <li class="mb-2"><strong>Redundancy:</strong> Dual power supplies and backup configurations</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card">
+                    <h4 class="accent mb-3"><i class="bi bi-wifi me-2"></i>WiFi 7 Deployment</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>Technology:</strong> Latest WiFi 7 standard with BE speeds</li>
+                        <li class="mb-2"><strong>Coverage:</strong> Strategic AP placement for optimal signal coverage</li>
+                        <li class="mb-2"><strong>Performance:</strong> Multi-gigabit wireless speeds and low latency</li>
+                        <li class="mb-2"><strong>Management:</strong> Centralized UniFi controller for monitoring and updates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Client Results Section -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="service-card">
+                    <div style="font-size: 4rem; color: #10b981; margin-bottom: 1rem;">"</div>
+                    <blockquote class="blockquote">
+                        <p class="lead">"Exceptional professional service. The team delivered a complete enterprise network solution that exceeded our expectations. Fast, reliable connectivity across all our buildings with room for future growth."</p>
+                    </blockquote>
+                    <div class="mt-4">
+                        <strong>Facilities Manager, Major Industrial Client</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+// Track industrial case study page views
+if (typeof gtag !== 'undefined') {
+    gtag('event', 'case_study_view', {
+        'event_category': 'engagement',
+        'event_label': 'industrial_network_case_study',
+        'case_study_type': 'industrial_infrastructure'
+    });
+}
+
+// Smooth scrolling for internal links
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Animate timeline items on scroll
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.timeline-item').forEach(function(item) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(item);
+    });
+});
+</script>
+{% endblock %}
