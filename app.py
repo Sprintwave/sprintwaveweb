@@ -488,6 +488,11 @@ def factory_wifi_norfolk():
 def case_study_industrial_network():  # This is the function name to use
     return render_template('case_study_industrial_network.html')
 
+# Add this route to your app.py file
+@app.route('/cctv-installation-norfolk')
+def cctv_installation_norfolk():
+    return render_template('cctv-installation-norfolk.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)

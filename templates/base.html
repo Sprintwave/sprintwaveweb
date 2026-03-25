@@ -127,7 +127,7 @@
             border-color: rgba(0,127,115,0.2);
         }
         
-        footer
+        footer {
             background: #ffffff !important;
             padding: 40px 0;
         }
@@ -289,6 +289,9 @@
                         <li><a class="dropdown-item" href="{{ url_for('starlink') }}">
                             <span style="font-size:1.1em; margin-right: 0.5em;">🛰️</span>Starlink Installation
                         </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('cctv_installation_norfolk') }}">
+                            <span style="font-size:1.1em; margin-right: 0.5em;">📹</span>CCTV Installation & Security
+                        </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('rural_broadband') }}">
                             <span style="font-size:1.1em; margin-right: 0.5em;">🌾</span>Rural Broadband
                         </a></li>
@@ -314,88 +317,31 @@
                     </ul>
                 </li>
 
-                <!-- Industries & Sectors (MOVED UP) -->
+                <!-- Case Studies -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="industriesDropdown" role="button" data-bs-toggle="dropdown" style="color: #7c3aed;">
-                        <i class="bi bi-globe-americas me-1"></i> Industries
+                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="caseStudiesDropdown" role="button" data-bs-toggle="dropdown" style="color: #6366f1;">
+                        <i class="bi bi-briefcase me-1"></i> Case Studies
                     </a>
                     <ul class="dropdown-menu">
-                        <li><h6 class="dropdown-header text-muted">Specialized Network Solutions</h6></li>
-                        
-                        <!-- Hospitality & Tourism -->
-                        <li><a class="dropdown-item" href="{{ url_for('hotel_wifi_norfolk') }}">
-                            🏨 Hotels & Hospitality WiFi
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('guest_wifi_solutions') }}">
-                            🛎️ Guest WiFi Management
-                        </a></li>
-                        
-                        <!-- Agriculture & Farming -->
-                        <li><a class="dropdown-item" href="{{ url_for('farm_connectivity') }}">
-                            🚜 Farm & Agricultural Connectivity
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('rural_estate_networks') }}">
-                            🏡 Rural Estate Networks
-                        </a></li>
-                        
-                        <!-- Manufacturing & Industrial -->
-                        <li><a class="dropdown-item" href="{{ url_for('factory_wifi_norfolk') }}">
-                            🏭 Factory & Manufacturing WiFi
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('warehouse_connectivity') }}">
-                            📦 Warehouse & Logistics Networks
-                        </a></li>
-                        
-                        <!-- Healthcare & Care -->
-                        <li><a class="dropdown-item" href="{{ url_for('healthcare_wifi') }}">
-                            🏥 Healthcare & Care Home WiFi
-                        </a></li>
-                        
-                        <!-- Education -->
-                        <li><a class="dropdown-item" href="{{ url_for('school_wifi_norfolk') }}">
-                            🎓 Schools & Education WiFi
-                        </a></li>
-                        
-                        <li><hr class="dropdown-divider"></li>
-                        <li><small class="dropdown-item text-muted">
-                            <i class="bi bi-info-circle me-1"></i>Industry-specific network expertise
-                        </small></li>
-                    </ul>
-                </li>
-
-                <!-- Case Studies (NOW AFTER INDUSTRIES) -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="caseStudiesDropdown" role="button" data-bs-toggle="dropdown" style="color: #7c3aed;">
-                        <i class="bi bi-file-text me-1"></i> Case Studies
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><h6 class="dropdown-header text-muted">Real Project Examples</h6></li>
-                        
-                        <li><a class="dropdown-item" href="{{ url_for('case_study_event_wifi') }}">
-                            🎪 Norwich Market Event WiFi
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('case_study_starlink') }}">
-                            🛰️ Rural Starlink Deployment
+                        <li><a class="dropdown-item" href="{{ url_for('case_study_9800') }}">
+                            🛜 NHS Trust WiFi migration
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('case_study_nhs_wifi') }}">
-                            🏥 NHS WiFi Survey & Upgrade
+                            🏥 NHS Foundation Trust WiFi Survey
                         </a></li>
                         <li><a class="dropdown-item" href="{{ url_for('case_study_rural_wifi') }}">
-                            🚚 Rural Logistics WiFi
+                            🚛 Rural Logistics Network Installation
                         </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('case_study_9800') }}">
-                            📡 Cisco 9800 WLC Migration
+                        <li><a class="dropdown-item" href="{{ url_for('case_study_event_wifi') }}">
+                            🎪 Market Event WiFi Deployment
                         </a></li>
-                        
-                        <!-- Industrial case study -->
-                        <li><a class="dropdown-item" href="{{ url_for('case_study_industrial_network') }}">
-                            🏭 Industrial Network Infrastructure
+                        <li><a class="dropdown-item" href="{{ url_for('case_study_starlink') }}">
+                            🛰️ Rural Starlink Installation Project
                         </a></li>
-                        
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ url_for('case_studies') }}">
-                            <i class="bi bi-collection me-1"></i>View All Case Studies
-                        </a></li>
+                        <li><small class="dropdown-item text-muted">
+                            <i class="bi bi-info-circle me-1"></i>Real-world deployments
+                        </small></li>
                     </ul>
                 </li>
                                 <!-- CCNP Wireless -->
@@ -464,6 +410,55 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><small class="dropdown-item text-muted">
                             <i class="bi bi-info-circle me-1"></i>Enterpise network insights
+                        </small></li>
+                    </ul>
+                </li>
+
+                <!-- Industries & Sectors -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="industriesDropdown" role="button" data-bs-toggle="dropdown" style="color: #7c3aed;">
+                        <i class="bi bi-globe-americas me-1"></i> Industries
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header text-muted">Specialized Network Solutions</h6></li>
+                        
+                        <!-- Hospitality & Tourism -->
+                        <li><a class="dropdown-item" href="{{ url_for('hospitality_networks') }}">
+                            🏨 Hotels & Hospitality WiFi
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('guest_wifi_solutions') }}">
+                            🛎️ Guest WiFi Management
+                        </a></li>
+                        
+                        <!-- Agriculture & Farming -->
+                        <li><a class="dropdown-item" href="{{ url_for('farm_connectivity') }}">
+                            🚜 Farm & Agricultural Connectivity
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('rural_estate_networks') }}">
+                            🏡 Rural Estate Networks
+                        </a></li>
+                        
+                        <!-- Manufacturing & Industrial -->
+                        <li><a class="dropdown-item" href="{{ url_for('manufacturing_networks') }}">
+                            🏭 Factory & Manufacturing WiFi
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('warehouse_connectivity') }}">
+                            📦 Warehouse & Logistics Networks
+                        </a></li>
+                        
+                        <!-- Healthcare & Care -->
+                        <li><a class="dropdown-item" href="{{ url_for('healthcare_wifi') }}">
+                            🏥 Healthcare & Care Home WiFi
+                        </a></li>
+                        
+                        <!-- Education -->
+                        <li><a class="dropdown-item" href="{{ url_for('education_networks') }}">
+                            🎓 Schools & Education WiFi
+                        </a></li>
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><small class="dropdown-item text-muted">
+                            <i class="bi bi-info-circle me-1"></i>Industry-specific network expertise
                         </small></li>
                     </ul>
                 </li>
