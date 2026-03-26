@@ -438,9 +438,7 @@ def farm_connectivity():
 
 @app.route('/rural-estate-networks')
 def rural_estate_networks():
-    return render_template('coming_soon.html',
-                         page_title="Rural Estate Network Solutions",
-                         message="Professional network solutions for large rural properties and estates coming soon!")
+    return render_template('rural-estate-networks.html')
 
 @app.route('/manufacturing-networks')
 def manufacturing_networks():
