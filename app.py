@@ -434,9 +434,7 @@ def guest_wifi_solutions():
 
 @app.route('/farm-connectivity')
 def farm_connectivity():
-    return render_template('coming_soon.html',
-                         page_title="Farm & Agricultural Connectivity",
-                         message="Smart farm connectivity solutions coming soon! Starlink, rural broadband, and IoT networks for modern agriculture across Norfolk.")
+    return render_template('farm-connectivity.html')
 
 @app.route('/rural-estate-networks')
 def rural_estate_networks():
