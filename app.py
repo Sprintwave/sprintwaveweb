@@ -493,6 +493,12 @@ def case_study_industrial_network():  # This is the function name to use
 def cctv_installation_norfolk():
     return render_template('cctv-installation-norfolk.html')
 
+# Add this route after your other Norfolk routes (around line 495)
+
+@app.route('/healthcare-wifi-norfolk')
+def healthcare_wifi_norfolk():
+    return render_template('healthcare-wifi-norfolk.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
