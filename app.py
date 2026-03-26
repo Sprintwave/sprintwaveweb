@@ -430,9 +430,7 @@ def hospitality_networks():
 
 @app.route('/guest-wifi-solutions')
 def guest_wifi_solutions():
-    return render_template('coming_soon.html',
-                         page_title="Guest WiFi Management Solutions",
-                         message="Advanced guest WiFi management systems coming soon! Captive portals, analytics, and seamless guest experience solutions.")
+    return render_template('guest-wifi-solutions.html')
 
 @app.route('/farm-connectivity')
 def farm_connectivity():
