@@ -1,0 +1,608 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Sprintwave Events — Festival WiFi & Event Internet UK | Network-in-a-Box</title>
+<meta name="description" content="Festival WiFi, event internet, Starlink hire and Network-in-a-Box for festivals, shows, markets and temporary sites across the UK.">
+<meta name="keywords" content="Festival WiFi UK, Event WiFi, Temporary Internet, Starlink Hire UK, Network-in-a-Box, Festival Connectivity, Event Internet Provider, Outdoor WiFi">
+<meta property="og:title" content="Sprintwave Events — Internet Anywhere">
+<meta property="og:description" content="Festival WiFi, event internet and Network-in-a-Box for festivals, shows and temporary sites across the UK.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/events">
+<meta property="og:image" content="https://www.sprintwave.co.uk{{ url_for('static', filename='images/sprintwave-og-image.png') }}">
+{% endblock %}
+
+{% block custom_css %}
+    /* ── Events accent colour ── */
+    .events-accent          { color: #ff3cac; }
+    .events-eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-size: 0.78rem;
+        color: #ff3cac;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    /* ── Hero ── */
+    .events-hero {
+        background: linear-gradient(135deg, #fff5fb 0%, #e6f0ef 100%);
+        padding: 80px 0 60px;
+        border-bottom: 1px solid rgba(255,60,172,0.1);
+    }
+    .events-hero h1 {
+        font-size: clamp(2.4rem, 6vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.08;
+        color: #1a1a1a;
+    }
+    .events-hero h1 .highlight { color: #ff3cac; }
+    .events-hero .lead       { color: #444; max-width: 560px; line-height: 1.75; }
+
+    /* ── Spec card in hero ── */
+    .hero-spec-card {
+        background: #ffffff;
+        border: 1px solid rgba(255,60,172,0.2);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(255,60,172,0.08);
+    }
+    .hero-spec-card h3 {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #ff3cac;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+    }
+    .hero-spec-card ul { list-style: none; padding: 0; margin: 0; }
+    .hero-spec-card li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+        color: #333;
+        font-size: 0.95rem;
+    }
+    .hero-spec-card li:last-child { border-bottom: none; }
+    .hero-spec-card li::before  { content: '→ '; color: #ff3cac; font-weight: 700; }
+
+    /* ── Primary button ── */
+    .btn-events {
+        background: #ff3cac;
+        color: #fff !important;
+        border: none;
+        border-radius: 999px;
+        padding: 0.8rem 2rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 15px rgba(255,60,172,0.3);
+    }
+    .btn-events:hover {
+        background: #e0008e;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255,60,172,0.45);
+        color: #fff !important;
+    }
+    .btn-events-outline {
+        background: transparent;
+        color: #ff3cac !important;
+        border: 2px solid #ff3cac;
+        border-radius: 999px;
+        padding: 0.78rem 1.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.25s ease;
+    }
+    .btn-events-outline:hover {
+        background: #ff3cac;
+        color: #fff !important;
+        transform: translateY(-2px);
+    }
+
+    /* ── Events service card (matches site .service-card style) ── */
+    .events-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: all 0.3s ease;
+        height: 100%;
+        border: 1px solid rgba(255,60,172,0.1);
+    }
+    .events-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(255,60,172,0.12);
+        border-color: rgba(255,60,172,0.25);
+    }
+    .events-card .card-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .events-card h3         { font-size: 1.1rem; font-weight: 700; color: #1a1a1a; margin-bottom: 0.5rem; }
+    .events-card p          { color: #555; font-size: 0.93rem; line-height: 1.65; margin: 0; }
+
+    /* ── Client cards ── */
+    .client-card {
+        background: #ffffff;
+        border-radius: 15px;
+        overflow: hidden;
+        height: 100%;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        border: 1px solid rgba(255,60,172,0.1);
+        transition: all 0.3s ease;
+    }
+    .client-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(255,60,172,0.12);
+        border-color: rgba(255,60,172,0.25);
+    }
+    .client-hero-img        { width: 100%; height: 220px; object-fit: cover; display: block; }
+    .client-body            { padding: 1.5rem; }
+    .client-body h3         { font-size: 1.1rem; font-weight: 700; color: #1a1a1a; margin-bottom: 0.4rem; }
+    .client-body p          { color: #555; font-size: 0.9rem; line-height: 1.6; margin: 0; }
+    .client-gallery         { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .client-gallery img     { width: 100%; height: 120px; object-fit: cover; display: block; }
+    .client-badge {
+        display: inline-block;
+        background: rgba(255,60,172,0.08);
+        color: #ff3cac;
+        border: 1px solid rgba(255,60,172,0.25);
+        border-radius: 999px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 0.2rem 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* ── Network-in-a-Box section ── */
+    .niab-section {
+        background: linear-gradient(135deg, #fff5fb 0%, #f8f9fa 100%);
+        border-top: 1px solid rgba(255,60,172,0.1);
+        border-bottom: 1px solid rgba(255,60,172,0.1);
+    }
+    .spec-pill-grid         { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.25rem; }
+    .spec-pill {
+        background: rgba(255,60,172,0.07);
+        border: 1px solid rgba(255,60,172,0.25);
+        color: #cc007a;
+        border-radius: 999px;
+        padding: 0.3rem 1rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+    }
+    .niab-img {
+        width: 100%;
+        border-radius: 15px;
+        border: 1px solid rgba(0,0,0,0.06);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        object-fit: cover;
+    }
+
+    /* ── Industries pills ── */
+    .industries-grid        { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+    .industry-pill {
+        background: #ffffff;
+        border: 1px solid rgba(255,60,172,0.15);
+        color: #333;
+        border-radius: 999px;
+        padding: 0.45rem 1.1rem;
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        cursor: default;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .industry-pill:hover {
+        border-color: #ff3cac;
+        color: #ff3cac;
+        background: rgba(255,60,172,0.05);
+    }
+
+    /* ── Process steps ── */
+    .step-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        height: 100%;
+        border: 1px solid rgba(255,60,172,0.1);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+    .step-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 28px rgba(255,60,172,0.1);
+        border-color: rgba(255,60,172,0.25);
+    }
+    .step-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: rgba(255,60,172,0.18);
+        line-height: 1;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    .step-card h3 { font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 0.4rem; }
+    .step-card p  { color: #666; font-size: 0.9rem; line-height: 1.65; margin: 0; }
+
+    /* ── Contact section ── */
+    .events-contact-wrap {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        border: 1px solid rgba(255,60,172,0.1);
+    }
+
+    /* ── Section divider ── */
+    .events-divider {
+        border: none;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,60,172,0.2), transparent);
+        margin: 0;
+        opacity: 1;
+    }
+{% endblock %}
+
+{% block content %}
+
+<!-- ── HERO ── -->
+<section class="events-hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="events-eyebrow">Temporary connectivity for events, sites and remote places</span>
+                <h1 class="mb-3">Internet <span class="highlight">Anywhere.</span></h1>
+                <p class="lead mb-4">
+                    Reliable Wi-Fi, Starlink and managed temporary networks for festivals, outdoor events, construction sites, agricultural shows and remote locations across the UK.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#contact" class="btn-events">Get a quote</a>
+                    <a href="#network-in-a-box" class="btn-events-outline">Explore Network-in-a-Box</a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="hero-spec-card">
+                    <h3>Built for temporary places</h3>
+                    <ul>
+                        <li>Starlink primary connectivity</li>
+                        <li>5G backup and failover</li>
+                        <li>Event Wi-Fi and vendor networks</li>
+                        <li>Card payment connectivity</li>
+                        <li>Ticketing and CCTV backhaul</li>
+                        <li>Remote monitoring and support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services" style="padding: 80px 0;">
+    <div class="container">
+        <div class="mb-5">
+            <span class="events-eyebrow">What we do</span>
+            <h2 class="fw-bold">Connectivity that works where infrastructure doesn't.</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="events-card">
+                    <span class="card-icon">📡</span>
+                    <h3>Festival &amp; Event Wi-Fi</h3>
+                    <p>Managed Wi-Fi for festivals, fairs, markets, sporting events, food festivals and temporary venues. Guest access, vendor networks and production zones.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="events-card">
+                    <span class="card-icon">🛰️</span>
+                    <h3>Starlink Connectivity</h3>
+                    <p>Rapid internet deployment using Starlink, with optional 5G backup and managed routing. Deployable anywhere — no fixed line required.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="events-card">
+                    <span class="card-icon">🏗️</span>
+                    <h3>Temporary Site Internet</h3>
+                    <p>Connectivity for construction compounds, welfare units, production offices, CCTV and site operations. Week-long to year-long deployments.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="events-card">
+                    <span class="card-icon">💳</span>
+                    <h3>Card Payment Networks</h3>
+                    <p>Dedicated reliable connectivity for card machines across vendor pitches, bars, food traders and ticketing. No dropped payments at peak times.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="events-card">
+                    <span class="card-icon">📹</span>
+                    <h3>CCTV Backhaul</h3>
+                    <p>Wireless and Starlink backhaul solutions for temporary CCTV deployments. Keeps cameras connected without digging cable trenches.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="events-card">
+                    <span class="card-icon">📦</span>
+                    <h3>Network-in-a-Box</h3>
+                    <p>Our flagship rugged deployable unit. Starlink + 5G + switching + Wi-Fi in a flight-case ready setup. Drives to site, plugs in, works.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="events-divider">
+
+<!-- ── CLIENTS ── -->
+<section id="clients" style="padding: 80px 0;">
+    <div class="container">
+        <div class="mb-5">
+            <span class="events-eyebrow">Who we've supported</span>
+            <h2 class="fw-bold">Events and shows that have trusted Sprintwave Events.</h2>
+        </div>
+
+        <!-- Featured clients -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="client-card">
+                    <img src="{{ url_for('static', filename='norwichfestival.jpg') }}"
+                         alt="Norfolk & Norwich Festival" class="client-hero-img">
+                    <div class="client-body">
+                        <span class="client-badge">Featured client</span>
+                        <h3>Norfolk &amp; Norwich Festival</h3>
+                        <p>One of the UK's oldest arts festivals, with over 250 years of history. We delivered managed connectivity across multiple outdoor stages and temporary venues throughout the city.</p>
+                    </div>
+                    <div class="client-gallery">
+                        <img src="{{ url_for('static', filename='festival1.jpg') }}" alt="Norfolk & Norwich Festival — stage">
+                        <img src="{{ url_for('static', filename='festival2.jpg') }}" alt="Norfolk & Norwich Festival — gardens">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="client-card">
+                    <img src="{{ url_for('static', filename='essexcountycraftfair.jpg') }}"
+                         alt="Essex County Craft Fair" class="client-hero-img">
+                    <div class="client-body">
+                        <span class="client-badge">Featured client</span>
+                        <h3>Essex County Craft Fair</h3>
+                        <p>One of the UK's largest craft fairs, spanning a vast showground with hundreds of vendors — all requiring reliable card payment connectivity and vendor Wi-Fi.</p>
+                    </div>
+                    <div class="client-gallery">
+                        <img src="{{ url_for('static', filename='essexfair.jpeg') }}" alt="Essex County Craft Fair — grounds">
+                        <img src="{{ url_for('static', filename='essexfair2.png') }}" alt="Essex County Craft Fair — vendors">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Smaller clients -->
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="client-card">
+                    <img src="{{ url_for('static', filename='fretfest.png') }}"
+                         alt="FretFest" class="client-hero-img" style="height:160px;">
+                    <div class="client-body">
+                        <h3>FretFest</h3>
+                        <p>Event Wi-Fi, ticketing and vendor connectivity for this guitar and music festival.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="client-card">
+                    <img src="{{ url_for('static', filename='localmakers.png') }}"
+                         alt="Local Makers Market" class="client-hero-img" style="height:160px;">
+                    <div class="client-body">
+                        <h3>Local Makers Market</h3>
+                        <p>Card payment and vendor Wi-Fi for independent makers and artisan traders.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="client-card">
+                    <img src="{{ url_for('static', filename='queerfest.png') }}"
+                         alt="QueerfFest" class="client-hero-img" style="height:160px;">
+                    <div class="client-body">
+                        <h3>QueerfFest</h3>
+                        <p>Vendor networks, ticketing and public Wi-Fi for this community celebration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="events-divider">
+
+<!-- ── NETWORK-IN-A-BOX ── -->
+<section id="network-in-a-box" class="niab-section" style="padding: 80px 0;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+                <span class="events-eyebrow">Core product</span>
+                <h2 class="fw-bold mb-3">Network-in-a-Box</h2>
+                <p class="text-muted" style="line-height:1.75;">
+                    A rugged, field-ready connectivity system designed for temporary sites. It brings together Starlink, 5G backup, managed switching, Wi-Fi and monitoring in one deployable setup. Drives to site. Plugs in. Works.
+                </p>
+                <div class="spec-pill-grid">
+                    <span class="spec-pill">Starlink</span>
+                    <span class="spec-pill">5G backup</span>
+                    <span class="spec-pill">Managed router</span>
+                    <span class="spec-pill">PoE switching</span>
+                    <span class="spec-pill">Outdoor Wi-Fi</span>
+                    <span class="spec-pill">Remote monitoring</span>
+                    <span class="spec-pill">UPS power</span>
+                    <span class="spec-pill">Flight-case housing</span>
+                </div>
+                <div class="mt-4">
+                    <a href="#contact" class="btn-events">Ask about availability</a>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <img src="{{ url_for('static', filename='boxes.png') }}"
+                     alt="Sprintwave Events fleet — Network-in-a-Box units and Starlink dishes"
+                     class="niab-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="events-divider">
+
+<!-- ── INDUSTRIES ── -->
+<section id="industries" style="padding: 80px 0;">
+    <div class="container">
+        <div class="mb-4">
+            <span class="events-eyebrow">Who we help</span>
+            <h2 class="fw-bold">For any place that needs internet temporarily.</h2>
+        </div>
+        <div class="industries-grid">
+            <span class="industry-pill">🎪 Festivals</span>
+            <span class="industry-pill">🚜 Agricultural shows</span>
+            <span class="industry-pill">🛒 Fairs &amp; markets</span>
+            <span class="industry-pill">🍔 Food festivals</span>
+            <span class="industry-pill">⚽ Sporting events</span>
+            <span class="industry-pill">🏗️ Construction sites</span>
+            <span class="industry-pill">🚐 Welfare units</span>
+            <span class="industry-pill">🏢 Temporary offices</span>
+            <span class="industry-pill">📹 Remote CCTV</span>
+            <span class="industry-pill">💳 Card payments</span>
+            <span class="industry-pill">🎟️ Ticketing systems</span>
+            <span class="industry-pill">📡 Vendor Wi-Fi</span>
+            <span class="industry-pill">🎶 Music festivals</span>
+            <span class="industry-pill">🌾 Rural shows</span>
+            <span class="industry-pill">🎡 Theme parks</span>
+        </div>
+    </div>
+</section>
+
+<hr class="events-divider">
+
+<!-- ── PROCESS ── -->
+<section id="process" style="padding: 80px 0;">
+    <div class="container">
+        <div class="mb-5">
+            <span class="events-eyebrow">How it works</span>
+            <h2 class="fw-bold">Simple deployment. Proper networking.</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-sm-6 col-lg-3">
+                <div class="step-card">
+                    <span class="step-number">01</span>
+                    <h3>Scope</h3>
+                    <p>We understand the site, dates, users, systems and coverage areas before anything is ordered or dispatched.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="step-card">
+                    <span class="step-number">02</span>
+                    <h3>Design</h3>
+                    <p>We plan the right mix of Starlink, 5G, Wi-Fi, switching and power for your specific event and site.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="step-card">
+                    <span class="step-number">03</span>
+                    <h3>Deploy</h3>
+                    <p>Equipment is installed, tested and signed off before the site goes live. No last-minute guesswork.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="step-card">
+                    <span class="step-number">04</span>
+                    <h3>Support</h3>
+                    <p>We monitor the service remotely and are available to support your event when it matters most.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="events-divider">
+
+<!-- ── CONTACT ── -->
+<section id="contact" style="padding: 80px 0;">
+    <div class="container">
+        <div class="row g-5 align-items-start">
+            <div class="col-lg-5">
+                <span class="events-eyebrow">Get started</span>
+                <h2 class="fw-bold mb-3">Tell us what you need connected.</h2>
+                <p class="text-muted" style="line-height:1.75;">
+                    Include the site type, location, dates, expected users and any critical systems such as card machines, ticketing or CCTV. We'll get back to you quickly.
+                </p>
+                <div class="mt-4">
+                    <p class="mb-2">
+                        <i class="bi bi-telephone me-2 events-accent"></i>
+                        <a href="tel:+441553824408" class="text-decoration-none fw-bold">01553 824408</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="bi bi-envelope me-2 events-accent"></i>
+                        <a href="mailto:info@sprintwave.co.uk" class="text-decoration-none fw-bold">info@sprintwave.co.uk</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="events-contact-wrap">
+                    <form action="https://formspree.io/f/mzdlaeqo" method="POST">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} mb-3">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label class="form-label fw-semibold">Name *</label>
+                                <input type="text" name="name" class="form-control" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label fw-semibold">Company / Organisation</label>
+                                <input type="text" name="company" class="form-control">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label fw-semibold">Email *</label>
+                                <input type="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label fw-semibold">Phone</label>
+                                <input type="tel" name="phone" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">Site / Event Type</label>
+                                <input type="text" name="site_type" class="form-control"
+                                       placeholder="Festival, agricultural show, construction site...">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label fw-semibold">Event Dates</label>
+                                <input type="text" name="dates" class="form-control"
+                                       placeholder="e.g. 14–16 Aug 2026">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label fw-semibold">Expected Users</label>
+                                <input type="text" name="users" class="form-control"
+                                       placeholder="e.g. 500 guests, 80 vendors">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">Message *</label>
+                                <textarea name="message" rows="4" class="form-control" required
+                                    placeholder="Tell us about your site, connectivity needs, card payments, CCTV, ticketing..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-events w-100"
+                                        style="text-align:center; cursor:pointer; border-radius:12px;">
+                                    Send enquiry
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

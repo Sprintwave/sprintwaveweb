@@ -316,7 +316,67 @@
                         </small></li>
                     </ul>
                 </li>
- <!-- Industries & Sectors -->
+
+                <!-- Sprintwave Events -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold"
+                       href="{{ url_for('events') }}"
+                       id="eventsDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       style="color: #ff3cac;">
+                        <i class="bi bi-calendar-event me-1"></i> Events
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item fw-bold" href="{{ url_for('events') }}">
+                                📡 Event WiFi Overview
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header text-muted">Services</h6></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('events') }}#services">
+                                🎪 Festival & Event WiFi
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('events') }}#network-in-a-box">
+                                📦 Network-in-a-Box
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('events') }}#services">
+                                🛰️ Starlink Hire
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('events') }}#services">
+                                💳 Card Payment Connectivity
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('events') }}#services">
+                                🏗️ Temporary Site Internet
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('events') }}#services">
+                                📹 CCTV Backhaul
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item fw-bold"
+                               href="{{ url_for('events') }}#contact"
+                               style="color: #ff3cac;">
+                                💬 Get Event Quote
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Industries & Sectors -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-bold" href="#" id="industriesDropdown" role="button" data-bs-toggle="dropdown" style="color: #7c3aed;">
                         <i class="bi bi-globe-americas me-1"></i> Industries
@@ -364,48 +424,16 @@
                         </small></li>
                     </ul>
                 </li>
-                <!-- Case Studies -->
+                <!-- Resources (Training + Blog + Case Studies combined) -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="caseStudiesDropdown" role="button" data-bs-toggle="dropdown" style="color: #6366f1;">
-                        <i class="bi bi-briefcase me-1"></i> Case Studies
+                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" style="color: #dc2626;">
+                        <i class="bi bi-collection me-1"></i> Resources
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ url_for('case_study_9800') }}">
-                            🛜 NHS Trust WiFi migration
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('case_study_nhs_wifi') }}">
-                            🏥 NHS Foundation Trust WiFi Survey
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('case_study_rural_wifi') }}">
-                            🚛 Rural Logistics Network Installation
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('case_study_event_wifi') }}">
-                            🎪 Market Event WiFi Deployment
-                        </a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('case_study_starlink') }}">
-                            🛰️ Rural Starlink Installation Project
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><small class="dropdown-item text-muted">
-                            <i class="bi bi-info-circle me-1"></i>Real-world deployments
-                        </small></li>
-                    </ul>
-                </li>
-                                <!-- CCNP Wireless -->
-
-
-
-                <!-- Training & Certification (Professional Focus) -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="trainingDropdown" role="button" data-bs-toggle="dropdown" style="color: #dc2626;">
-                        <i class="bi bi-mortarboard me-1"></i> Training
-                    </a>
-                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header text-muted">Training</h6></li>
                         <li><a class="dropdown-item" href="{{ url_for('examcontent') }}">
                             <i class="bi bi-award me-2"></i>CCNP Wireless Training Overview
                         </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><h6 class="dropdown-header text-muted">Professional RF Training</h6></li>
                         <li><a class="dropdown-item" href="{{ url_for('rf_fundamentals') }}">
                             📡 RF Fundamentals & Propagation
                         </a></li>
@@ -422,23 +450,10 @@
                             📈 SNR & Performance Optimization
                         </a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><small class="dropdown-item text-muted">
-                            <i class="bi bi-info-circle me-1"></i>Professional wireless training
-                        </small></li>
-                    </ul>
-                </li>
-
-                <!-- Blog (Simplified) -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" style="color: #1e3a8a;">
-                        <i class="bi bi-newspaper me-1"></i> Blog
-                    </a>
-                    <ul class="dropdown-menu">
+                        <li><h6 class="dropdown-header text-muted">Blog</h6></li>
                         <li><a class="dropdown-item" href="{{ url_for('blog') }}">
                             <i class="bi bi-house me-2"></i>Technical Blog
                         </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><h6 class="dropdown-header text-muted">Technical Articles</h6></li>
                         <li><a class="dropdown-item" href="{{ url_for('starlink_technical') }}">
                             🛰️ Starlink Technical Deep-Dive
                         </a></li>
@@ -455,13 +470,32 @@
                             <i class="bi bi-diagram-3 me-1"></i> Enterprise NAC Comparison
                         </a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><small class="dropdown-item text-muted">
-                            <i class="bi bi-info-circle me-1"></i>Enterpise network insights
-                        </small></li>
+                        <li><h6 class="dropdown-header text-muted">Case Studies</h6></li>
+                        <li><a class="dropdown-item" href="{{ url_for('case_study_9800') }}">
+                            🛜 NHS Trust WiFi Migration
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('case_study_nhs_wifi') }}">
+                            🏥 NHS Foundation Trust WiFi Survey
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('case_study_rural_wifi') }}">
+                            🚛 Rural Logistics Network Installation
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('case_study_event_wifi') }}">
+                            🎪 Market Event WiFi Deployment
+                        </a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('case_study_starlink') }}">
+                            🛰️ Rural Starlink Installation Project
+                        </a></li>
                     </ul>
                 </li>
 
-               
+                <!-- CTA Button — always visible, links to contact page -->
+                <li class="nav-item ms-2">
+                    <a class="btn-accent" href="{{ url_for('contact') }}"
+                       style="padding: 0.5rem 1.4rem; font-size: 0.9rem;">
+                        <i class="bi bi-send me-1"></i> Get a Quote
+                    </a>
+                </li>
 
                 <!-- Social & Contact -->
                 <li class="nav-item dropdown">

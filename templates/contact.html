@@ -1,0 +1,374 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Get a Quote | Sprintwave Network & WiFi Solutions</title>
+<meta name="description" content="Contact Sprintwave for a free quote on enterprise networking, event WiFi, Starlink installation, CCTV and small business network solutions across the UK.">
+<meta name="keywords" content="network quote, WiFi installation quote, event WiFi hire, Starlink installation, network consulting quote">
+<meta property="og:title" content="Get a Free Quote — Sprintwave">
+<meta property="og:description" content="Tell us what you need. Enterprise networks, event WiFi, Starlink, CCTV and more. Fast response, no obligation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/contact">
+{% endblock %}
+
+{% block robots %}
+<meta name="robots" content="index, follow">
+{% endblock %}
+
+{% block custom_css %}
+    .contact-hero {
+        background: linear-gradient(135deg, #e6f4f3 0%, #e6f0ef 100%);
+        padding: 70px 0 50px;
+        border-bottom: 1px solid rgba(0,127,115,0.1);
+    }
+    .contact-hero h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: #1a1a1a;
+        line-height: 1.1;
+    }
+    .contact-hero h1 span { color: #007f73; }
+    .contact-hero .lead   { color: #444; line-height: 1.75; max-width: 540px; }
+
+    /* Trust badges */
+    .trust-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #ffffff;
+        border: 1px solid rgba(0,127,115,0.15);
+        border-radius: 999px;
+        padding: 0.4rem 1rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #333;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .trust-badge i { color: #007f73; }
+
+    /* Service selector */
+    .service-selector {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-bottom: 1.5rem;
+    }
+    .service-chip {
+        background: #f5f5f5;
+        border: 2px solid #e0e0e0;
+        border-radius: 999px;
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.2s;
+        user-select: none;
+    }
+    .service-chip:hover,
+    .service-chip.active {
+        background: rgba(0,127,115,0.08);
+        border-color: #007f73;
+        color: #007f73;
+    }
+
+    /* Form card */
+    .contact-form-card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0,127,115,0.1);
+    }
+    .contact-form-card .form-control,
+    .contact-form-card .form-select {
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.95rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .contact-form-card .form-control:focus,
+    .contact-form-card .form-select:focus {
+        border-color: #007f73;
+        box-shadow: 0 0 0 3px rgba(0,127,115,0.12);
+    }
+    .contact-form-card .form-label {
+        font-weight: 600;
+        font-size: 0.88rem;
+        color: #333;
+        margin-bottom: 0.3rem;
+    }
+    .btn-submit {
+        background: #007f73;
+        color: #fff !important;
+        border: none;
+        border-radius: 999px;
+        padding: 0.9rem 2.5rem;
+        font-weight: 700;
+        font-size: 1.05rem;
+        width: 100%;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 15px rgba(0,127,115,0.3);
+        cursor: pointer;
+    }
+    .btn-submit:hover {
+        background: #005f57;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,127,115,0.4);
+    }
+
+    /* Info sidebar */
+    .info-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 1.75rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        border: 1px solid rgba(0,127,115,0.1);
+        margin-bottom: 1.25rem;
+    }
+    .info-card h4 {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #007f73;
+        margin-bottom: 1rem;
+    }
+    .info-card p  { font-size: 0.9rem; color: #555; line-height: 1.65; margin: 0; }
+    .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.65rem 0;
+        border-bottom: 1px solid #f0f0f0;
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+    }
+    .contact-link:last-child { border-bottom: none; }
+    .contact-link:hover      { color: #007f73; }
+    .contact-link i          { color: #007f73; font-size: 1.1rem; width: 1.2rem; }
+
+    /* What happens next */
+    .next-step {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        align-items: flex-start;
+    }
+    .next-step-num {
+        background: rgba(0,127,115,0.1);
+        color: #007f73;
+        border-radius: 999px;
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.8rem;
+        margin-top: 2px;
+    }
+    .next-step-text h5 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; color: #1a1a1a; }
+    .next-step-text p  { font-size: 0.82rem; color: #666; margin: 0; }
+{% endblock %}
+
+{% block content %}
+
+<!-- ── HERO ── -->
+<section class="contact-hero">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <h1 class="mb-3">Get a <span>free quote</span> —<br>no obligation.</h1>
+                <p class="lead mb-4">
+                    Tell us what you need. Enterprise networks, event WiFi, Starlink installation, CCTV or small business setup. We'll get back to you the same day.
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="trust-badge"><i class="bi bi-clock me-1"></i> Same-day response</span>
+                    <span class="trust-badge"><i class="bi bi-shield-check me-1"></i> No obligation</span>
+                    <span class="trust-badge"><i class="bi bi-geo-alt me-1"></i> UK-wide coverage</span>
+                    <span class="trust-badge"><i class="bi bi-telephone me-1"></i> 01553 824408</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FORM + SIDEBAR ── -->
+<section style="padding: 60px 0 80px;">
+    <div class="container">
+        <div class="row g-5 align-items-start">
+
+            <!-- Form -->
+            <div class="col-lg-8">
+                <div class="contact-form-card">
+                    <h2 class="fw-bold mb-1" style="font-size:1.4rem;">Tell us about your project</h2>
+                    <p class="text-muted mb-4" style="font-size:0.9rem;">Fill in as much or as little as you know. We'll handle the rest.</p>
+
+                    <!-- Service chips -->
+                    <div class="mb-3">
+                        <label class="form-label">What are you interested in? <span class="text-muted fw-normal">(select all that apply)</span></label>
+                        <div class="service-selector" id="serviceChips">
+                            <span class="service-chip" data-val="Enterprise Networking">🏢 Enterprise Networking</span>
+                            <span class="service-chip" data-val="Event WiFi">🎪 Event WiFi</span>
+                            <span class="service-chip" data-val="Starlink Installation">🛰️ Starlink Installation</span>
+                            <span class="service-chip" data-val="CCTV">📹 CCTV</span>
+                            <span class="service-chip" data-val="Small Business Setup">🔌 Small Business Setup</span>
+                            <span class="service-chip" data-val="Network Cabling">🔧 Network Cabling</span>
+                            <span class="service-chip" data-val="Firewall / Security">🔐 Firewall / Security</span>
+                            <span class="service-chip" data-val="Rural Broadband">🌾 Rural Broadband</span>
+                            <span class="service-chip" data-val="Network-in-a-Box">📦 Network-in-a-Box</span>
+                            <span class="service-chip" data-val="Other">❓ Other</span>
+                        </div>
+                        <input type="hidden" name="services" id="servicesHidden">
+                    </div>
+
+                    <form action="https://formspree.io/f/mzdlaeqo" method="POST" id="contactForm">
+                        <!-- Hidden field for selected services -->
+                        <input type="hidden" name="services_interested" id="servicesField">
+
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} mb-3">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label class="form-label">Your name *</label>
+                                <input type="text" name="name" class="form-control" placeholder="Joe Bloggs" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">Company / Organisation</label>
+                                <input type="text" name="company" class="form-control" placeholder="Acme Ltd">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">Email address *</label>
+                                <input type="email" name="email" class="form-control" placeholder="you@company.com" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">Phone number</label>
+                                <input type="tel" name="phone" class="form-control" placeholder="01553 000000">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">Location / Site</label>
+                                <input type="text" name="location" class="form-control" placeholder="Norfolk, Essex, UK-wide...">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">Timescale</label>
+                                <select name="timescale" class="form-select">
+                                    <option value="">Select timescale...</option>
+                                    <option>ASAP</option>
+                                    <option>Within 1 month</option>
+                                    <option>1–3 months</option>
+                                    <option>3–6 months</option>
+                                    <option>Planning ahead</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Tell us about your project *</label>
+                                <textarea name="message" rows="5" class="form-control" required
+                                    placeholder="Describe what you need — site size, number of users, critical systems (card machines, CCTV, ticketing), current issues or any other relevant details..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-submit">
+                                    <i class="bi bi-send me-2"></i>Send my enquiry
+                                </button>
+                                <p class="text-muted text-center mt-2 mb-0" style="font-size:0.78rem;">
+                                    We typically respond within a few hours on working days.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+
+                <!-- Direct contact -->
+                <div class="info-card">
+                    <h4>Prefer to talk?</h4>
+                    <a href="tel:+441553824408" class="contact-link">
+                        <i class="bi bi-telephone-fill"></i> 01553 824408
+                    </a>
+                    <a href="mailto:info@sprintwave.co.uk" class="contact-link">
+                        <i class="bi bi-envelope-fill"></i> info@sprintwave.co.uk
+                    </a>
+                    <a href="https://www.linkedin.com/company/sprintwave" target="_blank" class="contact-link">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61579592293313" target="_blank" class="contact-link">
+                        <i class="bi bi-facebook"></i> Facebook
+                    </a>
+                </div>
+
+                <!-- What happens next -->
+                <div class="info-card">
+                    <h4>What happens next</h4>
+                    <div class="next-step">
+                        <span class="next-step-num">1</span>
+                        <div class="next-step-text">
+                            <h5>We review your enquiry</h5>
+                            <p>Usually within a few hours on working days.</p>
+                        </div>
+                    </div>
+                    <div class="next-step">
+                        <span class="next-step-num">2</span>
+                        <div class="next-step-text">
+                            <h5>We get in touch</h5>
+                            <p>A quick call or email to understand your needs properly.</p>
+                        </div>
+                    </div>
+                    <div class="next-step">
+                        <span class="next-step-num">3</span>
+                        <div class="next-step-text">
+                            <h5>You receive a quote</h5>
+                            <p>Clear, no-obligation pricing with no hidden fees.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company info -->
+                <div class="info-card">
+                    <h4>About Sprintwave</h4>
+                    <p>UK-based network consultancy providing enterprise networking, event WiFi, Starlink installation and small business connectivity across Norfolk and nationwide.</p>
+                    <p class="mt-2" style="font-size:0.78rem; color:#888;">Company No. 15831681</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    // Service chip toggle
+    const chips = document.querySelectorAll('.service-chip');
+    const field = document.getElementById('servicesField');
+
+    function updateField() {
+        const selected = [...chips]
+            .filter(c => c.classList.contains('active'))
+            .map(c => c.dataset.val);
+        field.value = selected.join(', ');
+    }
+
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            chip.classList.toggle('active');
+            updateField();
+        });
+    });
+</script>
+{% endblock %}

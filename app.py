@@ -492,6 +492,13 @@ def cctv_installation_norfolk():
 @app.route('/healthcare-wifi-norfolk')
 def healthcare_wifi_norfolk():
     return render_template('healthcare-wifi-norfolk.html')
+@app.route('/events')
+def events():
+    return render_template('events/index.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
