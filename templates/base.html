@@ -175,6 +175,65 @@
                 padding-left: 2rem;
             }
         }
+
+        /* Fix dropdown scroll on mobile */
+        @media (max-width: 991px) {
+            /* Make the whole nav scrollable when open */
+            .navbar-collapse {
+                max-height: 80vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Allow dropdown menus to be fully visible inside scroll */
+            .navbar-nav .dropdown-menu {
+                position: static !important;
+                float: none;
+                width: 100%;
+                margin-top: 0;
+                border: none;
+                border-left: 3px solid rgba(0,127,115,0.2);
+                border-radius: 0;
+                background-color: #f8f9fa;
+                box-shadow: none;
+                padding-left: 0.75rem;
+            }
+
+            /* Events dropdown pink left border */
+            .navbar-nav .dropdown:has(#eventsDropdown) .dropdown-menu {
+                border-left-color: rgba(255,60,172,0.3);
+            }
+
+            /* Resources dropdown red left border */
+            .navbar-nav .dropdown:has(#resourcesDropdown) .dropdown-menu {
+                border-left-color: rgba(220,38,38,0.3);
+            }
+
+            /* Industries dropdown purple left border */
+            .navbar-nav .dropdown:has(#industriesDropdown) .dropdown-menu {
+                border-left-color: rgba(124,58,237,0.3);
+            }
+
+            /* Flatten nested submenus on mobile */
+            .dropdown-submenu .dropdown-menu {
+                position: static !important;
+                border: none;
+                background-color: #efefef;
+                border-left: 3px solid rgba(0,0,0,0.08);
+                margin-left: 0.5rem;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            /* Keep CTA button full width on mobile */
+            .navbar-nav .nav-item.ms-2 {
+                margin: 0.5rem 0 !important;
+            }
+            .navbar-nav .nav-item.ms-2 .btn-accent {
+                display: block;
+                text-align: center;
+            }
+        }
         
         /* Custom page styles can be added here */
         {% block custom_css %}{% endblock %}
@@ -488,16 +547,6 @@
                         </a></li>
                     </ul>
                 </li>
-
-                <!-- CTA Button — always visible, links to contact page -->
-                <li class="nav-item ms-2">
-                    <a class="btn-accent" href="{{ url_for('contact') }}"
-                       style="padding: 0.5rem 1.4rem; font-size: 0.9rem;">
-                        <i class="bi bi-send me-1"></i> Get a Quote
-                    </a>
-                </li>
-
-                <!-- Social & Contact -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle fw-bold" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" style="color: #007f73;">
                         <i class="bi bi-person-lines-fill me-1"></i> Connect
@@ -518,6 +567,16 @@
                         </a></li>
                     </ul>
                 </li>
+                <!-- CTA Button — always visible, links to contact page -->
+                <li class="nav-item ms-2">
+                    <a class="btn-accent" href="{{ url_for('contact') }}"
+                       style="padding: 0.5rem 1.4rem; font-size: 0.9rem;">
+                        <i class="bi bi-send me-1"></i> Get a Quote
+                    </a>
+                </li>
+
+                <!-- Social & Contact -->
+
             </ul>
         </div>
     </div>
