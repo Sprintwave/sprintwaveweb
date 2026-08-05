@@ -1,0 +1,857 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Sprintwave: Enterprise Network & Security Consulting | Expert Managed Services</title>
+<meta name="description" content="Enterprise network consulting and firewall managed services. Expert Cisco, Aruba, Palo Alto specialists with senior consultants across Norfolk and the UK.">
+<meta name="keywords" content="enterprise network consulting, firewall managed services, Cisco, Aruba, Palo Alto, network security, enterprise infrastructure, managed firewall">
+<meta name="author" content="Sprintwave">
+<meta property="og:title" content="Sprintwave - Enterprise Network & Security Consulting">
+<meta property="og:description" content="Expert enterprise network consulting and firewall managed services. Cisco, Aruba, Palo Alto specialists with senior consultants across Norfolk and the UK.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/">
+<meta property="og:image" content="https://www.sprintwave.co.uk{{ url_for('static', filename='images/sprintwave-og-image.png') }}">
+{% endblock %}
+
+{% block extra_head %}
+<!-- Three.js and Vanta.js for background -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    /* Enterprise-focused button styling */
+    .btn-enterprise {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: #fff !important;
+        border-radius: 50px;
+        padding: 1rem 2.5rem;
+        font-weight: 700;
+        border: none !important;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        font-size: 1.1rem;
+    }
+    .btn-enterprise:hover {
+        background: linear-gradient(135deg, #991b1b, #7f1d1d);
+        color: #fff !important;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.6);
+    }
+    
+    /* Flash pop button for applications */
+    .btn-flash-pop {
+        background-color: #007f73 !important;
+        color: #fff !important;
+        border-radius: 50px;
+        padding: 0.8rem 2rem;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+        box-shadow: 0 0 16px #00c9a7, 0 0 32px #007f73;
+        animation: flash-pop 2s infinite alternate;
+        border: none !important;
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .btn-flash-pop:hover, .btn-flash-pop:focus {
+        background-color: #005f57 !important;
+        color: #fff !important;
+        box-shadow: 0 0 32px #00c9a7, 0 0 48px #007f73;
+        transform: scale(1.05);
+    }
+    
+    @keyframes flash-pop {
+        from { box-shadow: 0 0 8px #00c9a7, 0 0 16px #007f73; }
+        to   { box-shadow: 0 0 24px #00c9a7, 0 0 40px #007f73; }
+    }
+
+    /* Hero Section with Animation */
+    #vanta-bg {
+        min-height: 100vh;
+        position: relative;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #1a202c;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+    
+    /* Animated Background Fallback */
+    #vanta-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 25% 25%, rgba(220, 38, 38, 0.1) 0%, transparent 60%),
+            radial-gradient(circle at 75% 75%, rgba(0, 127, 115, 0.1) 0%, transparent 60%),
+            linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+        animation: heroFloat 8s ease-in-out infinite;
+    }
+    
+    @keyframes heroFloat {
+        0%, 100% { 
+            transform: translateY(0px) rotate(0deg);
+            opacity: 1;
+        }
+        25% { 
+            transform: translateY(-20px) rotate(1deg);
+            opacity: 0.8;
+        }
+        50% { 
+            transform: translateY(-10px) rotate(-1deg);
+            opacity: 1;
+        }
+        75% { 
+            transform: translateY(-15px) rotate(0.5deg);
+            opacity: 0.9;
+        }
+    }
+    
+    #vanta-bg .container {
+        position: relative;
+        z-index: 10;
+    }
+    
+    /* Hero text styling */
+    #vanta-bg h1 {
+        color: #1a202c !important;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        font-weight: 800;
+    }
+    
+    #vanta-bg .lead {
+        color: #2d3748 !important;
+        text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+        font-weight: 600;
+    }
+    
+    .hero-badge {
+        background: rgba(255, 255, 255, 0.95);
+        color: #1a202c;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(220, 38, 38, 0.3);
+        animation: pulse 3s ease-in-out infinite alternate;
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(1.05); opacity: 0.9; }
+    }
+    
+    .btn-hero {
+        background: linear-gradient(45deg, #007f73, #00d4aa);
+        color: #fff;
+        border-radius: 50px;
+        padding: 1rem 2.5rem;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(0,127,115,0.3);
+    }
+    
+    .btn-hero:hover {
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,127,115,0.4);
+        background: linear-gradient(45deg, #005f57, #007f73);
+    }
+    
+    .feature-icon {
+        background: linear-gradient(45deg, #dc2626, #991b1b);
+        color: white;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .feature-icon:hover {
+        transform: scale(1.1) rotate(10deg);
+        box-shadow: 0 12px 30px rgba(220, 38, 38, 0.4);
+    }
+    
+    .stats-card {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(220, 38, 38, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .stats-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+        transform: rotate(45deg);
+        animation: shimmer 3s linear infinite;
+    }
+    
+    @keyframes shimmer {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .stats-card:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 12px 40px rgba(220, 38, 38, 0.4);
+    }
+    
+    .stats-card h3 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .stats-card p {
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* Service cards styling */
+    .service-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+        border: 1px solid rgba(220, 38, 38, 0.1);
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(220, 38, 38, 0.15);
+    }
+    
+    /* Palo Alto section styling */
+    .palo-alto-section {
+        background: linear-gradient(135deg, #ff6900 0%, #e55100 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 3rem 2rem;
+        margin: 2rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .palo-alto-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 150%;
+        height: 200%;
+        background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 20c0 11.046-8.954 20-20 20s-20-8.954-20-20 8.954-20 20-20 20 8.954 20 20zm0-20c0 11.046-8.954 20-20 20s-20-8.954-20-20 8.954-20 20-20 20 8.954 20 20z'/%3E%3C/g%3E%3C/svg%3E");
+        animation: slowFloat 20s linear infinite;
+    }
+    
+    @keyframes slowFloat {
+        0% { transform: translateX(-20px); }
+        100% { transform: translateX(-50px); }
+    }
+    
+    .palo-alto-content {
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Enterprise value props */
+    .value-prop {
+        background: linear-gradient(135deg, #f8fafc, #ffffff);
+        border-radius: 12px;
+        padding: 1.5rem;
+        border-left: 4px solid #dc2626;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .value-prop:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.1);
+    }
+    
+    /* SEO-friendly content visibility */
+    .seo-content {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+    
+    /* Performance optimization */
+    .service-card img,
+    .feature-icon {
+        will-change: transform;
+    }
+    
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+        .hero-badge, .stats-card::before, #vanta-bg::before, .btn-flash-pop, .palo-alto-section::before {
+            animation: none;
+        }
+        
+        .feature-icon:hover, .stats-card:hover {
+            transform: none;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- SEO Content (Hidden but crawlable) -->
+<div class="seo-content">
+    <h1>Sprintwave - Enterprise Network & Security Consulting in Kings Lynn, Norfolk</h1>
+    <p>Professional enterprise network consulting, firewall managed services, and security solutions. CCIE and CCNP certified consultants specializing in Cisco, Aruba, Palo Alto Networks across Norfolk, East Anglia, and the UK. Expert network design, security implementation, and managed services.</p>
+    <address>
+        Sprintwave Enterprise Consulting
+        Kings Lynn, Norfolk, UK
+        Phone: 01553 824408
+        Email: info@sprintwave.co.uk
+    </address>
+</div>
+
+<!-- Hero Section -->
+<section class="text-center" id="vanta-bg">
+  <div class="container">
+    <div class="hero-badge">
+        🛡️ Enterprise Network & Security Specialists
+    </div>
+    <h1 class="display-3 fw-bold mb-4">Enterprise Network & Security Consulting</h1>
+    <p class="lead mb-5">Senior consultants delivering enterprise-grade network infrastructure, firewall managed services, and security solutions. Trusted by organizations that demand reliability and expertise.</p>
+    
+    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+        <a class="btn btn-hero" href="#firewall-consulting">
+            <i class="bi bi-shield-fill-exclamation me-2"></i>Firewall Services
+        </a>
+        <a class="btn btn-hero" href="#consulting">
+            <i class="bi bi-diagram-3 me-2"></i>Network Consulting
+        </a>
+        <a class="btn btn-accent" href="#contact">
+            <i class="bi bi-cloud me-2"></i>Enterprise Solutions
+        </a>
+    </div>
+    
+    <a class="btn btn-flash-pop" href="#applications">
+        <i class="bi bi-lightning-charge me-2"></i>See Our Enterprise Applications
+    </a>
+  </div>
+</section>
+
+<!-- Value Propositions Section -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Why Enterprise Organizations Choose <span class="accent">Sprintwave</span></h2>
+                    <p class="lead text-muted">Senior-level expertise delivering enterprise-grade solutions</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="value-prop">
+                            <h5><i class="bi bi-award text-danger me-2"></i>Senior Consultants Only</h5>
+                            <p class="mb-0">No junior engineers. Our team consists of CCIE and CCNP certified professionals with deep enterprise experience and vendor specializations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="value-prop">
+                            <h5><i class="bi bi-shield-check text-danger me-2"></i>Security-First Architecture</h5>
+                            <p class="mb-0">Every design prioritizes security with zero-trust principles, defense-in-depth strategies, and compliance-ready documentation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="value-prop">
+                            <h5><i class="bi bi-lightning text-danger me-2"></i>Rapid Response Times</h5>
+                            <p class="mb-0">Emergency support within 2 hours. Planned changes completed within agreed SLAs. No waiting in ticket queues.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="value-prop">
+                            <h5><i class="bi bi-building text-danger me-2"></i>Enterprise Track Record</h5>
+                            <p class="mb-0">Proven delivery for NHS, professional services, manufacturing, and organizations requiring robust, scalable infrastructure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Services Section -->
+<section id="consulting" class="py-5" style="background: #ffffff;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Enterprise <span class="accent">Services</span></h2>
+            <p class="lead text-muted">Comprehensive network and security solutions for demanding environments</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-fill-exclamation" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent mb-3">Firewall Consulting</h3>
+                    <p class="mb-4">Expert Palo Alto Networks, Cisco Firepower, and Fortinet consulting. Security-first architecture design, implementation, and managed services for enterprise environments.</p>
+                    <a href="#firewall-consulting" class="btn btn-enterprise" aria-label="Learn more about firewall consulting services">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-diagram-3" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent mb-3">Network Consulting</h3>
+                    <p class="mb-4">Enterprise network design and implementation by CCIE professionals. Campus networks, data centers, and SD-Access deployments with automation focus.</p>
+                    <a href="{{ url_for('network_consulting') }}" class="btn btn-accent" aria-label="Learn more about enterprise network consulting">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-wifi" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent mb-3">Wireless Solutions</h3>
+                    <p class="mb-4">Comprehensive wireless design with Aruba and Cisco solutions. Professional site surveys, capacity planning, and enterprise-grade security integration.</p>
+                    <a href="{{ url_for('wireless_surveys') }}" class="btn btn-accent" aria-label="Learn more about enterprise wireless solutions">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-gear-wide-connected" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent mb-3">Network Automation</h3>
+                    <p class="mb-4">Python-based network automation solutions reducing manual operations. Custom applications for monitoring, configuration management, and orchestration.</p>
+                    <a href="{{ url_for('network_consulting') }}" class="btn btn-accent" aria-label="Learn more about network automation services">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-lock" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent mb-3">Security Integration</h3>
+                    <p class="mb-4">Cisco ISE and Aruba ClearPass deployment for network access control. Identity management, policy enforcement, and compliance solutions.</p>
+                    <a href="{{ url_for('cisco_ise') }}" class="btn btn-accent" aria-label="Learn more about security integration">Learn More</a>
+                </article>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <article class="service-card text-center">
+                    <div class="feature-icon">
+                        🛰️
+                    </div>
+                    <h3 class="accent mb-3">Connectivity Solutions</h3>
+                    <p class="mb-4">Enterprise connectivity including backup internet, rural solutions, and satellite services. Ensuring business continuity with reliable connections.</p>
+                    <a href="{{ url_for('starlink') }}" class="btn btn-accent" aria-label="Learn more about connectivity solutions">Learn More</a>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Palo Alto Networks Section -->
+<section id="firewall-consulting" class="py-5" style="background: #f8fafc;">
+    <div class="container">
+        <div class="palo-alto-section">
+            <div class="palo-alto-content">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="display-5 fw-bold mb-4">
+                            <span style="font-size: 3rem;">🔥</span> Palo Alto Networks Expertise
+                        </h2>
+                        <p class="lead mb-4">Deep expertise in next-generation firewall deployment, management, and optimization with Palo Alto Networks solutions.</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-3"><i class="bi bi-check-circle me-3"></i><strong>PAN-OS Configuration:</strong> Expert deployment and management</li>
+                                    <li class="mb-3"><i class="bi bi-check-circle me-3"></i><strong>Panorama Management:</strong> Centralized policy control</li>
+                                    <li class="mb-3"><i class="bi bi-check-circle me-3"></i><strong>GlobalProtect VPN:</strong> Secure remote access solutions</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-3"><i class="bi bi-check-circle me-3"></i><strong>Threat Prevention:</strong> Advanced security features</li>
+                                    <li class="mb-3"><i class="bi bi-check-circle me-3"></i><strong>App-ID & User-ID:</strong> Application visibility and control</li>
+                                    <li class="mb-3"><i class="bi bi-check-circle me-3"></i><strong>High Availability:</strong> Resilient firewall designs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 text-center">
+                        <div style="font-size: 8rem; opacity: 0.8; margin-bottom: 1rem;">🔥</div>
+                        <h4 class="fw-bold">Next-Generation Security</h4>
+                        <p class="mb-0">Protecting enterprise networks with cutting-edge firewall technology</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#contact" class="btn btn-light btn-lg">
+                        <i class="bi bi-telephone me-2"></i>Discuss Your Palo Alto Requirements
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">About <span class="accent">Sprintwave</span></h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6 mb-4">
+        <div class="service-card">
+          <h5 class="accent">Enterprise Focus</h5>
+          <p class="text-muted">
+            Sprintwave is led by senior network consultants with deep expertise in designing and delivering secure, high-performance, and automated enterprise infrastructure. We specialize in complex deployments for demanding environments.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="service-card">
+          <h5 class="accent">Technology Specialisms</h5>
+          <p class="text-muted">
+            We specialise in Cisco, Aruba, and Palo Alto technologies, offering advanced switching, wireless solutions, and expert security implementations for enterprises and public sector organisations.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6 mb-4">
+        <div class="service-card">
+          <h5 class="accent">Project Experience</h5>
+          <p class="text-muted">
+            Our team has delivered complex networking projects for a range of clients—including extensive work with the NHS. We work with technologies like Cisco DNA Center and Software-Defined Access (SD-Access), focusing on automation and operational efficiency.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="service-card">
+          <h5 class="accent">Innovation & Automation</h5>
+          <p class="text-muted">
+            We develop custom Python-based applications to automate network tasks and reduce manual overhead. Looking ahead, we're embracing AI to drive smarter, more scalable network management.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technologies Section -->
+<section id="technologies" class="py-5" style="background: #f8fafc;">
+  <div class="container">
+    <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold">Enterprise Technology Stack</h2>
+        <p class="lead text-muted">Deep expertise across leading enterprise platforms</p>
+    </div>
+    
+    <div class="row g-4 justify-content-center align-items-center">
+      <div class="col-md-3 col-6 text-center">
+        <img src="{{ url_for('static', filename='cisco-logo.svg') }}" alt="Cisco" class="img-fluid mb-3" style="max-height:70px;">
+        <h6 class="fw-bold">Cisco Enterprise</h6>
+        <p class="small text-muted">SD-Access, DNA Center, ISE</p>
+      </div>
+      <div class="col-md-3 col-6 text-center">
+        <img src="{{ url_for('static', filename='Aruba.svg') }}" alt="Aruba" class="img-fluid mb-3" style="max-height:70px;">
+        <h6 class="fw-bold">Aruba Networks</h6>
+        <p class="small text-muted">CX Switching, Wireless, Central</p>
+      </div>
+      <div class="col-md-3 col-6 text-center">
+        <img src="{{ url_for('static', filename='palo.png') }}" alt="Palo Alto Networks" class="img-fluid mb-3" style="max-height:70px;">
+        <h6 class="fw-bold">Palo Alto Networks</h6>
+        <p class="small text-muted">PAN-OS, Panorama, GlobalProtect</p>
+      </div>
+      <div class="col-md-3 col-6 text-center">
+        <img src="{{ url_for('static', filename='python.svg') }}" alt="Python" class="img-fluid mb-3" style="max-height:60px;">
+        <h6 class="fw-bold">Python Automation</h6>
+        <p class="small text-muted">Custom scripting & applications</p>
+      </div>
+    </div>
+    
+    <div class="row g-4 justify-content-center align-items-center mt-2">
+      <div class="col-md-2 col-6 text-center">
+        <img src="{{ url_for('static', filename='dnac.png') }}" alt="SDA" class="img-fluid mb-2" style="max-height:60px;">
+        <div class="fw-semibold">SDA Access</div>
+      </div>
+      <div class="col-md-2 col-6 text-center">
+        <img src="{{ url_for('static', filename='Hamina.png') }}" alt="WiFi-Survey" class="img-fluid mb-2" style="max-height:60px;">
+        <div class="fw-semibold">Wireless Surveys</div>
+      </div>
+      <div class="col-md-2 col-6 text-center">
+        <img src="{{ url_for('static', filename='cisco-ise.webp') }}" alt="ISE" class="img-fluid mb-2" style="max-height:60px;">
+        <div class="fw-semibold">ISE</div>
+      </div>
+      <div class="col-md-2 col-6 text-center">
+        <img src="{{ url_for('static', filename='clearpass.png') }}" alt="Clearpass" class="img-fluid mb-2" style="max-height:60px;">
+        <div class="fw-semibold">ClearPass</div>
+      </div>
+      <div class="col-md-2 col-6 text-center">
+        <img src="{{ url_for('static', filename='firewall.png') }}" alt="Firewalls" class="img-fluid mb-2" style="max-height:60px;">
+        <div class="fw-semibold">Enterprise Security</div>
+      </div>
+      <div class="col-md-2 col-6 text-center">
+        <i class="bi bi-cloud" style="font-size: 3rem; color: #0066cc; margin-bottom: 1rem; display: block;"></i>
+        <div class="fw-semibold">Cloud Integration</div>
+      </div>
+    </div>
+    
+    <p class="text-muted mt-4 text-center">We've worked with a wide range of vendors beyond those listed. Whatever your enterprise stack, we're ready to support it.</p>
+  </div>
+</section>
+
+<!-- Enterprise Stats -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Trusted by Enterprise Organizations</h2>
+            <p class="lead text-muted">Delivering mission-critical infrastructure with proven results</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-card">
+                    <h3>15+</h3>
+                    <p class="fw-bold">Years Experience</p>
+                    <p class="small mb-0">Senior-level enterprise consulting</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-card">
+                    <h3>24/7</h3>
+                    <p class="fw-bold">Emergency Response</p>
+                    <p class="small mb-0">Critical incident support</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-card">
+                    <h3>100%</h3>
+                    <p class="fw-bold">Senior Engineers</p>
+                    <p class="small mb-0">CCIE & CCNP certified</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-card">
+                    <h3>NHS+</h3>
+                    <p class="fw-bold">Enterprise Clients</p>
+                    <p class="small mb-0">Complex, mission-critical deployments</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bespoke Applications Section -->
+<section id="applications" class="py-5" style="background: #f8fafc;">
+  <div class="container text-center">
+    <h2 class="display-5 fw-bold mb-4">Enterprise <span class="accent">Applications</span></h2>
+    <p class="lead text-muted mb-5">
+      Custom applications designed for enterprise network operations, security, and automation
+    </p>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-6 mb-4">
+        <div class="service-card h-100">
+          <h4 class="accent mb-3">nocbot.ai</h4>
+          <div class="ratio ratio-16x9 mb-3">
+            <iframe src="https://nocbot.ai" title="nocbot.ai" style="border:1px solid #ccc; border-radius:8px;" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="text-muted mb-4">
+            AI-powered network operations center assistant providing instant conversational insights for enterprise NOC teams. Reduces escalations and accelerates incident resolution for complex enterprise environments.
+          </p>
+          <a href="https://nocbot.ai" target="_blank" class="btn btn-enterprise">Enterprise Demo</a>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="service-card h-100">
+          <h4 class="accent mb-3">dot1x.io</h4>
+          <div class="ratio ratio-16x9 mb-3">
+            <iframe src="https://dot1x.io" title="dot1x.io" style="border:1px solid #ccc; border-radius:8px;" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="text-muted mb-4">
+            Enterprise network access control management platform integrated with Cisco ISE and Aruba ClearPass. Streamlines MAC authentication and endpoint visibility for large-scale enterprise deployments.
+          </p>
+          <a href="https://dot1x.io" target="_blank" class="btn btn-enterprise">Security Platform</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+        <p class="lead">
+            Need a custom enterprise solution? <a href="#contact" class="accent text-decoration-none fw-bold">Contact our consulting team</a> to discuss your requirements.
+        </p>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section id="contact" class="py-5" style="background: linear-gradient(135deg, #dc2626, #007f73); color: #fff;">
+    <div class="container text-center">
+        <h2 class="display-4 fw-bold mb-4">Ready for Enterprise-Grade Solutions?</h2>
+        <p class="lead mb-5">Get expert consultation from senior network and security professionals</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="service-card" style="background: rgba(255,255,255,0.95);">
+                    <h3 class="accent mb-4">Start with Expert Consultation</h3>
+                    
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div style="color: #dc2626; font-size: 2.5rem; margin-bottom: 1rem;">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h5 style="color: #dc2626;">Security Assessment</h5>
+                            <p class="mb-0" style="color: #1a1a1a;">Comprehensive firewall and security review with expert recommendations</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="color: #dc2626; font-size: 2.5rem; margin-bottom: 1rem;">
+                                <i class="bi bi-diagram-3"></i>
+                            </div>
+                            <h5 style="color: #dc2626;">Network Design</h5>
+                            <p class="mb-0" style="color: #1a1a1a;">Enterprise architecture planning and implementation strategy</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="color: #dc2626; font-size: 2.5rem; margin-bottom: 1rem;">
+                                <i class="bi bi-gear-wide-connected"></i>
+                            </div>
+                            <h5 style="color: #dc2626;">Automation Solutions</h5>
+                            <p class="mb-0" style="color: #1a1a1a;">Custom Python applications and network automation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                        <a class="btn btn-enterprise" href="tel:+441553824408" aria-label="Call Sprintwave for enterprise consulting">
+                            <i class="bi bi-telephone me-2"></i>Emergency: 01553 824408
+                        </a>
+                        <a class="btn btn-hero" href="mailto:info@sprintwave.co.uk?subject=Enterprise Consulting Enquiry" aria-label="Email Sprintwave for consultation">
+                            <i class="bi bi-envelope me-2"></i>Schedule Consultation
+                        </a>
+                    </div>
+                    
+                    <!-- Social Media Links -->
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://www.linkedin.com/company/sprintwave/" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm" aria-label="Follow Sprintwave on LinkedIn">
+                            <i class="bi bi-linkedin me-1"></i>LinkedIn
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61579592293313" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm" aria-label="Follow Sprintwave on Facebook">
+                            <i class="bi bi-facebook me-1"></i>Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+// Initialize Vanta.js animation with error handling and updated colors
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        if (typeof VANTA !== 'undefined' && VANTA.WAVES) {
+            VANTA.WAVES({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x007f73,      // Changed from red to teal
+                color2: 0x3b82f6,     // Changed from teal to blue
+                backgroundColor: 0xf8fafc,
+                shininess: 40.00,
+                waveHeight: 20.00,
+                waveSpeed: 1.20,
+                zoom: 0.80
+            });
+            console.log('Vanta.js waves animation loaded successfully');
+        } else {
+            console.log('Vanta.js not available, using CSS fallback animation');
+        }
+    } catch (error) {
+        console.log('Vanta animation failed to load, graceful fallback:', error);
+    }
+});
+
+// Smooth scrolling for internal links
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Track enterprise service clicks
+    document.querySelectorAll('.btn-enterprise').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    'event_category': 'enterprise_services',
+                    'event_label': this.textContent.trim()
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

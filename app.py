@@ -9,7 +9,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html")   # new small business homepage
+
+@app.route("/enterprise")
+def enterprise():
+    return render_template("enterprise.html")  # old index becomes this
 
 @app.route('/blog')
 def blog():
