@@ -104,171 +104,86 @@ def case_study_9800():
 
 @app.route('/sitemap.xml')
 def sitemap():
-    """Generate sitemap XML for Google Search Console"""
-    
-    # Get current date in ISO format
     current_date = datetime.now().strftime('%Y-%m-%d')
-    
     sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://www.sprintwave.co.uk/</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/about</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/starlink</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/rural-broadband</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/event-wifi</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/backup-internet</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/web-design</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/wireless-surveys</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/network-consulting</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/penetration-testing</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/blog</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/blog/ansible-ad-lockout</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/blog/aruba-ansible-backup</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/blog/100g-aruba-8360</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/blog/clearpass-api</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/blog/ise-vs-clearpass</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/blog/enocean-catalyst</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/blog/starlink-technical</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/case-studies</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/case-studies/event-wifi</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/case-studies/starlink</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/case-studies/nhs-wifi-survey</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/case-studies/rural-logistics-wifi</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals/examcontent</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals/comingsoon</loc>
-        <lastmod>{current_date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
+
+    <!-- Core pages -->
+    <url><loc>https://www.sprintwave.co.uk/</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/about</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/contact</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/enterprise</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+    <!-- Small business services -->
+    <url><loc>https://www.sprintwave.co.uk/wifi-installation</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/starlink</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/starlink-business</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/cctv-installation-norfolk</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/network-cabling</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/small-business-setup</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/rural-broadband</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/backup-internet</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/unifi</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/network-health-check</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/web-design</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+    <!-- Events -->
+    <url><loc>https://www.sprintwave.co.uk/events</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/event-wifi</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+    <!-- Enterprise services -->
+    <url><loc>https://www.sprintwave.co.uk/network-consulting</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/firewall-consulting</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/wireless-surveys</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/penetration-testing</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+    <!-- Cisco -->
+    <url><loc>https://www.sprintwave.co.uk/cisco_firepower</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/cisco-sda</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/cisco-wireless</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/cisco-ise</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+    <!-- Aruba -->
+    <url><loc>https://www.sprintwave.co.uk/aruba-clearpass</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/aruba-switching</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/aruba-wireless</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+    <!-- Industries -->
+    <url><loc>https://www.sprintwave.co.uk/hotel-wifi-norfolk</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/guest-wifi-solutions</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/farm-connectivity</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/rural-estate-networks</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/factory-wifi-norfolk</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/warehouse-connectivity</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/healthcare-wifi-norfolk</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/school-wifi-norfolk</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+    <!-- Blog -->
+    <url><loc>https://www.sprintwave.co.uk/blog</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/blog/starlink-technical</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/blog/ansible-ad-lockout</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/blog/aruba-ansible-backup</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/blog/100g-aruba-8360</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/blog/clearpass-api</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/blog/ise-vs-clearpass</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/blog/enocean-catalyst</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+    <!-- Case studies -->
+    <url><loc>https://www.sprintwave.co.uk/case-studies</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/case-studies/9800</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/case-studies/nhs-wifi-survey</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/case-studies/rural-logistics-wifi</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/case-studies/event-wifi</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/case-studies/starlink</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/case-studies/industrial-network-install</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+    <!-- CCNP Training -->
+    <url><loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals/examcontent</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals/fspl</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/ccnp-wireless/rf_fundamentals/comingsoon</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+
 </urlset>"""
-    
     return Response(sitemap_xml, mimetype='application/xml')
 
 @app.route('/robots.txt')
