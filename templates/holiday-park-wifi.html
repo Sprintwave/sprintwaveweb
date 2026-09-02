@@ -1,0 +1,797 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Holiday Park WiFi &amp; Caravan Park Broadband | Sprintwave</title>
+<meta name="description" content="Fully managed WiFi for holiday parks, static caravans, lodges and holiday homes. Private WiFi networks for customers, no upfront park infrastructure cost and free proof-of-concept trials.">
+<meta name="keywords" content="holiday park WiFi, caravan park WiFi, static caravan WiFi, holiday home broadband, holiday home WiFi, caravan broadband, lodge WiFi, managed WiFi for holiday parks, Starlink holiday park, WiFi for static caravans">
+<meta property="og:title" content="Holiday Park WiFi &amp; Caravan Park Broadband | Sprintwave">
+<meta property="og:description" content="Private WiFi for every holiday home. No upfront park infrastructure cost. Free proof-of-concept trials.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/holiday-park-wifi">
+<meta property="og:image" content="https://www.sprintwave.co.uk{{ url_for('static', filename='images/sprintwave-og-image.png') }}">
+{% endblock %}
+
+{% block custom_css %}
+    /* Accent for holiday park WiFi */
+    .hpw-accent { color: #007f73; }
+    .hpw-eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.8rem;
+        color: #007f73;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+    .hpw-hero {
+        background: linear-gradient(135deg, #e6f4f3 0%, #e6f0ef 100%);
+        padding: 80px 0 60px;
+        border-bottom: 1px solid rgba(0,127,115,0.08);
+    }
+    .hpw-hero h1 {
+        font-size: clamp(2.3rem, 6vw, 4.2rem);
+        font-weight: 800;
+        line-height: 1.08;
+        color: #1a1a1a;
+    }
+    .hpw-hero .lead { color: #444; max-width: 600px; line-height: 1.75; }
+    .hpw-hero .btn-accent, .hpw-hero .btn-accent-outline {
+        font-size: 1.1rem;
+        padding: 1rem 2.2rem;
+    }
+    .hpw-benefits-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        margin-top: 2.2rem;
+    }
+    .hpw-benefit {
+        background: #fff;
+        border-radius: 999px;
+        border: 1px solid #e0e0e0;
+        padding: 0.5rem 1.3rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #007f73;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        box-shadow: 0 2px 8px rgba(0,127,115,0.06);
+    }
+    .hpw-benefit i { font-size: 1.2rem; }
+
+    /* Problem section */
+    .hpw-problem-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 1.5rem;
+        border-left: 4px solid #dc2626;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+        margin-bottom: 1.2rem;
+        font-size: 1rem;
+    }
+    .hpw-problem-card .bi { color: #dc2626; margin-right: 0.7rem; font-size: 1.2rem; }
+
+    /* Steps */
+    .hpw-step-card {
+        background: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        border: 1px solid rgba(0,127,115,0.12);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        height: 100%;
+        text-align: center;
+    }
+    .hpw-step-num {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #007f73;
+        margin-bottom: 0.7rem;
+        display: block;
+    }
+    .hpw-step-card h3 { font-size: 1.1rem; font-weight: 700; color: #1a1a1a; margin-bottom: 0.5rem; }
+    .hpw-step-card p  { color: #666; font-size: 0.95rem; line-height: 1.65; margin: 0; }
+
+    /* Audience cards */
+    .hpw-audience-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 1.3rem 1.2rem;
+        border: 1px solid rgba(0,127,115,0.10);
+        box-shadow: 0 2px 10px rgba(0,127,115,0.04);
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #007f73;
+        margin-bottom: 1rem;
+    }
+    .hpw-audience-card .bi { font-size: 1.5rem; margin-bottom: 0.5rem; color: #007f73; }
+
+    /* Owner/Operator sections */
+    .hpw-feature-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 1.5rem;
+        border-left: 4px solid #007f73;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+        margin-bottom: 1.2rem;
+    }
+    .hpw-feature-card .bi { color: #007f73; margin-right: 0.7rem; font-size: 1.2rem; }
+
+    /* Commission */
+    .hpw-commission-card {
+        background: #f8f9fa;
+        border-radius: 14px;
+        padding: 1.5rem;
+        border-left: 4px solid #f59e0b;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+        margin-bottom: 1.2rem;
+    }
+    .hpw-commission-card .bi { color: #f59e0b; margin-right: 0.7rem; font-size: 1.2rem; }
+
+    /* Proof of concept */
+    .hpw-poc-section {
+        background: linear-gradient(135deg, #e6f4f3 0%, #e6f0ef 100%);
+        border-radius: 18px;
+        padding: 2.5rem 2rem;
+        margin: 3rem 0;
+        box-shadow: 0 6px 30px rgba(0,127,115,0.07);
+        text-align: center;
+    }
+    .hpw-poc-section h2 { font-size: 2rem; font-weight: 800; color: #007f73; }
+    .hpw-poc-benefits {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        justify-content: center;
+        margin: 1.5rem 0 2rem 0;
+    }
+    .hpw-poc-benefit {
+        background: #fff;
+        border-radius: 999px;
+        border: 1px solid #e0e0e0;
+        padding: 0.5rem 1.3rem;
+        font-size: 0.98rem;
+        font-weight: 600;
+        color: #007f73;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        box-shadow: 0 2px 8px rgba(0,127,115,0.06);
+    }
+    .hpw-poc-benefit i { font-size: 1.2rem; }
+
+    /* Diagram */
+    .hpw-diagram {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+        margin: 2.5rem 0;
+    }
+    .hpw-diagram-step {
+        background: #fff;
+        border-radius: 12px;
+        padding: 1.1rem 2.2rem;
+        border: 1px solid #e0e0e0;
+        font-weight: 600;
+        color: #007f73;
+        font-size: 1.08rem;
+        box-shadow: 0 2px 8px rgba(0,127,115,0.04);
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+    }
+    .hpw-diagram-arrow {
+        font-size: 1.6rem;
+        color: #007f73;
+        margin: 0.2rem 0;
+    }
+
+    /* FAQ */
+    .hpw-faq-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 1.3rem 1.2rem;
+        border: 1px solid rgba(0,127,115,0.10);
+        box-shadow: 0 2px 10px rgba(0,127,115,0.04);
+        margin-bottom: 1.1rem;
+    }
+    .hpw-faq-card h4 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #007f73;
+        margin-bottom: 0.4rem;
+    }
+    .hpw-faq-card p { color: #444; font-size: 0.97rem; margin: 0; }
+
+    /* Final CTA */
+    .hpw-final-cta {
+        background: linear-gradient(135deg, #007f73 0%, #005f57 100%);
+        color: #fff;
+        border-radius: 18px;
+        padding: 2.5rem 2rem;
+        margin: 3rem 0 2rem 0;
+        text-align: center;
+    }
+    .hpw-final-cta h2 { font-size: 2rem; font-weight: 800; }
+    .hpw-final-cta p { color: rgba(255,255,255,0.92); font-size: 1.1rem; margin-bottom: 2rem; }
+
+    /* Ensure outline CTAs are visible on dark final-CTA background */
+    .hpw-final-cta .btn-accent-outline,
+    .hpw-final-cta button.btn-accent-outline {
+        color: #ffffff;
+        border-color: rgba(255,255,255,0.18);
+        background: transparent;
+        box-shadow: none;
+    }
+    .hpw-final-cta .btn-accent-outline i,
+    .hpw-final-cta button.btn-accent-outline i { color: #ffffff; }
+    .hpw-final-cta .btn-accent-outline:hover,
+    .hpw-final-cta button.btn-accent-outline:hover {
+        background: rgba(255,255,255,0.08);
+        border-color: rgba(255,255,255,0.28);
+        color: #ffffff;
+    }
+    .hpw-final-cta .btn-accent-outline:focus,
+    .hpw-final-cta button.btn-accent-outline:focus {
+        outline: 3px solid rgba(255,255,255,0.12);
+        outline-offset: 3px;
+    }
+
+    /* Contact form */
+    .hpw-form-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 2.2rem 1.5rem;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0,127,115,0.1);
+        max-width: 540px;
+        margin: 0 auto;
+    }
+    .hpw-form-card .form-label {
+        font-weight: 600;
+        font-size: 0.93rem;
+        color: #333;
+        margin-bottom: 0.3rem;
+    }
+    .hpw-form-card .form-control {
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.97rem;
+        margin-bottom: 1rem;
+    }
+    .hpw-form-card .form-control:focus {
+        border-color: #007f73;
+        box-shadow: 0 0 0 3px rgba(0,127,115,0.12);
+    }
+    .hpw-form-card .btn-accent {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 0.95rem 0;
+        border-radius: 999px;
+    }
+    /* Button theming - apply to <a> and <button> using existing classes */
+    .btn-accent, button.btn-accent {
+        background: linear-gradient(180deg,#00a388 0%,#007f73 100%);
+        color: #ffffff;
+        border: none;
+        padding: 0.85rem 1.6rem;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 1rem;
+        box-shadow: 0 8px 20px rgba(0,127,115,0.12);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+    }
+    .btn-accent:hover, button.btn-accent:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0,127,115,0.14);
+        opacity: .98;
+    }
+    .btn-accent:active, button.btn-accent:active {
+        transform: translateY(0);
+        box-shadow: 0 6px 16px rgba(0,127,115,0.10);
+    }
+
+    .btn-accent-outline, button.btn-accent-outline {
+        background: transparent;
+        color: #007f73;
+        border: 2px solid rgba(0,127,115,0.14);
+        padding: 0.78rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: background .12s ease, color .12s ease, transform .12s ease, border-color .12s;
+    }
+    .btn-accent-outline:hover, button.btn-accent-outline:hover {
+        background: rgba(0,127,115,0.06);
+        color: #005f57;
+        transform: translateY(-2px);
+        border-color: rgba(0,127,115,0.28);
+    }
+
+    /* Large variant */
+    .btn-lg { font-size: 1.04rem; padding: 0.95rem 1.8rem; border-radius: 14px; }
+
+    /* Full width on small screens for easy tapping */
+    @media (max-width: 576px) {
+        .btn-accent, .btn-accent-outline, .btn-accent.btn-lg, .btn-accent-outline.btn-lg,
+        button.btn-accent, button.btn-accent-outline {
+            width: 100%;
+            justify-content: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+
+    /* Accessible focus ring */
+    .btn-accent:focus, .btn-accent-outline:focus, button.btn-accent:focus, button.btn-accent-outline:focus {
+        outline: 3px solid rgba(0,127,115,0.12);
+        outline-offset: 2px;
+    }
+
+    /* Ensure images still scale */
+    .hpw-hero img,
+    .hpw-section-img {
+        width: 100%;
+        height: auto;
+        max-height: 380px;
+        object-fit: cover;
+        display: block;
+        border-radius: 0.5rem;
+    }
+    @media (max-width: 991px) {
+        .hpw-hero img,
+        .hpw-section-img { max-height: 240px; }
+    }
+
+    /* Make link-styled CTAs that are actually perceivable as buttons */
+    .btn-accent, .btn-accent-outline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: .6rem;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    @media (max-width: 991px) {
+        .hpw-benefits-row, .hpw-poc-benefits { flex-direction: column; gap: 0.7rem; }
+        .hpw-diagram-step { padding: 1rem 1rem; font-size: 1rem; }
+        .hpw-poc-section, .hpw-final-cta { padding: 1.5rem 0.5rem; }
+    }
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hpw-hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="hpw-eyebrow">HOLIDAY PARK CONNECTIVITY</span>
+                <h1 class="mb-3">Give Every Holiday Home<br>Its Own Private WiFi.</h1>
+                <p class="lead mb-4">
+                    Fast, fully managed WiFi for caravan parks, lodges and holiday resorts — without the park funding or operating the network.
+                </p>
+                <p class="mb-4" style="font-size:1.08rem;">
+                    Sprintwave installs and manages the infrastructure, customers subscribe directly, and your park can earn commission from every connection.
+                </p>
+                <div class="d-flex flex-wrap gap-3 mb-3">
+                    <button type="button" class="btn-accent btn-lg" onclick="location.href='#trial'" aria-label="Book a Free Park WiFi Trial">
+                        <i class="bi bi-wifi me-2"></i>Book a Free Park WiFi Trial
+                    </button>
+                    <button type="button" class="btn-accent-outline btn-lg" onclick="location.href='#contact'" aria-label="Talk to Sprintwave">
+                        <i class="bi bi-chat-dots me-2"></i>Talk to Sprintwave
+                    </button>
+                </div>
+                <div class="hpw-benefits-row">
+                    <span class="hpw-benefit"><i class="bi bi-cash-coin"></i>No upfront infrastructure cost</span>
+                    <span class="hpw-benefit"><i class="bi bi-wifi"></i>Private WiFi per holiday home</span>
+                    <span class="hpw-benefit"><i class="bi bi-shield-check"></i>Fully managed by Sprintwave</span>
+                    <span class="hpw-benefit"><i class="bi bi-graph-up-arrow"></i>Park commission available</span>
+                </div>
+            </div>
+            <div class="col-lg-5 col-12">
+                <img src="{{ url_for('static', filename='holiday-park-hero.jpg') }}" alt="Holiday park WiFi" class="img-fluid hpw-section-img shadow" style="border:1px solid #e0e0e0;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section style="padding: 70px 0; background: #fff;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Holiday park WiFi shouldn't feel like public WiFi.</h2>
+            <p class="text-muted">Traditional guest WiFi often means:</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="hpw-problem-card"><i class="bi bi-key"></i> Shared passwords and networks</div>
+                <div class="hpw-problem-card"><i class="bi bi-box-arrow-in-right"></i> Captive portals and splash pages</div>
+                <div class="hpw-problem-card"><i class="bi bi-wifi-off"></i> Poor coverage inside holiday homes</div>
+                <div class="hpw-problem-card"><i class="bi bi-people"></i> Congestion and slow speeds</div>
+                <div class="hpw-problem-card"><i class="bi bi-tv"></i> Smart TVs and streaming devices that won't connect</div>
+                <div class="hpw-problem-card"><i class="bi bi-arrow-repeat"></i> Repeated logins and device drops</div>
+                <div class="hpw-problem-card"><i class="bi bi-headset"></i> Support problems landing with reception</div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <div>
+                    <h4 class="fw-bold mb-3 mt-4 mt-md-0">With Sprintwave, each subscriber can have their own private wireless network — much closer to the broadband experience they have at home.</h4>
+                    <ul class="mb-0" style="color:#007f73; font-size:1.08rem; font-weight:600;">
+                        <li>Private WiFi name &amp; password</li>
+                        <li>Connect Smart TVs, streaming devices, laptops, phones, cameras</li>
+                        <li>No repeated logins or splash pages</li>
+                        <li>Consistent experience every visit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="padding: 70px 0; background: #f8f9fa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="hpw-eyebrow">How it works</span>
+            <h2 class="fw-bold">Simple, fully managed service.</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-sm-6 col-lg-3">
+                <div class="hpw-step-card">
+                    <span class="hpw-step-num">1</span>
+                    <h3>We survey the park</h3>
+                    <p>We assess coverage, accommodation layout and available connectivity.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="hpw-step-card">
+                    <span class="hpw-step-num">2</span>
+                    <h3>Sprintwave installs the network</h3>
+                    <p>We install the backhaul, network infrastructure and outdoor WiFi access points.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="hpw-step-card">
+                    <span class="hpw-step-num">3</span>
+                    <h3>Customers choose a package</h3>
+                    <p>Owners and guests can buy a package appropriate to their stay.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="hpw-step-card">
+                    <span class="hpw-step-num">4</span>
+                    <h3>We manage everything</h3>
+                    <p>Sprintwave handles monitoring, billing, customer support and maintenance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHO IT IS FOR -->
+<section style="padding: 70px 0; background: #fff;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="hpw-eyebrow">Who is it for?</span>
+            <h2 class="fw-bold">WiFi for every type of holiday park.</h2>
+        </div>
+        <div class="row g-3 justify-content-center">
+            <div class="col-6 col-md-3"><div class="hpw-audience-card"><i class="bi bi-house-door"></i> Static caravan parks</div></div>
+            <div class="col-6 col-md-3"><div class="hpw-audience-card"><i class="bi bi-house"></i> Holiday-home parks</div></div>
+            <div class="col-6 col-md-3"><div class="hpw-audience-card"><i class="bi bi-tree"></i> Lodge parks</div></div>
+            <div class="col-6 col-md-3"><div class="hpw-audience-card"><i class="bi bi-house-heart"></i> Chalet parks</div></div>
+            <div class="col-6 col-md-3"><div class="hpw-audience-card"><i class="bi bi-globe"></i> Holiday resorts</div></div>
+            <div class="col-6 col-md-3"><div class="hpw-audience-card"><i class="bi bi-building"></i> Mixed accommodation parks</div></div>
+            <div class="col-6 col-md-3"><div class="hpw-audience-card"><i class="bi bi-person-badge"></i> Owner-occupied parks</div></div>
+            <div class="col-6 col-md-3"><div class="hpw-audience-card"><i class="bi bi-people"></i> Rental holiday parks</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- FOR HOLIDAY-HOME OWNERS -->
+<section style="padding: 70px 0; background: #f8f9fa;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-3">Broadband for your holiday home —<br>without installing your own line or dish.</h2>
+                <div class="hpw-feature-card"><i class="bi bi-wifi"></i>Private WiFi name &amp; password</div>
+                <div class="hpw-feature-card"><i class="bi bi-tv"></i>Smart TV &amp; streaming device connectivity</div>
+                <div class="hpw-feature-card"><i class="bi bi-laptop"></i>Work remotely, stream, connect multiple devices</div>
+                <div class="hpw-feature-card"><i class="bi bi-camera-video"></i>Security cameras and smart devices</div>
+                <div class="hpw-feature-card"><i class="bi bi-house-heart"></i>Familiar home-style experience every visit</div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <img src="{{ url_for('static', filename='holiday-home-owner.jpg') }}" alt="Holiday home WiFi" class="img-fluid hpw-section-img shadow" style="border:1px solid #e0e0e0;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOR PARK OPERATORS -->
+<section style="padding: 70px 0; background: #fff;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 col-12">
+                <img src="{{ url_for('static', filename='starlink.png') }}" alt="Park operator WiFi" class="img-fluid hpw-section-img shadow" style="border:1px solid #e0e0e0;">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-3">Upgrade your park's connectivity<br>without becoming the ISP.</h2>
+                <div class="hpw-feature-card"><i class="bi bi-cash-coin"></i>No major upfront infrastructure project</div>
+                <div class="hpw-feature-card"><i class="bi bi-credit-card"></i>No customer billing admin for your team</div>
+                <div class="hpw-feature-card"><i class="bi bi-headset"></i>No first-line WiFi support for reception</div>
+                <div class="hpw-feature-card"><i class="bi bi-shield-check"></i>Professionally managed network</div>
+                <div class="hpw-feature-card"><i class="bi bi-graph-up-arrow"></i>Potential commission revenue</div>
+                <div class="hpw-feature-card"><i class="bi bi-star"></i>Better amenity for owners and guests</div>
+                <div class="hpw-feature-card"><i class="bi bi-house-add"></i>Potential selling point for holiday-home sales</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMMISSION SECTION -->
+<section style="padding: 60px 0 30px 0; background: #f8f9fa;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="hpw-commission-card">
+                    <h3 class="fw-bold mb-2" style="color:#f59e0b;"><i class="bi bi-coin"></i>Better WiFi for your customers. A new revenue stream for your park.</h3>
+                    <ul class="mb-2" style="color:#444; font-size:1.08rem;">
+                        <li>Sprintwave manages customers, billing and support</li>
+                        <li>Your park receives commission on eligible subscriptions</li>
+                        <li>No need to operate the broadband service yourself</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CUSTOMER PACKAGES -->
+<section style="padding: 60px 0; background: #fff;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <h2 class="fw-bold mb-3">Flexible packages for every customer.</h2>
+                <p class="mb-3" style="font-size:1.08rem;">
+                    Packages can be tailored to your park and your customers — from a single day to a full season.
+                </p>
+                <ul class="mb-3" style="color:#007f73; font-size:1.08rem; font-weight:600;">
+                    <li>1 day</li>
+                    <li>Weekend</li>
+                    <li>7 days</li>
+                    <li>Monthly</li>
+                    <li>Seasonal</li>
+                    <li>Up to 12 months</li>
+                </ul>
+                <p class="mb-2" style="font-size:1.08rem;">
+                    Longer-term packages typically start from around <strong>£30–£35 per month</strong> for a private holiday-home WiFi service, depending on site and package.
+                </p>
+                <p class="text-muted" style="font-size:0.95rem;">
+                    No unnecessary long-term contracts. Customers can select connectivity appropriate to how often they use their holiday home.
+                </p>
+            </div>
+            <div class="col-lg-5 col-12">
+                <img src="{{ url_for('static', filename='router.jpg') }}" alt="Holiday park WiFi packages" class="img-fluid hpw-section-img shadow" style="border:1px solid #e0e0e0;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NO UPFRONT COST SECTION -->
+<section style="padding: 60px 0; background: #f8f9fa;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-3">No upfront infrastructure cost to the park.</h2>
+                <p class="mb-3" style="font-size:1.08rem;">
+                    For suitable park partnerships, Sprintwave funds the WiFi infrastructure — meaning your park does not need to make a large upfront investment in building a site-wide network.
+                </p>
+                <ul class="mb-3" style="color:#007f73; font-size:1.08rem; font-weight:600;">
+                    <li>Sprintwave retains ownership and responsibility for its managed infrastructure</li>
+                    <li>We handle installation, monitoring, support and maintenance</li>
+                    <li>Your park can focus on your core business</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 col-12">
+                <img src="{{ url_for('static', filename='ap.jpg') }}" alt="No upfront cost WiFi" class="img-fluid hpw-section-img shadow" style="border:1px solid #e0e0e0;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROOF OF CONCEPT -->
+<section id="trial" class="hpw-poc-section">
+    <div class="container">
+        <h2 class="mb-3">Try it on your park first.</h2>
+        <p class="mb-4" style="font-size:1.13rem;">
+            We can install a small demonstration network covering several holiday homes using our existing equipment. Your team and selected owners can test the service before discussing a wider rollout.
+        </p>
+        <div class="hpw-poc-benefits">
+            <span class="hpw-poc-benefit"><i class="bi bi-cash-coin"></i>No cost</span>
+            <span class="hpw-poc-benefit"><i class="bi bi-x-circle"></i>No commitment</span>
+            <span class="hpw-poc-benefit"><i class="bi bi-wifi"></i>Test real coverage</span>
+            <span class="hpw-poc-benefit"><i class="bi bi-tv"></i>Test streaming &amp; Smart TVs</span>
+            <span class="hpw-poc-benefit"><i class="bi bi-people"></i>Gather feedback from owners</span>
+            <span class="hpw-poc-benefit"><i class="bi bi-graph-up"></i>Assess potential demand</span>
+        </div>
+        <!-- replace with button -->
+        <button type="button" class="btn-accent btn-lg mt-2" onclick="location.href='#contact'" aria-label="Request a Free Park WiFi Trial">
+            <i class="bi bi-wifi me-2"></i>Request a Free Park WiFi Trial
+        </button>
+    </div>
+</section>
+
+<!-- COVERAGE / TECHNICAL DIAGRAM -->
+<section style="padding: 60px 0; background: #fff;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="hpw-eyebrow">How it connects</span>
+            <h2 class="fw-bold">Designed for coverage, capacity and reliability.</h2>
+        </div>
+        <div class="hpw-diagram">
+            <div class="hpw-diagram-step"><i class="bi bi-globe2"></i> Internet Connectivity<br><span style="font-size:0.9rem; color:#888;">(Starlink, fibre, leased line, 4G/5G, or a combination)</span></div>
+            <span class="hpw-diagram-arrow"><i class="bi bi-arrow-down"></i></span>
+            <div class="hpw-diagram-step"><i class="bi bi-hdd-network"></i> Sprintwave Managed Network</div>
+            <span class="hpw-diagram-arrow"><i class="bi bi-arrow-down"></i></span>
+            <div class="hpw-diagram-step"><i class="bi bi-broadcast-pin"></i> Outdoor Park WiFi Infrastructure</div>
+            <span class="hpw-diagram-arrow"><i class="bi bi-arrow-down"></i></span>
+            <div class="hpw-diagram-step"><i class="bi bi-house-door"></i> Private WiFi Network for each customer/holiday home</div>
+        </div>
+        <div class="text-center mt-4" style="color:#007f73;">
+            <strong>Larger parks can use multiple internet connections and distributed access points for increased capacity and coverage.</strong>
+        </div>
+    </div>
+</section>
+
+<!-- SUPPORT SECTION -->
+<section style="padding: 70px 0; background: #f8f9fa;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-3">Managed and supported by real network engineers.</h2>
+                <ul class="mb-3" style="color:#007f73; font-size:1.08rem; font-weight:600;">
+                    <li>Proactive monitoring and remote troubleshooting</li>
+                    <li>Network management and customer support</li>
+                    <li>Hardware maintenance and upgrades</li>
+                    <li>Local onsite response where required</li>
+                </ul>
+                <p class="mb-2" style="font-size:1.08rem;">
+                    Our engineers have experience delivering and supporting complex wireless networks in demanding environments, including enterprise estates and cruise ships.
+                </p>
+            </div>
+            <div class="col-lg-6 col-12">
+                <img src="{{ url_for('static', filename='founder.png') }}" alt="WiFi support" class="img-fluid hpw-section-img shadow" style="border:1px solid #e0e0e0;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding: 70px 0; background: #fff;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="hpw-eyebrow">FAQ</span>
+            <h2 class="fw-bold">Frequently asked questions</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="hpw-faq-card">
+                    <h4>How much does it cost the holiday park?</h4>
+                    <p>For suitable partnership sites, there is no upfront infrastructure cost to the park.</p>
+                </div>
+                <div class="hpw-faq-card">
+                    <h4>Who pays for the WiFi?</h4>
+                    <p>Customers/holiday-home owners can subscribe directly with Sprintwave.</p>
+                </div>
+                <div class="hpw-faq-card">
+                    <h4>Does the park have to provide technical support?</h4>
+                    <p>No. Sprintwave manages customer and technical support.</p>
+                </div>
+                <div class="hpw-faq-card">
+                    <h4>Is this just shared guest WiFi?</h4>
+                    <p>No. The service is designed to give customers their own private WiFi experience rather than relying solely on a conventional shared guest network.</p>
+                </div>
+                <div class="hpw-faq-card">
+                    <h4>Can customers connect Smart TVs and streaming devices?</h4>
+                    <p>Yes, the private-network model is designed specifically to make normal household devices easier to use.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hpw-faq-card">
+                    <h4>How long do customers have to subscribe?</h4>
+                    <p>Packages can range from short stays through to monthly, seasonal and longer-term options depending on the park.</p>
+                </div>
+                <div class="hpw-faq-card">
+                    <h4>What internet connection do you use?</h4>
+                    <p>Depending on the site we may use Starlink, multiple Starlink services, fibre, leased-line, 4G/5G or a combination.</p>
+                </div>
+                <div class="hpw-faq-card">
+                    <h4>What happens if something goes wrong?</h4>
+                    <p>Sprintwave monitors and supports the service and can arrange onsite engineering where required.</p>
+                </div>
+                <div class="hpw-faq-card">
+                    <h4>Can we try it first?</h4>
+                    <p>Yes. Selected parks can request a free proof-of-concept deployment covering a small part of the site.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="hpw-final-cta">
+    <div class="container">
+        <h2 class="mb-3">See how private WiFi could work on your park.</h2>
+        <p>
+            We'll visit your site, discuss how customers currently access the internet and identify an area where we can demonstrate the service.
+        </p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center mb-4">
+            <button type="button" class="btn-accent btn-lg" onclick="location.href='#contact'" aria-label="Request a Free Proof of Concept"><i class="bi bi-wifi me-2"></i>Request a Free Proof of Concept</button>
+            <button type="button" class="btn-accent-outline btn-lg" onclick="location.href='#contact'" aria-label="Speak to a Network Engineer"><i class="bi bi-person-lines-fill me-2"></i>Speak to a Network Engineer</button>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact" style="padding: 60px 0; background: #fff;">
+    <div class="container">
+        <div class="hpw-form-card">
+            <h2 class="fw-bold mb-3" style="font-size:1.3rem;">Request a Free Holiday Park WiFi Trial</h2>
+            <form action="https://formspree.io/f/mzdlaeqo" method="POST" autocomplete="off">
+                <input type="hidden" name="source" value="holiday-park-wifi">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label class="form-label">Your name *</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">Holiday park / company *</label>
+                        <input type="text" name="company" class="form-control" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">Email address *</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label">Phone number</label>
+                        <input type="tel" name="phone" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Park location *</label>
+                        <input type="text" name="location" class="form-control" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Approximate number of holiday homes</label>
+                        <input type="text" name="num_homes" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Current WiFi situation</label>
+                        <input type="text" name="current_wifi" class="form-control" placeholder="e.g. guest WiFi, no WiFi, individual broadband lines, etc.">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Message</label>
+                        <textarea name="message" rows="4" class="form-control" placeholder="Tell us about your park, current issues, or what you'd like to achieve"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn-accent" style="border-radius:12px;">
+                            <i class="bi bi-wifi me-2"></i>Request My Free WiFi Trial
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

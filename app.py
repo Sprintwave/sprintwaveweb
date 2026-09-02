@@ -419,6 +419,10 @@ def events():
 def contact():
     return render_template('contact.html')
 
+@app.route('/holiday-park-wifi')
+def holiday_park_wifi():
+    return render_template('holiday-park-wifi.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
