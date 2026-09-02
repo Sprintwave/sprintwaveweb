@@ -126,6 +126,7 @@ def sitemap():
     <url><loc>https://www.sprintwave.co.uk/unifi</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
     <url><loc>https://www.sprintwave.co.uk/network-health-check</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
     <url><loc>https://www.sprintwave.co.uk/web-design</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://www.sprintwave.co.uk/holiday-park-wifi</loc><lastmod>{current_date}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
     <!-- Events -->
     <url><loc>https://www.sprintwave.co.uk/events</loc><lastmod>{current_date}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
