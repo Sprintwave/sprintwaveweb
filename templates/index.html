@@ -208,9 +208,107 @@
     .review-card p { color: #444; font-size: 0.9rem; line-height: 1.65; font-style: italic; margin-bottom: 0.75rem; }
     .review-card .reviewer { font-weight: 700; font-size: 0.85rem; color: #1a1a1a; }
     .review-card .reviewer-role { font-size: 0.78rem; color: #888; }
+
+    /* Enterprise promo banner (appears under navbar) - upgraded look */
+    .enterprise-promo-banner {
+        background: linear-gradient(180deg, #f1fbf9 0%, #fff 100%);
+        border-left: 6px solid #007f73;
+        box-shadow: 0 12px 30px rgba(0,127,115,0.06);
+        padding: 0.9rem 1rem;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 0 0 20px 0;
+        transition: transform .12s ease, opacity .12s ease;
+    }
+    .enterprise-promo-banner:hover { transform: translateY(-4px); }
+    .enterprise-promo-banner .ep-text {
+        font-weight:800;
+        color:#065a4f;
+        font-size:1.04rem;
+        line-height:1.05;
+    }
+    .enterprise-promo-banner .ep-sub {
+        display:block;
+        font-weight:600;
+        color:#2f6f66;
+        font-size:0.95rem;
+        margin-top:0.15rem;
+        opacity:0.95;
+    }
+    .enterprise-promo-content { display:flex; flex-direction:column; gap:0.12rem; }
+
+    /* Enterprise CTA button (brand green) */
+    .btn-enterprise {
+        background: linear-gradient(180deg,#00a388 0%, #007f73 100%);
+        color:#fff !important;
+        padding:0.56rem 1rem;
+        border-radius:10px;
+        font-weight:800;
+        display:inline-flex;
+        align-items:center;
+        gap:0.5rem;
+        box-shadow: 0 8px 20px rgba(0,127,115,0.12);
+        border: none;
+        text-decoration: none;
+    }
+    .btn-enterprise:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,127,115,0.14); }
+    .enterprise-promo-close {
+        background:transparent;
+        border: none;
+        font-size:1.1rem;
+        color:#065a4f;
+        cursor:pointer;
+        padding:0.25rem 0.5rem;
+        margin-left:0.25rem;
+    }
+    @media (max-width:768px) {
+        .enterprise-promo-banner { flex-direction:column; align-items:flex-start; padding:0.75rem; }
+        .enterprise-promo-close { align-self:flex-end; margin-top:-6px; }
+        .btn-enterprise { width:100%; justify-content:center; }
+    }
+    /* small accessible focus ring */
+    .btn-enterprise:focus, .enterprise-promo-close:focus { outline: 3px solid rgba(220,38,38,0.12); outline-offset:3px; }
 {% endblock %}
 
 {% block content %}
+
+<!-- Enterprise promo banner (dismissible) -->
+<div id="enterprisePromo" class="container" style="max-width:1200px;">
+    <div class="enterprise-promo-banner" role="region" aria-label="Enterprise promotion">
+        <div class="enterprise-promo-content">
+            <div class="ep-text">Enterprise Network Consultancy &amp; Professional Services</div>
+            <div class="ep-sub">Cisco, Aruba, Wireless, NAC, Security &amp; Automation</div>
+        </div>
+
+        <div class="ep-actions" style="margin-left:auto; display:flex; gap:0.6rem; align-items:center;">
+            <a href="{{ url_for('enterprise') }}" class="btn-enterprise" aria-label="Explore Enterprise Services">
+                <i class="bi bi-building me-1" aria-hidden="true"></i>
+                Explore Enterprise Services →
+            </a>
+            <button class="enterprise-promo-close" id="enterprisePromoClose" aria-label="Dismiss enterprise promotion">✕</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Dismissible behaviour persisted in localStorage
+(() => {
+    try {
+        const key = 'sw_enterprise_promo_dismissed_v2';
+        const root = document.getElementById('enterprisePromo');
+        if (!root) return;
+        if (localStorage.getItem(key) === '1') { root.style.display = 'none'; return; }
+        document.getElementById('enterprisePromoClose').addEventListener('click', function(){
+            root.style.opacity = '0';
+            setTimeout(()=>{ root.style.display = 'none'; }, 180);
+            try { localStorage.setItem(key,'1'); } catch(e){}
+        });
+    } catch(e){}
+})();
+</script>
 
 <!-- ── HERO ── -->
 <section class="home-hero">
