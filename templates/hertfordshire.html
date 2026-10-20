@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>WiFi, Network Cabling & CCTV Installation Hertfordshire | Sprintwave</title>
+<meta name="description" content="Business WiFi, structured cabling, CCTV, Starlink and enterprise network consultancy across Hertfordshire — St Albans, Watford, Hemel Hempstead, Stevenage, Hatfield, Hertford & more. Free quotes.">
+<meta name="keywords" content="WiFi installation Hertfordshire, network cabling Hertfordshire, CCTV installation Hertfordshire, business WiFi St Albans, network installation Watford, IT networking Stevenage, Starlink Hertfordshire">
+<link rel="canonical" href="https://www.sprintwave.co.uk/hertfordshire-wifi-network-installation">
+<meta property="og:title" content="WiFi & Network Installation Hertfordshire | Sprintwave">
+<meta property="og:description" content="Senior-engineer WiFi, cabling, CCTV and network projects across Hertfordshire. Honest pricing, free quotes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/hertfordshire-wifi-network-installation">
+<meta property="og:image" content="https://www.sprintwave.co.uk{{ url_for('static', filename='images/sprintwave-og-image.png') }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Sprintwave Ltd",
+  "url": "https://www.sprintwave.co.uk/hertfordshire-wifi-network-installation",
+  "telephone": "+441553824408",
+  "email": "info@sprintwave.co.uk",
+  "description": "WiFi, network cabling, CCTV and enterprise network consultancy in Hertfordshire.",
+  "areaServed": [
+    {"@type":"AdministrativeArea","name":"Hertfordshire"},
+    {"@type":"City","name":"St Albans"},
+    {"@type":"City","name":"Watford"},
+    {"@type":"City","name":"Hemel Hempstead"},
+    {"@type":"City","name":"Stevenage"},
+    {"@type":"City","name":"Hatfield"},
+    {"@type":"City","name":"Welwyn Garden City"},
+    {"@type":"City","name":"Hertford"},
+    {"@type":"City","name":"Hitchin"},
+    {"@type":"City","name":"Letchworth"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block custom_css %}
+    .hf-hero {
+        background: linear-gradient(135deg, #e6f4f3 0%, #d4ede9 50%, #e6f0ef 100%);
+        padding: 70px 0 60px;
+        border-bottom: 1px solid rgba(0,127,115,0.12);
+    }
+    .hf-hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.1; color: #1a1a1a; }
+    .hf-hero h1 span { color: #007f73; }
+    .hf-eyebrow { text-transform: uppercase; letter-spacing: 0.13em; font-size: 0.76rem; font-weight: 700; color: #007f73; display: block; margin-bottom: 0.5rem; }
+    .hf-trust { background:#fff; border-bottom:1px solid rgba(0,127,115,0.1); padding:16px 0; }
+    .hf-trust span { font-size:0.88rem; font-weight:600; color:#333; display:inline-flex; align-items:center; gap:.5rem; }
+    .hf-trust i { color:#007f73; }
+    .hf-card { background:#fff; border-radius:16px; padding:1.6rem; box-shadow:0 4px 20px rgba(0,0,0,0.06); border:1px solid rgba(0,127,115,0.1); height:100%; text-decoration:none; color:inherit; display:block; transition:all .25s ease; }
+    .hf-card:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,127,115,0.12); color:inherit; }
+    .hf-card h3 { font-size:1.05rem; font-weight:700; margin-bottom:.4rem; }
+    .hf-card p { color:#666; font-size:.9rem; line-height:1.6; margin:0; }
+    .hf-card .card-link { font-size:.82rem; font-weight:700; color:#007f73; margin-top:.75rem; display:inline-block; }
+    .hf-pill { background:#fff; border:1px solid rgba(0,127,115,0.2); border-radius:999px; padding:.4rem 1rem; font-size:.85rem; display:inline-block; }
+    .hf-form-card { background:#fff; border-radius:16px; padding:1.75rem; box-shadow:0 8px 30px rgba(0,0,0,0.08); border:1px solid rgba(0,127,115,0.12); }
+    .hf-cta { background: linear-gradient(135deg, #007f73 0%, #005f57 100%); padding:60px 0; color:#fff; }
+    .hf-cta p { color:rgba(255,255,255,0.88); }
+    @media (max-width:576px) {
+        .hf-hero { padding:50px 0 40px; }
+        .hf-hero .btn-accent, .hf-hero .btn-accent-outline { width:100%; justify-content:center; }
+    }
+{% endblock %}
+
+{% block content %}
+
+<section class="hf-hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="hf-eyebrow">Hertfordshire network &amp; WiFi specialists</span>
+                <h1 class="mb-3">WiFi, Cabling &amp; <span>Network Installation</span> in Hertfordshire.</h1>
+                <p class="lead mb-4" style="color:#444; line-height:1.75;">
+                    Senior CCNP/CCIE-level engineers delivering business WiFi, structured cabling, CCTV and network upgrades across St Albans, Watford, Hemel Hempstead, Stevenage and the wider county. Free quotes, honest pricing, tidy documented work.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#quote" class="btn-accent btn-lg"><i class="bi bi-send me-2"></i>Get a free quote</a>
+                    <a href="tel:+441553824408" class="btn-accent-outline btn-lg"><i class="bi bi-telephone me-2"></i>01553 824408</a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="service-card">
+                    <p class="fw-bold mb-3" style="font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; color:#007f73;">Popular in Hertfordshire</p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="py-2 border-bottom">📡 Office &amp; warehouse WiFi design</li>
+                        <li class="py-2 border-bottom">🔌 Cat6/Cat6a structured cabling</li>
+                        <li class="py-2 border-bottom">📹 CCTV installation</li>
+                        <li class="py-2 border-bottom">🏢 New office network fit-outs</li>
+                        <li class="py-2 border-bottom">🚨 4G/5G backup internet</li>
+                        <li class="py-2">🏛️ Enterprise Cisco / Aruba consultancy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="hf-trust">
+    <div class="container d-flex flex-wrap justify-content-center gap-4">
+        <span><i class="bi bi-clock-fill"></i> Fast response</span>
+        <span><i class="bi bi-patch-check-fill"></i> Fully insured &amp; certified</span>
+        <span><i class="bi bi-building"></i> Company No. 15831681</span>
+        <span><i class="bi bi-star-fill" style="color:#f59e0b;"></i> 5-star rated</span>
+    </div>
+</div>
+
+<section style="padding:70px 0; background:#f8f9fa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="hf-eyebrow">Services in Hertfordshire</span>
+            <h2 class="fw-bold">Network services for Hertfordshire businesses.</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('wifi_installation') }}" class="hf-card">
+                    <h3>📡 Business WiFi Installation</h3>
+                    <p>Surveyed, designed and installed WiFi for offices, warehouses, schools and hospitality venues.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('network_cabling') }}" class="hf-card">
+                    <h3>🔌 Network Cabling</h3>
+                    <p>Tidy, tested and labelled Cat6/Cat6a cabling for offices, fit-outs and extensions.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('cctv_installation_norfolk') }}" class="hf-card">
+                    <h3>📹 CCTV Installation</h3>
+                    <p>HD cameras with remote viewing for business and commercial premises.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('small_business_setup') }}" class="hf-card">
+                    <h3>🏢 Small Business Networks</h3>
+                    <p>Switches, WiFi, firewalls and cabling for new and growing offices.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('backup_internet') }}" class="hf-card">
+                    <h3>🚨 Backup Internet</h3>
+                    <p>Automatic 4G/5G failover so you stay online when broadband drops.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('enterprise') }}" class="hf-card">
+                    <h3>🏛️ Enterprise Network Consultancy</h3>
+                    <p>Cisco, Aruba, ISE/ClearPass, wireless and security projects delivered by senior consultants.</p>
+                    <span class="card-link">Enterprise services →</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding:60px 0; background:#fff;">
+    <div class="container">
+        <div class="text-center mb-4">
+            <span class="hf-eyebrow">Areas covered</span>
+            <h2 class="fw-bold">Across Hertfordshire.</h2>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+            {% for town in ['St Albans','Watford','Hemel Hempstead','Stevenage','Hatfield','Welwyn Garden City','Hertford','Hitchin','Letchworth','Harpenden','Bishop\'s Stortford','Borehamwood','Rickmansworth','Cheshunt','Hoddesdon','Royston','Tring'] %}
+            <span class="hf-pill">📍 {{ town }}</span>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="quote" class="hf-cta">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5">
+                <h2 class="fw-bold mb-3">Get a free Hertfordshire quote.</h2>
+                <p>Tell us what you need and where you are. We'll respond the same working day with honest advice and a clear price.</p>
+                <p class="mb-0"><i class="bi bi-telephone-fill me-2"></i><a href="tel:+441553824408" style="color:#fff;">01553 824408</a><br>
+                <i class="bi bi-envelope-fill me-2"></i><a href="mailto:info@sprintwave.co.uk" style="color:#fff;">info@sprintwave.co.uk</a></p>
+            </div>
+            <div class="col-lg-7">
+                <div class="hf-form-card" style="color:#222;">
+                    <form action="https://formspree.io/f/mzdlaeqo" method="POST" autocomplete="off">
+                        <input type="hidden" name="source" value="hertfordshire-landing">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label class="form-label" for="hf-name">Name *</label>
+                                <input id="hf-name" type="text" name="name" class="form-control" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="hf-company">Company</label>
+                                <input id="hf-company" type="text" name="company" class="form-control">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="hf-email">Email *</label>
+                                <input id="hf-email" type="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="hf-phone">Phone</label>
+                                <input id="hf-phone" type="tel" name="phone" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="hf-town">Town / postcode *</label>
+                                <input id="hf-town" type="text" name="location" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="hf-msg">What do you need?</label>
+                                <textarea id="hf-msg" name="message" rows="4" class="form-control" placeholder="e.g. WiFi for a 3,000 sq ft office, cabling for a new fit-out..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-accent btn-lg"><i class="bi bi-send me-2"></i>Request my free quote</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

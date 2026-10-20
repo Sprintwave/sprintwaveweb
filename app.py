@@ -424,6 +424,10 @@ def contact():
 def holiday_park_wifi():
     return render_template('holiday-park-wifi.html')
 
+@app.route('/hertfordshire-wifi-network-installation')
+def hertfordshire_landing():
+    return render_template('hertfordshire.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
