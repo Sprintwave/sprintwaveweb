@@ -428,6 +428,10 @@ def holiday_park_wifi():
 def hertfordshire_landing():
     return render_template('hertfordshire.html')
 
+@app.route('/polan')
+def polan():
+    return render_template('polan.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)

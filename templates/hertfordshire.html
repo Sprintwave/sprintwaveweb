@@ -48,6 +48,7 @@
     .hf-trust span { font-size:0.88rem; font-weight:600; color:#333; display:inline-flex; align-items:center; gap:.5rem; }
     .hf-trust i { color:#007f73; }
     .hf-card { background:#fff; border-radius:16px; padding:1.6rem; box-shadow:0 4px 20px rgba(0,0,0,0.06); border:1px solid rgba(0,127,115,0.1); height:100%; text-decoration:none; color:inherit; display:block; transition:all .25s ease; }
+    button.hf-card { width:100%; text-align:left; cursor:pointer; font:inherit; }
     .hf-card:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,127,115,0.12); color:inherit; }
     .hf-card h3 { font-size:1.05rem; font-weight:700; margin-bottom:.4rem; }
     .hf-card p { color:#666; font-size:.9rem; line-height:1.6; margin:0; }
@@ -106,58 +107,90 @@
     </div>
 </div>
 
+{% set services = [
+  {'id':'wifi','icon':'📡','title':'Business WiFi Installation',
+   'blurb':'Surveyed, designed and installed WiFi for offices, warehouses, schools and hospitality venues.',
+   'detail':'We survey the site, design coverage and capacity, then install and test wired access points so WiFi is reliable in every area.',
+   'points':['Predictive and on-site surveys','Cisco, Aruba and UniFi platforms','Guest, staff and IoT network separation','Post-install testing and documentation']},
+  {'id':'mansion','icon':'🏡','title':'Large Home & Mansion WiFi',
+   'blurb':'Seamless whole-property WiFi for large homes, estates and outbuildings.',
+   'detail':'Wired access points and proper roaming design, instead of relying on mesh extenders, give consistent coverage across large properties and grounds.',
+   'points':['Discreet ceiling and wall-mounted access points','Coverage for outbuildings, annexes and gardens','Cabling run to each access point','Network segmentation for guests, staff and smart-home devices']},
+  {'id':'voip','icon':'☎️','title':'VoIP Phone Services',
+   'blurb':'Hosted VoIP systems, number porting and handsets.',
+   'detail':'We help you move to hosted VoIP and make sure the network is prepared for call quality.',
+   'points':['Hosted phone systems and handsets','Number porting','QoS and network preparation for voice','Support for new and existing sites']},
+  {'id':'circuits','icon':'🌐','title':'Leased Lines & Internet Circuits',
+   'blurb':'Dedicated fibre, FTTP and resilient circuits sourced and installed.',
+   'detail':'We source, order and coordinate installation of business-grade connectivity, and configure your network to use it.',
+   'points':['Dedicated leased lines and FTTP','Resilient and dual-circuit designs','Carrier ordering and install coordination','Router and firewall configuration']},
+  {'id':'starlink','icon':'🛰️','title':'Starlink Installation',
+   'blurb':'Starlink for rural sites and estates, or as resilient backup.',
+   'detail':'Professional dish mounting, cabling and router integration, either as the main connection or a failover alongside your primary circuit.',
+   'points':['Site assessment for dish placement','Secure mounting and weatherproof cabling','Integration with existing networks','Backup and failover options']},
+  {'id':'cabling','icon':'🔌','title':'Network Cabling',
+   'blurb':'Tidy, tested and labelled Cat6/Cat6a cabling.',
+   'detail':'Structured cabling for offices, fit-outs and extensions, tested and labelled for easy future maintenance.',
+   'points':['Cat6 and Cat6a installation','Patch panels and cabinets','Testing and labelling','Fibre links between buildings']},
+  {'id':'cctv','icon':'📹','title':'CCTV Installation',
+   'blurb':'HD cameras with remote viewing for commercial premises.',
+   'detail':'Camera systems designed around your site with secure recording and remote access.',
+   'points':['IP camera systems','Remote viewing on phone and PC','PoE cabling and recorders','Network-secure configuration']},
+  {'id':'backup','icon':'🚨','title':'Backup Internet',
+   'blurb':'Automatic 4G/5G failover when broadband drops.',
+   'detail':'Cellular or Starlink failover that switches automatically so your business stays online.',
+   'points':['Automatic failover','4G/5G and Starlink options','Suitable for tills, phones and cloud systems','Monitoring options']},
+  {'id':'enterprise','icon':'🏛️','title':'Enterprise Network Consultancy',
+   'blurb':'Cisco, Aruba, ISE/ClearPass, wireless and security projects.',
+   'detail':'Senior consultants for larger projects, including design, migrations, network access control and automation.',
+   'points':['Cisco and Aruba design and migration','ISE and ClearPass','Wireless design and surveys','Network security and automation'],
+   'link':'enterprise'}
+] %}
+
 <section style="padding:70px 0; background:#f8f9fa;">
     <div class="container">
         <div class="text-center mb-5">
             <span class="hf-eyebrow">Services in Hertfordshire</span>
-            <h2 class="fw-bold">Network services for Hertfordshire businesses.</h2>
+            <h2 class="fw-bold">Network services for Hertfordshire businesses and homes.</h2>
         </div>
         <div class="row g-4">
+            {% for s in services %}
             <div class="col-sm-6 col-lg-4">
-                <a href="{{ url_for('wifi_installation') }}" class="hf-card">
-                    <h3>📡 Business WiFi Installation</h3>
-                    <p>Surveyed, designed and installed WiFi for offices, warehouses, schools and hospitality venues.</p>
-                    <span class="card-link">Learn more →</span>
-                </a>
+                <button type="button" class="hf-card" data-bs-toggle="modal" data-bs-target="#modal-{{ s.id }}">
+                    <h3>{{ s.icon }} {{ s.title }}</h3>
+                    <p>{{ s.blurb }}</p>
+                    <span class="card-link">Find out more →</span>
+                </button>
             </div>
-            <div class="col-sm-6 col-lg-4">
-                <a href="{{ url_for('network_cabling') }}" class="hf-card">
-                    <h3>🔌 Network Cabling</h3>
-                    <p>Tidy, tested and labelled Cat6/Cat6a cabling for offices, fit-outs and extensions.</p>
-                    <span class="card-link">Learn more →</span>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <a href="{{ url_for('cctv_installation_norfolk') }}" class="hf-card">
-                    <h3>📹 CCTV Installation</h3>
-                    <p>HD cameras with remote viewing for business and commercial premises.</p>
-                    <span class="card-link">Learn more →</span>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <a href="{{ url_for('small_business_setup') }}" class="hf-card">
-                    <h3>🏢 Small Business Networks</h3>
-                    <p>Switches, WiFi, firewalls and cabling for new and growing offices.</p>
-                    <span class="card-link">Learn more →</span>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <a href="{{ url_for('backup_internet') }}" class="hf-card">
-                    <h3>🚨 Backup Internet</h3>
-                    <p>Automatic 4G/5G failover so you stay online when broadband drops.</p>
-                    <span class="card-link">Learn more →</span>
-                </a>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <a href="{{ url_for('enterprise') }}" class="hf-card">
-                    <h3>🏛️ Enterprise Network Consultancy</h3>
-                    <p>Cisco, Aruba, ISE/ClearPass, wireless and security projects delivered by senior consultants.</p>
-                    <span class="card-link">Enterprise services →</span>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
+
+{% for s in services %}
+<div class="modal fade hf-modal" id="modal-{{ s.id }}" tabindex="-1" aria-labelledby="modal-{{ s.id }}-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5 fw-bold" id="modal-{{ s.id }}-label">{{ s.icon }} {{ s.title }}</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{{ s.detail }}</p>
+                <ul>
+                    {% for p in s.points %}<li>{{ p }}</li>{% endfor %}
+                </ul>
+            </div>
+            <div class="modal-footer">
+                {% if s.link %}
+                <a href="{{ url_for(s.link) }}" class="btn-accent-outline">Visit Enterprise</a>
+                {% endif %}
+                <a href="#quote" class="btn-accent" data-bs-dismiss="modal">Get a free quote</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 <section style="padding:60px 0; background:#fff;">
     <div class="container">

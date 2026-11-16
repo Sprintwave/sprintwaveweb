@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>POLAN Design & Implementation UK | Nokia & Tellabs Passive Optical LAN | Sprintwave</title>
+<meta name="description" content="Specialist POLAN (Passive Optical LAN) design and implementation in the UK. Nokia and Tellabs experience, healthcare and hospital environments, GPON/XGS-PON, migrations and subcontract delivery.">
+<meta name="keywords" content="POLAN UK, passive optical LAN design, POLAN implementation, Nokia POLAN, Tellabs POLAN, hospital POLAN, GPON LAN, healthcare network design, new hospital programme network, POLAN subcontractor">
+<meta name="author" content="Sprintwave">
+<meta property="og:title" content="POLAN Design & Implementation UK | Sprintwave">
+<meta property="og:description" content="Passive Optical LAN specialists: Nokia and Tellabs, hospital and healthcare environments, design through to implementation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/polan">
+<meta property="og:image" content="https://www.sprintwave.co.uk{{ url_for('static', filename='images/sprintwave-og-image.png') }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Passive Optical LAN (POLAN) design and implementation",
+  "provider": {
+    "@type": "Organization",
+    "name": "Sprintwave Ltd",
+    "url": "https://www.sprintwave.co.uk",
+    "telephone": "+441553824408",
+    "email": "info@sprintwave.co.uk"
+  },
+  "areaServed": {"@type": "Country", "name": "United Kingdom"},
+  "description": "Design, implementation, migration and optimisation of Passive Optical LAN networks using Nokia and Tellabs platforms, including hospital and healthcare environments."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is POLAN?","acceptedAnswer":{"@type":"Answer","text":"Passive Optical LAN (POLAN) replaces traditional copper access switching with a single-mode fibre network using passive optical splitters. A central OLT serves ONTs at the edge, reducing cabling, power, space and cooling in large buildings."}},
+    {"@type":"Question","name":"Why is POLAN used in hospitals?","acceptedAnswer":{"@type":"Answer","text":"Hospitals benefit from fewer comms rooms, lower power and heat, a reduced cabling footprint, future-proof bandwidth and simpler infection-control-friendly installation, while supporting wired devices, wireless, VoIP and building systems."}},
+    {"@type":"Question","name":"Do you work as a subcontractor?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sprintwave provides POLAN design, implementation and commissioning expertise to main contractors and integrators on a subcontract basis."}}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block custom_css %}
+    .pl-hero { background: linear-gradient(135deg,#0b2a33 0%,#0f4c50 55%,#007f73 100%); color:#fff; padding:80px 0 70px; }
+    .pl-hero h1 { font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.1; }
+    .pl-hero .lead { color:rgba(255,255,255,.88); line-height:1.75; max-width:640px; }
+    .pl-eyebrow { text-transform:uppercase; letter-spacing:.13em; font-size:.76rem; font-weight:700; color:#007f73; display:block; margin-bottom:.5rem; }
+    .pl-hero .pl-eyebrow { color:#7fe0d4; }
+    .pl-tags span { display:inline-block; border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:.3rem .9rem; font-size:.82rem; margin:0 .4rem .5rem 0; }
+    .pl-card { background:#fff; border-radius:14px; padding:1.5rem; border:1px solid rgba(0,127,115,.12); box-shadow:0 4px 18px rgba(0,0,0,.05); height:100%; }
+    .pl-card h3 { font-size:1.05rem; font-weight:700; margin-bottom:.4rem; }
+    .pl-card p, .pl-card li { color:#555; font-size:.9rem; line-height:1.6; }
+    .pl-card ul { padding-left:1.1rem; margin:0; }
+    .pl-compare { width:100%; background:#fff; border-radius:12px; overflow:hidden; }
+    .pl-compare th { background:#007f73; color:#fff; padding:.75rem 1rem; font-size:.9rem; }
+    .pl-compare td { padding:.7rem 1rem; border-bottom:1px solid #eee; font-size:.9rem; vertical-align:top; }
+    .pl-cta { background:linear-gradient(135deg,#007f73 0%,#005f57 100%); color:#fff; padding:70px 0; }
+    .pl-cta p { color:rgba(255,255,255,.88); }
+    .pl-form { background:#fff; color:#222; border-radius:16px; padding:1.75rem; box-shadow:0 8px 30px rgba(0,0,0,.12); }
+    @media (max-width:576px) {
+        .pl-hero { padding:50px 0 40px; }
+        .pl-hero .btn-accent { width:100%; text-align:center; }
+        .pl-table-wrap { overflow-x:auto; }
+    }
+{% endblock %}
+
+{% block content %}
+
+<section class="pl-hero">
+    <div class="container">
+        <span class="pl-eyebrow">Sprintwave Enterprise · Passive Optical LAN</span>
+        <h1 class="mb-3">POLAN design &amp; implementation<br>for UK healthcare and large estates.</h1>
+        <p class="lead mb-4">
+            Specialist Passive Optical LAN engineering on Nokia and Tellabs platforms. From architecture and bill of materials through to ONT rollout, commissioning, migration and handover, delivered directly or as a subcontract partner to main contractors and integrators.
+        </p>
+        <div class="pl-tags mb-4">
+            <span>Nokia</span><span>Tellabs</span><span>GPON / XGS-PON</span><span>Hospital &amp; healthcare</span><span>Design · Build · Migrate</span>
+        </div>
+        <div class="d-flex flex-wrap gap-3">
+            <a href="#enquire" class="btn-accent" style="background:#fff; color:#007f73;"><i class="bi bi-send me-2"></i>Discuss a POLAN project</a>
+            <a href="tel:+441553824408" class="btn-accent" style="background:transparent; border:2px solid #fff;"><i class="bi bi-telephone me-2"></i>01553 824408</a>
+        </div>
+    </div>
+</section>
+
+<section style="padding:70px 0; background:#fff;">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <span class="pl-eyebrow">What is POLAN</span>
+                <h2 class="fw-bold mb-3">Replace copper access layers with passive fibre.</h2>
+                <p class="text-muted" style="line-height:1.8;">
+                    A Passive Optical LAN uses single-mode fibre, passive optical splitters and a central OLT to serve ONTs at the edge. Floor-level switches and large copper cabling runs are replaced with a compact, low-power architecture that scales to very large buildings.
+                </p>
+                <p class="text-muted" style="line-height:1.8;">
+                    On large sites such as hospitals this means fewer comms rooms, lower power and cooling, reduced disruption during installation and a network that stays relevant for decades.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="pl-table-wrap">
+                <table class="pl-compare">
+                    <thead><tr><th></th><th>Traditional LAN</th><th>POLAN</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Cabling</strong></td><td>Cat6/6a copper, 90 m limits</td><td>Single-mode fibre, long reach</td></tr>
+                        <tr><td><strong>Comms rooms</strong></td><td>Per floor / zone</td><td>Centralised, far fewer</td></tr>
+                        <tr><td><strong>Power &amp; cooling</strong></td><td>Higher</td><td>Significantly lower</td></tr>
+                        <tr><td><strong>Upgrades</strong></td><td>Often re-cable</td><td>Change optics/electronics</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding:70px 0; background:#f8f9fa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="pl-eyebrow">Services</span>
+            <h2 class="fw-bold">POLAN engineering, end to end.</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4"><div class="pl-card"><h3>Design &amp; architecture</h3>
+                <ul><li>High-level and low-level design</li><li>Split ratios, optical budgets and resilience</li><li>OLT/ONT selection and capacity planning</li><li>VLAN, QoS, multicast and security design</li></ul></div></div>
+            <div class="col-md-6 col-lg-4"><div class="pl-card"><h3>Implementation &amp; commissioning</h3>
+                <ul><li>OLT and ONT configuration and rollout</li><li>Fibre testing and optical power verification</li><li>Integration with core, NAC and wireless</li><li>Acceptance testing and handover</li></ul></div></div>
+            <div class="col-md-6 col-lg-4"><div class="pl-card"><h3>Migration from copper LAN</h3>
+                <ul><li>Phased, low-disruption cutover plans</li><li>Parallel running and rollback planning</li><li>Out-of-hours and ward-sensitive working</li><li>Legacy device and VoIP integration</li></ul></div></div>
+            <div class="col-md-6 col-lg-4"><div class="pl-card"><h3>Nokia &amp; Tellabs platforms</h3>
+                <p>Vendor-specific configuration, troubleshooting and optimisation on Nokia and Tellabs POLAN estates, including remediation of existing deployments.</p></div></div>
+            <div class="col-md-6 col-lg-4"><div class="pl-card"><h3>Network integration</h3>
+                <p>Connecting POLAN to Cisco and Aruba cores, ISE/ClearPass NAC, enterprise wireless and security stacks, with documented, supportable designs.</p></div></div>
+            <div class="col-md-6 col-lg-4"><div class="pl-card"><h3>Subcontract &amp; resource</h3>
+                <p>Senior POLAN engineers and designers embedded into main contractor, integrator and managed service delivery teams.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section style="padding:70px 0; background:#fff;">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <span class="pl-eyebrow">Healthcare &amp; hospitals</span>
+                <h2 class="fw-bold mb-3">Built for clinical environments.</h2>
+                <ul class="text-muted" style="line-height:1.9;">
+                    <li>Resilient, protected architectures for critical clinical services</li>
+                    <li>Low-disruption installation planning around live wards</li>
+                    <li>Support for medical devices, VoIP, CCTV, access control and building systems</li>
+                    <li>Segregated networks and NAC-aligned security design</li>
+                    <li>Clear documentation for estates, IT and main contractors</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <span class="pl-eyebrow">Working with contractors</span>
+                <h2 class="fw-bold mb-3">Supporting new hospital delivery.</h2>
+                <p class="text-muted" style="line-height:1.8;">
+                    Large new-build and refurbishment healthcare programmes need specialist POLAN capability inside the supply chain. We work with main contractors, systems integrators and framework suppliers to provide design assurance, implementation leads and commissioning engineers on a subcontract basis.
+                </p>
+                <a href="#enquire" class="btn-accent">Talk to us about your programme</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding:70px 0; background:#f8f9fa;">
+    <div class="container" style="max-width:860px;">
+        <div class="text-center mb-4">
+            <span class="pl-eyebrow">FAQ</span>
+            <h2 class="fw-bold">POLAN questions.</h2>
+        </div>
+        <div class="accordion" id="polanFaq">
+            <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1">What is POLAN?</button></h3>
+                <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#polanFaq"><div class="accordion-body">Passive Optical LAN replaces traditional copper access switching with single-mode fibre and passive optical splitters. A central OLT serves ONTs at the edge, reducing cabling, power, space and cooling in large buildings.</div></div></div>
+            <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2">Why is POLAN used in hospitals?</button></h3>
+                <div id="f2" class="accordion-collapse collapse" data-bs-parent="#polanFaq"><div class="accordion-body">Hospitals benefit from fewer comms rooms, lower power and heat, a reduced cabling footprint, future-proof bandwidth and simpler installation, while still supporting wired devices, wireless, VoIP and building systems.</div></div></div>
+            <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3">Do you work as a subcontractor?</button></h3>
+                <div id="f3" class="accordion-collapse collapse" data-bs-parent="#polanFaq"><div class="accordion-body">Yes. We provide POLAN design, implementation and commissioning expertise to main contractors and integrators on a subcontract basis.</div></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="enquire" class="pl-cta">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5">
+                <h2 class="fw-bold mb-3">Discuss your POLAN project.</h2>
+                <p>Tell us about the programme, vendor platform and timescales. We'll respond promptly with how we can support.</p>
+                <p class="mb-0"><i class="bi bi-telephone-fill me-2"></i><a href="tel:+441553824408" style="color:#fff;">01553 824408</a><br>
+                <i class="bi bi-envelope-fill me-2"></i><a href="mailto:info@sprintwave.co.uk" style="color:#fff;">info@sprintwave.co.uk</a></p>
+            </div>
+            <div class="col-lg-7">
+                <div class="pl-form">
+                    <form action="https://formspree.io/f/mzdlaeqo" method="POST" autocomplete="off">
+                        <input type="hidden" name="source" value="polan-landing">
+                        <div class="row g-3">
+                            <div class="col-sm-6"><label class="form-label" for="pl-name">Name *</label><input id="pl-name" name="name" type="text" class="form-control" required></div>
+                            <div class="col-sm-6"><label class="form-label" for="pl-company">Company *</label><input id="pl-company" name="company" type="text" class="form-control" required></div>
+                            <div class="col-sm-6"><label class="form-label" for="pl-email">Email *</label><input id="pl-email" name="email" type="email" class="form-control" required></div>
+                            <div class="col-sm-6"><label class="form-label" for="pl-phone">Phone</label><input id="pl-phone" name="phone" type="tel" class="form-control"></div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="pl-platform">Platform</label>
+                                <select id="pl-platform" name="platform" class="form-select">
+                                    <option>Nokia</option><option>Tellabs</option><option>Other / undecided</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="pl-type">Enquiry type</label>
+                                <select id="pl-type" name="enquiry_type" class="form-select">
+                                    <option>Subcontract resource</option><option>Design</option><option>Implementation</option><option>Migration / remediation</option><option>Other</option>
+                                </select>
+                            </div>
+                            <div class="col-12"><label class="form-label" for="pl-msg">Project details</label>
+                                <textarea id="pl-msg" name="message" rows="4" class="form-control" placeholder="Site type, scale, timescales, current status..."></textarea></div>
+                            <div class="col-12"><button type="submit" class="btn-accent"><i class="bi bi-send me-2"></i>Send enquiry</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
