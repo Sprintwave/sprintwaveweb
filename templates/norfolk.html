@@ -1,0 +1,617 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<title>Sprintwave | WiFi Installation, Starlink & Network Setup — Norfolk & UK</title>
+<meta name="description" content="Local WiFi installation, Starlink setup, CCTV, network cabling and event WiFi across Norfolk, East Anglia and the UK. Fast response, no jargon, honest pricing.">
+<meta name="keywords" content="WiFi installation Norfolk, Starlink installer Norfolk, CCTV installation Norfolk, network setup Norfolk, event WiFi hire, small business WiFi">
+<meta name="author" content="Sprintwave">
+<meta property="og:title" content="Sprintwave — WiFi, Starlink & Network Installation Norfolk">
+<meta property="og:description" content="Local WiFi installation, Starlink setup, CCTV and network cabling across Norfolk and East Anglia.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sprintwave.co.uk/">
+<meta property="og:image" content="https://www.sprintwave.co.uk{{ url_for('static', filename='images/sprintwave-og-image.png') }}">
+<link rel="canonical" href="https://www.sprintwave.co.uk/norfolk-wifi-network-installation">
+{% endblock %}
+
+{% block custom_css %}
+    /* ── Hero ── */
+    .home-hero {
+        background: linear-gradient(135deg, #e6f4f3 0%, #d4ede9 50%, #e6f0ef 100%);
+        padding: 80px 0 70px;
+        border-bottom: 1px solid rgba(0,127,115,0.12);
+        position: relative;
+        overflow: hidden;
+    }
+    .home-hero::before {
+        content: '';
+        position: absolute;
+        top: -30%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(0,127,115,0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .home-hero h1 {
+        font-size: clamp(2.2rem, 5.5vw, 4rem);
+        font-weight: 800;
+        line-height: 1.1;
+        color: #1a1a1a;
+    }
+    .home-hero h1 span { color: #007f73; }
+    .home-hero .lead   { color: #444; line-height: 1.75; max-width: 540px; }
+
+    /* ── Trust bar ── */
+    .trust-bar {
+        background: #ffffff;
+        border-top: 1px solid rgba(0,127,115,0.1);
+        border-bottom: 1px solid rgba(0,127,115,0.1);
+        padding: 18px 0;
+    }
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #333;
+        white-space: nowrap;
+    }
+    .trust-item i { color: #007f73; font-size: 1.1rem; }
+
+    /* ── Service cards ── */
+    .home-service-card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 1.75rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        border: 1px solid rgba(0,127,115,0.1);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        height: 100%;
+    }
+    .home-service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,127,115,0.12);
+        border-color: rgba(0,127,115,0.25);
+        color: inherit;
+        text-decoration: none;
+    }
+    .home-service-card .svc-icon {
+        font-size: 2.2rem;
+        margin-bottom: 0.9rem;
+        display: block;
+    }
+    .home-service-card h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 0.4rem;
+    }
+    .home-service-card p {
+        color: #666;
+        font-size: 0.88rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+    .home-service-card .card-link {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #007f73;
+        margin-top: 0.75rem;
+        display: inline-block;
+    }
+
+    /* ── Why us ── */
+    .why-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 1.5rem;
+        border-left: 4px solid #007f73;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        height: 100%;
+    }
+    .why-card h5 {
+        font-weight: 700;
+        color: #1a1a1a;
+        font-size: 1rem;
+        margin-bottom: 0.35rem;
+    }
+    .why-card p { color: #666; font-size: 0.88rem; line-height: 1.6; margin: 0; }
+    .why-card i { color: #007f73; font-size: 1.3rem; margin-bottom: 0.6rem; display: block; }
+
+    /* ── Areas served ── */
+    .area-pill {
+        background: #ffffff;
+        border: 1px solid rgba(0,127,115,0.2);
+        color: #333;
+        border-radius: 999px;
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        display: inline-block;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        transition: all 0.2s;
+    }
+    .area-pill:hover {
+        border-color: #007f73;
+        color: #007f73;
+        background: rgba(0,127,115,0.05);
+    }
+
+    /* ── CTA section ── */
+    .home-cta {
+        background: linear-gradient(135deg, #007f73 0%, #005f57 100%);
+        padding: 70px 0;
+        color: #fff;
+    }
+    .home-cta h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; }
+    .home-cta p  { color: rgba(255,255,255,0.85); line-height: 1.75; }
+
+    .btn-home-cta {
+        background: #ffffff;
+        color: #007f73 !important;
+        border: none;
+        border-radius: 999px;
+        padding: 0.9rem 2.2rem;
+        font-weight: 700;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .btn-home-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(0,0,0,0.2);
+        color: #005f57 !important;
+    }
+    .btn-home-cta-outline {
+        background: transparent;
+        color: #fff !important;
+        border: 2px solid rgba(255,255,255,0.6);
+        border-radius: 999px;
+        padding: 0.88rem 2.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.25s ease;
+    }
+    .btn-home-cta-outline:hover {
+        border-color: #fff;
+        background: rgba(255,255,255,0.1);
+        color: #fff !important;
+    }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-size: 0.76rem;
+        font-weight: 700;
+        color: #007f73;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    /* ── Review/testimonial cards ── */
+    .review-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+        border: 1px solid rgba(0,127,115,0.08);
+        height: 100%;
+    }
+    .review-card .stars { color: #f59e0b; font-size: 1rem; margin-bottom: 0.6rem; }
+    .review-card p { color: #444; font-size: 0.9rem; line-height: 1.65; font-style: italic; margin-bottom: 0.75rem; }
+    .review-card .reviewer { font-weight: 700; font-size: 0.85rem; color: #1a1a1a; }
+    .review-card .reviewer-role { font-size: 0.78rem; color: #888; }
+
+    /* Enterprise promo banner (appears under navbar) - upgraded look */
+    .enterprise-promo-banner {
+        background: linear-gradient(180deg, #f1fbf9 0%, #fff 100%);
+        border-left: 6px solid #007f73;
+        box-shadow: 0 12px 30px rgba(0,127,115,0.06);
+        padding: 0.9rem 1rem;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 0 0 20px 0;
+        transition: transform .12s ease, opacity .12s ease;
+    }
+    .enterprise-promo-banner:hover { transform: translateY(-4px); }
+    .enterprise-promo-banner .ep-text {
+        font-weight:800;
+        color:#065a4f;
+        font-size:1.04rem;
+        line-height:1.05;
+    }
+    .enterprise-promo-banner .ep-sub {
+        display:block;
+        font-weight:600;
+        color:#2f6f66;
+        font-size:0.95rem;
+        margin-top:0.15rem;
+        opacity:0.95;
+    }
+    .enterprise-promo-content { display:flex; flex-direction:column; gap:0.12rem; }
+
+    /* Enterprise CTA button (brand green) */
+    .btn-enterprise {
+        background: linear-gradient(180deg,#00a388 0%, #007f73 100%);
+        color:#fff !important;
+        padding:0.56rem 1rem;
+        border-radius:10px;
+        font-weight:800;
+        display:inline-flex;
+        align-items:center;
+        gap:0.5rem;
+        box-shadow: 0 8px 20px rgba(0,127,115,0.12);
+        border: none;
+        text-decoration: none;
+    }
+    .btn-enterprise:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,127,115,0.14); }
+    .enterprise-promo-close {
+        background:transparent;
+        border: none;
+        font-size:1.1rem;
+        color:#065a4f;
+        cursor:pointer;
+        padding:0.25rem 0.5rem;
+        margin-left:0.25rem;
+    }
+    @media (max-width:768px) {
+        .enterprise-promo-banner { flex-direction:column; align-items:flex-start; padding:0.75rem; }
+        .enterprise-promo-close { align-self:flex-end; margin-top:-6px; }
+        .btn-enterprise { width:100%; justify-content:center; }
+    }
+    /* small accessible focus ring */
+    .btn-enterprise:focus, .enterprise-promo-close:focus { outline: 3px solid rgba(220,38,38,0.12); outline-offset:3px; }
+{% endblock %}
+
+{% block content %}
+
+<!-- Enterprise promo banner (dismissible) -->
+<div id="enterprisePromo" class="container" style="max-width:1200px;">
+    <div class="enterprise-promo-banner" role="region" aria-label="Enterprise promotion">
+        <div class="enterprise-promo-content">
+            <div class="ep-text">Enterprise Network Consultancy &amp; Professional Services</div>
+            <div class="ep-sub">Cisco, Aruba, Wireless, NAC, Security &amp; Automation</div>
+        </div>
+
+        <div class="ep-actions" style="margin-left:auto; display:flex; gap:0.6rem; align-items:center;">
+            <a href="{{ url_for('enterprise') }}" class="btn-enterprise" aria-label="Explore Enterprise Services">
+                <i class="bi bi-building me-1" aria-hidden="true"></i>
+                Explore Enterprise Services →
+            </a>
+            <button class="enterprise-promo-close" id="enterprisePromoClose" aria-label="Dismiss enterprise promotion">✕</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Dismissible behaviour persisted in localStorage
+(() => {
+    try {
+        const key = 'sw_enterprise_promo_dismissed_v2';
+        const root = document.getElementById('enterprisePromo');
+        if (!root) return;
+        if (localStorage.getItem(key) === '1') { root.style.display = 'none'; return; }
+        document.getElementById('enterprisePromoClose').addEventListener('click', function(){
+            root.style.opacity = '0';
+            setTimeout(()=>{ root.style.display = 'none'; }, 180);
+            try { localStorage.setItem(key,'1'); } catch(e){}
+        });
+    } catch(e){}
+})();
+</script>
+
+<!-- ── HERO ── -->
+<section class="home-hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="eyebrow">Norfolk & East Anglia's local network specialists</span>
+                <h1 class="mb-3">Professional WiFi &amp;<br><span>Network Installations</span><br>Across Norfolk &amp; East Anglia.</h1>
+                <p class="lead mb-4">
+                    Based in Norfolk, we design, install and support business WiFi, park-wide holiday-park WiFi, event & festival networks, CCTV and structured cabling across Norfolk, Suffolk, Cambridgeshire and Lincolnshire.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{{ url_for('contact') }}" class="btn-accent" style="font-size:1rem; padding: 0.85rem 2rem;">
+                        <i class="bi bi-send me-2"></i>Get a free quote
+                    </a>
+                    <a href="tel:+441553824408" class="btn-accent"
+                       style="background: transparent; color: #007f73 !important; border: 2px solid #007f73; font-size:1rem; padding: 0.82rem 1.9rem;">
+                        <i class="bi bi-telephone me-2"></i>01553 824408
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="service-card">
+                    <p class="fw-bold mb-3" style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#007f73;">What we install &amp; set up</p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="py-2 border-bottom d-flex align-items-center gap-2"><span>📡</span> <span>WiFi installation — homes, offices, farms</span></li>
+                        <li class="py-2 border-bottom d-flex align-items-center gap-2"><span>🔗</span> <span>Connectivity solutions — Starlink, fibre, 4G/5G and hybrid WAN</span></li>
+                        <li class="py-2 border-bottom d-flex align-items-center gap-2"><span>📹</span> <span>CCTV installation &amp; security cameras</span></li>
+                        <li class="py-2 border-bottom d-flex align-items-center gap-2"><span>🔌</span> <span>Network cabling (Cat6/Cat6a)</span></li>
+                        <li class="py-2 border-bottom d-flex align-items-center gap-2"><span>🎪</span> <span>Event &amp; festival WiFi hire</span></li>
+                        <li class="py-2 d-flex align-items-center gap-2"><span>🌾</span> <span>Rural broadband &amp; backup internet</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+            <span class="trust-item"><i class="bi bi-geo-alt-fill"></i> Based in Kings Lynn, Norfolk</span>
+            <span class="trust-item"><i class="bi bi-clock-fill"></i> Same-day response</span>
+            <span class="trust-item"><i class="bi bi-patch-check-fill"></i> Fully insured &amp; certified</span>
+            <span class="trust-item"><i class="bi bi-building"></i> Company No. 15831681</span>
+            <span class="trust-item"><i class="bi bi-star-fill" style="color:#f59e0b;"></i> 5-star rated</span>
+        </div>
+    </div>
+</div>
+
+<!-- ── SERVICES GRID ── -->
+<section style="padding: 70px 0; background: #f8f9fa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="eyebrow">Our services</span>
+            <h2 class="fw-bold">Everything you need to get connected.</h2>
+            <p class="text-muted">Local installation and ongoing support across Norfolk and East Anglia.</p>
+        </div>
+        <div class="row g-4">
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('wifi_installation') }}" class="home-service-card">
+                    <span class="svc-icon">📡</span>
+                    <h3>WiFi Installation</h3>
+                    <p>Proper WiFi coverage for your home, office, warehouse or outdoor space. No dead zones, no dropped connections.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('network_consulting') }}" class="home-service-card">
+                    <span class="svc-icon">🛠️</span>
+                    <h3>Network Consulting &amp; Design</h3>
+                    <p>Senior network consultants for site surveys, WiFi design, capacity planning and secure enterprise networking. Tailored designs for parks, events and business estates.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('cctv_installation_norfolk') }}" class="home-service-card">
+                    <span class="svc-icon">📹</span>
+                    <h3>CCTV Installation</h3>
+                    <p>HD security cameras installed and configured for homes, businesses, farms and rural properties. Remote viewing included.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('events') }}" class="home-service-card">
+                    <span class="svc-icon">🎪</span>
+                    <h3>Event &amp; Festival WiFi</h3>
+                    <p>Managed WiFi for festivals, markets, shows and events. Card payment connectivity, vendor networks and Network-in-a-Box hire.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('network_cabling') }}" class="home-service-card">
+                    <span class="svc-icon">🔌</span>
+                    <h3>Network Cabling</h3>
+                    <p>Cat6 and Cat6a structured cabling for offices, new builds and extensions. Tidy, tested and documented installations.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('holiday_park_wifi') }}" class="home-service-card">
+                    <span class="svc-icon">🏕️</span>
+                    <h3>Holiday Park WiFi</h3>
+                    <p>Managed private WiFi per holiday home — no upfront park costs. We design, install, operate and support park-wide networks and subscriber billing.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('backup_internet') }}" class="home-service-card">
+                    <span class="svc-icon">🚨</span>
+                    <h3>Backup Internet</h3>
+                    <p>Keep trading when your main broadband fails. Automatic 4G/5G failover so your card machines and systems stay online.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <a href="{{ url_for('small_business_setup') }}" class="home-service-card">
+                    <span class="svc-icon">🏢</span>
+                    <h3>Small Business Networks</h3>
+                    <p>Complete network setup for new offices and growing businesses. Switches, WiFi, cabling and firewalls — all sorted.</p>
+                    <span class="card-link">Learn more →</span>
+                </a>
+            </div>
+
+            <div class="col-sm-6 col-lg-4">
+                <!-- Enterprise teaser card -->
+                <a href="{{ url_for('enterprise') }}" class="home-service-card"
+                   style="border-color: rgba(220,38,38,0.15); background: linear-gradient(135deg, #fff, #fff8f8);">
+                    <span class="svc-icon">🏛️</span>
+                    <h3>Enterprise &amp; Corporate</h3>
+                    <p>Large-scale Cisco, Aruba and Palo Alto networks for NHS, enterprise and public sector organisations. Senior consultants only.</p>
+                    <span class="card-link" style="color:#dc2626;">Enterprise services →</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── WHY SPRINTWAVE ── -->
+<section style="padding: 70px 0; background: #ffffff;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+                <span class="eyebrow">Why choose us</span>
+                <h2 class="fw-bold mb-3">Local engineers.<br>Senior expertise.</h2>
+                <p class="text-muted" style="line-height:1.75;">
+                    We're a small team based in Norfolk. Every job is handled by an experienced engineer — not a subcontractor or a trainee. We take the time to do it right.
+                </p>
+                <div class="mt-4 d-flex gap-3 flex-wrap">
+                    <a href="{{ url_for('contact') }}" class="btn-accent">Get a quote</a>
+                    <a href="{{ url_for('about') }}" class="btn-accent"
+                       style="background: transparent; color: #007f73 !important; border: 2px solid #007f73;">
+                        About us
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="why-card">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <h5>Based in Norfolk</h5>
+                            <p>Local team covering Kings Lynn, Norwich, East Anglia and beyond. Fast response times, no national call centre.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="why-card">
+                            <i class="bi bi-award-fill"></i>
+                            <h5>Senior Engineers</h5>
+                            <p>CCNP and CCIE certified engineers. 15+ years enterprise experience on every job, however big or small.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="why-card">
+                            <i class="bi bi-currency-pound"></i>
+                            <h5>Honest Pricing</h5>
+                            <p>We quote upfront and stick to it. No hidden extras, no upselling you products you don't need.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="why-card">
+                            <i class="bi bi-headset"></i>
+                            <h5>Ongoing Support</h5>
+                            <p>We don't disappear after installation. Call us if something isn't right — we'll sort it.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section style="padding: 70px 0; background: #f8f9fa;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="eyebrow">Customer reviews</span>
+            <h2 class="fw-bold">What our customers say.</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Sorted our Starlink installation on the farm quickly and neatly. Signal is excellent and the whole setup looks professional. Would highly recommend."</p>
+                    <div class="reviewer">David H.</div>
+                    <div class="reviewer-role">Farm owner, Norfolk</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Excellent WiFi setup for our market event. Card machines worked perfectly all day with no issues. Will be using Sprintwave for all our future events."</p>
+                    <div class="reviewer">Sarah M.</div>
+                    <div class="reviewer-role">Event organiser, Essex</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Installed CCTV and a new network at our office. Very professional, tidy work and explained everything clearly. Great value for the quality."</p>
+                    <div class="reviewer">James T.</div>
+                    <div class="reviewer-role">Business owner, Kings Lynn</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── AREAS SERVED ── -->
+<section style="padding: 70px 0; background: #ffffff;">
+    <div class="container">
+        <div class="text-center mb-4">
+            <span class="eyebrow">Where we work</span>
+            <h2 class="fw-bold">Covering Norfolk &amp; East Anglia.</h2>
+            <p class="text-muted">Based in Kings Lynn — covering the region and taking on projects UK-wide.</p>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+            <span class="area-pill">📍 Kings Lynn</span>
+            <span class="area-pill">📍 Norwich</span>
+            <span class="area-pill">📍 Fakenham</span>
+            <span class="area-pill">📍 Swaffham</span>
+            <span class="area-pill">📍 Downham Market</span>
+            <span class="area-pill">📍 Hunstanton</span>
+            <span class="area-pill">📍 Wisbech</span>
+            <span class="area-pill">📍 Peterborough</span>
+            <span class="area-pill">📍 Ely</span>
+            <span class="area-pill">📍 Cambridge</span>
+            <span class="area-pill">📍 Ipswich</span>
+            <span class="area-pill">📍 East Anglia</span>
+            <span class="area-pill">🇬🇧 UK-wide projects</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="home-cta">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="eyebrow" style="color: rgba(255,255,255,0.7);">Ready to get started?</span>
+                <h2 class="mb-3">Get a free quote today.<br>No obligation.</h2>
+                <p class="mb-4">
+                    Tell us what you need and where you are. We'll get back to you the same day with honest advice and a clear price.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{{ url_for('contact') }}" class="btn-home-cta">
+                        <i class="bi bi-send me-2"></i>Get a free quote
+                    </a>
+                    <a href="tel:+441553824408" class="btn-home-cta-outline">
+                        <i class="bi bi-telephone me-2"></i>01553 824408
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="service-card">
+                    <p class="fw-bold mb-3" style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#007f73;">Contact us</p>
+                    <a href="tel:+441553824408" class="d-flex align-items-center gap-2 text-decoration-none text-dark py-2 border-bottom">
+                        <i class="bi bi-telephone-fill" style="color:#007f73;"></i>
+                        <span class="fw-semibold">01553 824408</span>
+                    </a>
+                    <a href="mailto:info@sprintwave.co.uk" class="d-flex align-items-center gap-2 text-decoration-none text-dark py-2 border-bottom">
+                        <i class="bi bi-envelope-fill" style="color:#007f73;"></i>
+                        <span class="fw-semibold">info@sprintwave.co.uk</span>
+                    </a>
+                    <a href="{{ url_for('contact') }}" class="d-flex align-items-center gap-2 text-decoration-none text-dark py-2">
+                        <i class="bi bi-send-fill" style="color:#007f73;"></i>
+                        <span class="fw-semibold">Online quote form →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

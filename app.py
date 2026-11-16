@@ -432,6 +432,10 @@ def hertfordshire_landing():
 def polan():
     return render_template('polan.html')
 
+@app.route('/norfolk-wifi-network-installation')
+def norfolk_landing():
+    return render_template('norfolk.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
